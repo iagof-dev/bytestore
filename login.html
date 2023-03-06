@@ -10,6 +10,7 @@
 
 <link rel="stylesheet" href="./Assets/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://kit.fontawesome.com/3fc58490c0.css" crossorigin="anonymous">
+<link rel="stylesheet" href="./Assets/css/main.css">
 
 <body>
     <nav class="navbar bg-body-tertiary">
@@ -20,8 +21,10 @@
                 <h1 style="height: 5px !important; font-size: 17px;">Byte Store</h1>
             </div>
           </a>
-          <div class="nav" style="margin-right: -22% !important;">
-            <a class="nav-link active" href="./index.html"><i class="fa-solid fa-house"></i> Inicio</a>
+
+
+          <div class="nav">
+            <a class="nav-link active" href="./"><i class="fa-solid fa-house"></i> Inicio</a>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><i class="fa-solid fa-computer"></i> Computadores</a>
                 <ul class="dropdown-menu">
@@ -60,42 +63,35 @@
                   <li><a class="dropdown-item" href="#"><i class="fa-solid fa-screwdriver"></i> Pendrive</a></li>
                 </ul>
               </li>
-
             <a class="nav-link" href="#"><i class="fa-solid fa-phone"></i> Contato</a>
-            <a class="nav-link" href="#"><i class="fa-sharp fa-solid fa-door-closed"></i> Login</a>
+            <a class="nav-link" href="./login.html"><i class="fa-sharp fa-solid fa-door-closed"></i> Login</a>
 
            </div>
         </div>  
       </nav>
-
-
-
-    <div style="padding-top: 5px;" class="container">
-        <div id="carouselExample"  data-bs-theme="dark" class="carousel slide dark">
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <a href="#"><img src="./Assets/imgs/Banners/1.png" class="d-block w-100"></a>
-              </div>
-              <div class="carousel-item">
-                <a><img src="./Assets/imgs/Banners/2.png" class="d-block w-100"></a>
-              </div>
-              <div class="carousel-item">
-                <a><img src="./Assets/imgs/Banners/3.png" class="d-block w-100"></a>
-              </div>
+      <div class="container">
+        <div class="containerlogin">
+          <div class="titulo bordinha">
+            <div class="titulo center">
+                <h1>Login</h1><br>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
-            </button>
+            <div class="error">
+              <h2 style="display: none;text-align: center; font-size: 12px;margin-bottom: -5px !important; color: #da3333 !important;;">E-mail ou Senha Incorreta!</h2>
+            </div>
+            <div class="area1">
+              <form action="./header.php" method="post">
+                <div class="inpt1"><input required style="background-color: #FFFFFF !important; color: #000000 !important;" class="form-control" name="txt_email" placeholder="E-mail"><br>
+                <input name="txt_pass" required style="background-color: #FFFFFF !important;color: #000000 !important;" class="form-control" type="password" placeholder="Senha">
+                <div class="center" style="padding-top: 10px;"><div class="cf-turnstile" data-sitekey="0x4AAAAAAAC9NlfV5RvrSVwX" data-callback="javascriptCallback"></div></div>
+                <div class="center"><input class="btn btn-dark bt1" type="submit" value="Logar-se"></div> 
+              </form>
+            </div>
           </div>
-    </div>
+        </div>
+      </div>
 </body>
 
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <script src="https://kit.fontawesome.com/3fc58490c0.js" crossorigin="anonymous"></script>
 <script src="./Assets/js/bootstrap.bundle.min.js"></script>
-
 </html>

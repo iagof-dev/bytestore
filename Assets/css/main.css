@@ -1,0 +1,65 @@
+::placeholder{
+  color: #808080 !important;
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    text-align: center;
+}
+
+.containerlogin {  display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      ". titulo ."
+      ". area1 .";
+      padding-top: 15%;
+  }
+  
+  .titulo { grid-area: titulo; }
+  
+  .area1 {
+    display: flex;
+    justify-self: center;
+    align-self: start;
+    grid-area: area1;
+    padding-top: 5px;
+    flex-direction: column;
+  }
+  
+  input{
+    height: 35px;
+    border-radius: 5px;
+  }
+  .bt1{
+    border: solid 1px #303030;
+    margin-top: 2%;
+    text-align: center !important; 
+  }
+  button{
+    border-radius: 5px;
+  }
+  form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+  }
+
+  .bordinha{
+    width: 600px;
+    padding: 50px;
+    background: rgba( 43, 48, 53, 0.25 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 4px );
+-webkit-backdrop-filter: blur( 4px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
+
+  }
