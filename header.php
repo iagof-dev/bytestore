@@ -15,8 +15,8 @@ function debug_to_console($data)
 class mysql{
     public $db_ip = "db.n3rdydesigner.xyz";
     public $db_port = "3306";
-    public $db_user = "";
-    public $db_pass = "";
+    public $db_user = "nrdydes1_admin";
+    public $db_pass = "132490Kj@br=";
     public $db_database = "nrdydes1_bytestore";
     public static $db_table_users = "users";
     public static $db_table_products = "products";
@@ -96,7 +96,7 @@ function user_get_products(){
     if (mysqli_num_rows($anuncios) > 0) {
         debug_to_console("Numero de anuncios: ". mysqli_num_rows($anuncios));
         while ($linha = mysqli_fetch_assoc($anuncios)) {
-            if ($qnt_anuncios <= 5){
+            if ($qnt_anuncios <= 4){
                 $anuncio = '<div class="prods"><div class="prod"><div class="prod-img"><img width="120px" src="'. $linha["image"]. '"></div><div class="prod-info"><div class="prod-title"><h1>'. $linha["title"]. '</h1></div><div class="prod-desc"><p>'. $linha["description"]. '</p></div></div><div class="prod-value"><div class="prod-price"><h2>R$ '. $linha["price"]. '</h2></div><div class="prod-bt-edit"><button href="#" class="btn btn-primary">Editar</button></div></div></div></div>';
                 $all_anuncios = $all_anuncios. ''. $anuncio;
                 debug_to_console($all_anuncios);
@@ -115,7 +115,6 @@ function user_get_products(){
         return "<h1>Sem anuncios para mostrar! :(</h1>";
         
     }
-    return "<h1>Sem anuncios para mostrar! :(</h1>";
   
   }
 

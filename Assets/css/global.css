@@ -1,0 +1,11 @@
+.nav-link{
+    color: white !important;
+}
+
+.center{
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    align-self: center !important;
+    text-align: center;
+}

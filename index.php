@@ -17,7 +17,7 @@ session_start();
 
 <link rel="stylesheet" href="./Assets/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://kit.fontawesome.com/3fc58490c0.css" crossorigin="anonymous">
-
+<link rel="stylesheet" href="./Assets/css/global.css">
 <body>
     <nav class="navbar bg-body-tertiary">
         <div class="container">
