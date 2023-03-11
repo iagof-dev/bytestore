@@ -7,7 +7,6 @@ require_once('./header.php');
 
 
 
-
 ?>
 
  <!DOCTYPE html>
@@ -26,7 +25,17 @@ require_once('./header.php');
 <script src="./Assets/js/bootstrap.bundle.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
 
-<body>
+
+<script>
+  function load(){
+    document.getElementById('imgpreview').setAttribute('width', '450px');
+    document.getElementById('imgpreview').setAttribute('height', 'auto');
+  }
+    
+</script>
+
+
+<body onload="load();">
  <nav class="navbar bg-body-tertiary">
     <div class="container">
       <a class="navbar-brand" href="#">
@@ -87,28 +96,48 @@ require_once('./header.php');
   </nav>
     <div class="container">
     <div class="grid1-create-container center" >
-          <form enctype="multipart/form-data" action="./product_created.php" method="post" style="width: 450px !important;">
+          <form action="./.php" method="post" style="width: 450px !important;">
 
           <div class="grid1-create-antitle">
-            <img id="imgpreview" style="border: solid; border-style: dotted; border-radius: 10px;display: flex; margin-top: 10px;" width="450px" src="./Assets/imgs/transparent.webp" />
-            <input name="anunciotitle" style="margin-top: 10px;" type="text" required class="form-control" placeholder="Titulo do Anúncio" aria-describedby="basic-addon1">
-          </div>
+            <?php
+            require_once('./header.php');
+
+            $product = get_prod_specif($_GET['id']);
+
+            
+            echo('<img id="imgpreview" style="border: solid; border-style: dotted; border-radius: 10px;display: flex; margin-top: 10px;" width="450px" src="'. $product[4] .'" />');
+            
+            echo('<input name="anunciotitle" style="margin-top: 10px;" type="text" required class="form-control" placeholder="'. $product[1].'" aria-describedby="basic-addon1">');
+            ?>
+            </div>
           <div class="grid1-create-andesc">
-            <textarea name="anunciodesc" rows="5" type="text" required class="form-control" placeholder="Descrição do Anúncio" aria-describedby="inputGroup-sizing-lg"></textarea>
+            <?php
+            echo('<textarea name="anunciodesc" rows="5" type="text" required class="form-control" placeholder="'. $product[2] .'" aria-describedby="inputGroup-sizing-lg"></textarea>');
+            ?>
           </div>
+          
 
           <div class="grid1-create-anprice">
-            <input name="anuncioprice" id="anvalue" type="number" required class="form-control" min="1" max="10000" placeholder="0,00" aria-describedby="basic-addon1">
+            <?php
+            echo('<input name="anuncioprice" id="anvalue" type="number" required class="form-control" min="1" max="10000" placeholder="'. $product[3]. '" aria-describedby="basic-addon1">');
+            ?>
           </div>
 
           <div class="grid1-create-animage">
             <!--<input id="imginput" name="anuncioimg" onchange="update_preview(event);" type="file" required class="form-control" placeholder="Imagem" aria-describedby="basic-addon1"><-->
-            <input id="animg" type="text" name="animg" onchange="update_preview(e);" required class="form-control" placeholder="Link Imagem" aria-describedby="basic-addon1">
+            <?php
+            echo('<input id="animg" type="text" name="animg" onchange="update_preview(e);" required class="form-control" placeholder="'. $product[4] .'" aria-describedby="basic-addon1">');
+            ?>
           </div>
 
           <div class="grid1-create-angateway" style="padding-bottom: 50px;">
-            <input type="text" name="gateway" style="margin-bottom: 5% !important;" required class="form-control" placeholder="Gateway" aria-describedby="basic-addon1">
-            <input type="submit" value="Enviar" required class="form-control" placeholder="Gateway" aria-describedby="basic-addon1">
+            <?php
+            echo('<input type="text" name="gateway" style="margin-bottom: 5% !important;" required class="form-control" placeholder="'. $product[5].'" aria-describedby="basic-addon1">');
+            ?>
+            <input type="submit" value="✔️ Salvar" required class="form-control" aria-describedby="basic-addon1">
+            <?php
+            echo('<a style="text-decoration: none; " href="./delete.php?id='. $_GET['id'] .'"><input  type="button" value="❌ Excluir Anúncio" required class="form-control" style="margin-top 10px !important;" aria-describedby="basic-addon1"></a>');
+            ?>
           </div>
           </form>
   </div>

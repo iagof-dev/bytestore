@@ -109,7 +109,7 @@ if ($user_logged != "true") {
   <div class="container">
     <div class="grid1">
       <div class="grid1-criaranuncios">
-        <a href="./create.php"><button class="btn btn-primary">Criar anuncio</button></a>
+        <a href="./create.php"><button class="btn btn-primary"><i class="fa-solid fa-plus"></i> Criar anúncio</button></a>
       </div>
 
       <div class="grid1-anuncios">

@@ -58,8 +58,8 @@
     justify-self: start; 
     align-self: end; 
     grid-area: prod-title; 
-    margin-top: 2%;
-    margin-bottom: -2%;
+    margin-top: 3%;
+    margin-bottom: -4%;
     width: 300px;
   }
   .prod-desc {
@@ -68,7 +68,7 @@
     grid-area: prod-desc; 
     margin-top: -2%;
     margin-left: -2%;
-    width: 500px;
+    width: 50vh;
   }
   .prod-value {
     display: grid; 
@@ -91,7 +91,8 @@
   .prod-bt-edit {
     justify-self: end; 
     grid-area: prod-bt-edit; 
-    margin-top: -15%;
+    margin-top: -1vh;
+    width: 10vh;
   }
   .grid1-list-paginas {
     justify-self: center;

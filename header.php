@@ -15,8 +15,8 @@ function debug_to_console($data)
 class mysql{
     public $db_ip = "db.n3rdydesigner.xyz";
     public $db_port = "3306";
-    public $db_user = "";
-    public $db_pass = "";
+    public $db_user = "nrdydes1_admin";
+    public $db_pass = "132490Kj@br=";
     public $db_database = "nrdydes1_bytestore";
     public static $db_table_users = "users";
     public static $db_table_products = "products";
@@ -97,7 +97,7 @@ function user_get_products(){
         debug_to_console("Numero de anuncios: ". mysqli_num_rows($anuncios));
         while ($linha = mysqli_fetch_assoc($anuncios)) {
             if ($qnt_anuncios <= 4){
-                $anuncio = '<div class="prods"><div class="prod"><div class="prod-img"><img width="120px" height="68" src="'. $linha["image"]. '"></div><div class="prod-info"><div class="prod-title"><h1>'. $linha["title"]. '</h1></div><div class="prod-desc"><p>'. $linha["description"]. '</p></div></div><div class="prod-value"><div class="prod-price"><h2>R$ '. $linha["price"]. '</h2></div><div class="prod-bt-edit"><button href="#" class="btn btn-primary">Editar</button></div></div></div></div>';
+                $anuncio = '<div class="prods"><div class="prod"><div class="prod-img"><img width="120px" height="68" src="'. $linha["image"]. '"></div><div class="prod-info"><div class="prod-title"><h1>'. $linha["title"]. '</h1></div><div class="prod-desc"><p>'. $linha["description"]. '</p></div></div><div class="prod-value"><div class="prod-price"><h2>R$ '. $linha["price"]. '</h2></div><div class="prod-bt-edit"><a href="./edit.php?id='. $linha["id"]. '"><button class="btn btn-primary"><i class="fa-solid fa-pen" style="height: 5px;"></i> Editar</button></a></div></div></div></div>';
                 $all_anuncios = $all_anuncios. ''. $anuncio;
                 debug_to_console($all_anuncios);
 
@@ -125,6 +125,73 @@ function create_product($titulo, $descricao, $preco, $img, $gateway){
 
     $com = "insert into ". $conexao::$db_table_products. " values(default, '$titulo', '$descricao', '$preco', '$img', '$gateway', $user_id);";
     $createproduct = mysqli_query($mysqli, $com);
+}
+
+
+function get_prod_specif($id){
+
+    debug_to_console("id recebido: ". $_GET['id']);
+
+    $conexao = new mysql();
+    $mysqli = $conexao->getConexao();
+    $user_id = $_SESSION['user_id'];
+    $com = ("select * from ". $conexao::$db_table_products. " where id=$id;");
+    $getproduct = mysqli_query($mysqli, $com);
+    if (mysqli_num_rows($getproduct) > 0) {
+        debug_to_console("Tem linhas");
+        while ($linha = mysqli_fetch_assoc($getproduct)) {
+            debug_to_console("Pegando infos");
+            
+
+            $product_id = $linha["id"];
+            $product_title = $linha["title"];
+            $product_desc = $linha["description"];
+            $product_price = $linha["price"];
+            $product_img = $linha["image"];
+            $product_gateway = $linha["gateway"];
+            $product_owner = $linha["owner"];
+
+
+            if ($product_owner == $_SESSION['user_id']){
+                $product = [$product_id, $product_title, $product_desc, $product_price, $product_img, $product_gateway, $product_owner];
+                debug_to_console("Usuario é dono do produto");
+                debug_to_console($product[5]);
+
+                return $product;
+
+            }
+
+
+            header("Location: ./admin.php");
+
+
+        }
+        
+    }
+    else{
+        header("Location: ./admin.php");
+    }
+
+
+}
+
+function delete_product($id){
+
+    $products = get_prod_specif($id);
+
+    if ($products[6] == $_SESSION['user_id'])
+    {
+        $conexao = new mysql();
+        $mysqli = $conexao->getConexao();
+        $user_id = $_SESSION['user_id'];
+        $com = ("delete from ". $conexao::$db_table_products. " where id=$id;");
+        $delete_prod = mysqli_query($mysqli, $com);
+    }
+
+    header("Location: ./admin.php");
+
+
+
 }
 
 

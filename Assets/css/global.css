@@ -9,3 +9,69 @@
     align-self: center !important;
     text-align: center;
 }
+
+.cards{
+    margin-top: 10px;
+    display: blo;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+  .container-card {  
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    margin-top: -30%;
+    grid-template-areas:
+      ". . ."
+      ". cards ."
+      ". . .";
+  }
+  
+  .cards {  display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "card-1 card-2 card-3 card-4";
+    justify-self: center;
+    align-self: center;
+    grid-area: cards;
+    width: 196%;
+    height: 100%;
+  }
+  
+  .card-1 {
+    justify-self: center;
+    align-self: center;
+    grid-area: card-1;
+    height: 100%;
+    margin: -300px;
+  }
+  
+  .card-2 {
+    justify-self: center;
+    align-self: center;
+    grid-area: card-2;
+    height: 100%;
+  }
+  
+  .card-3 {
+    justify-self: center;
+    align-self: center;
+    grid-area: card-3;
+    height: 100%;
+  }
+  
+  .card-4 {
+    justify-self: center;
+    align-self: center;
+    grid-area: card-4;
+    height: 100%;
+  }
+  
