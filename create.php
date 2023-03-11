@@ -8,7 +8,6 @@ require_once('./header.php');
 
 
 
-
 ?>
 
  <!DOCTYPE html>
@@ -25,9 +24,9 @@ require_once('./header.php');
 <link rel="stylesheet" href="https://kit.fontawesome.com/3fc58490c0.css" crossorigin="anonymous">
 <script src="https://kit.fontawesome.com/3fc58490c0.js" crossorigin="anonymous"></script>
 <script src="./Assets/js/bootstrap.bundle.min.js"></script>
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
- <body>
+
+<body>
  <nav class="navbar bg-body-tertiary">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
@@ -88,30 +87,29 @@ require_once('./header.php');
   </nav>
     <div class="container">
     <div class="grid1-create-container center" >
-          <form  method="post" onsubmit="showSwal('success-message')" style="width: 450px !important;">
+          <form enctype="multipart/form-data" action="./product_created.php" method="post" style="width: 450px !important;">
 
           <div class="grid1-create-antitle">
-            <img id="imgpreview" style="border-radius: 10px;display: none; margin-top: 10px;" width="450px" src="./Assets/imgs/placeholder.webp" />
-            <input id="imgadjust" style="margin-top: 265px;" type="text" required class="form-control" placeholder="Titulo do Anúncio" aria-describedby="basic-addon1">
+            <img id="imgpreview" style="border: solid; border-style: dotted; border-radius: 10px;display: flex; margin-top: 10px;" width="450px" src="./Assets/imgs/transparent.webp" />
+            <input name="anunciotitle" style="margin-top: 10px;" type="text" required class="form-control" placeholder="Titulo do Anúncio" aria-describedby="basic-addon1">
           </div>
           <div class="grid1-create-andesc">
-            <textarea rows="5" type="text" required class="form-control" placeholder="Descrição do Anúncio" aria-describedby="inputGroup-sizing-lg"></textarea>
+            <textarea name="anunciodesc" rows="5" type="text" required class="form-control" placeholder="Descrição do Anúncio" aria-describedby="inputGroup-sizing-lg"></textarea>
           </div>
 
           <div class="grid1-create-anprice">
-            <input id="anvalue" type="number" required class="form-control" min="1" max="1000" placeholder="0,00" aria-describedby="basic-addon1">
+            <input name="anuncioprice" id="anvalue" type="number" required class="form-control" min="1" max="10000" placeholder="0,00" aria-describedby="basic-addon1">
           </div>
 
           <div class="grid1-create-animage">
-            <input id="imginput" onchange="update_preview(event);" type="file" required class="form-control" placeholder="Imagem" aria-describedby="basic-addon1">
+            <!--<input id="imginput" name="anuncioimg" onchange="update_preview(event);" type="file" required class="form-control" placeholder="Imagem" aria-describedby="basic-addon1"><-->
+            <input id="animg" type="text" name="animg" onchange="update_preview(e);" required class="form-control" placeholder="Link Imagem" aria-describedby="basic-addon1">
           </div>
 
           <div class="grid1-create-angateway" style="padding-bottom: 50px;">
-            <input type="text" style="margin-bottom: 5% !important;" required class="form-control" placeholder="Gateway" aria-describedby="basic-addon1">
+            <input type="text" name="gateway" style="margin-bottom: 5% !important;" required class="form-control" placeholder="Gateway" aria-describedby="basic-addon1">
             <input type="submit" value="Enviar" required class="form-control" placeholder="Gateway" aria-describedby="basic-addon1">
           </div>
-
-
           </form>
   </div>
 
