@@ -13,10 +13,10 @@ function debug_to_console($data)
 }
 
 class mysql{
-    public $db_ip = "db.n3rdydesigner.xyz";
+    public $db_ip = "localhost";
     public $db_port = "3306";
-    public $db_user = "nrdydes1_admin";
-    public $db_pass = "132490Kj@br=";
+    public $db_user = "root";
+    public $db_pass = "132490kj";
     public $db_database = "nrdydes1_bytestore";
     public static $db_table_users = "users";
     public static $db_table_products = "products";
