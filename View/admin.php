@@ -10,7 +10,11 @@ $user_name = $_SESSION['user_name'];
 $user_email = $_SESSION['user_email'];
 $user_logged = $_SESSION['user_logged'];
 
-require_once('../Model/header.php');
+
+require_once('./Controller/pages.php');
+require_once('./Model/header.php');
+
+
 debug_to_console("ID: " . $user_id);
 debug_to_console("Username: " . $user_name);
 debug_to_console("Email: " . $user_email);
@@ -54,7 +58,7 @@ if ($user_logged != "true") {
         </div>
       </a>
       <div class="nav">
-        <a class="nav-link active" href="../"><i class="fa-solid fa-house"></i> Inicio</a>
+        <a class="nav-link active" href="/"><i class="fa-solid fa-house"></i> Inicio</a>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><i
               class="fa-solid fa-computer"></i> Computadores</a>
@@ -99,9 +103,9 @@ if ($user_logged != "true") {
         </li>
         <a class="nav-link" href="#"><i class="fa-solid fa-phone"></i> Contato</a>
         <?php if (@$_SESSION['user_logged'] != false) {
-          echo ('<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><i class="fa-solid fa-user"></i> ' . $_SESSION['user_name'] . '</a><ul class="dropdown-menu"><li><a class="dropdown-item" href="../View/admin.php"><i class="fa-solid fa-gear"></i> Meus Anúncios</a></li><li><a class="dropdown-item" href="../Controller/logout.php"><i class="fa-solid fa-door-open"></i> Sair</a></li></ul></li>');
+          echo ('<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><i class="fa-solid fa-user"></i> ' . $_SESSION['user_name'] . '</a><ul class="dropdown-menu"><li><a class="dropdown-item" href="/admin"><i class="fa-solid fa-gear"></i> Meus Anúncios</a></li><li><a class="dropdown-item" href="/logout"><i class="fa-solid fa-door-open"></i> Sair</a></li></ul></li>');
         } else {
-          echo ('<a class="nav-link" href="../View/login.html"><i class="fa-sharp fa-solid fa-door-closed"></i> Login</a>');
+          echo ('<a class="nav-link" href="/login"><i class="fa-sharp fa-solid fa-door-closed"></i> Login</a>');
         } ?>
       </div>
     </div>
@@ -109,7 +113,7 @@ if ($user_logged != "true") {
   <div class="container">
     <div class="grid1">
       <div class="grid1-criaranuncios">
-        <a href="../View/create.php"><button class="btn btn-primary"><i class="fa-solid fa-plus"></i> Criar anúncio</button></a>
+        <a href="/create"><button class="btn btn-primary"><i class="fa-solid fa-plus"></i> Criar anúncio</button></a>
       </div>
       <div class="grid1-anuncios">
         <div class="center">
@@ -144,7 +148,8 @@ if ($user_logged != "true") {
 
             <?php
 
-            require_once('../Model/header.php');
+            require_once('./Model/header.php');
+
             echo (user_get_products());
 
             ?>

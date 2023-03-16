@@ -3,7 +3,7 @@ ob_start();
 session_start();
 error_reporting(E_ALL & ~E_NOTICE);
 
-require_once('../Model/header.php');
+require_once('./Model/header.php');
 
 create_product($_POST["anunciotitle"], $_POST["anunciodesc"], $_POST["anuncioprice"], $_POST["animg"], $_POST["gateway"]);
 
@@ -25,7 +25,7 @@ body{overflow-y: hidden;}
 
 
 <body onload="verify();">
-    <iframe src="../View/create.php" scrolling="no" sandbox="block-forms allow-scripts" height="100vh" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" style="width: 100%; height:100vh; overflow: none;">
+    <iframe src="/create" scrolling="no" sandbox="block-forms allow-scripts" height="100vh" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" style="width: 100%; height:100vh; overflow: none;">
     </iframe>
 </body>
 
@@ -39,7 +39,7 @@ body{overflow-y: hidden;}
     });
 
     setTimeout(function(){
-      window.location.href = "../View/admin.php";
+      window.location.href = "/admin";
     }, 2000);
     
     

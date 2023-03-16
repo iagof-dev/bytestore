@@ -3,7 +3,8 @@ ob_start();
 session_start();
 error_reporting(E_ALL & ~E_NOTICE);
 
-require_once('./header.php');
+require_once('./Model/header.php');
+
 
 
 
@@ -98,11 +99,11 @@ require_once('./header.php');
   </nav>
     <div class="container">
     <div class="grid1-create-container center" >
-          <form action="../Controller/edit.php" method="post" style="width: 450px !important;">
+          <form action="/" method="post" style="width: 450px !important;">
 
           <div class="grid1-create-antitle">
             <?php
-            require_once('../Model/header.php');
+            require_once('./Model/header.php');
 
             $product = get_prod_specif($_GET['id']);
 
@@ -138,7 +139,7 @@ require_once('./header.php');
             ?>
             <input type="submit" value="✔️ Salvar" required class="form-control" aria-describedby="basic-addon1">
             <?php
-            echo('<a style="text-decoration: none; " href="../Controller/delete.php?id='. $_GET['id'] .'"><input  type="button" value="❌ Excluir Anúncio" required class="form-control" style="margin-top 10px !important;" aria-describedby="basic-addon1"></a>');
+            echo('<a style="text-decoration: none; " href="/delete?id='. $_GET['id'] .'"><input  type="button" value="❌ Excluir Anúncio" required class="form-control" style="margin-top 10px !important;" aria-describedby="basic-addon1"></a>');
             ?>
           </div>
           </form>

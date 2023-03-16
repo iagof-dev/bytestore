@@ -3,7 +3,7 @@ ob_start();
 session_start();
 error_reporting(E_ALL & ~E_NOTICE);
 
-require_once('../Model/header.php');
+require_once('./Model/header.php');
 
 
 
@@ -27,6 +27,7 @@ require_once('../Model/header.php');
 <script src="../Assets/js/sweetalert.min.js"></script>
 <script src="../Assets/js/create.js"></script>
 <script src="../Assets/js/bootstrap.bundle.min.js"></script>
+<script src="../Assets/js/create.js"></script>
 
 
 <body>
@@ -39,7 +40,7 @@ require_once('../Model/header.php');
         </div>
       </a>
       <div class="nav">
-        <a class="nav-link active" href="./"><i class="fa-solid fa-house"></i> Inicio</a>
+        <a class="nav-link active" href="../"><i class="fa-solid fa-house"></i> Inicio</a>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><i
               class="fa-solid fa-computer"></i> Computadores</a>
@@ -83,35 +84,38 @@ require_once('../Model/header.php');
           </ul>
         </li>
         <a class="nav-link" href="#"><i class="fa-solid fa-phone"></i> Contato</a>
-        <?php if(@$_SESSION['user_logged'] != false){echo('<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><i class="fa-solid fa-user"></i> '.$_SESSION['user_name']. '</a><ul class="dropdown-menu"><li><a class="dropdown-item" href="../View/admin.php"><i class="fa-solid fa-gear"></i> Meus Anúncios</a></li><li><a class="dropdown-item" href="../Controller/logout.php"><i class="fa-solid fa-door-open"></i> Sair</a></li></ul></li>');} 
-            else{echo('<a class="nav-link" href="../View/login.html"><i class="fa-sharp fa-solid fa-door-closed"></i> Login</a>');} ?>
-      </div>
+        <?php if (@$_SESSION['user_logged'] != false) {
+          echo ('<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><i class="fa-solid fa-user"></i> ' . $_SESSION['user_name'] . '</a><ul class="dropdown-menu"><li><a class="dropdown-item" href="/admin"><i class="fa-solid fa-gear"></i> Meus Anúncios</a></li><li><a class="dropdown-item" href="/logout"><i class="fa-solid fa-door-open"></i> Sair</a></li></ul></li>');
+        } else {
+          echo ('<a class="nav-link" href="/login"><i class="fa-sharp fa-solid fa-door-closed"></i> Login</a>');
+        } ?>
+        </div>
     </div>
   </nav>
     <div class="container">
     <div class="grid1-create-container center" >
-          <form enctype="multipart/form-data" action="../Controller/product_created.php" method="post" style="width: 450px !important;">
+          <form enctype="multipart/form-data" action="/created" method="post" style="width: 450px !important;">
 
           <div class="grid1-create-antitle">
             <img id="imgpreview" style="border: solid; border-style: dotted; border-radius: 10px;display: flex; margin-top: 10px;" width="450px" src="../Assets/imgs/transparent.webp" />
-            <input name="anunciotitle" style="margin-top: 10px;" type="text" required class="form-control" placeholder="Titulo do Anúncio" aria-describedby="basic-addon1">
+            <input name="anunciotitle" style="margin-top: 10px;" type="text" required class="form-control" placeholder="Titulo do Anúncio">
           </div>
           <div class="grid1-create-andesc">
             <textarea name="anunciodesc" rows="5" type="text" required class="form-control" placeholder="Descrição do Anúncio" aria-describedby="inputGroup-sizing-lg"></textarea>
           </div>
 
           <div class="grid1-create-anprice">
-            <input name="anuncioprice" id="anvalue" type="number" required class="form-control" min="1" max="10000" placeholder="0,00" aria-describedby="basic-addon1">
+            <input name="anuncioprice" id="anvalue" type="number" required class="form-control" min="1" max="10000" placeholder="0,00">
           </div>
 
           <div class="grid1-create-animage">
-            <!--<input id="imginput" name="anuncioimg" onchange="update_preview(event);" type="file" required class="form-control" placeholder="Imagem" aria-describedby="basic-addon1"><-->
-            <input id="animg" type="text" name="animg" onchange="update_preview(e);" required class="form-control" placeholder="Link Imagem" aria-describedby="basic-addon1">
+            <!--<input id="imginput" name="anuncioimg" onchange="update_preview(event);" type="file" required class="form-control" placeholder="Imagem"><-->
+            <input id="animg" type="text" name="animg" onchange="update_preview();" required class="form-control" placeholder="Link Imagem">
           </div>
 
           <div class="grid1-create-angateway" style="padding-bottom: 50px;">
-            <input type="text" name="gateway" style="margin-bottom: 5% !important;" required class="form-control" placeholder="Gateway" aria-describedby="basic-addon1">
-            <input type="submit" value="Enviar" required class="form-control" placeholder="Gateway" aria-describedby="basic-addon1">
+            <input type="text" name="gateway" style="margin-bottom: 5% !important;" required class="form-control" placeholder="Gateway">
+            <input type="submit" value="Enviar" required class="form-control" placeholder="Gateway">
           </div>
           </form>
   </div>
@@ -119,6 +123,5 @@ require_once('../Model/header.php');
    </div>
  </body>
 
-<script src="../Assets/js/create.js"></script>
 
 </html>
