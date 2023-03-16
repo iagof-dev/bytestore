@@ -18,12 +18,14 @@ require_once('./header.php');
  </head>
 
 <link rel="stylesheet" href="./Assets/css/create.css">
-<link rel="stylesheet" href="./Assets/css/global.css">
-<link rel="stylesheet" href="./Assets/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://kit.fontawesome.com/3fc58490c0.css" crossorigin="anonymous">
-<script src="https://kit.fontawesome.com/3fc58490c0.js" crossorigin="anonymous"></script>
-<script src="./Assets/js/bootstrap.bundle.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+<link rel="stylesheet" href="../Assets/css/global.css">
+<link rel="stylesheet" href="../Assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="../Assets/css/sweetalert.min.css">
+<script src="../Assets/js/FA-icons.js"></script>
+<script src="../Assets/js/jquery-3.6.4.min.js"></script>
+<script src="../Assets/js/sweetalert.min.js"></script>
+<script src="../Assets/js/create.js"></script>
+<script src="../Assets/js/bootstrap.bundle.min.js"></script>
 
 
 <script>
@@ -45,7 +47,7 @@ require_once('./header.php');
         </div>
       </a>
       <div class="nav">
-        <a class="nav-link active" href="./"><i class="fa-solid fa-house"></i> Inicio</a>
+        <a class="nav-link active" href="../"><i class="fa-solid fa-house"></i> Inicio</a>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><i
               class="fa-solid fa-computer"></i> Computadores</a>
@@ -89,18 +91,18 @@ require_once('./header.php');
           </ul>
         </li>
         <a class="nav-link" href="#"><i class="fa-solid fa-phone"></i> Contato</a>
-        <?php if(@$_SESSION['user_logged'] != false){echo('<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><i class="fa-solid fa-user"></i> '.$_SESSION['user_name']. '</a><ul class="dropdown-menu"><li><a class="dropdown-item" href="./admin.php"><i class="fa-solid fa-gear"></i> Meus Anúncios</a></li><li><a class="dropdown-item" href="./logout.php"><i class="fa-solid fa-door-open"></i> Sair</a></li></ul></li>');} 
-            else{echo('<a class="nav-link" href="./login.html"><i class="fa-sharp fa-solid fa-door-closed"></i> Login</a>');} ?>
+        <?php if(@$_SESSION['user_logged'] != false){echo('<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><i class="fa-solid fa-user"></i> '.$_SESSION['user_name']. '</a><ul class="dropdown-menu"><li><a class="dropdown-item" href="../View/admin.php"><i class="fa-solid fa-gear"></i> Meus Anúncios</a></li><li><a class="dropdown-item" href="../Controller/logout.php"><i class="fa-solid fa-door-open"></i> Sair</a></li></ul></li>');} 
+            else{echo('<a class="nav-link" href="../View/login.html"><i class="fa-sharp fa-solid fa-door-closed"></i> Login</a>');} ?>
       </div>
     </div>
   </nav>
     <div class="container">
     <div class="grid1-create-container center" >
-          <form action="./.php" method="post" style="width: 450px !important;">
+          <form action="../Controller/edit.php" method="post" style="width: 450px !important;">
 
           <div class="grid1-create-antitle">
             <?php
-            require_once('./header.php');
+            require_once('../Model/header.php');
 
             $product = get_prod_specif($_GET['id']);
 
@@ -136,7 +138,7 @@ require_once('./header.php');
             ?>
             <input type="submit" value="✔️ Salvar" required class="form-control" aria-describedby="basic-addon1">
             <?php
-            echo('<a style="text-decoration: none; " href="./delete.php?id='. $_GET['id'] .'"><input  type="button" value="❌ Excluir Anúncio" required class="form-control" style="margin-top 10px !important;" aria-describedby="basic-addon1"></a>');
+            echo('<a style="text-decoration: none; " href="../Controller/delete.php?id='. $_GET['id'] .'"><input  type="button" value="❌ Excluir Anúncio" required class="form-control" style="margin-top 10px !important;" aria-describedby="basic-addon1"></a>');
             ?>
           </div>
           </form>
@@ -144,8 +146,7 @@ require_once('./header.php');
 
    </div>
  </body>
-<script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
-<script src="./Assets/js/create.js"></script>
+
+<script src="../Assets/js/create.js"></script>
 
 </html>

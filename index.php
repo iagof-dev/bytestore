@@ -3,11 +3,8 @@
 session_start();
 
 ?>
-
-
 <!DOCTYPE html>
 <html lang="pt-br" data-bs-theme="dark">
-
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,9 +13,17 @@ session_start();
   <link rel="shortcut icon" href="./Assets/imgs/logo.png" type="image/x-icon">
 </head>
 
-<link rel="stylesheet" href="./Assets/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://kit.fontawesome.com/3fc58490c0.css" crossorigin="anonymous">
-<link rel="stylesheet" href="./Assets/css/global.css">
+<link rel="stylesheet" href="../Assets/css/aos.css" />
+<link rel="stylesheet" href="../Assets/css/admin.css">
+<link rel="stylesheet" href="../Assets/css/global.css">
+<link rel="stylesheet" href="../Assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="../Assets/css/sweetalert.min.css">
+<script src="../Assets/js/FA-icons.js"></script>
+<script src="../Assets/js/jquery-3.6.4.min.js"></script>
+<script src="../Assets/js/sweetalert.min.js"></script>
+<script src="../Assets/js/create.js"></script>
+<script src="../Assets/js/bootstrap.bundle.min.js"></script>
+
 
 <body>
   <nav class="navbar bg-body-tertiary">
@@ -30,7 +35,7 @@ session_start();
         </div>
       </a>
       <div class="nav">
-        <a class="nav-link active" href="./"><i class="fa-solid fa-house"></i> Inicio</a>
+        <a class="nav-link active" href="../"><i class="fa-solid fa-house"></i> Inicio</a>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><i
               class="fa-solid fa-computer"></i> Computadores</a>
@@ -75,9 +80,9 @@ session_start();
         </li>
         <a class="nav-link" href="#"><i class="fa-solid fa-phone"></i> Contato</a>
         <?php if (@$_SESSION['user_logged'] != false) {
-          echo ('<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><i class="fa-solid fa-user"></i> ' . $_SESSION['user_name'] . '</a><ul class="dropdown-menu"><li><a class="dropdown-item" href="./admin.php"><i class="fa-solid fa-gear"></i> Meus Anúncios</a></li><li><a class="dropdown-item" href="./logout.php"><i class="fa-solid fa-door-open"></i> Sair</a></li></ul></li>');
+          echo ('<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><i class="fa-solid fa-user"></i> ' . $_SESSION['user_name'] . '</a><ul class="dropdown-menu"><li><a class="dropdown-item" href="../View/admin.php"><i class="fa-solid fa-gear"></i> Meus Anúncios</a></li><li><a class="dropdown-item" href="../Controller/logout.php"><i class="fa-solid fa-door-open"></i> Sair</a></li></ul></li>');
         } else {
-          echo ('<a class="nav-link" href="./login.html"><i class="fa-sharp fa-solid fa-door-closed"></i> Login</a>');
+          echo ('<a class="nav-link" href="../View/login.html"><i class="fa-sharp fa-solid fa-door-closed"></i> Login</a>');
         } ?>
       </div>
     </div>
@@ -85,7 +90,7 @@ session_start();
 
 
   <div class="container">
-    <div style="padding-top: 5px;" class="container">
+    <div data-aos="zoom-in" data-aos-duration="500" style="padding-top: 5px;" class="container">
       <div id="carouselExample" data-bs-theme="dark" class="carousel slide dark">
         <div class="carousel-inner">
           <div class="carousel-item active">
@@ -109,21 +114,22 @@ session_start();
       </div>
     </div>
 
+    <div class="container-fluid">
 
-      <div class="container-card">
+      <div class="container-card" >
         <div class="cards">
           <div class="card-1">
-            <div class="card" style="width: 18rem;">
+            <div data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-duration="500" class="card" style="width: 18rem;">
               <img src="https://i0.wp.com/scholarculture.com/wp-content/uploads/2017/07/placeholder-1280x720-whitebg.png" class="card-img-top">
               <div class="card-body">
-                <h5 class="card-title">Máquina de Café Expresso</h5>
+                <h5  class="card-title">Máquina de Café Expresso</h5>
                 <p class="card-text">Se você é um amante de café e quer desfrutar de um sabor intenso e autêntico em sua própria casa, a nossa Máquina de Café Expresso é o produto perfeito para você. Com ela, você pode preparar cafés expressos, cappuccinos, lattes e muito mais, com apenas alguns toques.</p>
                 <a href="#" class="center btn btn-primary"><i class="fa-solid fa-cart-shopping"> Comprar</i></a>
               </div>
             </div>
           </div>
           <div class="card-2">
-          <div class="card" style="width: 18rem;">
+          <div data-aos="fade-up" data-aos-anchor-placement="top-bottom" class="card" style="width: 18rem;">
               <img src="https://i0.wp.com/scholarculture.com/wp-content/uploads/2017/07/placeholder-1280x720-whitebg.png" class="card-img-top">
               <div class="card-body">
                 <h5 class="card-title">Máquina de Café Expresso</h5>
@@ -133,7 +139,7 @@ session_start();
             </div>
           </div>
           <div class="card-3">
-            <div class="card" style="width: 18rem;">
+            <div data-aos="fade-up" data-aos-anchor-placement="top-bottom" class="card" style="width: 18rem;">
               <img src="https://i0.wp.com/scholarculture.com/wp-content/uploads/2017/07/placeholder-1280x720-whitebg.png" class="card-img-top">
               <div class="card-body">
                 <h5 class="card-title">Máquina de Café Expresso</h5>
@@ -143,7 +149,7 @@ session_start();
             </div>
           </div>
           <div class="card-4">
-            <div class="card" style="width: 18rem;">
+            <div data-aos="fade-up" data-aos-anchor-placement="top-bottom" class="card" style="width: 18rem;">
               <img src="https://i0.wp.com/scholarculture.com/wp-content/uploads/2017/07/placeholder-1280x720-whitebg.png" class="card-img-top">
               <div class="card-body">
                 <h5 class="card-title">Máquina de Café Expresso</h5>
@@ -155,10 +161,58 @@ session_start();
       </div>
     </div>
 
+    <div class="container-card" >
+        <div class="cards">
+          <div class="card-1">
+            <div data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-duration="500" class="card" style="width: 18rem;">
+              <img src="https://i0.wp.com/scholarculture.com/wp-content/uploads/2017/07/placeholder-1280x720-whitebg.png" class="card-img-top">
+              <div class="card-body">
+                <h5  class="card-title">Máquina de Café Expresso</h5>
+                <p class="card-text">Se você é um amante de café e quer desfrutar de um sabor intenso e autêntico em sua própria casa, a nossa Máquina de Café Expresso é o produto perfeito para você. Com ela, você pode preparar cafés expressos, cappuccinos, lattes e muito mais, com apenas alguns toques.</p>
+                <a href="#" class="center btn btn-primary"><i class="fa-solid fa-cart-shopping"> Comprar</i></a>
+              </div>
+            </div>
+          </div>
+          <div class="card-2">
+          <div data-aos="fade-up" data-aos-anchor-placement="top-bottom" class="card" style="width: 18rem;">
+              <img src="https://i0.wp.com/scholarculture.com/wp-content/uploads/2017/07/placeholder-1280x720-whitebg.png" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Máquina de Café Expresso</h5>
+                <p class="card-text">Se você é um amante de café e quer desfrutar de um sabor intenso e autêntico em sua própria casa, a nossa Máquina de Café Expresso é o produto perfeito para você. Com ela, você pode preparar cafés expressos, cappuccinos, lattes e muito mais, com apenas alguns toques.</p>
+                <a href="#" class="center btn btn-primary"><i class="fa-solid fa-cart-shopping"> Comprar</i></a>
+              </div>
+            </div>
+          </div>
+          <div class="card-3">
+            <div data-aos="fade-up" data-aos-anchor-placement="top-bottom" class="card" style="width: 18rem;">
+              <img src="https://i0.wp.com/scholarculture.com/wp-content/uploads/2017/07/placeholder-1280x720-whitebg.png" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Máquina de Café Expresso</h5>
+                <p class="card-text">Se você é um amante de café e quer desfrutar de um sabor intenso e autêntico em sua própria casa, a nossa Máquina de Café Expresso é o produto perfeito para você. Com ela, você pode preparar cafés expressos, cappuccinos, lattes e muito mais, com apenas alguns toques.</p>
+                <a href="#" class="center btn btn-primary"><i class="fa-solid fa-cart-shopping"> Comprar</i></a>
+              </div>
+            </div>
+          </div>
+          <div class="card-4">
+            <div data-aos="fade-up" data-aos-anchor-placement="top-bottom" class="card" style="width: 18rem;">
+              <img src="https://i0.wp.com/scholarculture.com/wp-content/uploads/2017/07/placeholder-1280x720-whitebg.png" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Máquina de Café Expresso</h5>
+                <p class="card-text">Se você é um amante de café e quer desfrutar de um sabor intenso e autêntico em sua própria casa, a nossa Máquina de Café Expresso é o produto perfeito para você. Com ela, você pode preparar cafés expressos, cappuccinos, lattes e muito mais, com apenas alguns toques.</p>
+                <a href="#" class="center btn btn-primary"><i class="fa-solid fa-cart-shopping"> Comprar</i></a>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
 
+    </div>
 </body>
 
-<script src="https://kit.fontawesome.com/3fc58490c0.js" crossorigin="anonymous"></script>
-<script src="./Assets/js/bootstrap.bundle.min.js"></script>
+
+<script src="../Assets/js/aos.js"></script>
+<script>
+  AOS.init();
+</script>
 
 </html>

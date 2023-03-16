@@ -8,13 +8,15 @@
     <link rel="shortcut icon" href="./Assets/imgs/logo.png" type="image/x-icon">
 </head>
 
-
-<link rel="stylesheet" href="./Assets/css/global.css">
-<link rel="stylesheet" href="./Assets/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://kit.fontawesome.com/3fc58490c0.css" crossorigin="anonymous">
-<link rel="stylesheet" href="./Assets/css/main.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
-
+<link rel="stylesheet" href="../Assets/css/main.css">
+<link rel="stylesheet" href="../Assets/css/admin.css">
+<link rel="stylesheet" href="../Assets/css/global.css">
+<link rel="stylesheet" href="../Assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="../Assets/css/sweetalert.min.css">
+<script src="../Assets/js/FA-icons.js" crossorigin="anonymous"></script>
+<script src="../Assets/js/jquery-3.6.4.min.js" crossorigin="anonymous"></script>
+<script src="../Assets/js/sweetalert.min.js"></script>
+<script src="../Assets/js/create.js"></script>
 
 <body>
     <nav class="navbar bg-body-tertiary">
@@ -79,14 +81,11 @@
             <div class="titulo center">
                 <h1>Login</h1><br>
             </div>
-            <div class="error">
-              <h2 style="display: none;text-align: center; font-size: 12px;margin-bottom: -5px !important; color: #da3333 !important;;">E-mail ou Senha Incorreta!</h2>
-            </div>
             <div class="area1">
-              <form action="./header.php" method="post">
+              <form action="../Model/header.php" method="post">
                 <div class="inpt1"><input id="inputemail" required style="background-color: #FFFFFF !important; color: #000000 !important;" class="form-control" name="txt_email" placeholder="E-mail"><br>
                 <input name="txt_pass" required style="background-color: #FFFFFF !important;color: #000000 !important;" class="form-control" type="password" placeholder="Senha">
-                <div class="center" style="padding-top: 10px;"><div class="cf-turnstile" data-sitekey="0x4AAAAAAAC9NlfV5RvrSVwX" data-callback="javascriptCallback"></div></div>
+                <div class="center cf-turnstile" style="padding-top: 10px;" data-sitekey="0x4AAAAAAAC9NlfV5RvrSVwX" data-callback="javascriptCallback"></div>
                 <div class="center"><input class="btn btn-dark bt1" type="submit" value="Logar-se"></div> 
               </form>
             </div>
@@ -96,10 +95,7 @@
 </body>
 
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
-<script src="https://kit.fontawesome.com/3fc58490c0.js" crossorigin="anonymous"></script>
-<script src="./Assets/js/bootstrap.bundle.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
-<script src="./Assets/js/login.js"></script>
+<script src="../Assets/js/login.js"></script>
+
 
 </html>

@@ -2,7 +2,6 @@
 ob_start();
 session_start();
 
-
 function debug_to_console($data)
 {
     $output = $data;
@@ -13,10 +12,10 @@ function debug_to_console($data)
 }
 
 class mysql{
-    public $db_ip = "localhost";
+    public $db_ip = "db.n3rdydesigner.xyz";
     public $db_port = "3306";
-    public $db_user = "root";
-    public $db_pass = "132490kj";
+    public $db_user = "";
+    public $db_pass = "";
     public $db_database = "nrdydes1_bytestore";
     public static $db_table_users = "users";
     public static $db_table_products = "products";
@@ -67,7 +66,7 @@ function user_login($input_email, $input_pass)
                     exit();
                 case 'admin':
                     echo ("<br> ADMIN");
-                    header("Location: ./admin.php");
+                    header("Location: ../View/admin.php");
                     exit();
 
             }
@@ -76,7 +75,7 @@ function user_login($input_email, $input_pass)
         $_SESSION['user_logged'] = "false";
         debug_to_console("MySQL | Informações do usuario está incorreta!");
         echo ("Usuário/Senha incorretas ou Não Existente...");
-        header("Location: ./login.html");
+        header("Location: ../View/login.html");
         exit();
 
     }
@@ -97,7 +96,7 @@ function user_get_products(){
         debug_to_console("Numero de anuncios: ". mysqli_num_rows($anuncios));
         while ($linha = mysqli_fetch_assoc($anuncios)) {
             if ($qnt_anuncios <= 4){
-                $anuncio = '<div class="prods"><div class="prod"><div class="prod-img"><img width="120px" height="68" src="'. $linha["image"]. '"></div><div class="prod-info"><div class="prod-title"><h1>'. $linha["title"]. '</h1></div><div class="prod-desc"><p>'. $linha["description"]. '</p></div></div><div class="prod-value"><div class="prod-price"><h2>R$ '. $linha["price"]. '</h2></div><div class="prod-bt-edit"><a href="./edit.php?id='. $linha["id"]. '"><button class="btn btn-primary"><i class="fa-solid fa-pen" style="height: 5px;"></i> Editar</button></a></div></div></div></div>';
+                $anuncio = '<div class="prods"><div class="prod"><div class="prod-img"><img width="120px" height="68" src="'. $linha["image"]. '"></div><div class="prod-info"><div class="prod-title"><h1>'. $linha["title"]. '</h1></div><div class="prod-desc"><p>'. $linha["description"]. '</p></div></div><div class="prod-value"><div class="prod-price"><h2>R$ '. $linha["price"]. '</h2></div><div class="prod-bt-edit"><a href="../View/edit.php?id='. $linha["id"]. '"><button class="btn btn-primary"><i class="fa-solid fa-pen" style="height: 5px;"></i> Editar</button></a></div></div></div></div>';
                 $all_anuncios = $all_anuncios. ''. $anuncio;
                 debug_to_console($all_anuncios);
 
@@ -162,14 +161,14 @@ function get_prod_specif($id){
             }
 
 
-            header("Location: ./admin.php");
+            header("Location: ../View/admin.php");
 
 
         }
         
     }
     else{
-        header("Location: ./admin.php");
+        header("Location: ../View/admin.php");
     }
 
 
@@ -188,7 +187,7 @@ function delete_product($id){
         $delete_prod = mysqli_query($mysqli, $com);
     }
 
-    header("Location: ./admin.php");
+    header("Location: ../View/admin.php");
 
 
 

@@ -3,49 +3,34 @@ ob_start();
 session_start();
 error_reporting(E_ALL & ~E_NOTICE);
 
-
-$user_id = $_SESSION['user_id'];
-$user_role = $_SESSION['user_role'];
-$user_name = $_SESSION['user_name'];
-$user_email = $_SESSION['user_email'];
-$user_logged = $_SESSION['user_logged'];
-
-require_once('./header.php');
-debug_to_console("ID: " . $user_id);
-debug_to_console("Username: " . $user_name);
-debug_to_console("Email: " . $user_email);
-debug_to_console("Role: " . $user_role);
-debug_to_console("Logged: " . $user_logged);
+require_once('../Model/header.php');
 
 
-if ($user_logged != "true") {
-  header("Location: ./login.html");
-}
+
 
 ?>
 
+ <!DOCTYPE html>
+ <html lang="pt-br" data-bs-theme="dark">
+ <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ </head>
 
-<!DOCTYPE html>
-<html lang="pt-br" data-bs-theme="dark">
+<link rel="stylesheet" href="../Assets/css/create.css">
+<link rel="stylesheet" href="../Assets/css/global.css">
+<link rel="stylesheet" href="../Assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="../Assets/css/sweetalert.min.css">
+<script src="../Assets/js/FA-icons.js"></script>
+<script src="../Assets/js/jquery-3.6.4.min.js"></script>
+<script src="../Assets/js/sweetalert.min.js"></script>
+<script src="../Assets/js/create.js"></script>
+<script src="../Assets/js/bootstrap.bundle.min.js"></script>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Painel Admin</title>
-</head>
-
-
-
-<link rel="stylesheet" href="./Assets/css/global.css">
-<link rel="stylesheet" href="./Assets/css/admin.css">
-<link rel="stylesheet" href="./Assets/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://kit.fontawesome.com/3fc58490c0.css" crossorigin="anonymous">
-<script src="https://kit.fontawesome.com/3fc58490c0.js" crossorigin="anonymous"></script>
-<script src="./Assets/js/bootstrap.bundle.min.js"></script>
 
 <body>
-  <nav class="navbar bg-body-tertiary">
+ <nav class="navbar bg-body-tertiary">
     <div class="container">
       <a class="navbar-brand" href="#">
         <div class="junto" style="display: flex;">
@@ -98,85 +83,42 @@ if ($user_logged != "true") {
           </ul>
         </li>
         <a class="nav-link" href="#"><i class="fa-solid fa-phone"></i> Contato</a>
-        <?php if (@$_SESSION['user_logged'] != false) {
-          echo ('<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><i class="fa-solid fa-user"></i> ' . $_SESSION['user_name'] . '</a><ul class="dropdown-menu"><li><a class="dropdown-item" href="./admin.php"><i class="fa-solid fa-gear"></i> Meus Anúncios</a></li><li><a class="dropdown-item" href="./logout.php"><i class="fa-solid fa-door-open"></i> Sair</a></li></ul></li>');
-        } else {
-          echo ('<a class="nav-link" href="./login.html"><i class="fa-sharp fa-solid fa-door-closed"></i> Login</a>');
-        } ?>
+        <?php if(@$_SESSION['user_logged'] != false){echo('<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><i class="fa-solid fa-user"></i> '.$_SESSION['user_name']. '</a><ul class="dropdown-menu"><li><a class="dropdown-item" href="../View/admin.php"><i class="fa-solid fa-gear"></i> Meus Anúncios</a></li><li><a class="dropdown-item" href="../Controller/logout.php"><i class="fa-solid fa-door-open"></i> Sair</a></li></ul></li>');} 
+            else{echo('<a class="nav-link" href="../View/login.html"><i class="fa-sharp fa-solid fa-door-closed"></i> Login</a>');} ?>
       </div>
     </div>
   </nav>
-  <div class="container">
-    <div class="grid1">
-      <div class="grid1-criaranuncios">
-        <a href="./create.php"><button class="btn btn-primary"><i class="fa-solid fa-plus"></i> Criar anúncio</button></a>
-      </div>
+    <div class="container">
+    <div class="grid1-create-container center" >
+          <form enctype="multipart/form-data" action="../Controller/product_created.php" method="post" style="width: 450px !important;">
 
-      <div class="grid1-anuncios">
-        <div class="center">
-          <h1 style="font-size: 32px !important;">Anúncios:</h1>
-        </div><br>
-        <div class="pageanuncios">
-        <div class="block">
-
-          <!--<div class="prods">
-        <div class="prod">
-             <div class="prod-img">
-              <img width="120px" src="XXXXXXXXXX">
-            </div>
-            <div class="prod-info">
-              <div class="prod-title">
-                  <h1>Anuncio Top</h1>
-              </div>
-              <div class="prod-desc">
-                  <p>Descrição do anuncio</p>
-              </div>
-            </div>
-            <div class="prod-value">
-              <div class="prod-price">
-                <h2>R$0.00</h2>
-              </div>
-              <div class="prod-bt-edit">
-                <button href="#" class="btn btn-primary">Editar</button>
-              </div>
-            </div>
-        </div>
-        </div> -->
-
-
-
-
-            <?php
-
-            require_once('./header.php');
-            echo (user_get_products());
-
-
-            ?>
+          <div class="grid1-create-antitle">
+            <img id="imgpreview" style="border: solid; border-style: dotted; border-radius: 10px;display: flex; margin-top: 10px;" width="450px" src="../Assets/imgs/transparent.webp" />
+            <input name="anunciotitle" style="margin-top: 10px;" type="text" required class="form-control" placeholder="Titulo do Anúncio" aria-describedby="basic-addon1">
+          </div>
+          <div class="grid1-create-andesc">
+            <textarea name="anunciodesc" rows="5" type="text" required class="form-control" placeholder="Descrição do Anúncio" aria-describedby="inputGroup-sizing-lg"></textarea>
           </div>
 
+          <div class="grid1-create-anprice">
+            <input name="anuncioprice" id="anvalue" type="number" required class="form-control" min="1" max="10000" placeholder="0,00" aria-describedby="basic-addon1">
+          </div>
 
+          <div class="grid1-create-animage">
+            <!--<input id="imginput" name="anuncioimg" onchange="update_preview(event);" type="file" required class="form-control" placeholder="Imagem" aria-describedby="basic-addon1"><-->
+            <input id="animg" type="text" name="animg" onchange="update_preview(e);" required class="form-control" placeholder="Link Imagem" aria-describedby="basic-addon1">
+          </div>
 
-
-        </div>
-      </div>
-
-      <div class="grid1-list-paginas">
-        <nav aria-label="Page navigation example">
-          <ul class="pagination">
-            <li class="page-item"><a class="page-link" href="#">Anterior</a></li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">Próximo</a></li>
-          </ul>
-        </nav>
-      </div>
-
-
-    </div>
-
+          <div class="grid1-create-angateway" style="padding-bottom: 50px;">
+            <input type="text" name="gateway" style="margin-bottom: 5% !important;" required class="form-control" placeholder="Gateway" aria-describedby="basic-addon1">
+            <input type="submit" value="Enviar" required class="form-control" placeholder="Gateway" aria-describedby="basic-addon1">
+          </div>
+          </form>
   </div>
-</body>
 
+   </div>
+ </body>
 
+<script src="../Assets/js/create.js"></script>
 
 </html>
