@@ -29,11 +29,9 @@ switch ($url) {
     case '/created':
         require('./Controller./product_created.php');
         break;
-
     case '/delete':
         require('./Controller/delete.php');
         break;
-
     case '/logout':
         require('./Controller/logout.php');
         break;
