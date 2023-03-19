@@ -16,7 +16,7 @@ function debug_to_console($data)
 
 class mysql{
     public $db_ip = "";
-    public $db_port = "";
+    public $db_port = "3306";
     public $db_user = "";
     public $db_pass = "";
     public $db_database = "nrdydes1_bytestore";
@@ -99,7 +99,8 @@ function user_get_products(){
         debug_to_console("Numero de anuncios: ". mysqli_num_rows($anuncios));
         while ($linha = mysqli_fetch_assoc($anuncios)) {
             if ($qnt_anuncios <= 4){
-                $anuncio = '<div class="prods"><div class="prod"><div class="prod-img"><img width="120px" height="68" src="./Assets/imgs/products/'. $linha["image"]. '"></div><div class="prod-info"><div class="prod-title"><h1>'. $linha["title"]. '</h1></div><div class="prod-desc"><p>'. $linha["description"]. '</p></div></div><div class="prod-value"><div class="prod-price"><h2>R$ '. $linha["price"]. '</h2></div><div class="prod-bt-edit"><a href="/edit?id='. $linha["id"]. '&file='. $linha["image"] .'"><button class="btn btn-primary"><i class="fa-solid fa-pen" style="height: 5px;"></i> Editar</button></a></div></div></div></div>';
+                $txt= mb_strimwidth($linha["description"], 0, 127, "...");
+                $anuncio = '<div class="prods"><div class="prod"><div class="prod-img"><img width="120px" height="68" src="./Assets/imgs/products/'. $linha["image"]. '"></div><div class="prod-info"><div class="prod-title"><h1><a href="/product?id='. $linha["id"] .'">'. $linha["title"]. '</a></h1></div><div class="prod-desc"><p>'. $txt. '</p></div></div><div class="prod-value"><div class="prod-price"><h2>R$ '. $linha["price"]. '</h2></div><div class="prod-bt-edit"><a href="/edit?id='. $linha["id"]. '&file='. $linha["image"] .'"><button class="btn btn-primary"><i class="fa-solid fa-pen" style="height: 5px;"></i> Editar</button></a></div></div></div></div>';
                 $all_anuncios = $all_anuncios. ''. $anuncio;
                 debug_to_console($all_anuncios);
 
@@ -132,7 +133,7 @@ function create_product($titulo, $descricao, $preco, $img, $gateway){
 
 function get_prod_specif($id){
 
-    debug_to_console("id recebido: ". $_GET['id']);
+    debug_to_console("id recebido: ". $id);
 
     $conexao = new mysql();
     $mysqli = $conexao->getConexao();
@@ -173,9 +174,41 @@ function get_prod_specif($id){
     else{
         header("Location: /admin");
     }
+}
+
+
+function get_product_page($id){
+
+    $conexao = new mysql();
+    $mysqli = $conexao->getConexao();
+    $com = ("select * from ". $conexao::$db_table_products. " where id=$id;");
+    $getproduct = mysqli_query($mysqli, $com);
+    if (mysqli_num_rows($getproduct) > 0) {
+        while ($linha = mysqli_fetch_assoc($getproduct)) {
+        
+            $anuncio_info = array(
+                $linha["id"],
+                $linha["title"],
+                $linha["description"],
+                $linha["price"],
+                $linha["image"],
+                $linha["gateway"],
+                $linha["owner"]
+            );
+        
+            return $anuncio_info;
+        }
+    }
+    else{
+        header("Location: /error");
+    }
+    
 
 
 }
+
+
+
 
 function delete_product($id, $path){
 

@@ -13,19 +13,10 @@ session_start();
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-<link rel="stylesheet" href="../Assets/css/main.css">
-<link rel="stylesheet" href="../Assets/css/aos.css" />
-<link rel="stylesheet" href="../Assets/css/global.css">
-<link rel="stylesheet" href="../Assets/css/bootstrap.min.css">
-<link rel="stylesheet" href="../Assets/css/sweetalert.min.css">
-<script src="../Assets/js/FA-icons.js"></script>
-<script src="../Assets/js/jquery-3.6.4.min.js"></script>
-<script src="../Assets/js/sweetalert.min.js"></script>
-<script src="../Assets/js/create.js"></script>
-<script src="../Assets/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="../Assets/css/aos.css">
 
 <body>  
-<nav class="navbar fixed-bottom navbar-expand-lg footer-cor">
+<!-- <nav class="navbar fixed-bottom navbar-expand-lg footer-cor">
   <div class="container-fluid">
     <div class="center-text footer-text">
       <h1><i class="fa-solid fa-bolt"></i> Feito por <a style="text-decoration: none;" href="https://github.com/iagof-dev/">@N3rdyDzn</a> - 2023</h1>
@@ -92,7 +83,7 @@ session_start();
         } ?>
       </div>
     </div>
-  </nav>
+  </nav> -->
 
   <div class="container-fluid">
     <div data-aos="zoom-in" data-aos-duration="500" style="padding-top: 5px;" class="container">
@@ -135,7 +126,7 @@ session_start();
                 <p class="card-text">Se você é um amante de café e quer desfrutar de um sabor intenso e autêntico em sua
                   própria casa, a nossa Máquina de Café Expresso é o produto perfeito para você. Com ela, você pode
                   preparar cafés expressos, cappuccinos, lattes e muito mais, com apenas alguns toques.</p>
-                <a href="https://google.com" class=" btn btn-primary"><i class="fa-solid fa-cart-shopping"> Comprar</i></a>
+                  <a href="#" class="center btn btn-primary"><i class="fa-solid fa-cart-shopping"> Comprar</i></a>
               </div>
             </div>
           </div>

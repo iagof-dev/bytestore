@@ -11,6 +11,10 @@ switch ($url) {
         include('./View/inicio.php');
         break;
 
+    case '/product':
+        include('./View/product.php');
+        break;
+
     case '/login':
         include('./View/login.html');
         break;
@@ -23,6 +27,14 @@ switch ($url) {
         break;
     case '/edit':
         require('./View/edit.php');
+        break;
+
+    case '/dev':
+        require('./View/dev.php');
+        break;
+
+    case '/sdk':
+        require('./Model/mercado_pago.php');
         break;
 
     case '/create':

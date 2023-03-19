@@ -46,6 +46,12 @@ input {
   text-align: center !important;
 }
 
+.btn-primary{
+  font-size: 15px !important;
+  font-weight: 100 !important;
+  letter-spacing: 2px !important;
+}
+
 button {
   border-radius: 5px;
 }
