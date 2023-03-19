@@ -15,6 +15,18 @@ session_start();
 
 <link rel="stylesheet" href="../Assets/css/aos.css">
 
+<style>
+@media screen and (max-width: 800px) {
+
+.container-fluid{
+  width: 10% !important;
+  flex-direction: column !important;
+}
+
+}
+
+</style>
+
 <body>  
 <!-- <nav class="navbar fixed-bottom navbar-expand-lg footer-cor">
   <div class="container-fluid">
@@ -85,7 +97,7 @@ session_start();
     </div>
   </nav> -->
 
-  <div class="container-fluid">
+  <div class="container">
     <div data-aos="zoom-in" data-aos-duration="500" style="padding-top: 5px;" class="container">
       <div id="carouselExample" data-bs-theme="dark" class="carousel carousel-dark slide">
         <div class="carousel-inner">
@@ -112,7 +124,6 @@ session_start();
 
 
     <div class="container-fluid">
-
       <div class="container-card">
         <div class="cards">
           <div class="card-1">

@@ -5,7 +5,7 @@ error_reporting(E_ALL & ~E_NOTICE);
 
 require_once './vendor/autoload.php';
 //require_once('./Model/header.php');
-MercadoPago\SDK::setAccessToken('');
+MercadoPago\SDK::setAccessToken('TEST');
 
 function mp_create_link($titulo, $quantidade, $preco){
 

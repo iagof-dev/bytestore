@@ -30,7 +30,7 @@
     justify-self: center;
     align-self: center;
     grid-area: grid1-anuncios;
-    width: 780px;
+    width: 800px;
     height: 600px;
     margin-bottom: 13% !important;
   }
@@ -80,7 +80,7 @@
       "prod-price prod-price prod-bt-edit"
       ". . ."; 
     grid-area: prod-value; 
-    padding-right: 2%;
+    padding-right: 5%;
   }
   .prod-price {
     width: 90px;
@@ -93,6 +93,7 @@
     grid-area: prod-bt-edit; 
     margin-top: -1vh;
     width: 10vh;
+    margin-left: -15px;
   }
   .grid1-list-paginas {
     justify-self: center;

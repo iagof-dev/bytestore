@@ -10,7 +10,7 @@ echo($import_global);
 
 echo("<title>ByteStore</title>");
 echo("<link rel='shortcut icon' href='./Assets/imgs/logo.png' type='image/x-icon'>");
-echo("<nav class='navbar fixed-bottom navbar-expand-lg footer-cor'><div class='container-fluid'><div class='center-text footer-text'><h1><i class='fa-solid fa-bolt'></i> Feito por <a style='text-decoration: none;' href='https://github.com/iagof-dev/'>@N3rdyDzn</a> - 2023</h1></div></div></nav>");
+echo("<nav class='navbar fixed-bottom navbar-expand-lg footer-cor'><div class='container-fluid'><div class='center-text footer-text'><h1><i class='fa-solid fa-bolt'></i> Feito por <a style='text-decoration: none;' href='https://n3rdydzn.software/'>@N3rdyDzn</a> - 2023</h1></div></div></nav>");
 
 
 
@@ -21,6 +21,8 @@ if (@$_SESSION['user_logged'] != false) {
 else{
     $navbar =($navbar. "<a class='nav-link' href='/login'><i class='fa-sharp fa-solid fa-door-closed'></i> Login</a></div>     </div> </div></div></nav>");
 }
+
+
 echo($navbar);
 
 
