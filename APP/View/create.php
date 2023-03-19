@@ -5,9 +5,6 @@ error_reporting(E_ALL & ~E_NOTICE);
 
 require_once('./Model/header.php');
 
-
-
-
 ?>
 
  <!DOCTYPE html>
@@ -25,10 +22,30 @@ require_once('./Model/header.php');
 <script src="../Assets/js/FA-icons.js"></script>
 <script src="../Assets/js/jquery-3.6.4.min.js"></script>
 <script src="../Assets/js/sweetalert.min.js"></script>
-<script src="../Assets/js/create.js"></script>
 <script src="../Assets/js/bootstrap.bundle.min.js"></script>
-<script src="../Assets/js/create.js"></script>
 
+<style>
+.image_preview{
+
+  display: flex; 
+  width: 450px !important;
+  height: 265px !important;
+  margin-top: 10px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.bordinha{
+  border: solid; 
+  border-style: dotted; 
+  border-radius: 10px;
+
+}
+
+
+
+</style>
 
 <body>
  <nav class="navbar bg-body-tertiary">
@@ -97,7 +114,8 @@ require_once('./Model/header.php');
           <form enctype="multipart/form-data" action="/created" method="post" style="width: 450px !important;">
 
           <div class="grid1-create-antitle">
-            <img id="imgpreview" style="border: solid; border-style: dotted; border-radius: 10px;display: flex; margin-top: 10px;" width="450px" src="../Assets/imgs/transparent.webp" />
+            <span id="imgpreview" class="image_preview bordinha">
+            </span>
             <input name="anunciotitle" style="margin-top: 10px;" type="text" required class="form-control" placeholder="Titulo do Anúncio">
           </div>
           <div class="grid1-create-andesc">
@@ -109,8 +127,8 @@ require_once('./Model/header.php');
           </div>
 
           <div class="grid1-create-animage">
-            <!--<input id="imginput" name="anuncioimg" onchange="update_preview(event);" type="file" required class="form-control" placeholder="Imagem"><-->
-            <input id="animg" type="text" name="animg" onchange="update_preview();" required class="form-control" placeholder="Link Imagem">
+            <input id="animg" name="animg" accept="image/*" type="file" required class="form-control" placeholder="Imagem">
+            <!-- <input id="animg" type="text" name="animg" onchange="update_preview(event);" required class="form-control" placeholder="Link Imagem"> -->
           </div>
 
           <div class="grid1-create-angateway" style="padding-bottom: 50px;">
@@ -119,9 +137,10 @@ require_once('./Model/header.php');
           </div>
           </form>
   </div>
-
    </div>
  </body>
+ <script src="../Assets/js/create.js"></script>
+ <script src="../Assets/js/alertbox.js"></script>
 
 
 </html>

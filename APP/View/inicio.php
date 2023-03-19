@@ -6,16 +6,15 @@ session_start();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br" data-bs-theme="dark">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Byte Store</title>
-  <link rel="shortcut icon" href="./Assets/imgs/logo.png" type="image/x-icon">
 </head>
 
+<link rel="stylesheet" href="../Assets/css/main.css">
 <link rel="stylesheet" href="../Assets/css/aos.css" />
-<link rel="stylesheet" href="../Assets/css/admin.css">
 <link rel="stylesheet" href="../Assets/css/global.css">
 <link rel="stylesheet" href="../Assets/css/bootstrap.min.css">
 <link rel="stylesheet" href="../Assets/css/sweetalert.min.css">
@@ -25,8 +24,14 @@ session_start();
 <script src="../Assets/js/create.js"></script>
 <script src="../Assets/js/bootstrap.bundle.min.js"></script>
 
-
-<body>
+<body>  
+<nav class="navbar fixed-bottom navbar-expand-lg footer-cor">
+  <div class="container-fluid">
+    <div class="center-text footer-text">
+      <h1><i class="fa-solid fa-bolt"></i> Feito por <a style="text-decoration: none;" href="https://github.com/iagof-dev/">@N3rdyDzn</a> - 2023</h1>
+    </div>
+  </div>
+</nav>
   <nav class="navbar bg-body-tertiary">
     <div class="container">
       <a class="navbar-brand" href="#">
@@ -41,10 +46,10 @@ session_start();
           <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><i
               class="fa-solid fa-computer"></i> Computadores</a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#"><i class="fa-solid fa-laptop"></i> Uso Pessoal</a></li>
-            <li><a class="dropdown-item" href="#"><i class="fa-sharp fa-solid fa-gamepad"></i> Gamer</a></li>
-            <li><a class="dropdown-item" href="#"><i class="fa-solid fa-briefcase"></i> Workstation</a></li>
-            <li><a class="dropdown-item" href="#"><i class="fa-solid fa-server"></i> Servidor</a></li>
+            <li><a class="dropdown-item" href="laptop"><i class="fa-solid fa-laptop"></i> Uso Pessoal</a></li>
+            <li><a class="dropdown-item" href="gamer"><i class="fa-sharp fa-solid fa-gamepad"></i> Gamer</a></li>
+            <li><a class="dropdown-item" href="workstation"><i class="fa-solid fa-briefcase"></i> Workstation</a></li>
+            <li><a class="dropdown-item" href="Servidor"><i class="fa-solid fa-server"></i> Servidor</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">
@@ -89,9 +94,9 @@ session_start();
     </div>
   </nav>
 
-  <div class="container">
+  <div class="container-fluid">
     <div data-aos="zoom-in" data-aos-duration="500" style="padding-top: 5px;" class="container">
-      <div id="carouselExample" data-bs-theme="dark" class="carousel slide dark">
+      <div id="carouselExample" data-bs-theme="dark" class="carousel carousel-dark slide">
         <div class="carousel-inner">
           <div class="carousel-item active">
             <a href="#"><img src="./Assets/imgs/Banners/1.png" class="d-block w-100"></a>
@@ -114,99 +119,73 @@ session_start();
       </div>
     </div>
 
+
     <div class="container-fluid">
 
-      <div class="container-card" >
+      <div class="container-card">
         <div class="cards">
           <div class="card-1">
-            <div data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-duration="500" class="card" style="width: 18rem;">
-              <img src="https://i0.wp.com/scholarculture.com/wp-content/uploads/2017/07/placeholder-1280x720-whitebg.png" class="card-img-top">
+            <div data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-duration="1000" class="card"
+              style="width: 18rem;">
+              <img
+                src="https://i0.wp.com/scholarculture.com/wp-content/uploads/2017/07/placeholder-1280x720-whitebg.png"
+                class="card-img-top">
               <div class="card-body">
-                <h5  class="card-title">Máquina de Café Expresso</h5>
-                <p class="card-text">Se você é um amante de café e quer desfrutar de um sabor intenso e autêntico em sua própria casa, a nossa Máquina de Café Expresso é o produto perfeito para você. Com ela, você pode preparar cafés expressos, cappuccinos, lattes e muito mais, com apenas alguns toques.</p>
-                <a href="#" class="center btn btn-primary"><i class="fa-solid fa-cart-shopping"> Comprar</i></a>
+                <h5 class="card-title">Máquina de Café Expresso</h5>
+                <p class="card-text">Se você é um amante de café e quer desfrutar de um sabor intenso e autêntico em sua
+                  própria casa, a nossa Máquina de Café Expresso é o produto perfeito para você. Com ela, você pode
+                  preparar cafés expressos, cappuccinos, lattes e muito mais, com apenas alguns toques.</p>
+                <a href="https://google.com" class=" btn btn-primary"><i class="fa-solid fa-cart-shopping"> Comprar</i></a>
               </div>
             </div>
           </div>
           <div class="card-2">
-          <div data-aos="fade-up" data-aos-anchor-placement="top-bottom" class="card" style="width: 18rem;">
-              <img src="https://i0.wp.com/scholarculture.com/wp-content/uploads/2017/07/placeholder-1280x720-whitebg.png" class="card-img-top">
+            <div data-aos="fade-up" data-aos-duration="1000" data-aos-anchor-placement="top-bottom" class="card" style="width: 18rem;">
+              <img
+                src="https://i0.wp.com/scholarculture.com/wp-content/uploads/2017/07/placeholder-1280x720-whitebg.png"
+                class="card-img-top">
               <div class="card-body">
                 <h5 class="card-title">Máquina de Café Expresso</h5>
-                <p class="card-text">Se você é um amante de café e quer desfrutar de um sabor intenso e autêntico em sua própria casa, a nossa Máquina de Café Expresso é o produto perfeito para você. Com ela, você pode preparar cafés expressos, cappuccinos, lattes e muito mais, com apenas alguns toques.</p>
+                <p class="card-text">Se você é um amante de café e quer desfrutar de um sabor intenso e autêntico em sua
+                  própria casa, a nossa Máquina de Café Expresso é o produto perfeito para você. Com ela, você pode
+                  preparar cafés expressos, cappuccinos, lattes e muito mais, com apenas alguns toques.</p>
                 <a href="#" class="center btn btn-primary"><i class="fa-solid fa-cart-shopping"> Comprar</i></a>
               </div>
             </div>
           </div>
           <div class="card-3">
-            <div data-aos="fade-up" data-aos-anchor-placement="top-bottom" class="card" style="width: 18rem;">
-              <img src="https://i0.wp.com/scholarculture.com/wp-content/uploads/2017/07/placeholder-1280x720-whitebg.png" class="card-img-top">
+            <div data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-duration="1000" class="card" style="width: 18rem;">
+              <img
+                src="https://i0.wp.com/scholarculture.com/wp-content/uploads/2017/07/placeholder-1280x720-whitebg.png"
+                class="card-img-top">
               <div class="card-body">
                 <h5 class="card-title">Máquina de Café Expresso</h5>
-                <p class="card-text">Se você é um amante de café e quer desfrutar de um sabor intenso e autêntico em sua própria casa, a nossa Máquina de Café Expresso é o produto perfeito para você. Com ela, você pode preparar cafés expressos, cappuccinos, lattes e muito mais, com apenas alguns toques.</p>
+                <p class="card-text">Se você é um amante de café e quer desfrutar de um sabor intenso e autêntico em sua
+                  própria casa, a nossa Máquina de Café Expresso é o produto perfeito para você. Com ela, você pode
+                  preparar cafés expressos, cappuccinos, lattes e muito mais, com apenas alguns toques.</p>
                 <a href="#" class="center btn btn-primary"><i class="fa-solid fa-cart-shopping"> Comprar</i></a>
               </div>
             </div>
           </div>
           <div class="card-4">
-            <div data-aos="fade-up" data-aos-anchor-placement="top-bottom" class="card" style="width: 18rem;">
-              <img src="https://i0.wp.com/scholarculture.com/wp-content/uploads/2017/07/placeholder-1280x720-whitebg.png" class="card-img-top">
+            <div data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-duration="1000" class="card" style="width: 18rem;">
+              <img
+                src="https://i0.wp.com/scholarculture.com/wp-content/uploads/2017/07/placeholder-1280x720-whitebg.png"
+                class="card-img-top">
               <div class="card-body">
                 <h5 class="card-title">Máquina de Café Expresso</h5>
-                <p class="card-text">Se você é um amante de café e quer desfrutar de um sabor intenso e autêntico em sua própria casa, a nossa Máquina de Café Expresso é o produto perfeito para você. Com ela, você pode preparar cafés expressos, cappuccinos, lattes e muito mais, com apenas alguns toques.</p>
+                <p class="card-text">Se você é um amante de café e quer desfrutar de um sabor intenso e autêntico em sua
+                  própria casa, a nossa Máquina de Café Expresso é o produto perfeito para você. Com ela, você pode
+                  preparar cafés expressos, cappuccinos, lattes e muito mais, com apenas alguns toques.</p>
                 <a href="#" class="center btn btn-primary"><i class="fa-solid fa-cart-shopping"> Comprar</i></a>
               </div>
             </div>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="container-card" >
-        <div class="cards">
-          <div class="card-1">
-            <div data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-duration="500" class="card" style="width: 18rem;">
-              <img src="https://i0.wp.com/scholarculture.com/wp-content/uploads/2017/07/placeholder-1280x720-whitebg.png" class="card-img-top">
-              <div class="card-body">
-                <h5  class="card-title">Máquina de Café Expresso</h5>
-                <p class="card-text">Se você é um amante de café e quer desfrutar de um sabor intenso e autêntico em sua própria casa, a nossa Máquina de Café Expresso é o produto perfeito para você. Com ela, você pode preparar cafés expressos, cappuccinos, lattes e muito mais, com apenas alguns toques.</p>
-                <a href="#" class="center btn btn-primary"><i class="fa-solid fa-cart-shopping"> Comprar</i></a>
-              </div>
-            </div>
-          </div>
-          <div class="card-2">
-          <div data-aos="fade-up" data-aos-anchor-placement="top-bottom" class="card" style="width: 18rem;">
-              <img src="https://i0.wp.com/scholarculture.com/wp-content/uploads/2017/07/placeholder-1280x720-whitebg.png" class="card-img-top">
-              <div class="card-body">
-                <h5 class="card-title">Máquina de Café Expresso</h5>
-                <p class="card-text">Se você é um amante de café e quer desfrutar de um sabor intenso e autêntico em sua própria casa, a nossa Máquina de Café Expresso é o produto perfeito para você. Com ela, você pode preparar cafés expressos, cappuccinos, lattes e muito mais, com apenas alguns toques.</p>
-                <a href="#" class="center btn btn-primary"><i class="fa-solid fa-cart-shopping"> Comprar</i></a>
-              </div>
-            </div>
-          </div>
-          <div class="card-3">
-            <div data-aos="fade-up" data-aos-anchor-placement="top-bottom" class="card" style="width: 18rem;">
-              <img src="https://i0.wp.com/scholarculture.com/wp-content/uploads/2017/07/placeholder-1280x720-whitebg.png" class="card-img-top">
-              <div class="card-body">
-                <h5 class="card-title">Máquina de Café Expresso</h5>
-                <p class="card-text">Se você é um amante de café e quer desfrutar de um sabor intenso e autêntico em sua própria casa, a nossa Máquina de Café Expresso é o produto perfeito para você. Com ela, você pode preparar cafés expressos, cappuccinos, lattes e muito mais, com apenas alguns toques.</p>
-                <a href="#" class="center btn btn-primary"><i class="fa-solid fa-cart-shopping"> Comprar</i></a>
-              </div>
-            </div>
-          </div>
-          <div class="card-4">
-            <div data-aos="fade-up" data-aos-anchor-placement="top-bottom" class="card" style="width: 18rem;">
-              <img src="https://i0.wp.com/scholarculture.com/wp-content/uploads/2017/07/placeholder-1280x720-whitebg.png" class="card-img-top">
-              <div class="card-body">
-                <h5 class="card-title">Máquina de Café Expresso</h5>
-                <p class="card-text">Se você é um amante de café e quer desfrutar de um sabor intenso e autêntico em sua própria casa, a nossa Máquina de Café Expresso é o produto perfeito para você. Com ela, você pode preparar cafés expressos, cappuccinos, lattes e muito mais, com apenas alguns toques.</p>
-                <a href="#" class="center btn btn-primary"><i class="fa-solid fa-cart-shopping"> Comprar</i></a>
-              </div>
-            </div>
-        </div>
-      </div>
-    </div>
 
-    </div>
 </body>
 
 

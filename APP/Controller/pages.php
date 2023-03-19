@@ -1,12 +1,14 @@
 <?php
 ob_start();
 session_start();
+
+
 error_reporting(E_ALL & ~E_NOTICE);
 $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
 switch ($url) {
     case '/':
-        include('./View/index.php');
+        include('./View/inicio.php');
         break;
 
     case '/login':
@@ -27,7 +29,7 @@ switch ($url) {
         require('./View/create.php');
         break;
     case '/created':
-        require('./Controller./product_created.php');
+        require('./Controller/product_created.php');
         break;
     case '/delete':
         require('./Controller/delete.php');

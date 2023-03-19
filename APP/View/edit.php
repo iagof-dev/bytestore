@@ -108,7 +108,7 @@ require_once('./Model/header.php');
             $product = get_prod_specif($_GET['id']);
 
             
-            echo('<img id="imgpreview" style="border: solid; border-style: dotted; border-radius: 10px;display: flex; margin-top: 10px;" width="450px" src="'. $product[4] .'" />');
+            echo('<img id="imgpreview" style="border: solid; border-style: dotted; border-radius: 10px;display: flex; margin-top: 10px;" width="450px" src="./Assets/imgs/products/'. $product[4] .'" />');
             
             echo('<input name="anunciotitle" style="margin-top: 10px;" type="text" required class="form-control" placeholder="'. $product[1].'" aria-describedby="basic-addon1">');
             ?>
@@ -139,7 +139,7 @@ require_once('./Model/header.php');
             ?>
             <input type="submit" value="✔️ Salvar" required class="form-control" aria-describedby="basic-addon1">
             <?php
-            echo('<a style="text-decoration: none; " href="/delete?id='. $_GET['id'] .'"><input  type="button" value="❌ Excluir Anúncio" required class="form-control" style="margin-top 10px !important;" aria-describedby="basic-addon1"></a>');
+            echo('<a style="text-decoration: none; " href="/delete?id='. $_GET['id'] .'&file='.$_GET['file'].'"><input  type="button" value="❌ Excluir Anúncio" required class="form-control" style="margin-top 10px !important;" aria-describedby="basic-addon1"></a>');
             ?>
           </div>
           </form>

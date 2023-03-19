@@ -1,6 +1,9 @@
 <?php
 ob_start();
 session_start();
+
+error_reporting(E_ALL & ~E_NOTICE);
+
 require_once('./Controller/pages.php');
 function debug_to_console($data)
 {
@@ -13,7 +16,7 @@ function debug_to_console($data)
 
 class mysql{
     public $db_ip = "";
-    public $db_port = "3306";
+    public $db_port = "";
     public $db_user = "";
     public $db_pass = "";
     public $db_database = "nrdydes1_bytestore";
@@ -96,7 +99,7 @@ function user_get_products(){
         debug_to_console("Numero de anuncios: ". mysqli_num_rows($anuncios));
         while ($linha = mysqli_fetch_assoc($anuncios)) {
             if ($qnt_anuncios <= 4){
-                $anuncio = '<div class="prods"><div class="prod"><div class="prod-img"><img width="120px" height="68" src="'. $linha["image"]. '"></div><div class="prod-info"><div class="prod-title"><h1>'. $linha["title"]. '</h1></div><div class="prod-desc"><p>'. $linha["description"]. '</p></div></div><div class="prod-value"><div class="prod-price"><h2>R$ '. $linha["price"]. '</h2></div><div class="prod-bt-edit"><a href="/edit?id='. $linha["id"]. '"><button class="btn btn-primary"><i class="fa-solid fa-pen" style="height: 5px;"></i> Editar</button></a></div></div></div></div>';
+                $anuncio = '<div class="prods"><div class="prod"><div class="prod-img"><img width="120px" height="68" src="./Assets/imgs/products/'. $linha["image"]. '"></div><div class="prod-info"><div class="prod-title"><h1>'. $linha["title"]. '</h1></div><div class="prod-desc"><p>'. $linha["description"]. '</p></div></div><div class="prod-value"><div class="prod-price"><h2>R$ '. $linha["price"]. '</h2></div><div class="prod-bt-edit"><a href="/edit?id='. $linha["id"]. '&file='. $linha["image"] .'"><button class="btn btn-primary"><i class="fa-solid fa-pen" style="height: 5px;"></i> Editar</button></a></div></div></div></div>';
                 $all_anuncios = $all_anuncios. ''. $anuncio;
                 debug_to_console($all_anuncios);
 
@@ -174,7 +177,7 @@ function get_prod_specif($id){
 
 }
 
-function delete_product($id){
+function delete_product($id, $path){
 
     $products = get_prod_specif($id);
 
@@ -185,6 +188,7 @@ function delete_product($id){
         $user_id = $_SESSION['user_id'];
         $com = ("delete from ". $conexao::$db_table_products. " where id=$id;");
         $delete_prod = mysqli_query($mysqli, $com);
+        unlink($path);
     }
 
     header("Location: /admin");
