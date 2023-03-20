@@ -1,7 +1,5 @@
 
 
-
-
 (function($) {
     showSwal = function(type) {
       'use strict';

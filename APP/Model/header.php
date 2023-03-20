@@ -42,6 +42,14 @@ if($_SESSION['user_logged'] == null or $_SESSION['user_logged'] != "true" or $_S
 function user_login($input_email, $input_pass)
 {
 
+
+    // SQL INJECTION PROTECTION PODEROSO kkkkkkk
+    if (str_contains($input_email ,"'") or str_contains($input_pass, "'" or str_contains($input_email,";") or str_contains($input_pass,";"))){
+        header("Location: /login");
+        exit();
+    }
+
+
     $conexao = new mysql();
     $mysqli = $conexao->getConexao();
 
