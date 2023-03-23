@@ -7,8 +7,8 @@ require_once('./Model/header.php');
 
 ?>
 
-<!DOCTYPE html>
-<html lang="pt-br" data-bs-theme="dark">
+<html>
+
 <link rel="stylesheet" href="../Assets/css/create.css">
 
 
@@ -54,7 +54,6 @@ require_once('./Model/header.php');
 
           <div class="grid1-create-animage">
             <input id="animg" name="animg" accept="image/*" type="file" required class="form-control" placeholder="Imagem">
-            <!-- <input id="animg" type="text" name="animg" onchange="update_preview(event);" required class="form-control" placeholder="Link Imagem"> -->
           </div>
 
           <div class="grid1-create-angateway" style="padding-bottom: 50px;">
@@ -66,6 +65,4 @@ require_once('./Model/header.php');
  </body>
 
  <script src="../Assets/js/create.js"></script>
-
-
 </html>

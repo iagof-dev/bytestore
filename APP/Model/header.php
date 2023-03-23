@@ -42,14 +42,6 @@ if($_SESSION['user_logged'] == null or $_SESSION['user_logged'] != "true" or $_S
 function user_login($input_email, $input_pass)
 {
 
-
-    // SQL INJECTION PROTECTION PODEROSO kkkkkkk
-    if (str_contains($input_email ,"'") or str_contains($input_pass, "'" or str_contains($input_email,";") or str_contains($input_pass,";"))){
-        header("Location: /login");
-        exit();
-    }
-
-
     $conexao = new mysql();
     $mysqli = $conexao->getConexao();
 
@@ -73,7 +65,8 @@ function user_login($input_email, $input_pass)
 
             switch ($user_role) {
                 default:
-                    echo ("Sem permissão para visualizar página!");
+                    header("Location: /error");
+
                     exit();
                 case 'admin':
                     echo ("<br> ADMIN");
@@ -109,8 +102,8 @@ function user_get_products(){
             if ($qnt_anuncios <= 4){
                 $txt= mb_strimwidth($linha["description"], 0, 127, "...");
                 //$anuncio = '<div clrnass="prods"><div class="prod"><div class="prod-img"><img width="120px" height="68" src="./Assets/imgs/products/'. $linha["image"]. '"></div><div class="prod-info"><div class="prod-title"><h1><a href="/product?id='. $linha["id"] .'">'. $linha["title"]. '</a></h1></div><div class="prod-desc"><p>'. $txt. '</p></div></div><div class="prod-value"><div class="prod-price"><h2>R$ '. $linha["price"]. '</h2></div><div class="prod-bt-edit"><a href="/edit?id='. $linha["id"]. '&file='. $linha["image"] .'"><button class="btn btn-primary"><i class="fa-solid fa-pen" style="height: 5px;"></i> Editar</button></a></div></div></div></div>';
-                $anuncio = '<div class="prods"><div class="prod"><div class="prod-img"><img width="120px" height="68" src="./Assets/imgs/products/'. $linha["image"]. '"></div><div class="prod-info"><div class="prod-title"><h1>'. $linha["title"]. '</h1></div><div class="prod-desc"><p>'. $txt. '</p></div></div><div class="prod-value"><div class="prod-price"><h2>R$ '. $linha["price"]. '</h2></div><div class="prod-bt-edit"> <div class="dropdown">   <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">     <i class="fa-solid fa-pen" style="height: 5px;"></i> Modificar   </button>   <ul class="dropdown-menu"> 	<li><a class="dropdown-item" href="/product?id='. $linha["id"]. '"><i class="fa-solid fa-eye"></i> Ver anúncio</a></li>     <li><a class="dropdown-item" href="/edit?id='. $linha["id"]. '&file='. $linha["image"] .'"><i class="fa-solid fa-pen-to-square"></i> Editar</a></li>     <li><a class="dropdown-item" href="/delete?id='. $linha["id"]. '&file=' . $linha['image'] . '"><i class="fa-solid fa-trash-can"></i> Deletar</a></li>   </ul> </div>  </div></div></div></div>';
-
+                //$anuncio = '<div class="prods"><div class="prod"><div class="prod-img"><img width="120px" height="68" src="./Assets/imgs/products/'. $linha["image"]. '"></div><div class="prod-info"><div class="prod-title"><h1>'. $linha["title"]. '</h1></div><div class="prod-desc"><p>'. $txt. '</p></div></div><div class="prod-value"><div class="prod-price"><h2>R$ '. $linha["price"]. '</h2></div><div class="prod-bt-edit"> <div class="dropdown">   <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">     <i class="fa-solid fa-pen" style="height: 5px;"></i> Modificar   </button>   <ul class="dropdown-menu"> 	<li><a class="dropdown-item" href="/product?id='. $linha["id"]. '"><i class="fa-solid fa-eye"></i> Ver anúncio</a></li>     <li><a class="dropdown-item" href="/edit?id='. $linha["id"]. '&file='. $linha["image"] .'"><i class="fa-solid fa-pen-to-square"></i> Editar</a></li>     <li><a class="dropdown-item" href="/delete?id='. $linha["id"]. '&file=' . $linha['image'] . '"><i class="fa-solid fa-trash-can"></i> Deletar</a></li>   </ul> </div>  </div></div></div></div>';
+                $anuncio = '<div class="row" class="position-relative" style="padding-top: 1% !important;">             <div class="col">               <img width="100px" height="100px"                 src="./Assets/imgs/products/'. $linha["image"]. '">             </div>             <div class="col-5 text-start">               <h1>'. $linha["title"]. '</h1>               <p>'. $txt. '</p>             </div>              <div class="col">               <div style="margin-top: -10%;" class="text-center position-relative top-50 start-50 translate-middle">                 <h2>R$ '. $linha["price"]. '</h2>               </div>             </div>              <div class="col">               <div style="margin-top: 20%;" class="infos position-relative text-center">                   <div class="dropdown"> <button class="btn btn-primary dropdown-toggle" type="button"                       data-bs-toggle="dropdown" aria-expanded="false"> <i class="fa-solid fa-pen"                         style="height: 5px;"></i> Modificar </button>                     <ul class="dropdown-menu">                       <li><a class="dropdown-item" href="/product?id='. $linha["id"]. '"><i class="fa-solid fa-eye"></i> Ver anúncio</a>                       </li>                       <li><a class="dropdown-item" href="/edit?id='. $linha["id"]. '&file='. $linha["image"] .'"><i class=" fa-solid fa-pen-to-square"></i> Editar</a>                       </li>                       <li><a class="dropdown-item" href="/delete?id='. $linha["id"]. '&file=' . $linha['image'] . '"><i class="fa-solid fa-trash-can"></i> Deletar</a>                       </li>                     </ul>                 </div>               </div>             </div>           </div> ';
                 $all_anuncios = $all_anuncios. ''. $anuncio;
                 debug_to_console($all_anuncios);
 

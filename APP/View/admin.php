@@ -42,65 +42,70 @@ if ($user_logged != "true") {
 
 <body>
 
-  <div class="container">
-    <div class="grid1">
-      <div class="grid1-criaranuncios">
-        <a href="/create"><button class="btn btn-primary"><i class="fa-solid fa-plus"></i> Criar anúncio</button></a>
-      </div>
-      <div class="grid1-anuncios">
-        <div class="center">
-          <h1 style="font-size: 32px !important;">Anúncios:</h1>
-        </div><br>
-        <div class="pageanuncios">
-        <div class="block">
+  <div class="container text-center">
 
-          <!--<div class="prods">
-        <div class="prod">
-             <div class="prod-img">
-              <img width="120px" src="XXXXXXXXXX">
-            </div>
-            <div class="prod-info">
-              <div class="prod-title">
-                  <h1>Anuncio Top</h1>
-              </div>
-              <div class="prod-desc">
-                  <p>Descrição do anuncio</p>
-              </div>
-            </div>
-            <div class="prod-value">
-              <div class="prod-price">
-                <h2>R$0.00</h2>
-              </div>
-              <div class="prod-bt-edit">
-                <button href="#" class="btn btn-primary">Editar</button>
-              </div>
-            </div>
+
+
+    <div class="col">
+      <div class="row">
+        <div style="padding-top: 3vh !important;" class="text-end btn_create position-relative ">
+          <a href="/create"><button class="btn btn-primary"><i class="fa-solid fa-plus"></i> Criar anúncio</button></a>
         </div>
-        </div> -->
+        <h1>Anúncios:</h1>
+        <div class="anuncios-box position-absolute top-50 start-50 translate-middle">
 
-            <?php
 
-            require_once('./Model/header.php');
+          <!-- <div class="row" class="position-relative" style="padding-top: 1% !important;">
+            <div class="col">
+              <img width="70%" height="auto"
+                src="https://cdn.discordapp.com/attachments/890342346649112677/1088550982503378954/product_641777f16e657.jpg">
+            </div>
+            <div class="col-5 text-start">
+              <h1>Mouse Gamer de alta performance</h1>
+              <p>Tenha a vantagem necessÃ¡ria para vencer todos os seus adversÃ¡rios com o nosso Mouse Gamer de alta
+                performance. Com...</p>
+            </div>
 
-            echo (user_get_products());
+            <div class="col">
+              <div style="margin-top: -10%;" class="text-center position-relative top-50 start-50 translate-middle">
+                <h2>R$1,99</h2>
+              </div>
+            </div>
 
-            ?>
-          </div>
+            <div class="col">
+              <div style="margin-top: 20%;" class="infos position-relative text-center">
+                  <div class="dropdown"> <button class="btn btn-primary dropdown-toggle" type="button"
+                      data-bs-toggle="dropdown" aria-expanded="false"> <i class="fa-solid fa-pen"
+                        style="height: 5px;"></i> Modificar </button>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="/product?id="><i class="fa-solid fa-eye"></i> Ver anúncio</a>
+                      </li>
+                      <li><a class="dropdown-item" href="/edit?="><i class=" fa-solid fa-pen-to-square"></i> Editar</a>
+                      </li>
+                      <li><a class="dropdown-item" href="/delete?id="><i class="fa-solid fa-trash-can"></i> Deletar</a>
+                      </li>
+                    </ul>
+                </div>
+              </div>
+            </div>
+          </div> -->
+          <?php echo(user_get_products()); ?>
+
+
 
         </div>
-      </div>
-
-      <div class="grid1-list-paginas">
-        <nav aria-label="Page navigation example">
-          <ul class="pagination">
-            <li class="page-item"><a class="page-link" href="#">Anterior</a></li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">Próximo</a></li>
-          </ul>
-        </nav>
       </div>
     </div>
+
   </div>
+
+
+  </div>
+  </div>
+  </div>
+  </div>
+
+
 </body>
 
 

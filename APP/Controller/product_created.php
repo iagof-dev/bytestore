@@ -2,8 +2,6 @@
 <style>
 body{overflow-y: hidden;}
 </style>
-<!DOCTYPE html>
-<html lang="pt-br" data-bs-theme="dark">
 <body>
     <iframe src="/create" scrolling="no" height="100vh" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" style="margin-top: -50px;width: 100%; height:100vh; overflow: none;">
     </iframe>
@@ -35,11 +33,9 @@ if($anuncio[0] == "" || $anuncio[1] == "" || $anuncio[2] == ""){
 $certo = 0;
 
 for($i = 0; $i < count($anuncio); $i++){
-  
   if (preg_match('|^[a-zA-Z0-9 ]*$|', $anuncio[$i])){
     $certo += 1;
   }
-  
 }
 
 if ($certo >= 2 and $valido == true){
