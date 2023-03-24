@@ -1,10 +1,10 @@
-# Byte Store
+# 🛒 Byte Store
 HTML, CSS, JS &amp; MySql | Projeto de um E-COMMERCE feito em PHP utilizando padrão MVC.
 
-# Status
+# ⚡ Status
 Não finalizado/Not Finished.
 
-# Requirements
+# ⚙️ Requirements
 
 -MySql Server ([Baixar](https://dev.mysql.com/downloads/mysql/))
 
