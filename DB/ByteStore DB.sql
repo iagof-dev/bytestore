@@ -36,7 +36,7 @@ CREATE TABLE `category` (
 
 LOCK TABLES `category` WRITE;
 /*!40000 ALTER TABLE `category` DISABLE KEYS */;
-INSERT INTO `category` VALUES (1,'Computadores','fa-solid fa-computer'),(2,'Componentes','fa-solid fa-gear'),(3,'Periféricos','fa-solid fa-headset');
+INSERT INTO `category` VALUES (1,'Computadores','fa-solid fa-computer'),(2,'Componentes','fa-solid fa-gear'),(3,'Perifericos','fa-solid fa-headset');
 /*!40000 ALTER TABLE `category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -52,11 +52,12 @@ CREATE TABLE `products` (
   `title` varchar(64) NOT NULL,
   `description` longtext NOT NULL,
   `price` double NOT NULL,
-  `image` longtext,
+  `image` varchar(120) NOT NULL,
+  `id_category` tinyint(4) NOT NULL,
   `gateway` longtext NOT NULL,
   `owner` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=112 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=149 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -109,7 +110,7 @@ CREATE TABLE `users` (
   `role` varchar(16) DEFAULT 'user',
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -131,4 +132,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-03-16 17:27:38
+-- Dump completed on 2023-03-24 20:29:03
