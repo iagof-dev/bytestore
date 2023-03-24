@@ -14,55 +14,64 @@ require_once('./Model/header.php');
 
 
 <style>
-.image_preview{
+  .image_preview {
 
-  display: flex; 
-  width: 450px !important;
-  height: 265px !important;
-  margin-top: 10px;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
+    display: flex;
+    width: 450px !important;
+    height: 265px !important;
+    margin-top: 10px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
 
-.bordinha{
-  border: solid; 
-  border-style: dotted; 
-  border-radius: 10px;
+  .bordinha {
+    border: solid;
+    border-style: dotted;
+    border-radius: 10px;
 
-}
-
+  }
 </style>
 
 <body>
-    <div class="container">
-    <div class="grid1-create-container center" >
-          <form enctype="multipart/form-data" action="/created" method="post" style="width: 450px !important;">
+  <div class="container">
+    <div class="grid1-create-container center">
+      <form enctype="multipart/form-data" action="/created" method="post" style="width: 450px !important;">
 
-          <div class="grid1-create-antitle">
-            <span id="imgpreview" class="image_preview bordinha">
-            </span>
-            <input name="anunciotitle" style="margin-top: 10px;" type="text" required class="form-control" placeholder="Titulo do Anúncio">
-          </div>
-          <div class="grid1-create-andesc">
-            <textarea name="anunciodesc" rows="5" type="text" required class="form-control" placeholder="Descrição do Anúncio" aria-describedby="inputGroup-sizing-lg"></textarea>
-          </div>
+        <div class="grid1-create-antitle">
+          <span id="imgpreview" class="image_preview bordinha">
+          </span>
+          <input name="anunciotitle" style="margin-top: 10px;" type="text" required class="form-control"
+            placeholder="Titulo do Anúncio">
+        </div>
+        <div class="grid1-create-andesc">
+          <textarea name="anunciodesc" rows="5" type="text" required class="form-control"
+            placeholder="Descrição do Anúncio" aria-describedby="inputGroup-sizing-lg"></textarea>
+        </div>
 
-          <div class="grid1-create-anprice">
-            <input name="anuncioprice" id="anvalue" type="number" required class="form-control" min="1" max="10000" placeholder="0,00">
-          </div>
+        <div class="grid1-create-anprice">
+          <input name="anuncioprice" id="anvalue" type="number" required class="form-control" min="1" max="10000"
+            placeholder="R$0,00">
+        </div>
 
-          <div class="grid1-create-animage">
-            <input id="animg" name="animg" accept="image/*" type="file" required class="form-control" placeholder="Imagem">
-          </div>
+        <div class="grid1-create-animage">
+          <input id="animg" name="animg" accept="image/*" type="file" required class="form-control"
+            placeholder="Imagem">
+          <select name="ancategory" style="margin-top: 15px; margin-bottom: -3px;" class="form-select" id="validationCustom04" required>
+            <option selected disabled value="">Selecione uma Categoria:</option>
+            <!-- <option>...</option> -->
+            <?php echo(get_all_category()); ?>
+          </select>
+        </div>
 
-          <div class="grid1-create-angateway" style="padding-bottom: 50px;">
-            <input type="submit" value="💾 Enviar" required class="form-control">
-          </div>
-          </form>
+        <div class="grid1-create-angateway" style="padding-bottom: 50px;">
+          <input type="submit" value="💾 Enviar" required class="form-control">
+        </div>
+      </form>
+    </div>
   </div>
-   </div>
- </body>
+</body>
 
- <script src="../Assets/js/create.js"></script>
+<script src="../Assets/js/create.js"></script>
+
 </html>

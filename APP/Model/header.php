@@ -14,6 +14,8 @@ function debug_to_console($data)
     echo "<script>console.log('Debug | " . $output . "' );</script>";
 }
 
+
+$mercado_pago_key = "";
 class mysql{
     public $db_ip = "";
     public $db_port = "3306";
@@ -22,16 +24,25 @@ class mysql{
     public $db_database = "nrdydes1_bytestore";
     public static $db_table_users = "users";
     public static $db_table_products = "products";
+    public static $db_table_category = "category";
     public $db;
 
     public function __construct() {
-        $this->db= new mysqli($this->db_ip, $this->db_user, $this->db_pass, $this->db_database, $this->db_port);
+        try{
+            $this->db= new mysqli($this->db_ip, $this->db_user, $this->db_pass, $this->db_database, $this->db_port);
+        }
+        catch(Exception $e)
+        {
+            echo("Erro!<br> ". $e->getMessage());
+            exit();
+        }
     }
 
     public function getConexao() {
         return $this->db;
     }
 }
+
 
 
 if($_SESSION['user_logged'] == null or $_SESSION['user_logged'] != "true" or $_SESSION['user_logged'] == ""){
@@ -42,8 +53,13 @@ if($_SESSION['user_logged'] == null or $_SESSION['user_logged'] != "true" or $_S
 function user_login($input_email, $input_pass)
 {
 
+
     $conexao = new mysql();
     $mysqli = $conexao->getConexao();
+    
+    //anti sql injection
+    $input_email = mysqli_real_escape_string($mysqli, $input_email);
+    $input_pass = mysqli_real_escape_string($mysqli, $input_pass);
 
     $verify = "select * from ". $conexao::$db_table_users . " where email='$input_email' and pass='$input_pass';";
     $resultado = mysqli_query($mysqli, $verify);
@@ -124,12 +140,12 @@ function user_get_products(){
   
   }
 
-function create_product($titulo, $descricao, $preco, $img, $gateway){
+function create_product($titulo, $descricao, $preco, $img, $id_cat, $gateway){
     $conexao = new mysql();
     $mysqli = $conexao->getConexao();
     $user_id = $_SESSION['user_id'];
 
-    $com = "insert into ". $conexao::$db_table_products. " values(default, '$titulo', '$descricao', '$preco', '$img', '$gateway', $user_id);";
+    $com = "insert into ". $conexao::$db_table_products. " values(default, '$titulo', '$descricao', '$preco', '$img', $id_cat,'$gateway', $user_id);";
     $createproduct = mysqli_query($mysqli, $com);
 }
 
@@ -229,9 +245,53 @@ function delete_product($id, $path){
 
     header("Location: /admin");
 
-
-
 }
+
+function get_all_category(){
+
+    $valor = "";
+
+    $conexao = new mysql();
+    $mysqli = $conexao->getConexao();
+    $com = ("select * from ". $conexao::$db_table_category. ";");
+    $getcategory = mysqli_query($mysqli, $com);
+    if (mysqli_num_rows($getcategory) > 0) {
+        while ($linha = mysqli_fetch_assoc($getcategory)) {
+            $valor = $valor. '<option>'. $linha["name"] .'</option>';
+        }
+    }
+    else{
+        $valor = "Sem categorias registradas";
+    }
+    return $valor;
+}
+
+
+function get_specif_category($name){
+
+    $category_info = array();
+
+    $conexao = new mysql();
+    $mysqli = $conexao->getConexao();
+    $com = ("select * from ". $conexao::$db_table_category. " where name='". $name ."';");
+    $getinfocategory = mysqli_query($mysqli, $com);
+    if (mysqli_num_rows($getinfocategory) > 0) {
+        while ($linha = mysqli_fetch_assoc($getinfocategory)) {
+            $category_info = array(
+                $linha["id"],
+                $linha["name"],
+                $linha["icon"]
+            );
+        }
+    }
+    else{
+        $category_info = -1;
+    }
+    
+
+    return $category_info;
+}
+
 
 
 

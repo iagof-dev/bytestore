@@ -12,7 +12,7 @@ echo('<!DOCTYPE html>
 <html lang="pt-br" data-bs-theme="dark">
 <head>
 <title>ByteStore</title>
-<link rel="shortcut icon" href="./Assets/imgs/logo.png" type="image/x-icon">
+<link rel="shortcut icon" href="./Assets/imgs/logo.webp" type="image/x-icon">
 <link rel="stylesheet" href="../Assets/css/global.css">
 <link rel="stylesheet" href="../Assets/css/bootstrap.min.css">
 <link rel="stylesheet" href="../Assets/css/sweetalert.min.css">

@@ -75,3 +75,18 @@ form {
   border: 1px solid rgba(255, 255, 255, 0.18);
 
 }
+
+
+.card-titulo {
+  font-size: 17px;
+  color: #ADB5A6 !important;
+  font-weight: bold;
+  text-decoration: none !important;
+}
+
+.card-preco{
+  font-size: 17px !important;
+  color: #E61818 !important;
+  text-decoration: none !important;
+
+}

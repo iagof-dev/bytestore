@@ -17,7 +17,9 @@ error_reporting(E_ALL & ~E_NOTICE);
 
 require_once('./Model/header.php');
 
-$anuncio = array($_POST["anunciotitle"], $_POST["anunciodesc"] ,$_POST["anuncioprice"]);
+$anuncio = array($_POST["anunciotitle"], $_POST["anunciodesc"] ,$_POST["anuncioprice"], $_POST["ancategory"]);
+
+
 
 $valido = true;
 
@@ -26,6 +28,7 @@ if($anuncio[0] == "" || $anuncio[1] == "" || $anuncio[2] == ""){
   $valido = false;
   exit();
 }
+
 
 
 
@@ -39,7 +42,6 @@ for($i = 0; $i < count($anuncio); $i++){
 }
 
 if ($certo >= 2 and $valido == true){
-  //$texto = substr(sha1(mt_rand()),17, 12);
 
   $diretorio = "./Assets/imgs/products/";
  
@@ -49,10 +51,7 @@ if ($certo >= 2 and $valido == true){
 
   $folder_and_file = $diretorio . $uniq_name;
 
-  debug_to_console($diretorio);
-  debug_to_console($ext_img);
   debug_to_console($uniq_name);
-  debug_to_console($folder_and_file);
 
   if (move_uploaded_file($_FILES['animg']["tmp_name"], $folder_and_file)){
     debug_to_console("Arquivo enviado!");
@@ -62,7 +61,14 @@ if ($certo >= 2 and $valido == true){
 
   $link_gateway = mp_create_link($anuncio[0], 1, $anuncio[2]);
 
-  create_product($anuncio[0], $anuncio[1], $anuncio[2], $uniq_name, $link_gateway);
+  debug_to_console("Link do gateway criado!");
+
+
+  $cat_id = get_specif_category($_POST["ancategory"]);
+  debug_to_console("Retorno: ". $cat_id[0]);
+
+  create_product($anuncio[0], $anuncio[1], $anuncio[2], $uniq_name, $cat_id[0], $link_gateway);
+  debug_to_console("Anúncio criado!");
   echo('<script>swal({title: "Sucesso!",text: "Seu anúncio foi criado com sucesso!",type: "success",button: {text: "Fechar",value: true,visible: true,className: "btn btn-primary"}});setTimeout(function(){window.location.href = "/admin";}, 2000);</script>');
 
 }
