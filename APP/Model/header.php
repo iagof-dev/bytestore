@@ -4,6 +4,7 @@ session_start();
 
 error_reporting(E_ALL & ~E_NOTICE);
 
+require('./DAO/database.php');
 require_once('./Controller/pages.php');
 function debug_to_console($data)
 {
@@ -12,35 +13,6 @@ function debug_to_console($data)
         $output = implode(',', $output);
 
     echo "<script>console.log('Debug | " . $output . "' );</script>";
-}
-
-
-$mercado_pago_key = "";
-class mysql{
-    public $db_ip = "";
-    public $db_port = "3306";
-    public $db_user = "";
-    public $db_pass = "";
-    public $db_database = "nrdydes1_bytestore";
-    public static $db_table_users = "users";
-    public static $db_table_products = "products";
-    public static $db_table_category = "category";
-    public $db;
-
-    public function __construct() {
-        try{
-            $this->db= new mysqli($this->db_ip, $this->db_user, $this->db_pass, $this->db_database, $this->db_port);
-        }
-        catch(Exception $e)
-        {
-            echo("Erro!<br> ". $e->getMessage());
-            exit();
-        }
-    }
-
-    public function getConexao() {
-        return $this->db;
-    }
 }
 
 
@@ -60,6 +32,9 @@ function user_login($input_email, $input_pass)
     //anti sql injection
     $input_email = mysqli_real_escape_string($mysqli, $input_email);
     $input_pass = mysqli_real_escape_string($mysqli, $input_pass);
+
+    $input_pass = md5($input_pass);
+
 
     $verify = "select * from ". $conexao::$db_table_users . " where email='$input_email' and pass='$input_pass';";
     $resultado = mysqli_query($mysqli, $verify);
@@ -205,16 +180,25 @@ function get_product_page($id){
     if (mysqli_num_rows($getproduct) > 0) {
         while ($linha = mysqli_fetch_assoc($getproduct)) {
         
+            $owner_username = "";
+            $conexao2 = new mysql();
+            $mysqli2 = $conexao2->getConexao();
+            $com2 = ("select * from ". $conexao::$db_table_users. " where id=". $linha["owner"] .";");
+            $getownerinfoprod = mysqli_query($mysqli2, $com2);
+            while ($linha2 = mysqli_fetch_assoc($getownerinfoprod)) {
+                $owner_username = $linha2["username"];
+            }
             $anuncio_info = array(
-                $linha["id"],
-                $linha["title"],
-                $linha["description"],
-                $linha["price"],
-                $linha["image"],
-                $linha["gateway"],
-                $linha["owner"]
+                $linha["id"], //0
+                $linha["title"], //1
+                $linha["description"], //2
+                $linha["price"], //3
+                $linha["image"], //4
+                $linha["gateway"], //5
+                $linha["owner"], //6
+                $owner_username //7
             );
-        
+
             return $anuncio_info;
         }
     }
@@ -291,6 +275,7 @@ function get_specif_category($name){
 
     return $category_info;
 }
+
 
 
 

@@ -1,5 +1,11 @@
 <?php
+ob_start();
 session_start();
+error_reporting(E_ALL & ~E_NOTICE);
+
+require_once('./DAO/database.php');
+
+
 ?>
 
 
@@ -39,67 +45,9 @@ session_start();
     <h1 style="font-size: 25px;">Talvez você goste:</h1>
     <div class="center">
       <div style="margin-bottom: 3%;" class="row">
-        <div class="col">
-          <a href="https://google.com" style="text-decoration: none;">
-            <div data-aos="fade-up" data-aos-duration="1000" data-aos-anchor-placement="top-bottom" class="card"
-              style="width: 17rem;height: 18rem;">
-              <img
-                src="https://i0.wp.com/scholarculture.com/wp-content/uploads/2017/07/placeholder-1280x720-whitebg.png"
-                class="card-img-top">
-              <div class="card-body">
-                <h5 class="card-title text-start card-titulo">Máquina de Café Expresso</h5>
-                <h6 class="text-start card-preco">R$0,00</h6>
-                <a href="/comprar" class="center btn btn-primary"><i class="fa-solid fa-cart-shopping"> Comprar</i></a>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col">
-        <a href="https://google.com" style="text-decoration: none;">
-            <div data-aos="fade-up" data-aos-duration="1000" data-aos-anchor-placement="top-bottom" class="card"
-              style="width: 17rem;height: 18rem;">
-              <img
-                src="https://i0.wp.com/scholarculture.com/wp-content/uploads/2017/07/placeholder-1280x720-whitebg.png"
-                class="card-img-top">
-              <div class="card-body">
-                <h5 class="card-title text-start card-titulo">Máquina de Café Expresso</h5>
-                <h6 class="text-start card-preco">R$0,00</h6>
-                <a href="/comprar" class="center btn btn-primary"><i class="fa-solid fa-cart-shopping"> Comprar</i></a>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col">
-        <a href="https://google.com" style="text-decoration: none;">
-            <div data-aos="fade-up" data-aos-duration="1000" data-aos-anchor-placement="top-bottom" class="card"
-              style="width: 17rem;height: 18rem;">
-              <img
-                src="https://i0.wp.com/scholarculture.com/wp-content/uploads/2017/07/placeholder-1280x720-whitebg.png"
-                class="card-img-top">
-              <div class="card-body">
-                <h5 class="card-title text-start card-titulo">Máquina de Café Expresso</h5>
-                <h6 class="text-start card-preco">R$0,00</h6>
-                <a href="/comprar" class="center btn btn-primary"><i class="fa-solid fa-cart-shopping"> Comprar</i></a>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col">
-          <a href="https://google.com" style="text-decoration: none;">
-            <div data-aos="fade-up" data-aos-duration="1000" data-aos-anchor-placement="top-bottom" class="card"
-              style="width: 17rem;height: 18rem;">
-              <img
-                src="https://i0.wp.com/scholarculture.com/wp-content/uploads/2017/07/placeholder-1280x720-whitebg.png"
-                class="card-img-top">
-              <div class="card-body">
-                <h5 class="card-title text-start card-titulo">Máquina de Café Expresso</h5>
-                <h6 class="text-start card-preco">R$0,00</h6>
-                <a href="/comprar" class="center btn btn-primary"><i class="fa-solid fa-cart-shopping"> Comprar</i></a>
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
+
+
+      <?php $anuncios = get_5_random_products(); echo($anuncios); ?>
 
 
     </div>

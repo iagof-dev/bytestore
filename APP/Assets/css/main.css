@@ -78,15 +78,26 @@ form {
 
 
 .card-titulo {
-  font-size: 17px;
+  margin-top: -9px;
+  font-size: 15px;
   color: #ADB5A6 !important;
   font-weight: bold;
   text-decoration: none !important;
 }
 
+.card{
+  width: 13rem !important;
+  height: 15rem !important;
+}
+
+.cardimg{
+  width: 13rem !important;
+  height: 11rem !important;
+}
+
 .card-preco{
-  font-size: 17px !important;
-  color: #E61818 !important;
+  font-size: 15px !important;
+  color: #ececec !important;
   text-decoration: none !important;
 
 }

@@ -26,7 +26,7 @@ echo('<!DOCTYPE html>
 echo("<nav class='navbar fixed-bottom navbar-expand-lg footer-cor'><div class='container-fluid'>");
 
 
-echo("<div class='center-text footer-text'><h1><i class='fa-solid fa-bolt'></i> Feito por <a style='text-decoration: none;' href='https://n3rdydzn.software/'>@N3rdyDzn</a> - 2023</h1></div></div></nav>");
+echo("<div class='center-text footer-text'><h1><i class='fa-solid fa-bolt'></i> Feito por <a style='text-decoration: none;' href='https://n3rdydzn.software/'>@N3rdyDzn.</a> - 2023</h1></div></div></nav>");
 
 
 if($_SESSION["user_logged"] == null or $_SESSION["user_logged"] != "true" or $_SESSION["user_logged"] == "")

@@ -1,102 +1,52 @@
-.container-prod {  
-    display: grid;
-    grid-template-columns:  1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
-    gap: 0px 0px;
-    grid-auto-flow: row;
-    grid-template-areas:
-      ". . . ."
-      ". prod-img prod-text ."
-      ". prod-desc prod-desc ."
-      ". prod-desc prod-desc ."
-      ". . . .";
-    width: 50%;
-    height: 50%;
-  }
-  
-  .prod-img {
-    grid-area: prod-img;
-    width: 100%;
-  }
-  
-  .prod-text { 
-    
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
-    gap: 0px 0px;
-    grid-auto-flow: row;
-    grid-template-areas:
-      "prod-title"
-      "prod-price-btn";
-    grid-area: prod-text;
-  }
-  
-  .prod-title {
-    grid-area: prod-title;
-    width: 150%;
-    margin-left: 10%;
-  }
-  
-  .prod-price-btn { margin-left: 10%; grid-area: prod-price-btn;}
-  .prod-desc {
-    
-      display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
-    gap: 0px 0px;
-    grid-auto-flow: row;
-    justify-content: center;
-    align-content: center;
-    justify-items: center;
-    align-items: stretch;
-    grid-template-areas:
-      "prod-desc-title"
-      "prod-desc-text";
-    grid-area: prod-desc;
-    margin-top: 30%;
-  }
-  
-  .prod-desc-title {
-    grid-area: prod-desc-title;
-    width: 100%;
-  }
-  
-  .prod-desc-text {
-    grid-area: prod-desc-text;
-    width: 100%;
+.box1 {
+  background-color: #30343F;
+  width: 90vh !important;
+  height: 80vh !important;
+  border-radius: 10px;
+  margin-left: -10vh;
 }
-  .product-info{
-    display: flex;
-    width: 80%;
-    height: 70%;
-  }
 
+.box2 {
+  background-color: #30343F;
+  width: 35vh !important;
+  height: 25vh !important;
+  border-radius: 10px;
+  left: 135vh;
+  top: 10vh;
+}
 
+img {
+  margin-top: 5vh;
+  width: 40vh;
+  height: auto;
 
+  border-radius: 10px;
 
+}
 
+h1 {
+  font-size: 2vh;
+}
 
-  .product_img{
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-  }
+h2 {
+  font-size: 2vh;
+}
 
-  h1{
-    text-align: start;
-  }
-  h2{
-    text-align: start;
-  }
-  h3{
-    text-align: start;
-  }
-  p{
-    text-align: start;
-  }
+.infos {
+  margin-top: 3vh;
+  margin-left: 3vh;
+}
 
-  button{
-    margin-top: -10px;
-    margin-right: 100%;
-  }
+button {
+  width: 50% !important;
+  margin-top: -5vh !important;
+}
+
+.anuncio_desc{
+  margin-left: 4vh !important;
+  margin-top: 10vh !important;
+}
+hr{
+  margin-left: -5vh;
+  width: 90vh !important;
+}

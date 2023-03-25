@@ -5,6 +5,7 @@ error_reporting(E_ALL & ~E_NOTICE);
 
 require_once './vendor/autoload.php';
 require_once('./Model/header.php');
+require_once('./DAO/database.php');
 MercadoPago\SDK::setAccessToken($mercado_pago_key);
 
 function mp_create_link($titulo, $quantidade, $preco){
