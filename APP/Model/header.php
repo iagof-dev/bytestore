@@ -115,12 +115,12 @@ function user_get_products(){
   
   }
 
-function create_product($titulo, $descricao, $preco, $img, $id_cat, $gateway){
+function create_product($titulo, $descricao, $preco, $img, $id_cat){
     $conexao = new mysql();
     $mysqli = $conexao->getConexao();
     $user_id = $_SESSION['user_id'];
 
-    $com = "insert into ". $conexao::$db_table_products. " values(default, '$titulo', '$descricao', '$preco', '$img', $id_cat,'$gateway', $user_id);";
+    $com = "insert into ". $conexao::$db_table_products. " values(default, '$titulo', '$descricao', '$preco', '$img', $id_cat, $user_id);";
     $createproduct = mysqli_query($mysqli, $com);
 }
 
@@ -145,7 +145,7 @@ function get_prod_specif($id){
             $product_desc = $linha["description"];
             $product_price = $linha["price"];
             $product_img = $linha["image"];
-            $product_gateway = $linha["gateway"];
+            $product_gateway = $linha["id"];
             $product_owner = $linha["owner"];
 
 
@@ -194,7 +194,7 @@ function get_product_page($id){
                 $linha["description"], //2
                 $linha["price"], //3
                 $linha["image"], //4
-                $linha["gateway"], //5
+                $linha["id"], //5
                 $linha["owner"], //6
                 $owner_username //7
             );

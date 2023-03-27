@@ -30,9 +30,6 @@ if($anuncio[0] == "" || $anuncio[1] == "" || $anuncio[2] == ""){
 }
 
 
-
-
-
 $certo = 0;
 
 for($i = 0; $i < count($anuncio); $i++){
@@ -54,20 +51,17 @@ if ($certo >= 2 and $valido == true){
   debug_to_console($uniq_name);
 
   if (move_uploaded_file($_FILES['animg']["tmp_name"], $folder_and_file)){
-    debug_to_console("Arquivo enviado!");
+     debug_to_console("Arquivo enviado!");
   }
 
   require_once('./Model/mercado_pago.php');
 
-  $link_gateway = mp_create_link($anuncio[0], 1, $anuncio[2]);
-
-  debug_to_console("Link do gateway criado!");
 
 
   $cat_id = get_specif_category($_POST["ancategory"]);
   debug_to_console("Retorno: ". $cat_id[0]);
 
-  create_product($anuncio[0], $anuncio[1], $anuncio[2], $uniq_name, $cat_id[0], $link_gateway);
+  create_product($anuncio[0], $anuncio[1], $anuncio[2], $uniq_name, $cat_id[0]);
   debug_to_console("Anúncio criado!");
   echo('<script>swal({title: "Sucesso!",text: "Seu anúncio foi criado com sucesso!",type: "success",button: {text: "Fechar",value: true,visible: true,className: "btn btn-primary"}});setTimeout(function(){window.location.href = "/admin";}, 2000);</script>');
 

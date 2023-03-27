@@ -19,6 +19,10 @@ switch ($url) {
         include('./View/login.html');
         break;
 
+    case '/perfil':
+        include('./View/perfil.php');
+        break;
+
     case '/verify':
         require('./Model/header.php');
         break;
@@ -29,9 +33,9 @@ switch ($url) {
         require('./View/edit.php');
         break;
 
-    case '/dev':
-        require('./View/dev.php');
-        break;
+    case '/payment':
+        require('./Model/payment.php');
+        break;    
 
     case '/sdk':
         require('./Model/mercado_pago.php');

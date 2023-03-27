@@ -1,8 +1,12 @@
 <?php
+ob_start();
+session_start();
+error_reporting(E_ALL & ~E_NOTICE);
+
 $mercado_pago_key = "";
 class mysql{
     public $db_ip = "";
-    public $db_port = "3306";
+    public $db_port = "";
     public $db_user = "";
     public $db_pass = "";
     public $db_database = "nrdydes1_bytestore";
@@ -45,6 +49,19 @@ function get_5_random_products(){
 
 
     return $retornar;
+}
+
+function enviar_comando($com){
+    $conexao = new mysql();
+    $mysqli = $conexao->getConexao();
+    try{
+        $enviar = mysqli_query($mysqli, $com);
+    }
+    catch(Exception $e){
+        echo("Erro!<br> ". $e->getMessage());
+        exit();
+    }
+
 }
 
 
