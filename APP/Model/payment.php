@@ -1,7 +1,8 @@
 <?php
 ob_start();
 session_start();
-error_reporting(E_ALL & ~E_NOTICE);
+error_reporting(0);
+
 require ('./vendor/autoload.php');
 require('./DAO/database.php');
 
@@ -80,7 +81,7 @@ catch(Exception $e){
 ?>
 
 <script>
-window.location.href = "/admin";
+window.location.href = "/success?payment=".$collection_id;
 </script>
 
 <body>

@@ -15,7 +15,7 @@ require_once('./DAO/database.php');
 <body>
 
   <div class="container-fluid text-center">
-    <div style="margin-top:10px; margin-bottom: 3%;" data-aos="zoom-in" data-aos-duration="500"
+    <div style="margin-top:10px; margin-bottom: 3%;"
       style="padding-top: 5px;" class="container">
       <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">

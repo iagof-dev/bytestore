@@ -1,16 +1,19 @@
+<?php
+ob_start();
+session_start();
+error_reporting(0);
 
+
+$error = $_GET["error"];
+
+?>
 
 <link rel="stylesheet" href="../Assets/css/main.css">
 <link rel="stylesheet" href="../Assets/css/admin.css">
 <script src="../Assets/js/create.js"></script>
-<link rel="stylesheet" href="../Assets/css/aos.css" />
-<script src="../Assets/js/aos.js"></script>
-<script>
-  AOS.init();
-</script>
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <script src="../Assets/js/login.js"></script>
-<script src="../Assets/js/cloudflare.js"></script>
+
 
 
 <body>
@@ -18,8 +21,14 @@
         <div data-aos="fade-in" data-aos-duration="500" class="containerlogin" >
           <div class="titulo bordinha">
             <div class="titulo center">
-                <h1>Login</h1><br>
+                <h1 style="font-size: 23px !important;">Login</h1><br>
             </div>
+                <?php 
+                  if($error == "true"){
+                    echo('<div class="error center"><br><h5 style="color: red; font-size: 16px;">E-mail ou senha incorretos!</h5></div>');
+                  }
+
+                ?>
             <div class="area1">
               <form action="/verify" method="post">
                 <div class="inpt1"><input id="inputemail" required style="background-color: #FFFFFF !important; color: #000000 !important;" class="form-control" name="txt_email" placeholder="E-mail"><br>
@@ -32,7 +41,7 @@
         </div>
       </div>
 </body>
-
+<script>AOS.init();</script>
 
 
 

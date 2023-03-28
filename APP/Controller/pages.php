@@ -1,14 +1,13 @@
 <?php
 ob_start();
 session_start();
+error_reporting(0);
 
-
-error_reporting(E_ALL & ~E_NOTICE);
 $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
 switch ($url) {
     case '/':
-        include('./View/inicio.php');
+        include('./View/home.php');
         break;
 
     case '/product':
@@ -16,47 +15,57 @@ switch ($url) {
         break;
 
     case '/login':
-        include('./View/login.html');
+        include('./View/login.php');
         break;
 
-    case '/perfil':
-        include('./View/perfil.php');
+    case '/profile/':
+        include('./View/profile.php');
+        break;
+
+    case '/credits':
+            include('./View/credits.html');
+            break;
+    case '/tos':
+        include('./View/tos.html');
         break;
 
     case '/verify':
-        require('./Model/header.php');
+        include('./Model/header.php');
         break;
+
     case '/admin':
-        require('./View/admin.php');
+        include('./View/admin.php');
         break;
     case '/edit':
-        require('./View/edit.php');
+        include('./View/edit.php');
         break;
 
     case '/payment':
-        require('./Model/payment.php');
+        include('./Model/payment.php');
         break;    
 
-    case '/sdk':
-        require('./Model/mercado_pago.php');
+    case '/purchases':
+        include('./View/purchase.php');
+        break;
+    
+    case '/success':
+        include('./View/success.php');
         break;
 
     case '/create':
-        require('./View/create.php');
+        include('./View/create.php');
         break;
     case '/created':
-        require('./Controller/product_created.php');
+        include('./Controller/product_created.php');
         break;
     case '/delete':
-        require('./Controller/delete.php');
+        include('./Controller/delete.php');
         break;
     case '/logout':
-        require('./Controller/logout.php');
+        include('./Controller/logout.php');
         break;
-
-
     default:
-        include('./erro.html');
+        include('./error.html');
         break;
 }
 

@@ -1,8 +1,7 @@
 <?php
 ob_start();
 session_start();
-
-error_reporting(E_ALL & ~E_NOTICE);
+error_reporting(0);
 
 require('./DAO/database.php');
 require_once('./Controller/pages.php');
@@ -70,7 +69,7 @@ function user_login($input_email, $input_pass)
         $_SESSION['user_logged'] = "false";
         debug_to_console("MySQL | Informações do usuario está incorreta!");
         echo ("Usuário/Senha incorretas ou Não Existente...");
-        header("Location: /login");
+        header("Location: /login?error=true");
         exit();
 
     }
@@ -120,7 +119,7 @@ function create_product($titulo, $descricao, $preco, $img, $id_cat){
     $mysqli = $conexao->getConexao();
     $user_id = $_SESSION['user_id'];
 
-    $com = "insert into ". $conexao::$db_table_products. " values(default, '$titulo', '$descricao', '$preco', '$img', $id_cat, $user_id);";
+    $com = "insert into ". $conexao::$db_table_products. " values(default, true, '$titulo', '$descricao', '$preco', '$img', $id_cat, $user_id);";
     $createproduct = mysqli_query($mysqli, $com);
 }
 

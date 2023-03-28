@@ -47,7 +47,7 @@ $link = mp_create_link($product_info[1], $product_info[3] ,$product_info[2], $_S
                                 <div class="infos text-start">
                                     <h1 text-start><?php echo($product_info[1]); ?></h1>
                                     <h2 text-start>R$<?php echo($product_info[3]); ?></h2>
-                                    <h2>Vendedor: <a href="/perfil?id=<?php echo($product_info[6]); ?>"><?php echo($product_info[7]); ?></a></h2>
+                                    <h2>Vendedor: <a href="/profile/?id=<?php echo($product_info[6]); ?>"><?php echo($product_info[7]); ?></a></h2>
                                 </div>
                             </div>
                             <div class="row">

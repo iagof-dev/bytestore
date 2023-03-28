@@ -1,7 +1,8 @@
 <?php
 ob_start();
 session_start();
-error_reporting(E_ALL & ~E_NOTICE);
+error_reporting(0);
+
 
 require_once './vendor/autoload.php';
 require_once('./Model/header.php');

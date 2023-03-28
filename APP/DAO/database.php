@@ -6,13 +6,15 @@ error_reporting(E_ALL & ~E_NOTICE);
 $mercado_pago_key = "";
 class mysql{
     public $db_ip = "";
-    public $db_port = "";
+    public $db_port = "3306";
     public $db_user = "";
     public $db_pass = "";
     public $db_database = "nrdydes1_bytestore";
     public static $db_table_users = "users";
     public static $db_table_products = "products";
     public static $db_table_category = "category";
+    public static $db_table_sub_category = "sub_category";
+
     public $db;
 
     public function __construct() {
@@ -34,7 +36,7 @@ class mysql{
 
 function get_5_random_products(){
 
-    $retornar = "";
+    $retornar = null;
     
     $conexao = new mysql();
     $mysqli = $conexao->getConexao();
@@ -43,7 +45,7 @@ function get_5_random_products(){
     if (mysqli_num_rows($getrandom5products) > 0) {
         while ($linha = mysqli_fetch_assoc($getrandom5products)) {
             $title_short = mb_strimwidth($linha["title"], 0, 23, "...");
-            $retornar = $retornar. '<div class="col"> <a href="/product?id='. $linha["id"] .'" style="text-decoration: none;"> <div data-aos="fade-up" data-aos-duration="1000" data-aos-anchor-placement="top-bottom" class="card" style="width: 17rem;height: 18rem;"> <img   src="./Assets/imgs/products/'. $linha["image"]. '"   class="card-img-top cardimg"> <div class="card-body">   <h5 class="card-title text-start card-titulo">'. $title_short .'</h5>   <h6 class="text-start card-preco">R$'. $linha["price"] .'</h6> </div> </div> </a> </div>';
+            $retornar = $retornar. '<div class="col"> <a href="/product?id='. $linha["id"] .'" style="text-decoration: none;"> <div data-aos="zoom-in" data-aos-duration="1000" data-aos-anchor-placement="top-bottom" class="card" style="width: 17rem;height: 18rem;"> <img   src="./Assets/imgs/products/'. $linha["image"]. '"   class="card-img-top cardimg"> <div class="card-body">   <h5 class="card-title text-start card-titulo">'. $title_short .'</h5>   <h6 class="text-start card-preco">R$'. $linha["price"] .'</h6> </div> </div> </a> </div>';
         }
     }
 

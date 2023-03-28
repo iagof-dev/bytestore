@@ -1,7 +1,6 @@
 <?php
 ob_start();
 session_start();
-error_reporting(E_ALL & ~E_NOTICE);
 error_reporting(0);
 
 $import_global = "";
@@ -20,8 +19,9 @@ echo('<!DOCTYPE html>
 <script src="../Assets/js/jquery-3.6.4.min.js"></script>
 <script src="../Assets/js/sweetalert.min.js"></script> 
 <script src="../Assets/js/bootstrap.bundle.min.js"></script>
-</head>
-');
+<link rel="stylesheet" href="../Assets/css/aos.css" />
+<script src="../Assets/js/aos.js"></script>
+</head>');
 
 echo("<nav class='navbar fixed-bottom navbar-expand-lg footer-cor'><div class='container-fluid'>");
 
@@ -34,7 +34,7 @@ if($_SESSION["user_logged"] == null or $_SESSION["user_logged"] != "true" or $_S
     $navbar =($navbar. "<a class='nav-link' href='/login'><i class='fa-sharp fa-solid fa-door-closed'></i> Login</a></div>     </div> </div></div></nav>");
 }
 else{
-    $navbar = ($navbar. '<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><i class="fa-solid fa-user"></i> ' . $_SESSION['user_name'] . '</a><ul class="dropdown-menu"><li><a class="dropdown-item" href="/admin"><i class="fa-solid fa-gear"></i> Meus Anúncios</a></li><li><a class="dropdown-item" href="/logout"><i class="fa-solid fa-door-open"></i> Sair</a></li></ul></li> </div></div></nav>');
+    $navbar = ($navbar. '<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fa-solid fa-user"></i> ' . $_SESSION['user_name'] . '</a><ul class="dropdown-menu"><li><a class="dropdown-item" href="/profile/?id=1"><i class="fa-solid fa-user"></i> Perfil</a></li><li><a class="dropdown-item" href="/purchases"><i class="fa-solid fa-cart-shopping"></i> Minhas Compras</a></li><li><a class="dropdown-item" href="/admin"><i class="fa-solid fa-gear"></i> Meus Anúncios</a></li><li><a class="dropdown-item" href="/logout"><i class="fa-solid fa-door-open"></i> Sair</a></li></ul></li> </div></div></nav>');
 }
 
 
