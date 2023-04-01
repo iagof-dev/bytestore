@@ -22,6 +22,10 @@ switch ($url) {
         include('./View/profile.php');
         break;
 
+    case '/teste':
+        include('./View/teste.php');
+        break;
+
     case '/credits':
             include('./View/credits.html');
             break;

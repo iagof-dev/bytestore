@@ -78,20 +78,25 @@ form {
 
 
 .card-titulo {
-  margin-top: -9px;
+  margin-top: -4px !important;
   font-size: 15px;
   color: #ADB5A6 !important;
   font-weight: bold;
   text-decoration: none !important;
+  margin-bottom: -1px !important;
 }
 
 .card{
   width: 13rem !important;
   height: 15rem !important;
+  max-width: 13rem !important;
+  max-height: 15rem !important;
+  min-width: 13rem !important;
+  min-height: 15rem !important;
 }
 
 .cardimg{
-  width: 13rem !important;
+  width: 12.85rem !important;
   height: 11rem !important;
 }
 

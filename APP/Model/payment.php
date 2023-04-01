@@ -17,11 +17,9 @@ $product_id = $_GET['product_id'];
 
 
 
-echo($collection_id);
-
-// $seller_id = 0;
-// $costumer_id = 0;
-//$collection_id = "56180805168";
+if(!isset($status) or !isset($collection_id) or !isset($costumer_id) or !isset($seller_id) or !isset($product_id)){
+    header('Location: /');
+}
 
 $url = 'https://api.mercadopago.com/v1/payments/'.$collection_id;
 $authorization_header = 'Authorization: Bearer '. $mercado_pago_key;
@@ -51,41 +49,16 @@ $result = json_decode($response, true);
 // echo('Costumer ID Type: '.$result['payer']['identification']['type'].'<br>');
 // echo('Payment Approved Date: '.$result['date_approved'].'<br>');
 
-
-
 $coco = MercadoPago\Payment::find_by_id($collection_id);
 
 try{
-
-    //enviar_comando("insert into payments values(default, '0', '". $collection_id ."', '". $coco->payment_method_id ."', '". $coco->total_paid_amount ."', '". $coco->status ."', null, '". $_GET["costumer_id"] ."', '" .  . "', '0', '0', '0');");
+    
     enviar_comando("insert into payments values (default, '". $product_id ."' ,'". $collection_id ."', '". $result['payment_method_id'] ."', '". $result['transaction_details']['total_paid_amount'] ."',  '". $result['status_detail'] ."', null, '". $costumer_id ."' , '". $result['payer']['identification']['number'] ."', '". $result['point_of_interaction']['transaction_data']['bank_info']['payer']['long_name'] ."', '". $result['payer']['email'] ."', '". $seller_id ."')");
-
 }
 catch(Exception $e){
     echo($e);
 }
 
-//enviar_comando("insert into payments values (default, '". $product_id ."' ,'". $collection_id ."', '". $result['payment_method_id'] ."', '". $result['transaction_details']['total_paid_amount'] ."',  '". $result['status_detail'] ."', null, '". $costumer_id ."' , '". $result['payer']['identification']['number'] ."', '". $result['point_of_interaction']['transaction_data']['bank_info']['payer']['long_name'] ."', '". $result['payer']['email'] ."', '". $seller_id ."')");
 
-
-// $caminho = "./Model/";
-// $nome_arquivo = "payment_log.n3rdy";
-
-// $texto = ('PAYMENT: '. $collection_id .' | '. $response);
-// $caminho_completo = $caminho . $nome_arquivo;
-// $arquivo = fopen($caminho_completo, "w");
-// fwrite($arquivo, $texto);
-// fclose($arquivo);
-
-
+echo('<script> window.location.href = "/success?payment="'.$collection_id. '; </script>');
 ?>
-
-<script>
-window.location.href = "/success?payment=".$collection_id;
-</script>
-
-<body>
-
-</body>
-
-</html>

@@ -1,0 +1,76 @@
+.container-fluid{
+    margin-top: 1.5vh !important;
+}
+
+.box-title{
+    width: 100vh !important;
+    height: 20vh !important;
+    background-color: #30343F;
+    border-radius: 15px;
+    display: block !important;
+}
+.box-products{
+    width: 100vh !important;
+    height: 90vh !important;
+    background-color: #30343F;
+    border-radius: 15px;
+}
+
+.profile-img{
+    border-radius: 500px;
+    /* width: 47%; */
+    max-width: 141px !important;
+    max-height: 141px !important;
+    min-width: 141px !important;
+    min-height: 141px !important;
+    margin-left: 5vh;
+}
+
+.verified{
+    font-size: 10px !important;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.store-desc p{
+    font-size: 1.5vh !important;
+    text-align: start;
+}
+
+
+.box-title .col-4{
+    margin-top: 3vh !important;
+}
+
+.box-title .col-7{
+    margin-top: 3vh !important;
+
+}
+.store-name h1{
+    font-size: 3.2vh;
+    text-align: start;
+    vertical-align: middle;
+    margin-bottom: -1.2vh;
+}
+
+.box-products-title h1{
+    padding-top: 1vh !important;; 
+    font-size: 3vh !important;
+}
+
+.col{
+    max-width: 13rem !important;
+    max-height: 15rem !important;
+    min-width: 13rem !important;
+    min-height: 15rem !important;
+    margin-left: 1vh !important;
+    margin-right: 1vh !important;
+}
+
+.mdcard{
+    display: block;
+    margin: 1vh !important;
+    width: 13rem !important;
+    height: 15rem !important;
+    margin-right: -5vh !important;
+}

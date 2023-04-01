@@ -178,7 +178,7 @@ function get_product_page($id){
     $getproduct = mysqli_query($mysqli, $com);
     if (mysqli_num_rows($getproduct) > 0) {
         while ($linha = mysqli_fetch_assoc($getproduct)) {
-        
+            $owner_verified = false;
             $owner_username = "";
             $conexao2 = new mysql();
             $mysqli2 = $conexao2->getConexao();
@@ -186,6 +186,7 @@ function get_product_page($id){
             $getownerinfoprod = mysqli_query($mysqli2, $com2);
             while ($linha2 = mysqli_fetch_assoc($getownerinfoprod)) {
                 $owner_username = $linha2["username"];
+                $owner_verified = $linha2["verified"];
             }
             $anuncio_info = array(
                 $linha["id"], //0
@@ -195,7 +196,8 @@ function get_product_page($id){
                 $linha["image"], //4
                 $linha["id"], //5
                 $linha["owner"], //6
-                $owner_username //7
+                $owner_username, //7
+                $owner_verified //8
             );
 
             return $anuncio_info;
@@ -273,6 +275,68 @@ function get_specif_category($name){
     
 
     return $category_info;
+}
+
+
+function get_seller_info($id){
+
+    $seller = array();
+    
+    $conexao = new mysql();
+    $mysqli = $conexao->getConexao();
+    $com = ("select * from ". $conexao::$db_table_users. " where id=". $id .";");
+    $infos = mysqli_query($mysqli, $com);
+    if (mysqli_num_rows($infos) > 0) {
+        while ($linha = mysqli_fetch_assoc($infos)) {
+            $seller = array(
+                $linha["id"], //0
+                $linha["username"], //1
+                $linha["email"], //2
+                $linha["role"], //3
+                $linha["pfp"], //4
+                $linha["verified"], //5
+                $linha["description"] //6
+
+            );
+        }
+    }
+
+    return $seller;
+}
+
+function get_all_seller_products($id){
+    $all_products = '<div class="row align-items-center">';
+    $counter = 0;
+    settype($counter, "int");
+    $conexao = new mysql();
+    $mysqli = $conexao->getConexao();
+    $com = ("select * from ". $conexao::$db_table_products. " where owner=". $id .";");
+    $infos = mysqli_query($mysqli, $com);
+    if (mysqli_num_rows($infos) > 0) {
+        while ($linha = mysqli_fetch_assoc($infos)) {
+            $counter = $counter + 1;
+            $title_short = mb_strimwidth($linha["title"], 0, 23, "...");
+            $all_products = $all_products . '<div class="col"><div class="mdcard"> <a href="/product?id='. $linha["id"] .'" style="text-decoration: none;"><div class="card" style="width: 17rem;height: 18rem;"> <img src="../Assets/imgs/products/'. $linha["image"] .'" class="card-img-top cardimg"> <div class="card-body">   <h5 class="card-title text-start card-titulo">'. $title_short .'</h5>   <h6 class="text-start card-preco">R$'. $linha["price"] .'</h6> </div> </div> </a></div> </div>';
+
+            if ($counter == 4){
+                $all_products = $all_products . '</div><div class="row align-items-center">';
+            }
+            if ($counter == 8){
+                $all_products = $all_products . '</div><div class="row align-items-center">';
+            }
+            if ($counter == 12){
+                $all_products = $all_products . '</div><div class="row align-items-center">';
+            }
+            if ($counter == 16){
+                $all_products = $all_products . '</div><div class="row align-items-center">';
+            }
+
+        }
+        $all_products = $all_products . '</div>';
+    }
+
+    debug_to_console($all_products);
+    return $all_products;
 }
 
 
