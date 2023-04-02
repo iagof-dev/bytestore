@@ -3,8 +3,9 @@ ob_start();
 session_start();
 error_reporting(0);
 
-require('./Model/header.php');
-require('./Model/mercado_pago.php');
+require_once('./Model/header.php');
+require_once('./Model/mercado_pago.php');
+
 
 $product_info = get_product_page($_GET['id']);
 
@@ -12,15 +13,13 @@ if(!isset($_GET['id']) or !isset($product_info[0])){
     header('Location: /');
 }
 
-if($product_info[6] != $_SESSION['user_id']){
+if($_SESSION['user_id'] != $product_info[6]){
     $link = mp_create_link($product_info[1], $product_info[3] ,$product_info[2], $_SESSION['user_id'], $product_info[6], $_GET['id']);
 }
 
 ?>
 
 <link rel="stylesheet" href="./Assets/css/product.css">
-
-
 
 <body>
     <div class="container-fluid text-center">
@@ -73,8 +72,6 @@ if($product_info[6] != $_SESSION['user_id']){
                 </div>
             </div>
         </div>
-
     </div>
 </body>
-
 </html>

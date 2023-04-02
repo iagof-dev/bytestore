@@ -25,9 +25,8 @@ $error = $_GET["error"];
         </div>
         <?php
         if ($error == "true") {
-          echo ('<div class="error center"><br><h5 style="color: red; font-size: 16px;">E-mail ou senha incorretos!</h5></div>');
+          echo ('<div class="error center" data-aos="flip-left" data-aos-duration="500"><br><h5 class="text-danger" style="font-size: 16px;">E-mail ou senha incorretos!</h5></div>');
         }
-
         ?>
         <div class="area1">
           <form action="/verify" method="post">

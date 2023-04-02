@@ -1,5 +1,9 @@
 .container-fluid{
-    margin-top: 1.5vh !important;
+    margin-top: 1% !important;
+}
+
+.fix{
+    margin-top: 39vh !important;
 }
 
 .box-title{
@@ -9,21 +13,18 @@
     border-radius: 15px;
     display: block !important;
 }
+
 .box-products{
     width: 100vh !important;
     height: 90vh !important;
     background-color: #30343F;
     border-radius: 15px;
+    margin-top: 10vh !important;
 }
 
 .profile-img{
-    border-radius: 500px;
-    /* width: 47%; */
-    max-width: 141px !important;
-    max-height: 141px !important;
-    min-width: 141px !important;
-    min-height: 141px !important;
-    margin-left: 5vh;
+    margin-left: 10vh !important;
+    margin-right: -20vh !important;
 }
 
 .verified{
@@ -73,4 +74,14 @@
     width: 13rem !important;
     height: 15rem !important;
     margin-right: -5vh !important;
+}
+
+.bt-edit{
+    border-radius: 100px;
+    margin-left: 32vh;
+    margin-top: -0.8vh;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 12px !important;
+    font-weight: bold;
 }

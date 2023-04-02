@@ -4,14 +4,27 @@ session_start();
 error_reporting(E_ALL & ~E_NOTICE);
 
 require_once('./Model/header.php');
-
+$user_role = $_SESSION['user_role'];
+switch($user_role){
+  case "user":
+    header("Location: /purchases");
+    break;
+  default:
+    break;
+}
 ?>
 
 <html>
 
 <link rel="stylesheet" href="../Assets/css/create.css">
 
-
+<script>
+    var debounceTimer;
+    function debounceCreateRecord() {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(createRecord, 500); // atraso de 500ms
+    }
+</script>
 
 <style>
   .image_preview {
@@ -41,16 +54,16 @@ require_once('./Model/header.php');
         <div class="grid1-create-antitle">
           <span id="imgpreview" class="image_preview bordinha">
           </span>
-          <input name="anunciotitle" style="margin-top: 10px;" type="text" required class="form-control"
+          <input name="anunciotitle" onkeydown="debounceCreateRecord()" style="margin-top: 10px;" type="text" required class="form-control"
             placeholder="Titulo do Anúncio">
         </div>
         <div class="grid1-create-andesc">
-          <textarea name="anunciodesc" rows="5" type="text" required class="form-control"
+          <textarea name="anunciodesc" onkeydown="debounceCreateRecord()" rows="5" type="text" required class="form-control"
             placeholder="Descrição do Anúncio" aria-describedby="inputGroup-sizing-lg"></textarea>
         </div>
 
         <div class="grid1-create-anprice">
-          <input name="anuncioprice" id="anvalue" type="number" required class="form-control" min="1" max="10000"
+          <input name="anuncioprice" onkeydown="debounceCreateRecord()" id="anvalue" type="number" required class="form-control" min="1" max="10000"
             placeholder="R$0,00">
         </div>
 
@@ -65,7 +78,7 @@ require_once('./Model/header.php');
         </div>
 
         <div class="grid1-create-angateway" style="padding-bottom: 50px;">
-          <input type="submit" value="💾 Enviar" required class="form-control">
+          <input type="submit" onclick="debounceCreateRecord()" value="💾 Enviar" required class="form-control">
         </div>
       </form>
     </div>

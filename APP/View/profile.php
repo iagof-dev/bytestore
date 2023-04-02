@@ -18,16 +18,6 @@ if (empty($seller_info[1]) or !isset($seller_info[1])) {
 
 $seller_products = get_all_seller_products($id_user);
 
-// if ($_GET['id'] == "1") {
-//     echo ('<span class="badge rounded-pill text-bg-primary"><i class="fa-solid fa-check"></i></span>');
-// }
-
-// if ($_SESSION['user_id'] == $id_user) {
-//echo ('
-// <a href="/edit_profile"><button class="btn btn-primary">Editar perfil</button></a>
-// ');
-// }
-
 ?>
 
 
@@ -35,28 +25,32 @@ $seller_products = get_all_seller_products($id_user);
 <link rel="stylesheet" href="../Assets/css/profile.css">
 
 <body>
-    <div class="container-fluid center">
-        <div class="center">
+    <div class="container">
+        <div class="d-block position-absolute start-50 translate-middle" style="top: 50vh !important;margin-top: 10% !important;">
             <div class="container text-center">
-                <div class="box-title">
+                <div class="box-title position-absolute start-50 translate-middle">
                     <div class="row align-items-center">
-                        <div class="col-4">
-                            <div class="store-picture">
-                                <img class="profile-img" src="<?php if (empty($seller_info[4])) {
+                        <div class="col-4 d-block">
+                            <div class="d-block store-picture">
+                                <img width="45%" class="profile-img d-block thumbnail rounded-5 img-fluid" src="<?php if (empty($seller_info[4])) {
                                     echo ('../Assets/imgs/ph-user.jpg');
                                 } else {
-                                    echo ("https://cdn.discordapp.com/attachments/852640897505427466/1091292069047312415/Screenshot_20230331-062122_Nubank.jpg");
+                                    echo ('../Assets/imgs/users/' . $seller_info[4]);
                                 } ?>">
                             </div>
                         </div>
-                        <div class="col-7">
+                        <div class="col-7" style="margin-left: -8vh !important;">
                             <div class="store-name">
                                 <?php if ($seller_info[5] == true or $seller_info[5] == 1) {
-                                    echo ('<div class="verified"><h1>' . $seller_info[1] . ' <a href="#" data-bs-toggle="tooltip" data-bs-title="Tooltip on right" data-bs-placement="right"><i class="bi bi-patch-check-fill text-center"></h1></i></a></div>');
+                                    echo ('<div class="verified"><h1>' . $seller_info[1] . ' <i class="bi bi-patch-check-fill text-center text-primary"></h1></i></a></div>');
                                 } else {
                                     echo ('<h1>' . $seller_info[1] . '</h1>');
-                                } ?>
-                                </h1>
+                                } 
+                                if ($_GET['id'] == $_SESSION['user_id']){
+                                    echo('<a href="/edit_profile?id='. $_SESSION["user_id"] .'"><button class="btn btn-primary position-absolute bt-edit translate-middle text-center" ><i class="fa-solid fa-pen-to-square"></i> Editar Perfil</button></a>');
+                                }
+                                ?>
+                                
                             </div>
                             <div class="store-desc">
                                 <p>

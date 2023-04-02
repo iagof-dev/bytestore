@@ -24,7 +24,6 @@ if($_SESSION['user_logged'] == null or $_SESSION['user_logged'] != "true" or $_S
 function user_login($input_email, $input_pass)
 {
 
-
     $conexao = new mysql();
     $mysqli = $conexao->getConexao();
     
@@ -55,13 +54,13 @@ function user_login($input_email, $input_pass)
 
             switch ($user_role) {
                 default:
-                    header("Location: /error");
-
-                    exit();
+                    header("Location: /purchases");
+                    break;
                 case 'admin':
-                    echo ("<br> ADMIN");
                     header("Location: /admin");
-                    exit();
+                case 'seller':
+                    header("Location: /admin");
+                    break;
 
             }
         }
@@ -338,8 +337,6 @@ function get_all_seller_products($id){
     debug_to_console($all_products);
     return $all_products;
 }
-
-
 
 
 

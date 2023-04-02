@@ -17,6 +17,9 @@ switch ($url) {
     case '/login':
         include('./View/login.php');
         break;
+    case '/register':
+        include('./View/register.php');
+        break;
 
     case '/profile/':
         include('./View/profile.php');
@@ -27,8 +30,8 @@ switch ($url) {
         break;
 
     case '/credits':
-            include('./View/credits.html');
-            break;
+        include('./View/credits.html');
+        break;
     case '/tos':
         include('./View/tos.html');
         break;
