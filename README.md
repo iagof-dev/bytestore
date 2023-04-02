@@ -8,6 +8,8 @@ Não finalizado/Not Finished.
 
 -MySql Server ([Baixar](https://dev.mysql.com/downloads/mysql/))
 
+-WampServer or Xampp
+
 -Composer ([Baixar](https://getcomposer.org/))
 
 -Mercado Pago SDK ([Repositório](https://github.com/mercadopago/sdk-php))
