@@ -8,7 +8,7 @@ Não finalizado/Not Finished.
 
 - MySql Server ([Baixar](https://dev.mysql.com/downloads/mysql/))
 
-- Xampp
+- Xampp or WampServer
 
 - Composer ([Baixar](https://getcomposer.org/))
 
