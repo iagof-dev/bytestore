@@ -6,13 +6,13 @@ Não finalizado/Not Finished.
 
 # ⚙️ Requirements
 
--MySql Server ([Baixar](https://dev.mysql.com/downloads/mysql/))
+- MySql Server ([Baixar](https://dev.mysql.com/downloads/mysql/))
 
--WampServer or Xampp
+- Xampp
 
--Composer ([Baixar](https://getcomposer.org/))
+- Composer ([Baixar](https://getcomposer.org/))
 
--Mercado Pago SDK ([Repositório](https://github.com/mercadopago/sdk-php))
+- Mercado Pago SDK ([Repositório](https://github.com/mercadopago/sdk-php))
 
 # 📖 Used Libs
 
