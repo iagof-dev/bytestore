@@ -59,6 +59,6 @@ catch(Exception $e){
     echo($e);
 }
 
+header("Location: /success?payment=". $collection_id);
 
-echo('<script> window.location.href = "/success?payment="'.$collection_id. '; </script>');
 ?>
