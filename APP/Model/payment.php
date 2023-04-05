@@ -49,7 +49,7 @@ $result = json_decode($response, true);
 // echo('Costumer ID Type: '.$result['payer']['identification']['type'].'<br>');
 // echo('Payment Approved Date: '.$result['date_approved'].'<br>');
 
-$coco = MercadoPago\Payment::find_by_id($collection_id);
+//$coco = MercadoPago\Payment::find_by_id($collection_id);
 
 try{
     
