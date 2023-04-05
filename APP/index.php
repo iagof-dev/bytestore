@@ -34,7 +34,7 @@ if($_SESSION['user_logged'] == "false" or $_SESSION['user_logged'] == false)
 }
 else{
     switch($_SESSION['user_role']){
-        case 'admin':
+        case 'seller':
             $navbar = ($navbar. '<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fa-solid fa-user"></i> ' . $_SESSION['user_name'] . '</a><ul class="dropdown-menu"><li><a class="dropdown-item" href="/profile/?id='. $_SESSION['user_id'] .'"><i class="fa-solid fa-user"></i> Perfil</a></li><li><a class="dropdown-item" href="/purchases"><i class="fa-solid fa-cart-shopping"></i> Minhas Compras</a></li><li><a class="dropdown-item" href="/admin"><i class="fa-solid fa-gear"></i> Meus Anúncios</a></li><li><a class="dropdown-item" href="/logout"><i class="fa-solid fa-door-open"></i> Sair</a></li></ul></li> </div></div></nav>');
             break;
         case 'admin':
