@@ -59,6 +59,9 @@ switch ($url) {
         include('./View/success.php');
         break;
 
+    case '/details':
+        break;
+
     case '/create':
         include('./View/create.php');
         break;

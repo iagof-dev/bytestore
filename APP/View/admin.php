@@ -1,7 +1,7 @@
 <?php
 ob_start();
 session_start();
-error_reporting(E_ALL & ~E_NOTICE);
+error_reporting(0);
 
 
 $user_id = $_SESSION['user_id'];

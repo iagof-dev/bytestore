@@ -1,9 +1,7 @@
 .container-fluid{
-    margin-top: 1% !important;
 }
 
 .fix{
-    margin-top: 39vh !important;
 }
 
 .box-title{
@@ -11,7 +9,7 @@
     height: 20vh !important;
     background-color: #30343F;
     border-radius: 15px;
-    display: block !important;
+    margin-top: -26vh !important;
 }
 
 .box-products{
@@ -19,7 +17,7 @@
     height: 90vh !important;
     background-color: #30343F;
     border-radius: 15px;
-    margin-top: 10vh !important;
+    margin-top: 30vh !important;
 }
 
 .profile-img{

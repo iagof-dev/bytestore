@@ -24,9 +24,11 @@ else{
     $resultado = mysqli_query($mysqli, $com);
     if(!$resultado){
         echo('<h1 class="text-danger"> Erro! Usuário já cadastrado</h1>');
+        echo('<script>swal({title: "Erro!",text: "E-mail ou Usuário já cadastrado!",type: "error",button: {text: "Fechar",value: true,visible: true,className: "btn btn-primary"}});</script>');
     }
     else{
         echo('<h1 class="text-success">Sucesso!</h1>');
+        echo('<script>swal({title: "Sucesso!",text: "Cadastrado com sucesso!",type: "success",button: {text: "Fechar",value: true,visible: true,className: "btn btn-primary"}});</script>');
     }
 }
 

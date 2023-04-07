@@ -13,6 +13,7 @@ class mysql
     public $db_database = "nrdydes1_bytestore";
     public static $db_table_users = "users";
     public static $db_table_products = "products";
+    public static $db_table_payments = "payments";
     public static $db_table_category = "category";
     public static $db_table_sub_category = "sub_category";
     public $db;
@@ -70,6 +71,15 @@ function enviar_comando($com)
         echo ("Erro!<br> " . $e->getMessage());
         exit();
     }
+}
+
+function create_user($user, $email, $pass, $type){
+    $conexao = new mysql();
+    $mysqli = $conexao->getConexao();
+    $com = "insert into " . $conexao::$db_table_users . " values (default, '" . $user . "', '" . $email . "', '" . $pass . "', '" . $type . "', null, null, null);";
+    $resultado = mysqli_query($mysqli, $com);
+
+    return $resultado;
 }
 
 ?>

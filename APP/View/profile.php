@@ -25,18 +25,16 @@ $seller_products = get_all_seller_products($id_user);
 <link rel="stylesheet" href="../Assets/css/profile.css">
 
 <body>
-    <div class="container">
-        <div class="d-block position-absolute start-50 translate-middle" style="top: 50vh !important;margin-top: 10% !important;">
-            <div class="container text-center">
-                <div class="box-title position-absolute start-50 translate-middle">
+    <div class="container position-absolute top-50 start-50 translate-middle text-center">
+                <div class="box-title position-absolute top-50 start-50 translate-middle text-center">
                     <div class="row align-items-center">
-                        <div class="col-4 d-block">
+                        <div class="col-4">
                             <div class="d-block store-picture">
                                 <img width="45%" class="profile-img d-block thumbnail rounded-5 img-fluid" src="<?php if (empty($seller_info[4])) {
-                                    echo ('../Assets/imgs/ph-user.jpg');
-                                } else {
-                                    echo ('../Assets/imgs/users/' . $seller_info[4]);
-                                } ?>">
+                                                                                                                    echo ('../Assets/imgs/ph-user.jpg');
+                                                                                                                } else {
+                                                                                                                    echo ('../Assets/imgs/users/' . $seller_info[4]);
+                                                                                                                } ?>">
                             </div>
                         </div>
                         <div class="col-7" style="margin-left: -8vh !important;">
@@ -45,12 +43,12 @@ $seller_products = get_all_seller_products($id_user);
                                     echo ('<div class="verified"><h1>' . $seller_info[1] . ' <i class="bi bi-patch-check-fill text-center text-primary"></h1></i></a></div>');
                                 } else {
                                     echo ('<h1>' . $seller_info[1] . '</h1>');
-                                } 
-                                if ($_GET['id'] == $_SESSION['user_id']){
-                                    echo('<a href="/edit_profile?id='. $_SESSION["user_id"] .'"><button class="btn btn-primary position-absolute bt-edit translate-middle text-center" ><i class="fa-solid fa-pen-to-square"></i> Editar Perfil</button></a>');
+                                }
+                                if ($_GET['id'] == $_SESSION['user_id']) {
+                                    echo ('<a href="/edit_profile?id=' . $_SESSION["user_id"] . '"><button class="btn btn-primary position-absolute bt-edit translate-middle text-center" ><i class="fa-solid fa-pen-to-square"></i> Editar Perfil</button></a>');
                                 }
                                 ?>
-                                
+
                             </div>
                             <div class="store-desc">
                                 <p>
@@ -65,35 +63,33 @@ $seller_products = get_all_seller_products($id_user);
                     </div>
                 </div>
 
-                <br>
+            <br>
 
-                <div class="box-products">
-                    <div class="box-products-title text-center">
-                        <h1>Anúncios de
-                            <?php echo ($seller_info[1]); ?>
-                        </h1>
-                    </div>
+            <div class="box-products position-absolute start-50 translate-middle">
+                <div class="box-products-title text-center">
+                    <h1>Anúncios de
+                        <?php echo ($seller_info[1]); ?>
+                    </h1>
+                </div>
 
-                    <div class="list-products">
-                        <div class="container text-center">
+                <div class="list-products">
+                    <div class="container text-center">
 
-                            <?php echo ($seller_products); ?>
+                        <?php echo ($seller_products); ?>
 
-                            <!-- <div class="row align-items-center">
+                        <!-- <div class="row align-items-center">
                                 <div class="col"> <div class="mdcard"> <a href="/product?id=162" style="text-decoration: none;"> <div class="card" style="width: 17rem;height: 18rem;"> <img   src="../Assets/imgs/products/product_642228319512c.jpg"   class="card-img-top cardimg"> <div class="card-body">   <h5 class="card-title text-start card-titulo">Computador Gamer</h5>   <h6 class="text-start card-preco">R$8530</h6> </div> </div> </a></div> </div>
                                 <div class="col"> <div class="mdcard"> <a href="/product?id=162" style="text-decoration: none;"> <div class="card" style="width: 17rem;height: 18rem;"> <img   src="../Assets/imgs/products/product_642228319512c.jpg"   class="card-img-top cardimg"> <div class="card-body">   <h5 class="card-title text-start card-titulo">Computador Gamer</h5>   <h6 class="text-start card-preco">R$8530</h6> </div> </div> </a></div> </div>
                                 <div class="col"> <div class="mdcard"> <a href="/product?id=162" style="text-decoration: none;"> <div class="card" style="width: 17rem;height: 18rem;"> <img   src="../Assets/imgs/products/product_642228319512c.jpg"   class="card-img-top cardimg"> <div class="card-body">   <h5 class="card-title text-start card-titulo">Computador Gamer</h5>   <h6 class="text-start card-preco">R$8530</h6> </div> </div> </a></div> </div>
                                 <div class="col"> <div class="mdcard"> <a href="/product?id=162" style="text-decoration: none;"> <div class="card" style="width: 17rem;height: 18rem;"> <img   src="../Assets/imgs/products/product_642228319512c.jpg"   class="card-img-top cardimg"> <div class="card-body">   <h5 class="card-title text-start card-titulo">Computador Gamer</h5>   <h6 class="text-start card-preco">R$8530</h6> </div> </div> </a></div> </div>
                             </div> -->
-                        </div>
                     </div>
                 </div>
-
-
             </div>
 
 
         </div>
+    </div>
     </div>
     </div>
 </body>

@@ -5,6 +5,7 @@ error_reporting(0);
 
 require('./DAO/database.php');
 require_once('./Controller/pages.php');
+
 function debug_to_console($data)
 {
     $output = $data;
@@ -23,7 +24,6 @@ if($_SESSION['user_logged'] == null or $_SESSION['user_logged'] != "true" or $_S
 
 function user_login($input_email, $input_pass)
 {
-
     $conexao = new mysql();
     $mysqli = $conexao->getConexao();
     
@@ -31,6 +31,7 @@ function user_login($input_email, $input_pass)
     $input_email = mysqli_real_escape_string($mysqli, $input_email);
     $input_pass = mysqli_real_escape_string($mysqli, $input_pass);
 
+    //encriptação MD5
     $input_pass = md5($input_pass);
 
 
@@ -56,8 +57,10 @@ function user_login($input_email, $input_pass)
                 default:
                     header("Location: /purchases");
                     break;
+                    
                 case 'admin':
                     header("Location: /admin");
+
                 case 'seller':
                     header("Location: /admin");
                     break;
@@ -205,12 +208,7 @@ function get_product_page($id){
     else{
         header("Location: /error");
     }
-    
-
-
 }
-
-
 
 
 function delete_product($id, $path){
@@ -336,6 +334,32 @@ function get_all_seller_products($id){
 
     debug_to_console($all_products);
     return $all_products;
+}
+
+
+
+function get_all_purchases(){
+    $conexao = new mysql();
+    $mysqli = $conexao->getConexao();
+    $retornar = '<div class="row"> <div class="col"> <i>Produto:</i> </div> <div class="col-5"> <i>Valor:</i> </div> <div class="col"> <i>ações:</i> </div> </div> </div>';
+    $count = 0;
+    $com = 'SELECT p.*, pr.* FROM '. $conexao::$db_table_payments .' p INNER JOIN '. $conexao::$db_table_products .' pr ON p.product_id=pr.id WHERE p.costumer_id='. $_SESSION['user_id'] .';';
+    $getpurchases = mysqli_query($mysqli, $com);
+    if (mysqli_num_rows($getpurchases) > 0) {
+        while($linha = mysqli_fetch_assoc($getpurchases)){
+            
+            $count = $count + 1;
+
+            $retornar = $retornar . '<div class="compra"> 	<div class="row"> 		<div class="col justify-content-start"> 			<img class="img-fluid" width="50%" src="../Assets/imgs/products/'. $linha['image'] .'"> 		</div> 		<div class="col-5 justify-content-center"> 			<h1 class="text-start">'. $linha['title'] .'</h1> 			<h2 class="detail text-start">#'. $linha['payment_id'] .' | Metódo: '. $linha['payment_method'] .'</h2> 		</div> 		<div class="col justify-content-end"> 			<div class="infos"> 				<h3 class="text-center">R$'. $linha['value'] .'</h3><br> 				<a href="/details?id='. $linha['payment_id'] .'"><button class="btn btn-primary"> <i class="fa-solid fa-circle-info"></i></button></a> 			</div> 		</div> 	</div> </div>';
+        }
+    }
+    else{
+        $retornar = '<h1 style="margin-top: 2vh;" class="text-danger">Você não possui nenhuma compra registrada!</h1>';
+    }
+
+
+    return $retornar;
+
 }
 
 

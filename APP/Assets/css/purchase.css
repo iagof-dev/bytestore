@@ -1,0 +1,68 @@
+.box{
+    display: flex;
+    background-color: #202020 !important;
+    border-radius: 12px;
+    width: 90vh !important;
+    height: 65vh !important;
+    background-color: #30343F !important;
+}
+
+.title{
+    margin-top: 1vh;
+    margin-bottom: 3vh;
+}
+
+.compra{
+    display: flex;
+    padding-top: 1vh;
+    margin-bottom: 1vh !important;
+    margin-left: -1.5vh;
+    width: 100% !important;
+    height: 12vh !important;
+}
+.compra h1{
+    margin-top: 1vh;
+    font-size: 2vh !important;
+}
+
+.compra h2{
+    font-size: 1.5vh !important;
+}
+
+.compra img{
+    width: 50%;
+    border-radius: 5px;
+}
+.compra button{
+    width: 4.5vh;
+    height: 4vh;
+    margin-left: 3vh;
+    border-radius: 100px;
+    white-space: normal !important;
+    padding: 0px;
+}
+
+.infos{
+    display: flex;
+    margin-top: 3vh;
+}
+.infos button{
+    margin-top: -0.5vh;
+}
+.infos .btn{
+    justify-content: end !important;
+    margin-left: 8vh;
+}
+.infos h3{
+    font-size: 2vh;
+    width: 100px;
+    height: 10px;
+    margin-left: 1vh;
+}
+.detail{
+    color: #909090 !important;
+}
+
+h1{
+    font-size: 2vh !important;
+}
