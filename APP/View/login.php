@@ -3,21 +3,17 @@ ob_start();
 session_start();
 error_reporting(0);
 
-
 $error = $_GET["error"];
 
 if($error == "true"){
   echo('<script>swal({title: "Erro!",text: "E-mail ou senha incorretos!",type: "error",button: {text: "Fechar",value: true,visible: true,className: "btn btn-primary"}});</script>');
 }
-
 ?>
 
 <link rel="stylesheet" href="../Assets/css/main.css">
 <link rel="stylesheet" href="../Assets/css/admin.css">
 <script src="../Assets/js/create.js"></script>
 <script src="../Assets/js/login.js"></script>
-
-
 
 <body>
   <div class="container">

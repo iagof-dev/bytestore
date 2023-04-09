@@ -3,7 +3,7 @@ ob_start();
 session_start();
 error_reporting(0);
 
-require('./DAO/database.php');
+require_once('./DAO/database.php');
 
 $error = $_GET["error"];
 
@@ -13,15 +13,9 @@ $user_pass = $_GET['txt_pass'];
 $user_role = $_GET['accounttype'];
 
 
-if (!isset($user_email) or !isset($user_name) or !isset($user_pass)) {
-  //sem informações
-} else {
-
-  if(str_contains($user_email, '@')){
-  }
-  else{
+if (isset($user_email) or isset($user_name) or isset($user_pass)) {
+  if (strpos($user_email, '@') == false or strpos($user_email, '@') == "false" ) {
     header('Location: /register?error=true');
-    exit();
   }
 
   $conexao = new mysql();
@@ -38,6 +32,7 @@ if (!isset($user_email) or !isset($user_name) or !isset($user_pass)) {
 
   if (!$resultado) {header('Location: /register?error=true');} else {header('Location: /register?error=false');}
 }
+
 ?>
 
 <link rel="stylesheet" href="../Assets/css/main.css">
@@ -59,7 +54,7 @@ if (!isset($user_email) or !isset($user_name) or !isset($user_pass)) {
           <form action="/register" method="GET">
             <div class="inpt1">
                 <input id="inputusername" required style="margin-bottom: -12px; background-color: #FFFFFF !important; color: #000000 !important;" class="form-control" name="txt_name" placeholder="Usuário"><br>
-                <input id="inputemail" required style="margin-bottom: -12px; background-color: #FFFFFF !important; color: #000000 !important;" class="form-control" name="txt_email" placeholder="E-mail"><br>
+                <input id="inputemail" required style="margin-bottom: -12px; background-color: #FFFFFF !important; color: #000000 !important;" class="form-control" type="email" name="txt_email" placeholder="E-mail"><br>
                 <input id="inputpass" name="txt_pass" required style="background-color: #FFFFFF !important;color: #000000 !important;" class="form-control" type="password" placeholder="Senha">
                 <h4 style="font-size: 10px; color: grey; margin-top: 5px;">Ao realizar o cadastro, você está concordando com os <a href="/tos"> termos de uso</a>.</h4>
             <div style="display:flex; margin-bottom: 1vh;margin-left: 4vh;">

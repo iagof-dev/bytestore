@@ -26,11 +26,10 @@ if ($user_logged != "true") {
   header("Location: ../View/login.html");
 }
 
-switch($user_role){
+switch ($user_role) {
   case "user":
     header("Location: /purchases");
     break;
-
 }
 
 ?>
@@ -38,13 +37,8 @@ switch($user_role){
 
 <link rel="stylesheet" href="../Assets/css/admin.css">
 
-
 <body>
-
   <div class="container text-center">
-
-
-
     <div class="col">
       <div class="row">
         <div style="padding-top: 3vh !important;" class="text-end btn_create position-relative ">
@@ -52,24 +46,10 @@ switch($user_role){
         </div>
         <h1>Anúncios:</h1>
         <div class="anuncios-box position-absolute top-50 start-50 translate-middle">
-
-          <?php echo(user_get_products()); ?>
-
-
-
+          <?php echo (user_get_products()); ?>
         </div>
       </div>
     </div>
-
-  </div>
-
-
-  </div>
-  </div>
-  </div>
-  </div>
-
-
 </body>
 
 

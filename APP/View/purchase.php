@@ -4,13 +4,9 @@ session_start();
 error_reporting(0);
 
 require_once('./Model/header.php');
-
-
 ?>
 
 <link rel="stylesheet" href="../Assets/css/purchase.css">
-
-
 <body>
 
     <div class="container text-center">
