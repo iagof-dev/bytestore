@@ -20,19 +20,24 @@ class mysql
 
     public function __construct()
     {
-
         if (!isset($this->db_ip) or empty($this->db_ip) or empty($this->db_user) or empty($this->db_port) or empty($this->db_pass) or empty($this->db_database)) {
-            //echo("Erro ao carregar as configurações do sistema. Por favor, contate o administrador do sistema.");
             ob_end_clean();
             echo ('<div class="error-container"><div class="textos"> <div class="error-title"> <div class="spinner-border" role="status" style="margin-right: 15px;"></div> <h1> | Ocorreu um Erro!</h1> <h2 style="margin-left: 10px; color: grey;">(Error 500)</h2> </div> <br> <div class="error"> <p>Por favor, tente novamente mais tarde. Se o problema persistir, entre em contato conosco para que possamos ajudá-lo a resolver o problema.</p> </div></div> </div>');
             exit();
         } else {
-            try {
                 $this->db = new mysqli($this->db_ip, $this->db_user, $this->db_pass, $this->db_database, $this->db_port);
-            } catch (Exception $e) {
-                debug_to_console("Erro!<br> " . $e->getMessage());
-                exit();
-            }
+                if ($this->db->connect_error) {
+                    ob_end_clean();
+                    if(str_contains($this->db->connect_error, "Access denied for user")){
+                        echo ('<div class="error-container"><div class="textos"> <div class="error-title"> <div class="spinner-border" role="status" style="margin-right: 15px;"></div> <h1> | Ocorreu um Erro!</h1> <h2 style="margin-left: 10px; color: grey;">(Error 511)</h2> </div> <br> <div class="error"> <p>Por favor, tente novamente mais tarde. Se o problema persistir, entre em contato conosco para que possamos ajudá-lo a resolver o problema.</p> </div></div> </div>');
+                    }
+                    else{
+                        echo ('<div class="error-container"><div class="textos"> <div class="error-title"> <div class="spinner-border" role="status" style="margin-right: 15px;"></div> <h1> | Ocorreu um Erro!</h1> <h2 style="margin-left: 10px; color: grey;">(Error 599)</h2> </div> <br> <div class="error"> <p>Por favor, tente novamente mais tarde. Se o problema persistir, entre em contato conosco para que possamos ajudá-lo a resolver o problema.</p> </div></div> </div>');
+                    }
+                    exit();
+                    
+                }
+                
         }
 
 
@@ -55,7 +60,7 @@ function get_5_random_products()
     if (mysqli_num_rows($getrandom5products) > 0) {
         while ($linha = mysqli_fetch_assoc($getrandom5products)) {
             $title_short = mb_strimwidth($linha["title"], 0, 23, "...");
-            $retornar = $retornar . '<div class="col"> <a href="/product?id=' . $linha["id"] . '" style="text-decoration: none;"> <div data-aos="zoom-in" data-aos-duration="1000" data-aos-anchor-placement="top-bottom" class="card" style="width: 17rem;height: 18rem;"> <img   src="./Assets/imgs/products/' . $linha["image"] . '"   class="card-img-top cardimg"> <div class="card-body">   <h5 class="card-title text-start card-titulo">' . $title_short . '</h5>   <h6 class="text-start card-preco">R$' . $linha["price"] . '</h6> </div> </div> </a> </div>';
+            $retornar = $retornar . '<div class="col"> <a href="/product?id=' . $linha["id"] . '" style="text-decoration: none;"> <div data-aos="zoom-in" data-aos-duration="1000" data-aos-anchor-placement="top-bottom" class="card" style="width: 17rem;height: 18rem;"> <img   src="./Assets/imgs/products/' . $linha["image"] . '"   class="card-img-top cardimg img-fluid"> <div class="card-body">   <h5 class="card-title text-start card-titulo">' . $title_short . '</h5>   <h6 class="text-start card-preco">R$' . $linha["price"] . '</h6> </div> </div> </a> </div>';
         }
     }
     return $retornar;

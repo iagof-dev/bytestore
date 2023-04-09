@@ -43,11 +43,7 @@ $seller_products = get_all_seller_products($id_user);
             <div class="row align-items-center">
                 <div class="col-4">
                     <div class="d-block store-picture">
-                        <img width="45%" class="profile-img d-block thumbnail rounded-5 img-fluid" src="<?php if (empty($seller_info[4])) {
-                                                                                                            echo ('../Assets/imgs/ph-user.jpg');
-                                                                                                        } else {
-                                                                                                            echo ('../Assets/imgs/users/' . $seller_info[4]);
-                                                                                                        } ?>">
+                        <img width="45%" class="profile-img d-block thumbnail rounded-5 img-fluid" src="<?php if (empty($seller_info[4])) {echo ('../Assets/imgs/ph-user.jpg');} else {echo ('../Assets/imgs/users/' . $seller_info[4]);} ?>">
                     </div>
                 </div>
                 <div class="col-7" style="margin-left: -8vh !important;">
@@ -76,9 +72,7 @@ $seller_products = get_all_seller_products($id_user);
 
         <div class="box-products position-absolute start-50 translate-middle">
             <div class="box-products-title text-center">
-                <h1>Anúncios de
-                    <?php echo ($seller_info[1]); ?>
-                </h1>
+                <h1>Anúncios de <?php echo ($seller_info[1]); ?></h1>
             </div>
 
             <div class="list-products">

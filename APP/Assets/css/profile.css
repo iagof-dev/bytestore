@@ -1,15 +1,9 @@
-.container-fluid{
-}
-
-.fix{
-}
-
 .box-title{
     width: 100vh !important;
     height: 20vh !important;
     background-color: #30343F;
     border-radius: 15px;
-    margin-top: -26vh !important;
+    margin-top: -30vh !important;
 }
 
 .box-products{
@@ -17,7 +11,7 @@
     height: 90vh !important;
     background-color: #30343F;
     border-radius: 15px;
-    margin-top: 30vh !important;
+    margin-top: 27vh !important;
 }
 
 .profile-img{

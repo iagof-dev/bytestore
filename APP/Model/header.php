@@ -15,7 +15,8 @@ function debug_to_console($data)
     echo "<script>console.log('Debug | " . $output . "' );</script>";
 }
 
-
+$conexao = new mysql();
+$mysqli = $conexao->getConexao();
 
 if($_SESSION['user_logged'] == null or $_SESSION['user_logged'] != "true" or $_SESSION['user_logged'] == ""){
     echo("Usuario não logado. <br>");
@@ -343,14 +344,29 @@ function get_all_purchases(){
     $mysqli = $conexao->getConexao();
     $retornar = '<div class="row"> <div class="col"> <i>Produto:</i> </div> <div class="col-5"> <i>Valor:</i> </div> <div class="col"> <i>ações:</i> </div> </div> </div>';
     $count = 0;
-    $com = 'SELECT p.*, pr.* FROM '. $conexao::$db_table_payments .' p INNER JOIN '. $conexao::$db_table_products .' pr ON p.product_id=pr.id WHERE p.costumer_id='. $_SESSION['user_id'] .';';
+    $com = 'SELECT p.product_id, p.payment_id, p.payment_method, p.value, p.status, p.payment_date, p.costumer_id, p.costumer_id_cpf, p.costumer_bank, p.costumer_email, p.seller_id, p.payment_ip, pr.id, pr.title, pr.description, pr.price, pr.image, pr.id_category, pr.owner FROM '. $conexao::$db_table_payments .' p INNER JOIN '. $conexao::$db_table_products .' pr ON p.product_id=pr.id WHERE p.costumer_id='. $_SESSION['user_id'] .';';
     $getpurchases = mysqli_query($mysqli, $com);
     if (mysqli_num_rows($getpurchases) > 0) {
         while($linha = mysqli_fetch_assoc($getpurchases)){
             
             $count = $count + 1;
+            switch($linha['status']){
+                case 'accredited':
+                    $retornar = $retornar . '<div class="compra"> <div class="row"> <div class="col justify-content-start"> <img width="50%" src="../Assets/imgs/products/'. $linha['image'] .'"> </div> <div class="col-5 justify-content-center"> <h1 class="text-start">'. $linha['title'] .'</h1> <h2 class="detail text-start">#'. $linha['payment_id'] .' | Metódo: '. $linha['payment_method'] .'</h2> </div> <div class="col text-center justify-content-end"> <div class="infos"> <div class="col text-center"> <h3 class="">R$'. $linha['value'] .'</h3><br> </div> <div class="col text-center"> <h2 class="text-center center text-status text-success">Aprovado</h2> </div> <div class="col text-center"><a href="/details?id='. $linha['payment_id'] .'&img='. $linha['image'] .'&product_id='. $linha['id'] .'"><button class="btn btn-primary "> <i class="fa-solid fa-circle-info"></i></button></a> </div> </div> </div> </div> </div>';
+                    break;
+                case 'approved':
+                    $retornar = $retornar . '<div class="compra"> <div class="row"> <div class="col justify-content-start"> <img width="50%" src="../Assets/imgs/products/'. $linha['image'] .'"> </div> <div class="col-5 justify-content-center"> <h1 class="text-start">'. $linha['title'] .'</h1> <h2 class="detail text-start">#'. $linha['payment_id'] .' | Metódo: '. $linha['payment_method'] .'</h2> </div> <div class="col text-center justify-content-end"> <div class="infos"> <div class="col text-center"> <h3 class="">R$'. $linha['value'] .'</h3><br> </div> <div class="col text-center"> <h2 class="text-center center text-status text-success">Aprovado</h2> </div> <div class="col text-center"><a href="/details?id='. $linha['payment_id'] .'&img='. $linha['image'] .'&product_id='. $linha['id'] .'"><button class="btn btn-primary "> <i class="fa-solid fa-circle-info"></i></button></a> </div> </div> </div> </div> </div>';
+                    break;
+                case 'in_process':
+                    $retornar = $retornar . '<div class="compra"> <div class="row"> <div class="col justify-content-start"> <img width="50%" src="../Assets/imgs/products/'. $linha['image'] .'"> </div> <div class="col-5 justify-content-center"> <h1 class="text-start">'. $linha['title'] .'</h1> <h2 class="detail text-start">#'. $linha['payment_id'] .' | Metódo: '. $linha['payment_method'] .'</h2> </div> <div class="col text-center justify-content-end"> <div class="infos"> <div class="col text-center"> <h3 class="">R$'. $linha['value'] .'</h3><br> </div> <div class="col text-center"> <h2 class="text-center center text-status text-warning">Processando</h2> </div> <div class="col text-center"><a href="/details?id='. $linha['payment_id'] .'&img='. $linha['image'] .'&product_id='. $linha['id'] .'"><button class="btn btn-primary "> <i class="fa-solid fa-circle-info"></i></button></a> </div> </div> </div> </div> </div>';
+                    break;
+                case 'rejected':
+                    $retornar = $retornar . '<div class="compra"> <div class="row"> <div class="col justify-content-start"> <img width="50%" src="../Assets/imgs/products/'. $linha['image'] .'"> </div> <div class="col-5 justify-content-center"> <h1 class="text-start">'. $linha['title'] .'</h1> <h2 class="detail text-start">#'. $linha['payment_id'] .' | Metódo: '. $linha['payment_method'] .'</h2> </div> <div class="col text-center justify-content-end"> <div class="infos"> <div class="col text-center"> <h3 class="">R$'. $linha['value'] .'</h3><br> </div> <div class="col text-center"> <h2 class="text-center center text-status text-danger">Recusado</h2> </div> <div class="col text-center"><a href="/details?id='. $linha['payment_id'] .'&img='. $linha['image'] .'&product_id='. $linha['id'] .'"><button class="btn btn-primary "> <i class="fa-solid fa-circle-info"></i></button></a> </div> </div> </div> </div> </div>';
+                    break;
+            }
 
-            $retornar = $retornar . '<div class="compra"> 	<div class="row"> 		<div class="col justify-content-start"> 			<img class="img-fluid" width="50%" src="../Assets/imgs/products/'. $linha['image'] .'"> 		</div> 		<div class="col-5 justify-content-center"> 			<h1 class="text-start">'. $linha['title'] .'</h1> 			<h2 class="detail text-start">#'. $linha['payment_id'] .' | Metódo: '. $linha['payment_method'] .'</h2> 		</div> 		<div class="col justify-content-end"> 			<div class="infos"> 				<h3 class="text-center">R$'. $linha['value'] .'</h3><br> 				<a href="/details?id='. $linha['payment_id'] .'"><button class="btn btn-primary"> <i class="fa-solid fa-circle-info"></i></button></a> 			</div> 		</div> 	</div> </div>';
+            
+            //$retornar = $retornar . '<div class="compra"> 	<div class="row"> 		<div class="col justify-content-start"> 			<img class="img-fluid" width="50%" src="../Assets/imgs/products/'. $linha['image'] .'"> 		</div> 		<div class="col-5 justify-content-center"> 			<h1 class="text-start">'. $linha['title'] .'</h1> 			<h2 class="detail text-start">#'. $linha['payment_id'] .' | Metódo: '. $linha['payment_method'] .'</h2> 		</div> 		<div class="col justify-content-end"> 			<div class="infos"> 				<h3 class="text-center">R$'. $linha['value'] .'</h3><br> 				<a href="/details?id='. $linha['payment_id'] .'&img='. $linha['image'] .'&product_id='. $linha[''] .'"><button class="btn btn-primary"> <i class="fa-solid fa-circle-info"></i></button></a> 			</div> 		</div> 	</div> </div>';
         }
     }
     else{

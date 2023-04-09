@@ -35,11 +35,9 @@ switch ($url) {
     case '/tos':
         include('./View/tos.html');
         break;
-
     case '/verify':
         include('./Model/header.php');
         break;
-
     case '/admin':
         include('./View/admin.php');
         break;
@@ -60,13 +58,11 @@ switch ($url) {
         break;
 
     case '/details':
+        include('./View/details.php');
         break;
 
     case '/create':
         include('./View/create.php');
-        break;
-    case '/created':
-        include('./Controller/product_created.php');
         break;
     case '/delete':
         include('./Controller/delete.php');

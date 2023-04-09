@@ -5,6 +5,7 @@ error_reporting(E_ALL & ~E_NOTICE);
 
 require_once('./DAO/database.php');
 
+$_SESSION['request_sent'] = false;
 
 ?>
 

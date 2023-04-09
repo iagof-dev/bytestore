@@ -3,12 +3,12 @@ ob_start();
 session_start();
 error_reporting(0);
 
-
 $user_id = $_SESSION['user_id'];
 $user_role = $_SESSION['user_role'];
 $user_name = $_SESSION['user_name'];
 $user_email = $_SESSION['user_email'];
 $user_logged = $_SESSION['user_logged'];
+$_SESSION['request_sent'] = false;
 
 
 require_once('./Controller/pages.php');
@@ -47,6 +47,8 @@ switch ($user_role) {
         <h1>Anúncios:</h1>
         <div class="anuncios-box position-absolute top-50 start-50 translate-middle">
           <?php echo (user_get_products()); ?>
+        <button class="btn btn-primary">Ver mais</button>
+
         </div>
       </div>
     </div>

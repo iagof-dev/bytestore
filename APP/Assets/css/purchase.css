@@ -12,6 +12,14 @@
     margin-bottom: 1vh;
 }
 
+.text-status{
+    padding-left: 1vh;
+    width: 94.7px !important;
+    margin-top: 0.3vh !important;
+    font-size: 25vh !important;
+    font-weight: bold;
+}
+
 .compra{
     display: flex;
     padding-top: 1vh;
@@ -51,7 +59,7 @@
 }
 .infos .btn{
     justify-content: end !important;
-    margin-left: 8vh;
+    margin-left: 4vh;
 }
 .infos h3{
     font-size: 2vh;

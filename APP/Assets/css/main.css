@@ -98,6 +98,11 @@ form {
 .cardimg{
   width: 12.85rem !important;
   height: 11rem !important;
+  max-width: 12.85rem !important;
+  max-height: 11rem !important;
+  min-width: 12.85rem !important;;
+  min-height: 11rem !important;
+
 }
 
 .card-preco{

@@ -30,11 +30,18 @@ require_once('./Model/header.php');
                                 <h1 class="text-start">Nome do Produto</h1>
                                 <h2 class="detail text-start">#09SDUYGF0 | Metódo: PIX</h2>
                             </div>
-                            <div class="col justify-content-end">
+                            
+                            <div class="col text-center justify-content-end">
                                 <div class="infos">
-                                    <h3 class="text-center">R$0.00</h3><br>
-                                    <button class="btn btn-primary "> <i class="fa-solid fa-circle-info"></i></button>
-
+                                    <div class="col text-center">
+                                        <h3 class="">R$0.00</h3><br>
+                                    </div>
+                                    <div class="col text-center">
+                                        <h2 class="text-center center text-status text-danger">Aprovado</h2>
+                                    </div>
+                                    <div class="col text-center">
+                                        <button class="btn btn-primary "> <i class="fa-solid fa-circle-info"></i></button>
+                                    </div>
                                 </div>
                             </div>
                         </div>

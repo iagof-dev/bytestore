@@ -50,15 +50,16 @@ $result = json_decode($response, true);
 // echo('Payment Approved Date: '.$result['date_approved'].'<br>');
 
 //$coco = MercadoPago\Payment::find_by_id($collection_id);
-
+$dateTime = new DateTime($result['date_approved']);
+$dataHoraMysql = $dateTime->format('Y-m-d H:i:s');
 try{
     
-    enviar_comando("insert into payments values (default, '". $product_id ."' ,'". $collection_id ."', '". $result['payment_method_id'] ."', '". $result['transaction_details']['total_paid_amount'] ."',  '". $result['status_detail'] ."', null, '". $costumer_id ."' , '". $result['payer']['identification']['number'] ."', '". $result['point_of_interaction']['transaction_data']['bank_info']['payer']['long_name'] ."', '". $result['payer']['email'] ."', '". $seller_id ."')");
+    enviar_comando("insert into payments values (default, '". $product_id ."' ,'". $collection_id ."', '". $result['payment_method_id'] ."', '". $result['transaction_details']['total_paid_amount'] ."',  '". $result['status'] ."', '". $dataHoraMysql ."' , '". $costumer_id ."' , '". $result['payer']['identification']['number'] ."', '". $result['point_of_interaction']['transaction_data']['bank_info']['payer']['long_name'] ."', '". $result['payer']['email'] ."', '". $seller_id ."', '". $result['additional_info']['ip_address'] ."')");
 }
 catch(Exception $e){
     echo($e);
 }
 
-header("Location: /success?payment=". $collection_id);
+header("Location: /purchases");
 
 ?>

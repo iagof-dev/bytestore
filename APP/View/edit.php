@@ -86,13 +86,8 @@ require_once('./Model/header.php');
         </div>
 
         <div class="grid1-create-angateway" style="padding-bottom: 50px;">
-          <?php
-          echo ('<input type="text" name="gateway" style="margin-bottom: 5% !important;" required class="form-control" placeholder="' . $product[5] . '" aria-describedby="basic-addon1">');
-          ?>
-          <input type="submit" value="✔️ Salvar" required class="form-control" aria-describedby="basic-addon1">
-          <?php
-          echo ('<a style="text-decoration: none; " href="/delete?id=' . $_GET['id'] . '&file=' . $_GET['file'] . '"><input style="color: red;" type="button" value="🗑️ Excluir Anúncio" class="form-control" style="margin-top 10px !important;"></a>');
-          ?>
+          <input type="submit" value="✔️ Salvar" class="form-control">
+          <a href="javascript:history.back()" style="text-decoration: none;"><input type="button" value="Cancelar" class="form-control text-danger" style="margin-top: 10px !important;"></a>
         </div>
       </form>
     </div>
