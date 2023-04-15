@@ -1,9 +1,30 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chivo+Mono:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
 
 :root {
-  --fonte-1: 'Roboto', sans-serif;
+
+  --fonte-poppins: 'Poppins', sans-serif;
+  --fonte-montserrat: 'Montserrat', sans-serif;
+  --fonte-chivo: 'Chivo Mono', monospace;
+
 }
 
+a{
+  color: white !important;
+  text-decoration: none !important;
+}
+
+.c{
+  display: flex;
+  text-align: center;
+  vertical-align: middle;
+}
+
+h1{
+  font-family: var(--fonte-poppins) !important;
+  font-size: 12px !important;
+}
 
 
 .nav-link {

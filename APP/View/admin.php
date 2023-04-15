@@ -47,7 +47,6 @@ switch ($user_role) {
         <h1>Anúncios:</h1>
         <div class="anuncios-box position-absolute top-50 start-50 translate-middle">
           <?php echo (user_get_products()); ?>
-        <button class="btn btn-primary">Ver mais</button>
 
         </div>
       </div>

@@ -9,6 +9,7 @@ require_once('./DAO/database.php');
 
 MercadoPago\SDK::setAccessToken($mercado_pago_key);
 
+
 function mp_create_link($titulo, $preco, $descricao,$costumer_id, $seller_id, $product_id){
     $payment = new MercadoPago\Preference();
   
@@ -38,11 +39,11 @@ function mp_create_link($titulo, $preco, $descricao,$costumer_id, $seller_id, $p
     return $payment_link;
 }
 
-function mp_get_info_payment($payment_id){
-    
+function mp_get_info_payment($payment_id, $mp_key){
+
 
     $url = 'https://api.mercadopago.com/v1/payments/'. $payment_id;
-    $authorization_header = 'Authorization: Bearer '. $mercado_pago_key;
+    $authorization_header = 'Authorization: Bearer '. $mp_key;
     $curl = curl_init($url);
     curl_setopt($curl, CURLOPT_HTTPHEADER, array($authorization_header));
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);

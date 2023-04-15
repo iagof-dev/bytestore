@@ -19,13 +19,13 @@ if (empty($seller_info[1]) or !isset($seller_info[1])) {
 if ($seller_info[5] == true or $seller_info[5] == 1) {
     if ($_GET['id'] == 1) {
 
-        $verified = ('<div class="verified"><h1>' . $seller_info[1] . ' <i class="bi bi-patch-check-fill text-center text-warning-emphasis"></h1></i></a></div>');
+        $verified = ('<div class="verified"><h1 style="font-size: 25px !important;">' . $seller_info[1] . ' <i class="bi bi-patch-check-fill text-center text-warning-emphasis"></h1></i></a></div>');
     } else {
 
-        $verified = ('<div class="verified"><h1>' . $seller_info[1] . ' <i class="bi bi-patch-check-fill text-center text-primary"></h1></i></a></div>');
+        $verified = ('<div class="verified"><h1 style="font-size: 25px !important;">' . $seller_info[1] . ' <i class="bi bi-patch-check-fill text-center text-primary"></h1></i></a></div>');
     }
 } else {
-    $verified = ('<h1>' . $seller_info[1] . '</h1>');
+    $verified = ('<h1 style="font-size: 25px !important;">' . $seller_info[1] . '</h1>');
 }
 
 
@@ -33,7 +33,7 @@ $seller_products = get_all_seller_products($id_user);
 
 ?>
 
-
+<link rel="stylesheet" href="../Assets/css/global.css">
 <link rel="stylesheet" href="../Assets/css/main.css">
 <link rel="stylesheet" href="../Assets/css/profile.css">
 
@@ -50,7 +50,7 @@ $seller_products = get_all_seller_products($id_user);
                     <div class="store-name">
                         <?php echo ($verified);
                         if ($_GET['id'] == $_SESSION['user_id']) {
-                            echo ('<a href="/edit_profile?id=' . $_SESSION["user_id"] . '"><button class="btn btn-primary position-absolute bt-edit translate-middle text-center" ><i class="fa-solid fa-pen-to-square"></i> Editar Perfil</button></a>');
+                            echo ('<a href="/edit_profile?id=' . $_SESSION["user_id"] . '"><button class="btn btn-primary position-absolute bt-edit translate-middle text-center"><i class="fa-solid fa-pen-to-square"></i> Editar Perfil</button></a>');
                         }
                         ?>
 

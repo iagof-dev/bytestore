@@ -1,3 +1,28 @@
+<?php
+
+$logged = "";
+
+if ($_SESSION['user_logged'] == "false" or $_SESSION['user_logged'] == false) {
+    $logged = "<a class='nav-link' href='/login'><i class='fa-sharp fa-solid fa-door-closed'></i> Login</a>";
+} else {
+    switch ($_SESSION['user_role']) {
+        case 'admin':
+            $logged = '<li class="nav-item dropdown"><button class="btn btn-dark dropdown-toggle nav-link" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: transparent !important; border: none;"><i class="fa-solid fa-user"></i> Teste</button><ul class="dropdown-menu dropdown-menu-dark"><li><a class="dropdown-item" href="/profile/?id=1"><i class="fa-solid fa-user"></i> Perfil</a></li><li><a class="dropdown-item" href="/purchases"><i class="fa-solid fa-cart-shopping"></i> Minhas Compras</a></li><li><a class="dropdown-item" href="/admin"><i class="fa-solid fa-gear"></i> Meus Anúncios</a></li><li><a class="dropdown-item" href="/logout"><i class="fa-solid fa-door-open"></i> Sair</a></li></ul></li>';
+            break;
+        case 'seller':
+            $logged = '<li class="nav-item dropdown"><button class="btn btn-dark dropdown-toggle nav-link" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: transparent !important; border: none;"><i class="fa-solid fa-user"></i> Teste</button><ul class="dropdown-menu dropdown-menu-dark"><li><a class="dropdown-item" href="/profile/?id=1"><i class="fa-solid fa-user"></i> Perfil</a></li><li><a class="dropdown-item" href="/purchases"><i class="fa-solid fa-cart-shopping"></i> Minhas Compras</a></li><li><a class="dropdown-item" href="/admin"><i class="fa-solid fa-gear"></i> Meus Anúncios</a></li><li><a class="dropdown-item" href="/logout"><i class="fa-solid fa-door-open"></i> Sair</a></li></ul></li>';
+            break;
+        case 'user':
+            $logged = '<li class="nav-item dropdown">  <button class="btn btn-dark dropdown-toggle nav-link" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: transparent !important; border: none;"><i class="fa-solid fa-user"></i> Teste</button>  <ul class="dropdown-menu dropdown-menu-dark">  <li><a class="dropdown-item" href="/profile/?id=1"><i class="fa-solid fa-user"></i> Perfil</a></li>  <li><a class="dropdown-item" href="/purchases"><i class="fa-solid fa-cart-shopping"></i> Minhas Compras</a></li>  <li><a class="dropdown-item" href="/logout"><i class="fa-solid fa-door-open"></i> Sair</a></li>  </ul>  </li>';
+            break;
+        default:
+            break;
+    }
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br" data-bs-theme="dark">
 <!-- NECESSARY -->
@@ -24,74 +49,13 @@
 <nav class='navbar bg-body-tertiary'>
     <div class='container'><a class='navbar-brand' href='/'>
             <div class='junto' style='display: flex;'><i style='width: 32px;' class='fa-solid fa-microchip'></i>
-                <h1 style='height: 5px !important; font-size: 17px;'>Byte Store</h1>
+                <h1 style='height: 5px !important; font-size: 17px !important;'>Byte Store</h1>
             </div>
         </a>
-        <div class='nav'><a class='nav-link active' href='../'><i class='fa-solid fa-house'></i> Inicio</a>
-            <li class='nav-item dropdown'><a class='nav-link dropdown-toggle' data-bs-toggle='dropdown' href='#' role='button' aria-expanded='false'><i class='fa-solid fa-computer'></i> Computadores</a>
-                <ul class='dropdown-menu'>
-                    <li><a class='dropdown-item' href='#'><i class='fa-solid fa-laptop'></i> Uso Pessoal</a></li>
-                    <li><a class='dropdown-item' href='#'><i class='fa-sharp fa-solid fa-gamepad'></i> Gamer</a></li>
-                    <li><a class='dropdown-item' href='#'><i class='fa-solid fa-briefcase'></i> Workstation</a></li>
-                    <li><a class='dropdown-item' href='#'><i class='fa-solid fa-server'></i> Servidor</a></li>
-                </ul>
-            </li>
-            <li class='nav-item dropdown'><a class='nav-link dropdown-toggle' data-bs-toggle='dropdown' href='#' role='button' aria-expanded='false'><i class='fa-solid fa-gear'></i> Componentes</a>
-                <ul class='dropdown-menu'>
-                    <li><a class='dropdown-item' href='#'><i class='fa-duotone fa-desktop'></i> Gabinete</a></li>
-                    <li><a class='dropdown-item' href='#'><i class='fa-sharp fa-solid fa-gamepad'></i> Placa de Video (VGA)</a></li>
-                    <li><a class='dropdown-item' href='#'><i class='fa-solid fa-microchip'></i> Processador</a></li>
-                    <li><a class='dropdown-item' href='#'><i class='fa-solid fa-memory'></i> Memoria Ram</a></li>
-                    <li><a class='dropdown-item' href='#'><i class='fa-duotone fa-desktop'></i> Placa Mãe</a></li>
-                    <li><a class='dropdown-item' href='#'><i class='fa-solid fa-database'></i> Armazenamento</a></li>
-                    <li><a class='dropdown-item' href='#'><i class='fa-solid fa-fan'></i> Cooler Box</a></li>
-                    <li><a class='dropdown-item' href='#'><i class='fa-solid fa-fan'></i> Air Cooler</a></li>
-                    <li><a class='dropdown-item' href='#'><i class='fa-sharp fa-solid fa-droplet'></i> Water Cooler</a>
-                    </li>
-                </ul>
-            </li>
-            <li class='nav-item dropdown'> <a class='nav-link dropdown-toggle' data-bs-toggle='dropdown' href='#' role='button' aria-expanded='false'><i class='fa-solid fa-headset'></i> Periféricos</a>
-                <ul class='dropdown-menu'>
-                    <li><a class='dropdown-item' href='#'><i class='fa-solid fa-cube'></i> KIT Gamer</a></li>
-                    <li><a class='dropdown-item' href='#'><i class='fa-solid fa-keyboard'></i> Teclado Gamer</a></li>
-                    <li><a class='dropdown-item' href='#'><i class='fa-solid fa-computer-mouse'></i> Mouse Gamer</a>
-                    </li>
-                    <li><a class='dropdown-item' href='#'><i class='fa-solid fa-desktop'></i> Monitor</a></li>
-                    <li><a class='dropdown-item' href='#'><i class='fa-solid fa-headset'></i> Headset Gamer</a></li>
-                    <li><a class='dropdown-item' href='#'><i class='fa-solid fa-fan'></i> Veintoinha Gamer</a></li>
-                    <li><a class='dropdown-item' href='#'><i class='fa-solid fa-volume-high'></i> Caixa de Som</a></li>
-                    <li><a class='dropdown-item' href='#'><i class='fa-solid fa-pen'></i> Mesa Digitalizadora</a></li>
-                    <li><a class='dropdown-item' href='#'><i class='fa-solid fa-print'></i> Impressora</a></li>
-                    <li><a class='dropdown-item' href='#'><i class='fa-solid fa-screwdriver'></i> Pendrive</a></li>
-                </ul>
-            </li><a class='nav-link' href='#'><i class='fa-solid fa-phone'></i> Contato</a>
+        <div class="nav">
+            <a class='nav-link' href="/cart"><i class="fa-solid fa-cart-shopping"></i></a>
 
-
-            <?php
-            if ($_SESSION['user_logged'] == "false" or $_SESSION['user_logged'] == false) {
-                echo ("<a class='nav-link' href='/login'><i class='fa-sharp fa-solid fa-door-closed'></i> Login</a></div>     </div> </div></div></nav>");
-            } else {
-                echo (' <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fa-solid fa-user"></i> ' . $_SESSION['user_name'] . '</a>');
-                echo ('<ul class="dropdown-menu">');
-                echo ('<li><a class="dropdown-item" href="/profile/?id=' . $_SESSION['user_id'] . '"><i class="fa-solid fa-user"></i> Perfil</a></li>');
-                echo ('<li><a class="dropdown-item" href="/purchases"><i class="fa-solid fa-cart-shopping"></i> Minhas Compras</a></li>');
-                switch ($_SESSION['user_role']) {
-                    case 'seller':
-                        echo ('<li><a class="dropdown-item" href="/admin"><i class="fa-solid fa-gear"></i> Meus Anúncios</a></li>');
-                        break;
-                    case 'admin':
-                        echo ('<li><a class="dropdown-item" href="/admin"><i class="fa-solid fa-gear"></i> Meus Anúncios</a></li>');
-                        break;
-                    case 'user':
-                        break;
-                }
-                echo ('<li><a class="dropdown-item" href="/logout"><i class="fa-solid fa-door-open"></i> Sair</a></li>');
-            }
-
-            ?>
-
-            </ul>
-            </li>
+            <?php echo ($logged); ?>
 
 
 
@@ -105,7 +69,7 @@
 <nav class='navbar fixed-bottom navbar-expand-lg  footer-cor'>
     <div class='container-fluid'>
         <div class='center-text footer-text'>
-            <h1><i class='fa-solid fa-bolt'></i> Feito por <a style='text-decoration: none;' href='/credits'>@N3rdyDzn</a> - 2023</h1>
+            <h1 style="font-family: 'Verdana' sans-serif !important; font-weight: bold !important;"><i class='fa-solid fa-bolt'></i> Feito por <a style='text-decoration: none;' href='/credits'>@N3rdyDzn</a> - 2023</h1>
         </div>
     </div>
 </nav>

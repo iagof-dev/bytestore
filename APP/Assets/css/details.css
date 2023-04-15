@@ -1,0 +1,75 @@
+.box{
+    width: 50vh;
+    background-color: #202020;
+    height: 50vh !important;
+    border-radius: 10px !important;
+}
+.box2{
+    display: flex;
+    width: 30vh;
+    background-color: purple;
+    height: 17vh !important;
+    border-radius: 10px !important;
+    margin-top: -12.5vh;
+    margin-left: 2vh !important;
+}
+
+.box2 .info{
+    display: flex;
+    margin-top: 1vh !important;
+    margin-left: 5vh !important;
+    width: 100vh !important;
+}
+.info h1{
+    margin-left: 1vh !important;
+    margin-top: 1vh !important;
+}
+.info2{
+    display: block;
+    margin-top: -2vh !important;
+}
+
+.box2 img{
+    width: 10vh !important;
+    height: 8vh !important;
+}
+.box2 h1{
+    font-size: 2.1vh !important;
+    font-weight: bold !important;
+}
+.box2 h2{
+    font-size: 1.7vh !important;
+}
+.box2 h3{
+    font-size: 1.5vh !important;
+}
+
+.box3{
+    display: flex;
+    width: 30vh;
+    background-color: red;
+    height: 17vh !important;
+    border-radius: 10px !important;
+    margin-left: 2vh !important;
+}
+
+.another-container{
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    align-items: center;
+    margin-top: 1.5vh;
+}
+
+.box h1{
+    font-size: 32px !important;
+}
+.box2 h1{
+    font-size: 32px !important;
+}
+
+.title h1{
+    width: 100% !important;
+    font-size: 3vh !important;
+    margin-top: 1vh !important;
+}

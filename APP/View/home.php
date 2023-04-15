@@ -2,11 +2,8 @@
 ob_start();
 session_start();
 error_reporting(E_ALL & ~E_NOTICE);
-
 require_once('./DAO/database.php');
-
 $_SESSION['request_sent'] = false;
-
 ?>
 
 
@@ -41,31 +38,18 @@ $_SESSION['request_sent'] = false;
 </div>
     </div>
     
-    
-
-    <h1 style="font-size: 25px;">Talvez você goste:</h1>
+    <h1 style="font-size: 2vh !important; font-weight: bold; font-family: var(--fonte-montserrat) !important;">Recomendado para você:</h1>
     <div class="center">
       <div style="margin-bottom: 3%;" class="row">
-
-
-      <?php $anuncios = get_5_random_products(); echo($anuncios); ?>
-
-
+        <?php $anuncios = get_5_random_products(); echo($anuncios); ?>
     </div>
+
+
+
+
+
   </div>
 </body>
-<!-- <div data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-duration="1000" class="card"
-            style="width: 18rem;">
-            <img src="https://i0.wp.com/scholarculture.com/wp-content/uploads/2017/07/placeholder-1280x720-whitebg.png"
-              class="card-img-top">
-            <div class="card-body">
-              <h5 class="card-title">Máquina de Café Expresso</h5>
-              <p class="card-text">Se você é um amante de café e quer desfrutar de um sabor intenso e autêntico em sua
-                própria casa, a nossa Máquina de Café Expresso é o produto perfeito para você. Com ela, você pode
-                preparar cafés expressos, cappuccinos, lattes e muito mais, com apenas alguns toques.</p>
-              <a href="#" class="center btn btn-primary"><i class="fa-solid fa-cart-shopping"> Comprar</i></a>
-            </div>
-          </div> -->
 
 <script src="../Assets/js/aos.js"></script>
 <script>

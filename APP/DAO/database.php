@@ -3,7 +3,7 @@ ob_start();
 session_start();
 error_reporting(0);
 
-$mercado_pago_key = "";
+static $mercado_pago_key = "";
 class mysql
 {
     public $db_ip = "";
