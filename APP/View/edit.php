@@ -87,15 +87,8 @@ if ($_SESSION['user_id'] == $product[6]) {
 
 
   $comando .= " WHERE id=" . $id_product . ";";
-  echo ("é dono");
   enviar_comando($comando);
-} else {
-  echo ('n é dono');
 }
-
-
-echo ($comando);
-
 
 ?>
 

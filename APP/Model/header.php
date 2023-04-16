@@ -15,16 +15,15 @@ function debug_to_console($data)
     echo "<script>console.log('Debug | " . $output . "' );</script>";
 }
 
-$conexao = new mysql();
-$mysqli = $conexao->getConexao();
 
 if($_SESSION['user_logged'] == null or $_SESSION['user_logged'] != "true" or $_SESSION['user_logged'] == ""){
-    echo("Usuario não logado. <br>");
+    debug_to_console("Requisitado");
     user_login($_POST["txt_email"], $_POST["txt_pass"]);
 }
 
 function user_login($input_email, $input_pass)
 {
+    debug_to_console("Requisitado");
     $conexao = new mysql();
     $mysqli = $conexao->getConexao();
     

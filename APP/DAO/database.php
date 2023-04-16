@@ -3,14 +3,28 @@ ob_start();
 session_start();
 error_reporting(0);
 
-static $mercado_pago_key = "";
+static $mercado_pago_key = "TEST-1973847795051913-030914-1a9965344f9f87cfb719f6e6d3c895b2-524251376";
 class mysql
 {
-    public $db_ip = "";
-    public $db_port = "3306";
-    public $db_user = "";
-    public $db_pass = "";
-    public $db_database = "nrdydes1_bytestore";
+    //
+    //  Database RH
+    //
+
+    // public $db_ip = "db.n3rdydzn.software";
+    // public $db_port = "3306";
+    // public $db_user = "";
+    // public $db_pass = "";
+    // public $db_database = "nrdydes1_bytestore";
+    
+    //================================
+    //  DigitalOcean Database
+    //================================
+    public $db_ip = "db3.n3rdydzn.software";
+    public $db_port = "25060";
+    public $db_user = "n3rdy";
+    public $db_pass = "AVNS_FV-KVZgAa3by-CYbAP6";
+    public $db_database = "n3rdy_bytestore";
+
     public static $db_table_users = "users";
     public static $db_table_products = "products";
     public static $db_table_payments = "payments";
@@ -22,17 +36,17 @@ class mysql
     {
         if (!isset($this->db_ip) or empty($this->db_ip) or empty($this->db_user) or empty($this->db_port) or empty($this->db_pass) or empty($this->db_database)) {
             ob_end_clean();
-            echo ('<div class="error-container"><div class="textos"> <div class="error-title"> <div class="spinner-border" role="status" style="margin-right: 15px;"></div> <h1> | Ocorreu um Erro!</h1> <h2 style="margin-left: 10px; color: grey;">(Error 500)</h2> </div> <br> <div class="error"> <p>Por favor, tente novamente mais tarde. Se o problema persistir, entre em contato conosco para que possamos ajudá-lo a resolver o problema.</p> </div></div> </div>');
+            echo ('<div class="error-container"><div class="textos"> <div class="error-title"> <div class="spinner-border" role="status" style="margin-right: 15px;"></div> <h1 style="vertical-align: middle !important;font-size: 3vh !important;font-family: Arial, Helvetica, sans-serif !important;"> | Ocorreu um Erro!</h1> <h2 style="margin-left: 10px; color: grey;">(Error 500)</h2> </div> <br> <div class="error"> <p>Por favor, tente novamente mais tarde. Se o problema persistir, entre em contato conosco para que possamos ajudá-lo a resolver o problema.</p> </div></div> </div>');
             exit();
         } else {
                 $this->db = new mysqli($this->db_ip, $this->db_user, $this->db_pass, $this->db_database, $this->db_port);
                 if ($this->db->connect_error) {
                     ob_end_clean();
                     if(str_contains($this->db->connect_error, "Access denied for user")){
-                        echo ('<div class="error-container"><div class="textos"> <div class="error-title"> <div class="spinner-border" role="status" style="margin-right: 15px;"></div> <h1> | Ocorreu um Erro!</h1> <h2 style="margin-left: 10px; color: grey;">(Error 511)</h2> </div> <br> <div class="error"> <p>Por favor, tente novamente mais tarde. Se o problema persistir, entre em contato conosco para que possamos ajudá-lo a resolver o problema.</p> </div></div> </div>');
+                        echo ('<div class="error-container"><div class="textos"> <div class="error-title"> <div class="spinner-border" role="status" style="margin-right: 15px;"></div> <h1 style="font-family: Arial, Helvetica, sans-serif !important;"> | Ocorreu um Erro!</h1> <h2 style="margin-left: 10px; color: grey;">(Error 511)</h2> </div> <br> <div class="error"> <p>Por favor, tente novamente mais tarde. Se o problema persistir, entre em contato conosco para que possamos ajudá-lo a resolver o problema.</p> </div></div> </div>');
                     }
                     else{
-                        echo ('<div class="error-container"><div class="textos"> <div class="error-title"> <div class="spinner-border" role="status" style="margin-right: 15px;"></div> <h1> | Ocorreu um Erro!</h1> <h2 style="margin-left: 10px; color: grey;">(Error 599)</h2> </div> <br> <div class="error"> <p>Por favor, tente novamente mais tarde. Se o problema persistir, entre em contato conosco para que possamos ajudá-lo a resolver o problema.</p> </div></div> </div>');
+                        echo ('<div class="error-container"><div class="textos"> <div class="error-title"> <div class="spinner-border" role="status" style="margin-right: 15px;"></div> <h1 style="font-family: Arial, Helvetica, sans-serif !important;"> | Ocorreu um Erro!</h1> <h2 style="margin-left: 10px; color: grey;">(Error 599)</h2> </div> <br> <div class="error"> <p>Por favor, tente novamente mais tarde. Se o problema persistir, entre em contato conosco para que possamos ajudá-lo a resolver o problema.</p> </div></div> </div>');
                     }
                     exit();
                     
