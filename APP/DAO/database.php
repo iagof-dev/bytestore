@@ -77,6 +77,9 @@ function get_5_random_products()
             $retornar = $retornar . '<div class="col"> <a href="/product?id=' . $linha["id"] . '" style="text-decoration: none;"> <div data-aos="zoom-in" data-aos-duration="1000" data-aos-anchor-placement="top-bottom" class="card" style="width: 17rem;height: 18rem;"> <img   src="./Assets/imgs/products/' . $linha["image"] . '"   class="card-img-top cardimg img-fluid"> <div class="card-body">   <h5 class="card-title text-start card-titulo">' . $title_short . '</h5>   <h6 class="text-start card-preco">R$' . $linha["price"] . '</h6> </div> </div> </a> </div>';
         }
     }
+	else{
+        $retornar = '<h4 style="padding-top: 3vh !important;font-size: 1.7vh !important; color: red !important;">Nenhum anúncio encontrado!</h4>';
+    }
     return $retornar;
 }
 
