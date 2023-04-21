@@ -41,8 +41,8 @@ switch ($url) {
     case '/admin':
         include('./View/admin.php');
         break;
-    case '/edit':
-        include('./View/edit.php');
+    case '/modify':
+        include('./View/edit_product.php');
         break;
 
     case '/payment':
@@ -69,6 +69,9 @@ switch ($url) {
         break;
     case '/logout':
         include('./Controller/logout.php');
+        break;
+    case '/edit':
+        include('./View/edit_profile.php');
         break;
     default:
         include('./error.html');

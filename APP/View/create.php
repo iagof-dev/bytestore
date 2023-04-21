@@ -117,6 +117,6 @@ if (isset($anuncio[0]) and isset($anuncio[1]) and isset($anuncio[2]) and isset($
   </div>
 </body>
 
-<script src="../Assets/js/create.js"></script>
+<script src="../Assets/js/file_preview.js"></script>
 
 </html>

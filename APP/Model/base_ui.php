@@ -69,7 +69,7 @@ if ($_SESSION['user_logged'] == "false" or $_SESSION['user_logged'] == false) {
 <nav class='navbar fixed-bottom navbar-expand-lg  footer-cor'>
     <div class='container-fluid'>
         <div class='center-text footer-text'>
-            <h1 style="font-family: 'Verdana' sans-serif !important; font-weight: bold !important;"><i class='fa-solid fa-bolt'></i> Feito por <a style='text-decoration: none;' href='/credits'>@N3rdyDzn</a> - 2023</h1>
+            <h1 style="font-family: 'Verdana' sans-serif !important; font-weight: bold !important;"><i class='fa-solid fa-bolt'></i> Feito por <a style='text-decoration: none; ' href='/credits'>@N3rdyDzn</a> - 2023</h1>
         </div>
     </div>
 </nav>

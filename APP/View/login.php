@@ -15,15 +15,21 @@ if($error == "true"){
 <script src="../Assets/js/create.js"></script>
 <script src="../Assets/js/login.js"></script>
 
+<style>
+  input{
+    margin-bottom: 5px !important;
+  }
+</style>
+
 <body>
   <div class="container">
     <div data-aos="fade-in" data-aos-duration="500" class="containerlogin" style="margin-bottom: -90vh;">
       <div class="titulo bordinha">
-        <div class="titulo center"><h1 style="font-size: 23px !important;">Login</h1><br></div>
-        <?php if ($error == "true") {echo ('<div class="error center" data-aos="flip-left" data-aos-duration="500"><br><h5 class="text-danger" style="font-size: 16px;">E-mail ou senha incorretos!</h5></div>');} ?>
+        <div class="titulo center"><h1 style="font-size: 23px !important;">Login</h1></div>
+        <?php if ($error == "true") {echo ('<div class="error center" data-aos="flip-left" data-aos-duration="500"><h5 class="text-danger" style="font-size: 16px;">E-mail ou senha incorretos!</h5></div>');} ?>
         <div class="area1">
           <form action="/verify" method="post">
-            <div class="inpt1"><input id="inputemail" required style="background-color: #FFFFFF !important; color: #000000 !important;" class="form-control" name="txt_email" placeholder="E-mail"><br>
+            <div class="inpt1"><input id="inputemail" required style="background-color: #FFFFFF !important; color: #000000 !important;" class="form-control" name="txt_email" placeholder="E-mail">
               <input id="inputpass" name="txt_pass" required style="background-color: #FFFFFF !important;color: #000000 !important;" class="form-control" type="password" placeholder="Senha">
               <h4 style="font-size: 10px; color: grey; margin-top: 5px;">Ao realizar o login, você está concordando com os <a href="/tos"> termos de uso</a>.</h4>
               <div class="center"><div class="btnslg">

@@ -3,7 +3,7 @@ ob_start();
 session_start();
 error_reporting(0);
 
-static $mercado_pago_key = "TEST-1973847795051913-030914-1a9965344f9f87cfb719f6e6d3c895b2-524251376";
+static $mercado_pago_key = "";
 class mysql
 {
     //
@@ -76,9 +76,6 @@ function get_5_random_products()
             $title_short = mb_strimwidth($linha["title"], 0, 23, "...");
             $retornar = $retornar . '<div class="col"> <a href="/product?id=' . $linha["id"] . '" style="text-decoration: none;"> <div data-aos="zoom-in" data-aos-duration="1000" data-aos-anchor-placement="top-bottom" class="card" style="width: 17rem;height: 18rem;"> <img   src="./Assets/imgs/products/' . $linha["image"] . '"   class="card-img-top cardimg img-fluid"> <div class="card-body">   <h5 class="card-title text-start card-titulo">' . $title_short . '</h5>   <h6 class="text-start card-preco">R$' . $linha["price"] . '</h6> </div> </div> </a> </div>';
         }
-    }
-	else{
-        $retornar = '<h4 style="padding-top: 3vh !important;font-size: 1.7vh !important; color: red !important;">Nenhum anúncio encontrado!</h4>';
     }
     return $retornar;
 }
