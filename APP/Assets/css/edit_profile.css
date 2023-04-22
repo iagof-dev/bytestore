@@ -9,8 +9,13 @@
 
 
 .box .row{
-    margin-left: 1vh !important;
+    margin-left: 10vh !important;
     width: 50vh !important;
+    margin-top: 5px !important;
+
+}
+.box .col{
+    margin-top: 5vh !important;
 }
 
 .box input[type="submit"]{
@@ -35,16 +40,16 @@
 
 .box-container{
     display: flex;
-    width: 70vh !important;
-    height: 60vh !important;
+    width: 90vh !important;
+    height: 62vh !important;
     justify-content: center;
     align-items: center;
     align-self: center;
-
 }
 .box{
-    background-color: #202020;
+    background-color: #30343F;
     border-radius: 10px;
     width: 100%;
     height: 100%;
+
 }

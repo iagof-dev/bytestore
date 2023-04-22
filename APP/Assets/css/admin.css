@@ -112,6 +112,25 @@
     width: 100% !important;
 }
 
+.infos{
+  margin-top: 1.75vh !important;
+}
+
+.col-5 h1{
+  font-size: 2.1vh !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+}
+
+.col-5 p{
+  font-size: 1vh !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+}
+
+.col-5{
+  margin-left: -4vh !important;
+}
+
+
 .pageanuncios {
     flex-direction: column;
     border-radius: 10px;
@@ -143,9 +162,4 @@ img{
 .block{
   display: block;
 }
-.anuncios-box {
-  width: 90vh !important;
-  height: 62vh !important;
-  background-color: #30343F !important;
-  border-radius: 15px !important;
-}
+

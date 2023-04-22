@@ -50,7 +50,7 @@ $seller_products = get_all_seller_products($id_user);
                     <div class="store-name">
                         <?php echo ($verified);
                         if ($_GET['id'] == $_SESSION['user_id']) {
-                            echo ('<a href="/edit?id=' . $_SESSION["user_id"] . '"><button class="btn btn-primary position-absolute bt-edit translate-middle text-center"><i class="fa-solid fa-pen-to-square"></i> Editar Perfil</button></a>');
+                            echo ('<a href="/edit?id=' . $_SESSION["user_id"] . '"><button class="btn btn-primary position-absolute bt-edit translate-middle text-center"><i class="fa-solid fa-pen-to-square"></i> Modificar</button></a>');
                         }
                         ?>
 

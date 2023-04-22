@@ -29,7 +29,7 @@ if ($_SESSION['user_logged'] == "false" or $_SESSION['user_logged'] == false) {
 
 <head>
     <title>ByteStore</title>
-    <link rel="shortcut icon" href="./Assets/imgs/logo.webp" type="image/x-icon">
+    <link rel="shortcut icon" href="../Assets/imgs/logo.webp" type="image/x-icon">
     <link rel="stylesheet" href="../Assets/css/global.css">
     <link rel="stylesheet" href="../Assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="../Assets/css/sweetalert.min.css">

@@ -32,26 +32,44 @@ switch ($user_role) {
     break;
 }
 
+$teste = user_get_products();
+
+
+$box_size = 64;
+// echo('Quantidade de Anúncios: '. $teste[0]. '<br>');
+// echo('Tamanho para aplicar (VH): '. $box_size);
+
+echo ('<style>   .anuncios-box {width: 90vh !important;height: ' . $box_size . 'vh !important; background-color: #30343F !important; border-radius: 15px !important;} </style>');
+
 ?>
 
 
 <link rel="stylesheet" href="../Assets/css/admin.css">
 
+
+
 <body>
   <div class="container text-center">
     <div class="col">
       <div class="row">
-        <div style="padding-top: 3vh !important;" class="text-end btn_create position-relative ">
+        <div class="text-end btn_create position-relative " style="margin-top: 1.5vh !important;">
           <a href="/create"><button class="btn btn-primary"><i class="fa-solid fa-plus"></i> Criar anúncio</button></a>
         </div>
-        <h1>Anúncios:</h1>
-        <div class="anuncios-box position-absolute top-50 start-50 translate-middle">
-          <?php echo (user_get_products()); ?>
+      </div>
 
+      <div class="row">
+        <h1 style="font-size: 2.2vh !important;">Anúncios:</h1>
+      </div>
+      <div class="row">
+        <div class="anuncios-box position-absolute top-50 start-50 translate-middle">
+          <?php echo ($teste[1]); ?>
         </div>
       </div>
     </div>
 </body>
 
-
+<script src="../Assets/js/aos.js"></script>
+<script>
+  AOS.init();
+</script>
 </html>

@@ -35,7 +35,7 @@ if($_SESSION['user_id'] != $product_info[6]){
                         <div class="row">
                             <div class="col">
                                 <div class="anuncio_desc">
-                                <h1 class="text-start">Descrição do anúncio:</h1>
+                                <h1 class="text-start" style="font-family: Arial, Helvetica, sans-serif !important;font-size: 1.3vh !important;">Descrição do anúncio:</h1>
                                 <hr>
                                 <p class="text-start"><?php echo($product_info[2]); ?></p>
                                 </div>
@@ -50,7 +50,7 @@ if($_SESSION['user_id'] != $product_info[6]){
                         <div class="row">
                             <div class="col">
                                 <div class="infos text-start">
-                                    <h1 text-start><?php echo($product_info[1]); if($product_info[6] == $_SESSION['user_id']){echo(' <span class="badge rounded-pill text-bg-primary">Proprietário</span>');};?></h1>
+                                    <h1 style="font-family: Arial, Helvetica, sans-serif !important;font-size: 1.8vh !important;" text-start><?php echo($product_info[1]); if($product_info[6] == $_SESSION['user_id']){echo(' <span class="badge rounded-pill text-bg-primary">Proprietário</span>');};?></h1>
                                     <h2 text-start>R$<?php echo($product_info[3]); ?></h2>
                                     <h2>Vendedor: <a href="/profile/?id=<?php echo($product_info[6]); ?>"><?php echo($product_info[7]); ?></a> <?php if($product_info[8] == true or $product_info[8] == 1){echo('<i class="bi bi-patch-check-fill"></i>');} ?></h2>
                                 </div>

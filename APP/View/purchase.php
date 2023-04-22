@@ -4,11 +4,26 @@ session_start();
 error_reporting(0);
 
 require_once('./Model/header.php');
+
+$compras = get_all_purchases();
+
+$box_size = (12.5 * $compras[0]);
+
+
+if ($box_size < 64) {
+  $box_size = 64;
+}
+
+// echo('Compras: '. $compras[0]. '<br>');
+// echo($box_size. 'vh');
+
+echo('<style>.box{     display: flex;     background-color: #202020 !important;     border-radius: 12px;     width: 90vh !important;height: '. $box_size .'vh !important;     background-color: #30343F !important; }</style>');
+
 ?>
 
 <link rel="stylesheet" href="../Assets/css/purchase.css">
-<body>
 
+<body>
     <div class="container text-center">
         <h1 class="title">Minhas compras</h1>
         <div class="center">
@@ -18,7 +33,7 @@ require_once('./Model/header.php');
                         
 
 
-                    <?php $compras = get_all_purchases(); echo($compras); ?>
+                    <?php echo($compras[1]); ?>
                     
 
                     <!-- <div class="compra">

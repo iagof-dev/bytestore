@@ -44,7 +44,7 @@ if ($logged_id != $modify_id) {
                                 </div>
                                 <div class="row">
                                     <label>Descrição:</label>
-                                    <textarea type="text" name="description" placeholder="Descrição da loja" class="form-control"></textarea>
+                                    <textarea style="resize: none;" type="text" name="description" placeholder="Descrição da loja" class="form-control"></textarea>
                                 </div>
                                 <div class="row center margin">
                                     <input type="submit" class="btn btn-primary" value="💾 Salvar alterações">
