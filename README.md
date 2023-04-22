@@ -2,6 +2,7 @@
 HTML, CSS, JS &amp; MySql | Projeto de um E-COMMERCE feito em PHP utilizando padrão MVC.
 
 # ⚡ Status
+Started in: 28/02/2023
 Não finalizado/Not Finished.
 
 # ⚙️ Requirements
