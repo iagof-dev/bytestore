@@ -4,6 +4,7 @@ session_start();
 error_reporting(0);
 
 static $mercado_pago_key = "";
+
 class mysql
 {
     //
@@ -89,6 +90,11 @@ function enviar_comando($com)
     } catch (Exception $e) {
         echo ("Erro!<br> " . $e->getMessage());
         exit();
+    }
+    if (mysqli_affected_rows($mysqli) > 0) {
+        return true;
+    } else {
+        return false;
     }
 }
 

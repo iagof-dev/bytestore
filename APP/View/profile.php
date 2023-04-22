@@ -5,6 +5,9 @@ require('./Model/header.php');
 $id_user = $_GET['id'];
 $verified = "";
 
+$_SESSION['request_sent'] = false;
+
+
 if (empty($id_user) or !isset($id_user)) {
     header('Location: /');
 }
@@ -31,6 +34,19 @@ if ($seller_info[5] == true or $seller_info[5] == 1) {
 
 $seller_products = get_all_seller_products($id_user);
 
+
+if (empty($seller_info[4])) {
+    $profile_img_path = '../Assets/imgs/';
+    $profile_img = 'ph-user.jpg';
+}
+else {
+    $profile_img_path = '../Assets/imgs/users_pfp/';
+    $profile_img = $seller_info[4];
+} 
+
+$profile_img_set = $profile_img_path . $profile_img;
+
+
 ?>
 
 <link rel="stylesheet" href="../Assets/css/global.css">
@@ -43,14 +59,14 @@ $seller_products = get_all_seller_products($id_user);
             <div class="row align-items-center">
                 <div class="col-4">
                     <div class="d-block store-picture">
-                        <img width="45%" class="profile-img d-block thumbnail rounded-5 img-fluid" src="<?php if (empty($seller_info[4])) {echo ('../Assets/imgs/ph-user.jpg');} else {echo ('../Assets/imgs/users/' . $seller_info[4]);} ?>">
+                        <img width="124px" height="124px" class="profile-img d-block thumbnail rounded-5 img-fluid" src="<?php echo($profile_img_set); ?>"  style="width: 124px !important; height: 124px !important;">
                     </div>
                 </div>
                 <div class="col-7" style="margin-left: -8vh !important;">
                     <div class="store-name">
                         <?php echo ($verified);
                         if ($_GET['id'] == $_SESSION['user_id']) {
-                            echo ('<a href="/edit?id=' . $_SESSION["user_id"] . '"><button class="btn btn-primary position-absolute bt-edit translate-middle text-center"><i class="fa-solid fa-pen-to-square"></i> Modificar</button></a>');
+                            echo ('<a href="/edit?id=' . $_SESSION["user_id"] . '&img='. $profile_img .'"><button class="btn btn-primary position-absolute bt-edit translate-middle text-center"><i class="fa-solid fa-pen-to-square"></i> Modificar</button></a>');
                         }
                         ?>
 
@@ -60,7 +76,8 @@ $seller_products = get_all_seller_products($id_user);
                             <?php if (!isset($seller_info[6]) or empty($seller_info[6])) {
                                 echo ('Ops! A descrição da loja ainda não foi definida pelo vendedor. Volte em breve para conferir as novidades.');
                             } else {
-                                echo ($seller_info[6]);
+                                $description_short = mb_strimwidth($seller_info[6], 0, 200, '...');
+                                echo ($description_short);
                             } ?>
                         </p>
                     </div>

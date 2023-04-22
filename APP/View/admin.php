@@ -43,10 +43,7 @@ echo ('<style>   .anuncios-box {width: 90vh !important;height: ' . $box_size . '
 
 ?>
 
-
 <link rel="stylesheet" href="../Assets/css/admin.css">
-
-
 
 <body>
   <div class="container text-center">

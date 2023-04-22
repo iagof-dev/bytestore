@@ -9,6 +9,11 @@ require_once('./DAO/database.php');
 
 MercadoPago\SDK::setAccessToken($mercado_pago_key);
 
+//
+// Devido a atualização da API do Mercado Pago
+// A opção de pagamento está quebrado, até o momento
+//
+
 function mp_create_link($titulo, $preco, $descricao,$costumer_id, $seller_id, $product_id){
     $payment = new MercadoPago\Preference();
   

@@ -54,7 +54,7 @@ if ($_SESSION['user_id'] == $product[6]) {
 
 
 
-  if (isset($_FILES['animg'])) {
+  if (isset($_FILES['animg']) && $_FILES['animg']['size'] > 0 && $_FILES['animg']['error'] == 0) {
     $dir = './Assets/imgs/products/';
 
     $delete_dir = $dir . $old_img;
