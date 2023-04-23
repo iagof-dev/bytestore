@@ -67,45 +67,6 @@ $anuncios = get_5_random_products();
       </div>
 
 
-      <div class="melhores-comp">
-        <div class="row">
-          <h1 style="font-size: 2vh !important; font-weight: bold; font-family: var(--fonte-montserrat) !important;">Melhores Computadores:</h1>
-        </div>
-        <div class="row">
-          <div class="center">
-            <div style="margin-bottom: 10px;" class="row">
-              <?php echo ($anuncios); ?>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="melhores-comp">
-        <div class="row">
-          <h1 style="font-size: 2vh !important; font-weight: bold; font-family: var(--fonte-montserrat) !important;">Melhores Computadores:</h1>
-        </div>
-        <div class="row">
-          <div class="center">
-            <div style="margin-bottom: 10px;" class="row">
-              <?php echo ($anuncios); ?>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      
-      <div class="melhores-comp">
-        <div class="row">
-          <h1 style="font-size: 2vh !important; font-weight: bold; font-family: var(--fonte-montserrat) !important;">Melhores Computadores:</h1>
-        </div>
-        <div class="row">
-          <div class="center">
-            <div style="margin-bottom: 10px;" class="row">
-              <?php echo ($anuncios); ?>
-            </div>
-          </div>
-        </div>
-      </div>
 
 
     </div>

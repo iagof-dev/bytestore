@@ -79,3 +79,6 @@ echo('<style>.box{     display: flex;     background-color: #202020 !important; 
 
 
 </body>
+<script>
+  AOS.init();
+</script>

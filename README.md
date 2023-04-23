@@ -4,8 +4,6 @@ HTML, CSS, JS &amp; MySql | Projeto de um E-COMMERCE feito em PHP utilizando pad
 # ⚡ Status
 Não finalizado/Not Finished.
 
-Project started in: 28/02/2023
-
 # ⚙️ Requirements
 
 - MySql Server ([Baixar](https://dev.mysql.com/downloads/mysql/))

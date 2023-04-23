@@ -12,8 +12,7 @@ if($error == "true"){
 
 <link rel="stylesheet" href="../Assets/css/main.css">
 <link rel="stylesheet" href="../Assets/css/admin.css">
-<script src="../Assets/js/create.js"></script>
-<script src="../Assets/js/login.js"></script>
+
 
 <style>
   input{
@@ -42,9 +41,7 @@ if($error == "true"){
     </div>
   </div>
 </body>
+<script src="../Assets/js/create.js"></script>
+<script src="../Assets/js/login.js"></script>
 <script>AOS.init();</script>
-
-
-
-
 </html>

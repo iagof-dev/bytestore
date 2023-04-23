@@ -9,11 +9,9 @@ switch ($url) {
     case '/':
         include('./View/home.php');
         break;
-
     case '/product':
         include('./View/product.php');
         break;
-
     case '/login':
         include('./View/login.php');
         break;

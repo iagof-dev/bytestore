@@ -7,23 +7,13 @@ static $mercado_pago_key = "";
 
 class mysql
 {
-    //
-    //  Database RH
-    //
-
-    // public $db_ip = "db.n3rdydzn.software";
-    // public $db_port = "3306";
-    // public $db_user = "";
-    // public $db_pass = "";
-    // public $db_database = "nrdydes1_bytestore";
-    
     //================================
     //  DigitalOcean Database
     //================================
-    public $db_ip = "db3.n3rdydzn.software";
-    public $db_port = "25060";
-    public $db_user = "n3rdy";
-    public $db_pass = "AVNS_FV-KVZgAa3by-CYbAP6";
+    public $db_ip = "";
+    public $db_port = "3306";
+    public $db_user = "n3rdydev";
+    public $db_pass = "";
     public $db_database = "n3rdy_bytestore";
 
     public static $db_table_users = "users";
