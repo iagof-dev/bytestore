@@ -3,7 +3,7 @@ ob_start();
 session_start();
 error_reporting(0);
 
-
+$us_erro = "";
 
 
 require_once('./Model/header.php');
@@ -36,25 +36,42 @@ if (isset($anuncio[0]) and isset($anuncio[1]) and isset($anuncio[2]) and isset($
   $ext_img = pathinfo($_FILES['animg']['name'], PATHINFO_EXTENSION);
 
   $ext_img = strtolower($ext_img);
-  if($ext_img == "gif" or $ext_img == "bmp" or $ext_img == "tiff" or $ext_img == "raw" or $ext_img == "wav" or $ext_img == "avi" or $ext_img == "psd" or $ext_img == "ai" or $ext_img == "docx" or $ext_img == "mov"){
+  if ($ext_img == "gif" or $ext_img == "bmp" or $ext_img == "tiff" or $ext_img == "raw" or $ext_img == "wav" or $ext_img == "avi" or $ext_img == "psd" or $ext_img == "ai" or $ext_img == "docx" or $ext_img == "mov") {
     $_SESSION['request_sent'] = false;
-    echo('<script>swal({title: "Imagem inválida!",text: "Escolha outro arquivo...",type: "error",button: {text: "Fechar",value: true,visible: true,className: "btn btn-primary"}});setTimeout(function(){window.location.href = "/create";}, 1500);</script>');
+    echo ('<script>swal({title: "Imagem inválida!",text: "Escolha outro arquivo...",type: "error",button: {text: "Fechar",value: true,visible: true,className: "btn btn-primary"}});setTimeout(function(){window.location.href = "/create";}, 1500);</script>');
     exit;
   }
   $uniq_name = uniqid("product_") . "." . $ext_img;
   $folder_and_file = $diretorio . $uniq_name;
-  if (move_uploaded_file($_FILES['animg']["tmp_name"], $folder_and_file)) {
-    debug_to_console("Arquivo enviado!");
+
+  $file_sent = false;
+  try{
+    if (move_uploaded_file($_FILES['animg']["tmp_name"], $folder_and_file)) {
+      $file_sent = true;
+    }
+  
   }
-  //Pegar id Categoria
-  $cat_id = get_specif_category($_POST["ancategory"]);
+  catch(Exception $ex){
+    $us_erro = $ex;
+  }
+  
+  if ($file_sent == true) {
+    //Pegar id Categoria
+    $cat_id = get_specif_category($_POST["ancategory"]);
 
-  //Pegar sub id categoria
-  //$subcat_id = ;
-
-  create_product($anuncio_fix[0], $anuncio_fix[1], $anuncio_fix[2], $uniq_name, $cat_id[0]);
-  debug_to_console("Anúncio criado!");
-  echo ('<script>swal({title: "Sucesso!",text: "Seu anúncio foi criado com sucesso!",type: "success",button: {text: "Fechar",value: true,visible: true,className: "btn btn-primary"}});setTimeout(function(){window.location.href = "/admin";}, 2000);</script>');
+    //Pegar sub id categoria
+    
+    //criar anúncio no banco de dados
+    create_product($anuncio_fix[0], $anuncio_fix[1], $anuncio_fix[2], $uniq_name, $cat_id[0]);
+    //mensagem bonitinha
+    echo ('<script>swal({title: "Sucesso!",text: "Seu anúncio foi criado com sucesso!",type: "success",button: {text: "Fechar",value: true,visible: true,className: "btn btn-primary"}});setTimeout(function(){window.location.href = "/admin";}, 2000);</script>');
+  }
+  else{
+    //erro, animal
+    echo ('<script>swal({title: "Erro!",text: "Deu erro ai chefe... olha o console ai",type: "error",button: {text: "Fechar",value: true,visible: true,className: "btn btn-primary"}});</script>');
+    debug_to_console($us_erro);
+    exit();
+  }
 }
 
 ?>

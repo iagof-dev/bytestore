@@ -3,26 +3,34 @@ ob_start();
 session_start();
 error_reporting(0);
 
-require_once('./vendor/autoload.php');
-require_once('./Model/header.php');
-require_once('./DAO/database.php');
 
-MercadoPago\SDK::setAccessToken($mercado_pago_key);
+debug_to_console("Iniciando módulos...");
+require_once('./vendor/autoload.php'); //ok
+require_once('./Model/header.php'); //ok
+require_once('./DAO/database.php'); //ok
+debug_to_console("Iniciando módulo de pagamento..."); 
 
-//
-// Devido a atualização da API do Mercado Pago
-// A opção de pagamento está quebrado, até o momento
-//
+debug_to_console($mercado_pago_key); //ok
+MercadoPago\SDK::setAccessToken($mercado_pago_key); 
+debug_to_console("Token de acesso configurado!");
+
+
 
 function mp_create_link($titulo, $preco, $descricao,$costumer_id, $seller_id, $product_id){
+    debug_to_console("Criando preferencia...");
     $payment = new MercadoPago\Preference();
   
+    debug_to_console("Criando Item...");
+
     $item = new MercadoPago\Item();
+
     $item->title = $titulo;
     $item->quantity = 1;
     $item->unit_price = $preco;
     $item->description = $descricao;
     $payment->items = array($item);
+    debug_to_console("Pagamento configurado...");
+
 
     $payment->auto_return = "approved";
 
@@ -36,16 +44,19 @@ function mp_create_link($titulo, $preco, $descricao,$costumer_id, $seller_id, $p
     $payment->notification_url = 'https://n3rdydesigner.xyz/payment';
 
     $payment->external_reference = "";
-    
+    debug_to_console("Gerando Link para Pagamento...");
+
+    //Não rodando daqui pra baixo =C
     $payment->save();
     $payment_id = ($payment->id);
     $payment_link = ($payment->init_point);
+    debug_to_console("Link gerado: " + $payment_link);
+    debug_to_console("Finalizado");
+
     return $payment_link;
 }
 
 function mp_get_info_payment($payment_id, $mp_key){
-
-
     $url = 'https://api.mercadopago.com/v1/payments/'. $payment_id;
     $authorization_header = 'Authorization: Bearer '. $mp_key;
     $curl = curl_init($url);
