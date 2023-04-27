@@ -1,7 +1,7 @@
 <?php
 ob_start();
 session_start();
-error_reporting(0);
+//error_reporting(0);
 
 
 debug_to_console("Iniciando módulos...");
@@ -10,10 +10,9 @@ require_once('./Model/header.php'); //ok
 require_once('./DAO/database.php'); //ok
 debug_to_console("Iniciando módulo de pagamento..."); 
 
-debug_to_console($mercado_pago_key); //ok
-MercadoPago\SDK::setAccessToken($mercado_pago_key); 
+debug_to_console($mercado_pago_key); 
+MercadoPago\SDK::setAccessToken($mercado_pago_key); //ok
 debug_to_console("Token de acesso configurado!");
-
 
 
 function mp_create_link($titulo, $preco, $descricao,$costumer_id, $seller_id, $product_id){
@@ -28,9 +27,9 @@ function mp_create_link($titulo, $preco, $descricao,$costumer_id, $seller_id, $p
     $item->quantity = 1;
     $item->unit_price = $preco;
     $item->description = $descricao;
+    debug_to_console("Item configurado...");
     $payment->items = array($item);
-    debug_to_console("Pagamento configurado...");
-
+    debug_to_console("Item adicionado a preferencia!");
 
     $payment->auto_return = "approved";
 
@@ -39,26 +38,30 @@ function mp_create_link($titulo, $preco, $descricao,$costumer_id, $seller_id, $p
         "pending"=> 'https://n3rdydesigner.xyz/payment?costumer_id='.$costumer_id.'&seller_id='.$seller_id.'&product_id='.$product_id,
         "failure"=> 'https://n3rdydesigner.xyz/payment?costumer_id='.$costumer_id.'&seller_id='.$seller_id.'&product_id='.$product_id
     );
+    debug_to_console("Link de retorno adicionado a preferencia!");
 
 
     $payment->notification_url = 'https://n3rdydesigner.xyz/payment';
+    debug_to_console("Link de notificação adicionado a preferencia!");
 
-    $payment->external_reference = "";
-    debug_to_console("Gerando Link para Pagamento...");
+
+    //$payment->external_reference = "";
+    //$payment_id = ($payment->id);
+    debug_to_console("Finalizando preferencia e gerando link...");
+
 
     //Não rodando daqui pra baixo =C
     $payment->save();
-    $payment_id = ($payment->id);
     $payment_link = ($payment->init_point);
     debug_to_console("Link gerado: " + $payment_link);
-    debug_to_console("Finalizado");
+    debug_to_console("Finalizado! Retornando link...");
 
     return $payment_link;
 }
 
 function mp_get_info_payment($payment_id, $mp_key){
-    $url = 'https://api.mercadopago.com/v1/payments/'. $payment_id;
-    $authorization_header = 'Authorization: Bearer '. $mp_key;
+    $url = ('https://api.mercadopago.com/v1/payments/'. $payment_id);
+    $authorization_header = ('Authorization: Bearer '. $mp_key);
     $curl = curl_init($url);
     curl_setopt($curl, CURLOPT_HTTPHEADER, array($authorization_header));
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -66,14 +69,10 @@ function mp_get_info_payment($payment_id, $mp_key){
     $response = curl_exec($curl);
     
     if(curl_errno($curl)) {
-        echo 'Erro ao enviar a solicitação: ' . curl_error($curl);
+        echo ('Erro ao enviar a solicitação: ' . curl_error($curl));
     }
-    
     curl_close($curl);
-    
-    
     $result = json_decode($response, true);
-
     $dateTime = new DateTime($result['date_approved']);
     
 
