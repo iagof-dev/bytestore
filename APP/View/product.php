@@ -4,8 +4,6 @@ session_start();
 error_reporting(0);
 
 require_once('./Model/header.php');
-require_once('./Model/mercado_pago.php');
-
 
 $product_info = get_product_page($_GET['id']);
 
@@ -14,6 +12,7 @@ if(!isset($_GET['id']) or !isset($product_info[0])){
 }
 
 if($_SESSION['user_id'] != $product_info[6]){
+    require_once('./Model/mercado_pago.php');
     $link = mp_create_link($product_info[1], $product_info[3] ,$product_info[2], $_SESSION['user_id'], $product_info[6], $_GET['id']);
 }
 

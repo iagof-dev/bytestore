@@ -1,22 +1,20 @@
 <?php
-ob_start();
-session_start();
+//ob_start();
+//session_start();
 //error_reporting(0);
 
-
-debug_to_console("Iniciando módulos...");
+debug_to_console("Iniciando módulos necessários...");
 require_once('./vendor/autoload.php'); //ok
 require_once('./Model/header.php'); //ok
 require_once('./DAO/database.php'); //ok
 debug_to_console("Iniciando módulo de pagamento..."); 
 
-debug_to_console($mercado_pago_key); 
 MercadoPago\SDK::setAccessToken($mercado_pago_key); //ok
 debug_to_console("Token de acesso configurado!");
 
 
 function mp_create_link($titulo, $preco, $descricao,$costumer_id, $seller_id, $product_id){
-    debug_to_console("Criando preferencia...");
+    debug_to_console("Criando preferência...");
     $payment = new MercadoPago\Preference();
   
     debug_to_console("Criando Item...");
@@ -38,25 +36,31 @@ function mp_create_link($titulo, $preco, $descricao,$costumer_id, $seller_id, $p
         "pending"=> 'https://n3rdydesigner.xyz/payment?costumer_id='.$costumer_id.'&seller_id='.$seller_id.'&product_id='.$product_id,
         "failure"=> 'https://n3rdydesigner.xyz/payment?costumer_id='.$costumer_id.'&seller_id='.$seller_id.'&product_id='.$product_id
     );
-    debug_to_console("Link de retorno adicionado a preferencia!");
+    debug_to_console("Link de retorno adicionado a preferência!");
 
 
     $payment->notification_url = 'https://n3rdydesigner.xyz/payment';
-    debug_to_console("Link de notificação adicionado a preferencia!");
+    debug_to_console("Link de notificação adicionado a preferência!");
 
 
     //$payment->external_reference = "";
     //$payment_id = ($payment->id);
-    debug_to_console("Finalizando preferencia e gerando link...");
+    debug_to_console("Fechando preferência...");
 
-
-    //Não rodando daqui pra baixo =C
     $payment->save();
-    $payment_link = ($payment->init_point);
-    debug_to_console("Link gerado: " + $payment_link);
-    debug_to_console("Finalizado! Retornando link...");
+    $pay_link = ($payment->sandbox_init_point);
+    //echo($pay_link);
+    //debug_to_console(var_dump($payment));
 
-    return $payment_link;
+    if(!empty($pay_link) or isset($pay_link)){
+        debug_to_console("Finalizado! Retornando link...");
+        return $pay_link;
+    }
+    else{
+        debug_to_console("Erro ao gerar link de pagamento!");
+    }
+    
+
 }
 
 function mp_get_info_payment($payment_id, $mp_key){

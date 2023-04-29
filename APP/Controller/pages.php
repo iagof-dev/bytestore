@@ -18,7 +18,6 @@ switch ($url) {
     case '/register':
         include('./View/register.php');
         break;
-
     case '/profile/':
         include('./View/profile.php');
         break;
@@ -70,6 +69,9 @@ switch ($url) {
         break;
     case '/edit':
         include('./View/edit_profile.php');
+        break;
+    case '/dev':
+        include('./Model/mercado_pago.php');
         break;
     default:
         include('./error.html');

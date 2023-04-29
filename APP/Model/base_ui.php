@@ -22,10 +22,9 @@ if ($_SESSION['user_logged'] == "false" or $_SESSION['user_logged'] == false) {
 
 
 ?>
-
+<!-- GLOBAL INFOS -->
 <!DOCTYPE html>
 <html lang="pt-br" data-bs-theme="dark">
-<!-- NECESSARY -->
 
 <head>
     <title>ByteStore</title>
@@ -35,7 +34,7 @@ if ($_SESSION['user_logged'] == "false" or $_SESSION['user_logged'] == false) {
     <link rel="stylesheet" href="../Assets/css/sweetalert.min.css">
     <script src="../Assets/js/FA-icons.js"></script>
     <script src="../Assets/js/sweetalert.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js">
+    <script src="../Assets/js/popper.min.js"></script>
     <script src="../Assets/js/jquery-3.6.4.min.js"></script>
     <script src="../Assets/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="../Assets/css/aos.css" />
@@ -43,7 +42,7 @@ if ($_SESSION['user_logged'] == "false" or $_SESSION['user_logged'] == false) {
     <script src="../Assets/js/global.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 </head>
-<!-- NECESSARY -->
+<!-- GLOBAL INFOS -->
 
 <!-- NAVBAR -->
 <nav class='navbar bg-body-tertiary'>
