@@ -32,7 +32,7 @@ switch ($user_role) {
     break;
 }
 
-$teste = user_get_products();
+$list_products = user_get_products();
 
 
 $box_size = 64;
@@ -59,7 +59,7 @@ echo ('<style>   .anuncios-box {width: 90vh !important;height: ' . $box_size . '
       </div>
       <div class="row">
         <div class="anuncios-box position-absolute top-50 start-50 translate-middle">
-          <?php echo ($teste[1]); ?>
+          <?php echo ($list_products[1]); ?>
         </div>
       </div>
     </div>
