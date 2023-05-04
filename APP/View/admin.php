@@ -36,8 +36,6 @@ $list_products = user_get_products();
 
 
 $box_size = 64;
-// echo('Quantidade de Anúncios: '. $teste[0]. '<br>');
-// echo('Tamanho para aplicar (VH): '. $box_size);
 
 echo ('<style>   .anuncios-box {width: 90vh !important;height: ' . $box_size . 'vh !important; background-color: #30343F !important; border-radius: 15px !important;} </style>');
 
