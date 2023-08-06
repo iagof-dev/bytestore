@@ -4,9 +4,11 @@
 HTML, CSS, JS &amp; MySql | Projeto de um E-COMMERCE feito em PHP utilizando padrão MVC.
 
 # ⚡ Status
-Não finalizado/Not Finished.
+Remaking it...
 
 Project started in: 28/02/2023
+
+Project Restarted in: 03/08/2023
 
 # ⚙️ Requirements
 
