@@ -1,0 +1,127 @@
+.navbar {
+    filter: blur(4px) !important;
+    pointer-events: none;
+}
+
+
+/*  COLOCAR ISSO PARA DAR EFEITO DE BLUR, AO CLICAR NO LOGIN */
+.borrar-cadastro {
+    filter: blur(4px) !important;
+    pointer-events: none;
+}
+
+
+/* 
+
+    TELA DE CADASTRO/REGISTRO DE USUARIOS
+
+*/
+
+.btlogo-reg {
+    margin-top: -1rem !important;
+    margin-left: 6rem !important;
+    margin-bottom: 1rem !important;
+    width: 5rem !important;
+    height: auto !important;
+}
+
+.registerbox {
+    width: 17rem !important;
+}
+
+.registercontainer {
+    margin-left: 15rem !important;
+    margin-top: 8rem !important;
+    border-radius: 10px !important;
+    background-color: #083440;
+    border: solid 5px #06252d;
+    width: 50rem !important;
+}
+
+
+.form-info-label {
+    text-align: start !important;
+    width: 5rem !important;
+    height: 1.5rem !important;
+    text-indent: -0.5rem !important;
+    font-weight: 500 !important;
+}
+
+label {
+    margin-bottom: -0.1rem !important;
+}
+
+input {
+    margin-bottom: 1rem !important;
+}
+
+input[type="submit"] {
+    margin-top: -0.5rem !important;
+    width: 9rem !important;
+}
+
+.register {
+    margin-top: -1rem !important;
+    margin-bottom: 2rem !important;
+
+}
+
+/* 
+
+===============================================
+
+*/
+
+
+/* 
+    Tela de Login
+ */
+
+
+ .btlogo-log {
+    margin-top: -1rem !important;
+    margin-left: 6rem !important;
+    margin-bottom: 2rem !important;
+    width: 5rem !important;
+    height: auto !important;
+}
+
+
+.loginbox {
+    width: 17rem !important;
+}
+
+.logincontainer {
+    margin-left: 15rem !important;
+    margin-top: 8rem !important;
+    border-radius: 10px !important;
+    background-color: #083440;
+    width: 50rem !important;
+}
+
+
+.form-info-label {
+    text-align: start !important;
+    width: 5rem !important;
+    height: 1.5rem !important;
+    text-indent: -0.5rem !important;
+    font-weight: 500 !important;
+}
+
+label {
+    margin-bottom: -0.1rem !important;
+}
+
+input {
+    margin-bottom: 1rem !important;
+}
+
+input[type="submit"] {
+    margin-top: -0.5rem !important;
+    width: 9rem !important;
+}
+
+.login {
+    margin-top: 1rem !important;
+    margin-bottom: 2rem !important;
+}

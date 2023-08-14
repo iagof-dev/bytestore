@@ -1,76 +1,64 @@
 <?php
-ob_start();
-session_start();
-error_reporting(0);
 
-require_once('./DAO/database.php');
+// if (isset($_GET['error'])) {
+//     if ($_GET['error'] == "true") {
+//         echo ("Erro ao registrar");
+//         echo ("<script>Swal.fire({title: 'Erro!',text: 'Esta conta de e-mail ou usuário já está sendo utilizada.',icon: 'error',confirmButtonText: 'Ok'});</script>");
+//     } else {
+//         echo ("Registrado com sucesso");
+//         echo ("<script>Swal.fire({title: 'Sucesso!',text: 'Registrado com sucesso!',icon: 'success',confirmButtonText: 'Ok'});</script>");
+//     }
+// }
 
-$error = $_GET["error"];
-
-$user_email = $_GET['txt_email'];
-$user_name = $_GET['txt_name'];
-$user_pass = $_GET['txt_pass'];
-$user_role = $_GET['accounttype'];
-
-
-if (isset($user_email) or isset($user_name) or isset($user_pass)) {
-  if (strpos($user_email, '@') == false or strpos($user_email, '@') == "false" ) {
-    header('Location: /register?error=true');
-  }
-
-  $conexao = new mysql();
-  $mysqli = $conexao->getConexao();
-
-  $user_name = mysqli_real_escape_string($mysqli, $user_name);
-  $user_pass = mysqli_real_escape_string($mysqli, $user_pass);
-  $user_email = mysqli_real_escape_string($mysqli, $user_email);
-
-
-  $md5_pass = md5($user_pass);
-
-  $resultado = create_user($user_name, $user_email, $md5_pass, $user_role);
-
-  if (!$resultado) {header('Location: /register?error=true');} else {header('Location: /register?error=false');}
-}
 
 ?>
 
-<link rel="stylesheet" href="../Assets/css/main.css">
-<link rel="stylesheet" href="../Assets/css/admin.css">
-<script src="../Assets/js/login.js"></script>
+<!-- <form action="../Controller/UserRegister.php" method="post">
+    <input type="text" required name="user_name" id="name" placeholder="João"><br>
+    <input type="email" required name="user_email" id="email" placeholder="joaoarroz@gmail.com"><br>
+    <input type="password" required name="user_pass" id="pass" placeholder="**********"><br>
+    <input type="submit" value="registrar">
+</form> -->
 
-<body>
-  <div class="container">
-    <div data-aos="fade-in" data-aos-duration="500" class="containerlogin">
-      <div class="titulo bordinha">
-        <div class="titulo center">
-          <h1 style="font-size: 23px !important;">Cadastro</h1><br>
-        </div>
-        <?php
-        if ($error=="true") {echo ('<div class="error center" data-aos="flip-left" data-aos-duration="500"><br><h5 class="text-danger" style="font-size: 16px;">Usuário ou E-mail já cadastrado!</h5></div>');echo('<script>swal({title: "Erro!",text: "E-mail ou Usuário já cadastrado!",type: "error",button: {text: "Fechar",value: true,visible: true,className: "btn btn-primary"}});</script>');}
-        if($error=="false"){echo ('<div class="error center" data-aos="flip-left" data-aos-duration="500"><br><h5 class="text-success" style="font-size: 16px;">Conta criada com sucesso!</h5></div>');echo('<script>swal({title: "Sucesso!",text: "Cadastrado com sucesso!",type: "success",button: {text: "Fechar",value: true,visible: true,className: "btn btn-primary"}});</script>');}
-        ?>
-        <div class="area1">
-          <form action="/register" method="GET">
-            <div class="inpt1">
-                <input id="inputusername" required style="margin-bottom: -12px; background-color: #FFFFFF !important; color: #000000 !important;" class="form-control" name="txt_name" placeholder="Usuário"><br>
-                <input id="inputemail" required style="margin-bottom: -12px; background-color: #FFFFFF !important; color: #000000 !important;" class="form-control" type="email" name="txt_email" placeholder="E-mail"><br>
-                <input id="inputpass" name="txt_pass" required style="background-color: #FFFFFF !important;color: #000000 !important;" class="form-control" type="password" placeholder="Senha">
-                <h4 style="font-size: 10px; color: grey; margin-top: 5px;">Ao realizar o cadastro, você está concordando com os <a href="/tos"> termos de uso</a>.</h4>
-            <div style="display:flex; margin-bottom: 1vh;margin-left: 4vh;">
-                <div class="form-check" style="margin-right: 3vh;"><input required class="form-check-input" type="radio" value="seller" name="accounttype" id="accounttype"><label class="form-check-label" for="flexRadioDefault1">Vendedor</label></div>
-                <div class="form-check"><input required class="form-check-input" type="radio" name="accounttype" value="user" id="accounttype"><label class="form-check-label" for="flexRadioDefault1">Comprador</label></div>
+
+<link rel="stylesheet" href="../Assets/css/cadastro.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<div class="container">
+
+    <div class="col animate__animated animate__fadeInUp">
+        <div class="container registercontainer position-fixed pt-5">
+            <div class="container registerbox text-start">
+                <div class="row">
+                    <img title="btLogo" class="btlogo-reg center img-fluid pt-1" src="../Assets/icons/logo/64.webp" alt="logo">
+                </div>
+                <form action="../Controller/UserRegister.php" method="post">
+                    <div class="row form-info-label">
+                        <label class="form-label" style="color: white;">Usuário:</label>
+                    </div>
+                    <div class="row">
+                        <input type="text" class="form-control rounded" required name="user_name" id="name" placeholder="João"><br>
+                    </div>
+                    <div class="row">
+                        <label class="form-label form-info-label" style="color: white;">E-mail:</label>
+                    </div>
+                    <div class="row">
+
+                        <input class="form-control rounded" required placeholder="Correio Eletrônico" type="email" name="user_email"><br>
+                    </div>
+                    <div class="row">
+                        <label class="form-label form-info-label" style="color: white;">Senha:</label>
+                    </div>
+                    <div class="row">
+                        <input class="form-control rounded" required placeholder="**********" type="password" name="user_pass"><br>
+                    </div>
+                    <div class="row">
+                        <input class="btn btn-primary rounded mx-auto" required type="submit" value="Registrar">
+                    </div>
+                </form>
+                <label class="register ps-3 fs-10">Já possui conta? <a title="Redirecionar para logar" class="link-underline-primary" href="/?login ">Faça o login</a></label>
             </div>
-                <div class="center"><div class="btnslg">
-                  <a href="/login"><input class="btn btn-dark bt1"style="text-align: center; line-height: 10px; height: 35px;" value="Voltar" type="button"></a>
-                  <input class="btn btn-dark bt1" style="margin-right: 10px; text-align: center; line-height: 10px;" type="submit" value="Criar conta">
-                </div></div>
-          </form>
         </div>
-      </div>
     </div>
-  </div>
-</body>
-<script>AOS.init();</script>
-
-</html>
+</div>
+</div>
