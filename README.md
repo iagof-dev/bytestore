@@ -1,7 +1,7 @@
 ![](https://api.pikwy.com/web/644d1edd1f335e495f54fd95.png)
 
 # 🛒 Byte Store
-HTML, CSS, JS &amp; MySql | Projeto de um E-COMMERCE feito em PHP utilizando padrão MVC.
+React, Tailwind, PHP & MySql | Projeto de um E-COMMERCE feito em PHP utilizando padrão MVC.
 
 # ⚡ Status
 Remaking it...
