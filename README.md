@@ -10,7 +10,7 @@ Project started in: 28/02/2023
 
 Project Restarted in: 03/08/2023
 
-# ⚙️ Requirements
+# ⚙️ OLD | Requirements
 
 - MySql Server ([Baixar](https://dev.mysql.com/downloads/mysql/))
 
@@ -20,7 +20,7 @@ Project Restarted in: 03/08/2023
 
 - Mercado Pago SDK ([Repositório](https://github.com/mercadopago/sdk-php))
 
-# 📖 Used Libs
+# 📖 OLD | Used Libs
 
 - AOS ([Site](https://michalsnik.github.io/aos/))
 - FontAwesome ([Site](https://fontawesome.com))
