@@ -1,4 +1,4 @@
-import logo from '../Assets/icons/logo/128.webp';
+import logo from '../assets/icons/logo/128.webp';
 import { FaDoorClosed, FaDoorOpen } from "react-icons/fa6";
 import { HiMenu } from "react-icons/hi";
 
