@@ -7,6 +7,4 @@
 
 <script src="../Assets/js/tailwindv3.3.3.js"></script>
 
-<?php
-require_once("./etc/menu.php");
-?>
+<?=require_once("./etc/menu.php");?>

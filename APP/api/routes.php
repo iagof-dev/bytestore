@@ -7,22 +7,27 @@ class API
 
     private $api_url;
 
+    private $api_user;
+
+    private $api_pass;
+
     public function __construct()
     {
         require_once("../api/secret-key.php");
         $this->api_url = $api_url;
+        $this->api_user = $api_user;
+        $this->api_pass = $api_pass;
     }
 
     function login($email, $pass)
     {
-        require_once("../api/secret-key.php");
         $pass_md5 = md5($pass);
 
         $url = $this->api_url . "/usuario/logar/";
 
         $data = array(
-            "apiuser" => $api_user,
-            "apipass" => $api_pass,
+            "apiuser" => $this->api_user,
+            "apipass" => $this->api_pass,
             "email" => $email,
             "pass" => $pass_md5
         );

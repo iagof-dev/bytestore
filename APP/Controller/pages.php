@@ -12,12 +12,14 @@ switch ($url) {
     case "/login":
         require("./View/login.php");
         break;
+    case "/teste":
+        require("./View/loading.php");
+        break;
 
     case "/logout":
         require("./Controller/logout.php");
         header("Location /");
         break;
-
     default:
         require("./View/404.php");
         break;
