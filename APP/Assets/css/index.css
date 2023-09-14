@@ -1,0 +1,12 @@
+
+body {
+    background-color: #EBEBEB !important;
+}
+
+
+.bt-icon{
+    filter: brightness(0) invert(1);
+}
+.bt-icon :hover{
+    filter: grayscale(1) invert(1);
+}
