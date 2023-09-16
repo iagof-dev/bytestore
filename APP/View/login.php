@@ -1,18 +1,30 @@
 <?php
 
-$user = new user();
+include_once("../Model/usuario.php");
 
+//Se usuário tiver logado, redirecionar para a página inicial
+$user = new user();
 $id = $user->getId();
 if (isset($id)) {
     header('Location: /');
 }
+
+
+
+//Se o método for POST, fazer a requisição de login
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    include("../api/routes.php");
+    $api = new API();
+    $api->MAKE_LOGIN_REQUEST($_POST['user_email'], $_POST['user_pass']);
+}
+
 
 ?>
 
 <div class="md:container w-screen md:mx-auto">
     <div class="w-screen text-center md:container grid items-center place-items-center">
         <div class="bg-[#FFFFFF] shadow-md rounded-lg mt-20 w-[30rem] h-52">
-            <form action="../Controller/login.php" method="post">
+            <form action="../View/login.php" method="post">
                 <h1 class="font-bold text-xl">Logar-se</h1>
                 <?php
                 if (isset($_GET['error'])) {

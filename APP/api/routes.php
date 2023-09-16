@@ -19,7 +19,7 @@ class API
         $this->api_pass = $api_pass;
     }
 
-    function login($email, $pass)
+    function MAKE_LOGIN_REQUEST($email, $pass)
     {
         $pass_md5 = md5($pass);
 
@@ -31,6 +31,7 @@ class API
             "email" => $email,
             "pass" => $pass_md5
         );
+        echo("<script>console.log('foi');</script>");
 
         $ch = curl_init($url);
 
@@ -65,9 +66,6 @@ class API
             header('Location: /');
 
         }
-
-
-        // Close cURL session
         curl_close($ch);
     }
 }

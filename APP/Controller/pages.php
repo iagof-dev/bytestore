@@ -6,21 +6,20 @@ switch ($url) {
 
     case "/":
         //pagina inicial
-        require("./View/home.php");
-        break;
+        return require("./View/home.php");
 
     case "/login":
-        require("./View/login.php");
-        break;
+        return require("./View/login.php");
+       
     case "/teste":
-        require("./View/loading.php");
-        break;
+        return require("./View/loading.php");
 
     case "/logout":
-        require("./Controller/logout.php");
-        header("Location /");
-        break;
+        return require("./Controller/logout.php");
+
+    case "/create":
+        return require("./View/create.php");
+
     default:
-        require("./View/404.php");
-        break;
+        return require("./View/404.php");
 }
