@@ -1,10 +1,18 @@
+<?php
+
+require_once(__DIR__ . "/../api/routes.php");
+
+$api = new API();
+
+?>
+
 <div>
     <div class="md:container mx-auto w-[50%]">
         <div class="w-full h-5 mx-auto">
             <div class="md:container w-full mt-1 flex flex-grow justify-center">
                 <div class="grid grid-rows-1 auto-rows-max grid-cols-5 gap-5 items-center justify-center ">
                     
-                    <div class="card grid-flow-col col-auto rounded-md drop-shadow-lg w-[11rem] select-text bg-[#FDFDFD]">
+                    <!-- <div class="card grid-flow-col col-auto rounded-md drop-shadow-lg w-[11rem] select-text bg-[#FDFDFD]">
                         <a title="Ver anúncio" href="/anuncio/x">
                             <img src="../Assets/imgs/placeholder.webp" alt="aaaaaa" class="rounded-t-md" title="aaaaa" />
                             <div class="p-2">
@@ -17,9 +25,11 @@
                             </div>
                             <a title="Ver anúncio" href="/anuncio/x"><button class="bg-[#00A000] text-sm rounded-sm font-medium text-white w-full h-10 rounded-b-md transition-colors duration-300 ease-in-out hover:bg-[#00B000] hover:text-[#101010]"> Adicionar ao carrinho</button></a>
                         </a>
-                    </div>
+                    </div> -->
                     
-                    
+
+                    <?= $api->GET_CARDS(); ?>
+                  
 
                 </div>
             </div>

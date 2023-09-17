@@ -44,21 +44,23 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <script>
         setTimeout(function() {
             window.location.href = '/';
-        }, 1000);
-        Swal.fire({
-            title: 'Sucesso!',
-            text: 'Autenticado com êxito, redirecionando...',
-            icon: 'success',
-            showCancelButton: false,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Ok'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                window.location.href = '/';
-            }
-        })
+        }, 200);
+
     </script>");
+
+    // Swal.fire({
+    //     title: 'Sucesso!',
+    //     text: 'Autenticado com êxito, redirecionando...',
+    //     icon: 'success',
+    //     showCancelButton: false,
+    //     confirmButtonColor: '#3085d6',
+    //     cancelButtonColor: '#d33',
+    //     confirmButtonText: 'Ok'
+    // }).then((result) => {
+    //     if (result.isConfirmed) {
+    //         window.location.href = '/';
+    //     }
+    // })
 }
 
 
@@ -66,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 <div class="md:container w-screen md:mx-auto">
     <div class="w-screen text-center md:container grid items-center place-items-center">
-        <div class="bg-[#FFFFFF] shadow-md rounded-lg mt-20 w-[30rem] h-64">
+        <div class="bg-[#FFFFFF] shadow-md rounded-xl mt-20 w-[30rem] h-64">
             <form action="/login" method="post">
                 <h1 class="font-bold text-xl mt-4">Logar-se</h1>
                 <?php
