@@ -13,9 +13,13 @@
 </head>
 
 <link rel="stylesheet" href="../Assets/css/index.css">
-
 <script src="../Assets/js/tailwindv3.3.3.js"></script>
+<script src="../Assets/js/sweetalert2@11.js"></script>
+
 
 
 <!-- Verificação de menu, caso usuário logado menu x, caso não esteja logado menu y -->
-<?php require_once("./etc/menu.php"); ?>
+<?php 
+
+
+require_once("./etc/menu.php"); ?>
