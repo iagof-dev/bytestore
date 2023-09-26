@@ -22,4 +22,6 @@
 <?php 
 
 
+require_once(__DIR__ . "/../api/routes.php");
+require_once(__DIR__ . "/../Model/usuario.php");
 require_once("./etc/menu.php"); ?>

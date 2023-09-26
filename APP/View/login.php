@@ -1,7 +1,6 @@
 <?php
 
 
-include_once(__DIR__ . "/../Model/usuario.php");
 
 //Se usuário tiver logado, redirecionar para a página inicial
 $user = new user();
@@ -12,7 +11,6 @@ if ($user->isLogged())
 
 //Se o método for POST, fazer a requisição de login
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    include_once(__DIR__ . "/../api/routes.php");
     $api = new API();
     $result = $api->MAKE_LOGIN_REQUEST($_POST['user_email'], $_POST['user_pass']);
 

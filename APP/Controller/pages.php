@@ -10,8 +10,8 @@ switch ($url) {
     case "/login":
         return require("./View/login.php");
 
-    case "/teste":
-        return require("./View/loading.php");
+    case "/admin":
+        return require("./View/admin.php");
 
     case "/logout":
         return require("./Controller/logout.php");

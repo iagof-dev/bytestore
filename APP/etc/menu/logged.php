@@ -20,10 +20,10 @@ $user = new user();
 
                     <div id="dropdown-menu-context" class="hidden absolute bg-[#FFFFFF] shadow-lg grid-rows-4 mt-2 rounded">
                         <div class="m-1 hover:bg-green-400">
-                            <a title="Produtos" href="/profile/x/products"><span class="text-black"><span class="flex"><img src="../../Assets/imgs/icons/solid/speakerphone.svg" class="w-5 mr-1"> Meus anúncios</span></span></a>
+                            <a title="Produtos" href="/admin"><span class="text-black"><span class="flex"><img src="../../Assets/imgs/icons/solid/" class="w-5 mr-1"> Meu Painel</span></span></a>
                         </div>
                         <div class="m-1 hover:bg-green-400">
-                            <a title="Minhas Compras" href="#"><span class="text-black align-middle"><span class="flex "><img src="../../Assets/imgs/icons/solid/shopping-cart.svg" class="w-5 mr-1"> Minhas Compras</span></span></a>
+                            <a title="Minhas Compras" href="/buy"><span class="text-black align-middle"><span class="flex"><img src="../../Assets/imgs/icons/solid/shopping-cart.svg" class="w-5 mr-1"> Minhas Compras</span></span></a>
                         </div>
                         <div class="m-1 hover:bg-green-400">
                             <a title="Perfil" href="/profile/x"><span class="text-black mx-auto"><span class="flex"><img src="../../Assets/imgs/icons/solid/user.svg" class="w-5 mr-1"> Minha Conta</span></span></a>
