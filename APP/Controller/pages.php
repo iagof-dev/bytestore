@@ -16,8 +16,8 @@ switch ($url) {
     case "/logout":
         return require("./Controller/logout.php");
 
-    case "/create":
-        return require("./View/create.php");
+    case "/editar":
+        return require("./View/edit.php");
 
     case "/register":
         return require("./View/register.php");

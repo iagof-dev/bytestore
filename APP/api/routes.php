@@ -179,4 +179,9 @@ class API
 
         return $data;
     }
+    function MAKE_UPDATE_POST_REQUEST($title, $desc, $value, $category, $image){
+        
+    }
+
+
 }
