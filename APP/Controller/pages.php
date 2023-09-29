@@ -19,7 +19,13 @@ switch ($url) {
     case "/editar":
         return require("./View/edit.php");
 
-    case "/register":
+    case "/create":
+        return require("./View/create.php");
+
+        case "/teste":
+            return require("./View/teste.php");
+
+            case "/register":
         return require("./View/register.php");
 
     default:

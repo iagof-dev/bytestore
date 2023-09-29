@@ -124,7 +124,8 @@ class API
             "price" => $value,
             "image" => $image,
             "id_category" => $category,
-            "owner" => $id
+            "owner" => $id,
+            "created" => date("Y-m-d H:i:s")
         );
 
         $ch = curl_init($url);
@@ -175,9 +176,7 @@ class API
         curl_setopt($ch, CURLOPT_HEADER, 0);
         $data = curl_exec($ch);
         curl_close($ch);
-        $result = json_decode($data, true);
-
-        return $data;
+        return json_decode($data, true);
     }
     function MAKE_UPDATE_POST_REQUEST($title, $desc, $value, $category, $image){
         
