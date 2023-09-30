@@ -12,9 +12,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
     $title = $_POST['UP_TITLE'];
     $desc = $_POST['UP_DESC'];
-    $value = $_POST['post_value'];
-    $category = $_POST['post_category'];
-    $image = $_FILES['post_image'];
+    $value = $_POST['UP_PRICE'];
+    $category = $_POST['UP_CATEGORY'];
+    $image = $_FILES['UP_IMAGE'];
 
     $api->MAKE_UPDATE_POST_REQUEST($title, $desc, $value, $category, $image);
 
@@ -28,7 +28,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         <div class="flex">
             <img class="rounded-xl w-80 h-64 border-dotted border-2 border-black mr-16 min-w-80 max-w-64 min-h-16" id="imgpreview" src="../Assets/imgs/placeholder.webp" alt="Produto Imagem Preview" title="Produto Imagem Preview">
 
-            <form action="/edit" method="post" enctype="multipart/form-data">
+            <form action="/xxx" method="post" enctype="multipart/form-data">
 
                 <label class="font-medium">Titulo:</label><br>
                 <input type="text" class="w-96 h-8 border-solid border-2 rounded-md border-black focus:border-blue-500" required name="UP_TITLE" placeholder="Digite o titulo antigo do anúncio"><br>
@@ -48,7 +48,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                 <label class="font-medium">Imagem:</label><br>
                 <input class="rounded-lg" onchange="PreviewImage(this);" required type="file" name="post_image" accept="image/png, image/gif, image/jpeg"><br>
 
-                <input class=" w-96 h-8 mt-3 cursor-pointer bg-gradient-to-r from-cyan-500 to-blue-500 transition-colors duration-300 ease-in-out hover:bg-[#a0d4d6] rounded-md text-white font-medium hover:text-black" required type="submit" value="Criar anúncio">
+                <input class=" w-96 h-8 mt-3 cursor-pointer bg-gradient-to-r from-cyan-500 to-blue-500 transition-colors duration-300 ease-in-out hover:bg-[#a0d4d6] rounded-md text-white font-medium hover:text-black" required type="submit" value="Editar anúncio">
             </form>
         </div>
     </div>

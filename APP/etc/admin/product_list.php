@@ -32,7 +32,7 @@ class ADMIN_PRODUCTS_LIST
 
         $RETURN_STRING .= ("<div class='grid items-center place-items-center mt-5'>
         <div class='flex flex-grow h-24 bg-pink-300 rounded-md'>
-            <img src='$img' class='w-32 rounded-lg' />
+            <img src='$img' class='w-30 rounded-lg' />
             <div class='grid ml-2 w-[50rem] text-start'>
                 <h1 class='text-sm font-medium pt-2.5'>$titulo</h1>
                 <h3 class='text-green-600 mt-[-0.8rem]'>R$ $valor</h3>

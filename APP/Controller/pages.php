@@ -22,10 +22,10 @@ switch ($url) {
     case "/create":
         return require("./View/create.php");
 
-        case "/teste":
-            return require("./View/teste.php");
+    case "/teste":
+        return require("./View/teste.php");
 
-            case "/register":
+    case "/register":
         return require("./View/register.php");
 
     default:

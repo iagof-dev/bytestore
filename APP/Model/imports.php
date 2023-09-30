@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <link rel="shortcut icon" href="../Assets/imgs/logo/128.png" type="image/x-icon">
     <title>Byte Store | Suprindo seu Universo Digital</title>
@@ -19,9 +20,15 @@
 
 
 <!-- Verificação de menu, caso usuário logado menu x, caso não esteja logado menu y -->
-<?php 
+<?php
 
 
 require_once(__DIR__ . "/../api/routes.php");
 require_once(__DIR__ . "/../Model/usuario.php");
-require_once("./etc/menu.php"); ?>
+require_once(__DIR__ . "/../etc/menu.php"); 
+require_once(__DIR__ . "/../etc/footer.php");
+
+?>
+
+
+
