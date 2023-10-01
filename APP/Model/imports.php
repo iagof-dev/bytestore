@@ -13,6 +13,8 @@
     <meta name="author" content="Iago Fragnan">
 </head>
 
+
+<script src="../Assets/js/jquery@v4.0.0.js"></script>
 <link rel="stylesheet" href="../Assets/css/index.css">
 <script src="../Assets/js/tailwindv3.3.3.js"></script>
 <script src="../Assets/js/sweetalert2@11.js"></script>

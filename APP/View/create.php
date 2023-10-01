@@ -149,6 +149,5 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 </div>
 
 
-<script src="https://releases.jquery.com/git/jquery-git.min.js"></script>
 <script src="../Assets/js/money-format.js"></script>
 <script src="../Assets/js/image-preview.js"></script>
