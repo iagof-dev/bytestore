@@ -170,7 +170,7 @@ class API
 
     function GET_PRODUCTS_BY_OWNER($id)
     {
-        $url = $this->api_url . "/produto/owner/". $id;
+        $url = $this->api_url . "/produto/owner/" . $id;
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HEADER, 0);
@@ -178,9 +178,61 @@ class API
         curl_close($ch);
         return json_decode($data, true);
     }
-    function MAKE_UPDATE_POST_REQUEST($title, $desc, $value, $category, $image){
-        
+
+    function GET_SPECIFIC_PRODUCT($id){
+        $url = $this->api_url . "/produto/id/" . $id;
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        $data = curl_exec($ch);
+        curl_close($ch);
+        return json_decode($data, true);
     }
 
+    function MAKE_UPDATE_POST_REQUEST($id, $title = null, $desc = null, $value = 0, $img = null)
+    {
+        $url = $this->api_url . "/produto/modificar/";
+        $data = array(
+            "apiuser" => $this->api_user,
+            "apipass" => $this->api_pass,
+            "id" => $id
+        );
 
+        if (isset($title) && $title != " " && $title != "")
+            $data["title"] = $title;
+
+        if (isset($desc) && $desc != " " && $desc != "")
+            $data["description"] = $desc;
+
+
+        if ($value != 0 && $value != " " && $value != "") {
+            $converted_price = str_replace(",", ".", str_replace(".", "", $value));
+            $converted_price = str_replace("R$", "", $converted_price);
+            $data["price"] = $converted_price;
+        }
+
+        if (isset($img))
+            $data['image'] = $img;
+
+
+        echo(var_dump($data));
+
+
+        $ch = curl_init($url);
+
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+        $response = curl_exec($ch);
+        $result = json_decode($response, true);
+
+        curl_close($ch);
+
+
+        if (!isset($result) || $result['status'] != "success")
+            return false;
+
+        return true;
+    }
 }

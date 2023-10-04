@@ -31,6 +31,3 @@ require_once(__DIR__ . "/../etc/menu.php");
 require_once(__DIR__ . "/../etc/footer.php");
 
 ?>
-
-
-

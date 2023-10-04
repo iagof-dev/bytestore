@@ -1,5 +1,7 @@
 <?php
-
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 $user = new user();
 
 if (!$user->isLogged())
@@ -13,7 +15,6 @@ $id = '';
 $title = '';
 $desc = '';
 $value = '';
-$category = '';
 $image = '';
 
 
@@ -22,19 +23,103 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
     $title = $_GET['title'];
     $desc = $_GET['desc'];
     $value = $_GET['price'];
-    $category = $_GET['category'];
     $image = "../Assets/imgs/products/" . $_GET['img'];
 }
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
-    $id = $_POST['id'];
+    $id = $_GET['id'];
     $title = $_POST['UP_TITLE'];
     $desc = $_POST['UP_DESC'];
     $value = $_POST['UP_PRICE'];
-    $category = $_POST['UP_CATEGORY'];
-    $image = $_FILES['UP_IMAGE'];
+    $image = null;
+    $old_image = null;
+    require_once(__DIR__ . "/../Model/usuario.php");
+    $user_info = new user();
+    $og_product = $api->GET_SPECIFIC_PRODUCT($_GET['id']);
+    if($og_product['DATA']['0']['owner'] != $user_info->getId()){
 
-    $api->MAKE_UPDATE_POST_REQUEST($title, $desc, $value, $category, $image);
+        echo("<script>
+        Swal.fire({
+            title: 'Erro',
+            text: 'Houve um erro interno, tente novamente mais tarde.',
+            icon: 'error',
+            showCancelButton: false,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ok'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = '/admin';
+            }
+          })
+        
+        </script>");
+
+        return false;
+    }
+
+
+
+    if (isset($_FILES['post_image'])) {
+        $old_image = $og_product['DATA']['0']['image'];
+        $DIRECTORY_IMAGE =  __DIR__ . "/../Assets/imgs/products/";
+        if (!is_dir($DIRECTORY_IMAGE))
+            throw new Exception("Diretorio não existe");
+        if (is_executable($_FILES['post_image']['tmp_name']))
+            throw new Exception("Arquivo é executável");
+        $ext_file = pathinfo($_FILES['post_image']['name'], PATHINFO_EXTENSION);
+        $unique_name = uniqid("product_") . "." . $ext_file;
+        $FILE_NAME_IMAGE = $DIRECTORY_IMAGE . $unique_name;
+        if (move_uploaded_file($_FILES['post_image']['tmp_name'], $FILE_NAME_IMAGE)) {
+            $image = $unique_name;
+            unlink($DIRECTORY_IMAGE. $old_image);
+        }
+    }
+
+
+    $result = $api->MAKE_UPDATE_POST_REQUEST($id, $title, $desc, $value, $image);
+
+    if($result != true){
+        echo("<script>
+        Swal.fire({
+            title: 'Erro',
+            text: 'Houve um erro interno, tente novamente mais tarde.',
+            icon: 'error',
+            showCancelButton: false,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ok'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = '/admin';
+            }
+          })
+          setTimeout(function() {
+            window.location.href = '/admin';
+        }, 1200);
+        
+        </script>");
+    }
+    else{
+        echo("<script>
+        Swal.fire({
+            title: 'Sucesso!',
+            text: 'Anúncio modificado com sucesso!.',
+            icon: 'success',
+            showCancelButton: false,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ok'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = '/admin';
+            }})
+            setTimeout(function() {
+                window.location.href = '/admin';
+            }, 2500);
+        </script>");
+    }
+
 }
 
 ?>
@@ -54,10 +139,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 <textarea placeholder="<?= $desc ?>" class="resize-none border-solid border-2 rounded-md border-black focus:border-blue-500" name="UP_DESC" cols="50" rows="5"></textarea><br>
 
                 <label class="font-medium pt-1">Valor:</label><br>
-                <input class="w-96" type="text" name="UP_PRICE" id="currency-field" pattern="^\$\d{1,3}(.\d{3})*(\,\d+)?$" data-type="currency" placeholder="R$<?= $value ?>"><br>
+                <input class="w-96" type="text" name="UP_PRICE" id="currency-field" pattern="^\$\d{1,3}(.\d{3})*(\,\d+)?$" data-type="currency" placeholder="<?= $value ?>"><br>
 
                 <label class="font-medium pt-1">Imagem:</label><br>
-                <input class="rounded-lg" onchange="PreviewImage(this);" type="file" name="post_image" accept="image/png, image/gif, image/jpeg"><br>
+                <input class="rounded-lg" onchange="PreviewImage(this);" type="file" name="post_image" accept="image/png, image/jpeg, image/webp"><br>
 
                 <input id="btnEdit" class=" w-96 h-8 mt-3 cursor-pointer bg-gradient-to-r from-cyan-500 to-blue-500 transition-colors duration-300 ease-in-out hover:bg-[#a0d4d6] rounded-md text-white font-medium hover:text-black" type="submit" value="Editar anúncio">
             </form>
