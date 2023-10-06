@@ -197,6 +197,8 @@ class API
             "apipass" => $this->api_pass,
             "id" => $id
         );
+        
+
 
         if (isset($title) && $title != " " && $title != "")
             $data["title"] = $title;
@@ -205,17 +207,15 @@ class API
             $data["description"] = $desc;
 
 
-        if ($value != 0 && $value != " " && $value != "") {
-            $converted_price = str_replace(",", ".", str_replace(".", "", $value));
-            $converted_price = str_replace("R$", "", $converted_price);
-            $data["price"] = $converted_price;
+        if ($value != 0) {
+            $data["price"] = $value;
         }
 
         if (isset($img))
             $data['image'] = $img;
 
 
-        echo(var_dump($data));
+        //echo(var_dump($data));
 
 
         $ch = curl_init($url);
@@ -229,6 +229,32 @@ class API
 
         curl_close($ch);
 
+
+        if (!isset($result) || $result['status'] != "success")
+            return false;
+
+        return true;
+    }
+
+    function DELETE_PRODUCT($id){
+        //http://api.iagofragnan.com.br/BTS/produto/deletar
+        $url = $this->api_url . "/produto/deletar/";
+        $data = array(
+            "apiuser" => $this->api_user,
+            "apipass" => $this->api_pass,
+            "id" => $id
+        );
+
+        $ch = curl_init($url);
+
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+        $response = curl_exec($ch);
+        $result = json_decode($response, true);
+
+        curl_close($ch);
 
         if (!isset($result) || $result['status'] != "success")
             return false;

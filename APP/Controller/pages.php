@@ -19,7 +19,10 @@ switch ($url) {
     case "/editar":
         return require("./View/edit.php");
 
-    case "/create":
+        case "/deletar":
+            return require("./Controller/delete.php");
+    
+        case "/create":
         return require("./View/create.php");
 
     case "/teste":

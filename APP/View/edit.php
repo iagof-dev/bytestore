@@ -31,6 +31,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $title = $_POST['UP_TITLE'];
     $desc = $_POST['UP_DESC'];
     $value = $_POST['UP_PRICE'];
+    $converted_price = str_replace(",", ".", str_replace(".", "", $value));
+    $converted_price = (float)str_replace("R$", "", $converted_price);
     $image = null;
     $old_image = null;
     require_once(__DIR__ . "/../Model/usuario.php");
@@ -77,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     }
 
 
-    $result = $api->MAKE_UPDATE_POST_REQUEST($id, $title, $desc, $value, $image);
+    $result = $api->MAKE_UPDATE_POST_REQUEST($id, $title, $desc, $converted_price, $image);
 
     if($result != true){
         echo("<script>
@@ -128,7 +130,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     <div class="container grid items-center place-items-center mt-5">
         <div class="flex">
-            <img class="rounded-xl w-80 h-64 border-dotted border-2 border-black mr-16 min-w-80 max-w-64 min-h-16" id="imgpreview" src="<?= $image ?>" alt="Produto Imagem Preview" title="Produto Imagem Preview">
+            <img class="rounded-xl w-92 max-w-[100rem] h-64 border-dotted border-2 border-black mr-16 min-w-80 max-w-64 min-h-16" id="imgpreview" src="<?= $image ?>" alt="Produto Imagem Preview" title="Produto Imagem Preview">
 
             <form action="/editar?id=<?= $id ?>" method="post" enctype="multipart/form-data">
 
