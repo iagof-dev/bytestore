@@ -7,11 +7,11 @@ $list = new ADMIN_PRODUCTS_LIST();
 if (isset($_GET['id']) && isset($_GET['action']) && isset($_GET['confirmed']) && $_GET['action'] == 'delete' && isset($_GET['id'])) {
     echo ('<script> Swal.fire({
       title: "Deseja excluir o anúncio?",
-      text: "Essa ação é irreversível.",
+      text: "Esta ação é irreversível.",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#18A5E0",
-      cancelButtonColor: "#d33",
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#18A5E0",
       confirmButtonText: "Confirmar",
       cancelButtonText: `Cancelar`,
     }).then((result) => {
@@ -27,8 +27,8 @@ if (isset($_GET['id']) && isset($_GET['action']) && isset($_GET['confirmed']) &&
 
 if (isset($_GET['status']) && $_GET['status'] == "success") {
     echo ('<script> Swal.fire({
-        title: "Sucesso!",
-        text: "Decidindo.",
+        title: "Deletado!",
+        text: "Seu anúncio foi removido e já não está mais visível.",
         icon: "success",
         showCancelButton: false,
         confirmButtonColor: "#18A5E0",

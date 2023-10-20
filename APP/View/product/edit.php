@@ -7,7 +7,7 @@ $user = new user();
 if (!$user->isLogged())
     return header("Location: /login");
 
-require_once(__DIR__ . "/../api/routes.php");
+
 $api = new API();
 
 
@@ -35,9 +35,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $converted_price = (float)str_replace("R$", "", $converted_price);
     $image = null;
     $old_image = null;
-    require_once(__DIR__ . "/../Model/usuario.php");
+    require_once(__DIR__ . "/../../Model/usuario.php");
     $user_info = new user();
-    $og_product = $api->GET_SPECIFIC_PRODUCT($_GET['id']);
+    $og_product = $api->GET_PRODUCT_BY_ID($_GET['id']);
     if($og_product['DATA']['0']['owner'] != $user_info->getId()){
 
         echo("<script>
@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     if (isset($_FILES['post_image'])) {
         $old_image = $og_product['DATA']['0']['image'];
-        $DIRECTORY_IMAGE =  __DIR__ . "/../Assets/imgs/products/";
+        $DIRECTORY_IMAGE =  __DIR__ . "/../../Assets/imgs/products/";
         if (!is_dir($DIRECTORY_IMAGE))
             throw new Exception("Diretorio não existe");
         if (is_executable($_FILES['post_image']['tmp_name']))
@@ -141,7 +141,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 <textarea placeholder="<?= $desc ?>" class="resize-none border-solid border-2 rounded-md border-black focus:border-blue-500" name="UP_DESC" cols="50" rows="5"></textarea><br>
 
                 <label class="font-medium pt-1">Valor:</label><br>
-                <input class="w-96" type="text" name="UP_PRICE" id="currency-field" pattern="^\$\d{1,3}(.\d{3})*(\,\d+)?$" data-type="currency" placeholder="<?= $value ?>"><br>
+                <input class="w-96" type="text" name="UP_PRICE" id="currency-field" pattern="^\$\d{1,3}(.\d{3})*(\,\d+)?$" data-type="currency" placeholder="R$<?= $value ?>"><br>
 
                 <label class="font-medium pt-1">Imagem:</label><br>
                 <input class="rounded-lg" onchange="PreviewImage(this);" type="file" name="post_image" accept="image/png, image/jpeg, image/webp"><br>

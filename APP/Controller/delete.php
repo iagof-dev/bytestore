@@ -4,7 +4,7 @@
 
   $lgUSER = new user();
   $api = new api();
-  $getProductInfo = $api->GET_SPECIFIC_PRODUCT($_GET['id']);
+  $getProductInfo = $api->GET_PRODUCT_BY_ID($_GET['id']);
 
   if($lgUSER->getId() != $getProductInfo['DATA']['0']['owner']){
     //erro

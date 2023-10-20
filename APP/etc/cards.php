@@ -26,8 +26,8 @@ class card
         $discount_text = '';
 
         return ('
-<div class="rounded-md drop-shadow-lg w-[11rem] bg-[#FDFDFD]">
-    <a href="/anuncio/' . $id . '">
+<div class="rounded-md drop-shadow-lg w-[12rem] bg-[#FDFDFD]">
+    <a href="/anuncio?id=' . $id . '">
         <img src="../Assets/imgs/products/' . $img . '" alt="aaaaaa" class="w-full h-44 rounded-t-md" title="aaaaa" />
         <div class="p-2 h-32 max-sm:w-1">
             <h1 class="text-[0.80rem] font-medium">' . $title . '</h1>
@@ -36,7 +36,7 @@ class card
                 <h4 class="text-gray-600 text-[0.8rem] mt-[-0.5rem]">96x de R$' . $parcel . ' sem juros</h4>
             </div>
         </div>
-        <a href="/anuncio/' . $id . '"><button class="bg-[#00A000] text-sm rounded-sm font-medium text-white w-full h-10 rounded-b-md transition-colors duration-300 ease-in-out hover:bg-[#00B000] hover:text-[#101010]"> Adicionar ao carrinho</button></a>
+        <a href="/anuncio?id=' . $id . '"><button class="bg-[#00A000] text-sm rounded-sm font-medium text-white w-full h-10 rounded-b-md transition-colors duration-300 ease-in-out hover:bg-[#00B000] hover:text-[#101010]"> Adicionar ao carrinho</button></a>
     </a>
 </div>
 ');

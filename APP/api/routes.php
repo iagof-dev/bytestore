@@ -107,11 +107,23 @@ class API
         foreach ($array_result as $valor) {
             $result_final .= "<option value=" . $valor['id'] . ">" . $valor['name'] . "</option>";
         }
-
-
         return $result_final;
     }
 
+    function GET_USER_BY_ID($id)
+    {
+        $ch = curl_init($this->api_url . '/usuario/id/'. $id);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        $data = curl_exec($ch);
+        curl_close($ch);
+        $result = json_decode($data, true);
+
+        if (!isset($result) || $result['status'] != "success")
+            return false;
+
+        return $result;
+    }
 
     function CREATE_PRODUCT($title, $description, $value, $category, $image, $id)
     {
@@ -179,7 +191,32 @@ class API
         return json_decode($data, true);
     }
 
-    function GET_SPECIFIC_PRODUCT($id){
+    
+    function CREATE_CARDS_BY_OWNER($id)
+    {
+        $url = $this->api_url . "/produto/owner/" . $id;
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        $data = curl_exec($ch);
+        curl_close($ch);
+        $result = json_decode($data, true);
+
+        
+        $array_result = $result["DATA"];
+        require_once(__DIR__ . "/../etc/cards.php");
+        $CARD = new CARD();
+        $result_final = "";
+
+        foreach ($array_result as $valor) {
+            $result_final .= $CARD->CREATE_CARD($valor['id'], $valor['title'], $valor['price'], $valor['discount'], $valor['image'], $valor['owner']);
+        }
+
+
+        return $result_final;
+    }
+
+    function GET_PRODUCT_BY_ID($id){
         $url = $this->api_url . "/produto/id/" . $id;
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
