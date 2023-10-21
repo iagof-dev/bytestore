@@ -6,7 +6,7 @@ $owner = $api->GET_USER_BY_ID($user_id);
 
 if (empty($produto['DATA']['0'])) {
     //echo("<script>console.log('deu ruim');</script>");
-    header("Location: /");
+    return header("Location: /");
 }
 
 
@@ -14,6 +14,10 @@ if (empty($produto['DATA']['0'])) {
 
 
 <div class="md:container grid place-items-center align-middle items-center mx-auto">
+    <div class="container w-10 -ml-[68rem] mt-4 -mb-5 rounded-full bg-gradient-to-r from-[#303030] to-[#404040]">
+        <a href="javascript:history.go(-1)"><img src="../Assets/imgs/icons/solid/arrow-left.svg" class="invert"></a>
+    </div>
+
     <div class="mt-10 w-[70rem] h-[45rem] rounded-lg bg-gradient-to-r from-[#303030] to-[#404040] md:mx-auto justify-center shadow-xl">
         <div class="mt-10 grid items-center place-items-center">
             <div class="flex">
@@ -31,7 +35,7 @@ if (empty($produto['DATA']['0'])) {
                             <img src="../Assets/imgs/icons/solid/star.svg" class="h-5 icon-star">
                             <img src="../Assets/imgs/icons/solid/star.svg" class="h-5 icon-star">
                             <img src="../Assets/imgs/icons/solid/star.svg" class="h-5 icon-star">
-                            </div>
+                        </div>
                         <span class="text-gray-50 align-middle ">(100 avaliações)</span>
                     </div>
                     <div class="row-auto ">
