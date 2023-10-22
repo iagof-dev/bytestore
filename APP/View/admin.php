@@ -2,7 +2,6 @@
 
 require_once(__DIR__ . "/../etc/admin/product_list.php");
 
-$list = new ADMIN_PRODUCTS_LIST();
 
 if (isset($_GET['id']) && isset($_GET['action']) && isset($_GET['confirmed']) && $_GET['action'] == 'delete' && isset($_GET['id'])) {
     echo ('<script> Swal.fire({
@@ -50,7 +49,7 @@ if (isset($_GET['status']) && $_GET['status'] == "success") {
     <div class="ml-16">
         <div class="grid items-center place-items-center w-full">
             <h1 class="font-medium text-2xl items-center w-full place-items-center align-middle">Anúncios Ativos:</h1>
-            <?= $list->GET() ?>
+            <?= (new ADMIN_PRODUCTS_LIST())->GET() ?>
         </div>
     </div>
 </div>

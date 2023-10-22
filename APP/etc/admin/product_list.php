@@ -58,6 +58,10 @@ class ADMIN_PRODUCTS_LIST
         </div>");
         }
 
+        if(empty($RETURN_STRING) || !isset($RETURN_STRING)){
+            $RETURN_STRING = '<h1 class="text-red-600">Nenhum anúncio ativo :(</h1>';
+        }
+
         return $RETURN_STRING;
     }
 }

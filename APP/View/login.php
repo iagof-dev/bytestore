@@ -1,18 +1,12 @@
 <?php
 
-
-
 //Se usuário tiver logado, redirecionar para a página inicial
-$user = new user();
-if ($user->isLogged())
+if ((new user())->isLogged())
     header('Location: /');
-
-
 
 //Se o método for POST, fazer a requisição de login
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $api = new API();
-    $result = $api->MAKE_LOGIN_REQUEST($_POST['user_email'], $_POST['user_pass']);
+    $result = (new API())->MAKE_LOGIN_REQUEST($_POST['user_email'], $_POST['user_pass']);
 
 
     if (!$result) {
@@ -66,8 +60,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 <div class="md:container w-screen md:mx-auto">
     <div class="w-screen text-center md:container grid items-center place-items-center">
-        <div class="bg-[#FFFFFF] shadow-md rounded-xl mt-20 w-[30rem] h-64">
-            <form action="/login" method="post">
+        <div class="bg-[#FFFFFF] shadow-md rounded-xl mt-20 w-[35rem] h-80">
+            <form class="mt-14" action="/login" method="post">
                 <h1 class="font-bold text-xl mt-4">Logar-se</h1>
                 <?php
                 if (isset($_GET['error'])) echo "<p class='text-red-500'>Seu e-mail e/ou senha estão incorretas, tente novamente</p>";

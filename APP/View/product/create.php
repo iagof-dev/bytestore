@@ -1,12 +1,9 @@
 <?php
 
-$user = new user();
 
-if (!$user->isLogged())
+if (!(new user())->isLogged())
     return header("Location: /login");
 
-require_once(__DIR__ . "/../api/routes.php");
-$api = new API();
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
@@ -40,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $converted_price = str_replace(",", ".", str_replace(".", "", $value));
         $converted_price = str_replace("R$", "", $converted_price);
 
-        $DIRECTORY_IMAGE =  __DIR__ . "/../Assets/imgs/products/";
+        $DIRECTORY_IMAGE =  __DIR__ . "/../../Assets/imgs/products/";
 
         if (!is_dir($DIRECTORY_IMAGE))
             throw new Exception("Diretorio não existe");
@@ -56,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         if (move_uploaded_file($_FILES['post_image']['tmp_name'], $NAME_SAVE_FILE)) {
 
-            $result = $api->CREATE_PRODUCT($title, $description, $converted_price, $category, $unique_name, $user->getId());
+            $result = (new API())->CREATE_PRODUCT($title, $description, $converted_price, $category, $unique_name, (new user())->getId());
 
             if(!$result){
                 echo ("<script>
@@ -113,9 +110,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 ?>
 
 
-<div class="container md:mx-auto ">
-
-    <div class="container grid items-center place-items-center mt-5">
+<div class="container md:mx-auto">
+    <div class="container grid items-center place-items-center">
         <div class="flex">
             <img class="rounded-xl w-80 h-64 border-dotted border-2 border-black mr-16 min-w-80 max-w-64 min-h-16" id="imgpreview" src="../Assets/imgs/placeholder.webp" alt="Produto Imagem Preview" title="Produto Imagem Preview">
 
@@ -133,14 +129,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <label class="font-medium">Categoria:</label><br>
                 <select required class="w-96 rounded-md" name="post_category">
                     <?php
-                    echo ($api->GET_LIST_CATEGORY());
+                    echo ((new API())->GET_LIST_CATEGORY());
 
                     ?>
                 </select><br>
 
 
                 <label class="font-medium">Imagem:</label><br>
-                <input class="rounded-lg" onchange="PreviewImage(this);" required type="file" name="post_image" accept="image/png, image/gif, image/jpeg"><br>
+                <input class="rounded-lg" onchange="PreviewImage(this);" required type="file" name="post_image" accept="image/png, image/gif, image/jpeg, image/webp"><br>
 
                 <input class=" w-96 h-8 mt-3 cursor-pointer bg-gradient-to-r from-cyan-500 to-blue-500 transition-colors duration-300 ease-in-out hover:bg-[#a0d4d6] rounded-md text-white font-medium hover:text-black" required type="submit" value="Criar anúncio">
             </form>

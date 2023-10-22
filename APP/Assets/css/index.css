@@ -10,3 +10,19 @@ body {
 .bt-icon :hover{
     filter: grayscale(1) invert(1);
 }
+
+::-webkit-scrollbar {
+    width: 12px;
+
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 8px;
+    background-color: #95a5a6;
+    border: 1px solid #cacaca;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: #353535;
+}

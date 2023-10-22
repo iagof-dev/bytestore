@@ -20,6 +20,48 @@ class API
         $this->api_pass = $api_pass;
     }
 
+
+    function getPublicIP()
+    {
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, "http://httpbin.org/ip");
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        $output = curl_exec($curl);
+        curl_close($curl);
+
+        $ip = json_decode($output, true);
+        return $ip['origin'];
+    }
+
+
+    function REGISTER_IP($id)
+    {
+
+        $url = $this->api_url . "/usuario/modificar";
+        $ipv4 = $this->getPublicIP();
+        $date = date("Y-m-d H:i:s");
+
+
+        $data = array(
+            "apiuser" => $this->api_user,
+            "apipass" => $this->api_pass,
+            "id" => $id,
+            "access_ip" => $ipv4,
+            "last_access" => $date
+        );
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $response = curl_exec($ch);
+        $result = json_decode($response, true);
+        curl_close($ch);
+        if (!isset($result) || $result['status'] != "success")
+            return false;
+        return true;
+    }
+
+
     function MAKE_LOGIN_REQUEST($email, $pass)
     {
         $pass_md5 = md5($pass);
@@ -39,6 +81,9 @@ class API
         curl_close($ch);
         if (!isset($result) || $result['status'] != "success")
             return false;
+
+
+        $this->REGISTER_IP($result['message']['0']['id']);
         require_once(__DIR__ . "/../Model/usuario.php");
         $user = new user();
         $user->setId($result['message']['0']['id']);
@@ -62,6 +107,7 @@ class API
         $pass_md5 = md5($pass);
 
         $url = $this->api_url . "/usuario/criar/";
+        $ipv4 = $this->getPublicIP();
 
         $data = array(
             "apiuser" => $this->api_user,
@@ -69,7 +115,8 @@ class API
             "username" => $name,
             "email" => $email,
             "pass" => $pass_md5,
-            "role" => "user"
+            "role" => "user",
+            "register_ip" => $ipv4
         );
 
         $ch = curl_init($url);
@@ -112,7 +159,7 @@ class API
 
     function GET_USER_BY_ID($id)
     {
-        $ch = curl_init($this->api_url . '/usuario/id/'. $id);
+        $ch = curl_init($this->api_url . '/usuario/id/' . $id);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HEADER, 0);
         $data = curl_exec($ch);
@@ -191,7 +238,7 @@ class API
         return json_decode($data, true);
     }
 
-    
+
     function CREATE_CARDS_BY_OWNER($id)
     {
         $url = $this->api_url . "/produto/owner/" . $id;
@@ -202,7 +249,7 @@ class API
         curl_close($ch);
         $result = json_decode($data, true);
 
-        
+
         $array_result = $result["DATA"];
         require_once(__DIR__ . "/../etc/cards.php");
         $CARD = new CARD();
@@ -216,7 +263,8 @@ class API
         return $result_final;
     }
 
-    function GET_PRODUCT_BY_ID($id){
+    function GET_PRODUCT_BY_ID($id)
+    {
         $url = $this->api_url . "/produto/id/" . $id;
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -234,7 +282,7 @@ class API
             "apipass" => $this->api_pass,
             "id" => $id
         );
-        
+
 
 
         if (isset($title) && $title != " " && $title != "")
@@ -273,7 +321,8 @@ class API
         return true;
     }
 
-    function DELETE_PRODUCT($id){
+    function DELETE_PRODUCT($id)
+    {
         //http://api.iagofragnan.com.br/BTS/produto/deletar
         $url = $this->api_url . "/produto/deletar/";
         $data = array(

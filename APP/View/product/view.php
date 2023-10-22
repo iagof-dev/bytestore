@@ -14,12 +14,14 @@ if (empty($produto['DATA']['0'])) {
 
 
 <div class="md:container grid place-items-center align-middle items-center mx-auto">
-    <div class="container w-10 -ml-[68rem] mt-4 -mb-5 rounded-full bg-gradient-to-r from-[#303030] to-[#404040]">
-        <a href="javascript:history.go(-1)"><img src="../Assets/imgs/icons/solid/arrow-left.svg" class="invert"></a>
-    </div>
 
-    <div class="mt-10 w-[70rem] h-[45rem] rounded-lg bg-gradient-to-r from-[#303030] to-[#404040] md:mx-auto justify-center shadow-xl">
+    <div class="mt-3 w-[70rem] max-h-full min-h-[37rem] h-auto rounded-lg bg-gradient-to-r from-[#303030] to-[#404040] md:mx-auto justify-center shadow-xl">
         <div class="mt-10 grid items-center place-items-center">
+
+            <div class="container w-10 -ml-[65rem] -mt-5 mb-5 rounded-full">
+                <a href="javascript:history.go(-1)"><img title="Voltar" src="../Assets/imgs/icons/solid/arrow-left.svg" class="invert h-8"></a>
+            </div>
+
             <div class="flex">
                 <div class="col-auto mr-44">
                     <img src="../Assets/imgs/products/<?= $produto['DATA']['0']['image']; ?>" class="rounded-md shadow-xl border-black border-2" width="350rem" height="350rem">
@@ -36,7 +38,7 @@ if (empty($produto['DATA']['0'])) {
                             <img src="../Assets/imgs/icons/solid/star.svg" class="h-5 icon-star">
                             <img src="../Assets/imgs/icons/solid/star.svg" class="h-5 icon-star">
                         </div>
-                        <span class="text-gray-50 align-middle ">(100 avaliações)</span>
+                        <span class="text-gray-50 align-middle ">(0 avaliações)</span>
                     </div>
                     <div class="row-auto ">
                         <h1 class="text-gray-100">Vendido por: <a href="/profile?id=<?= $user_id ?>"><span class="text-blue-400 underline font-medium text-lg"><?= $owner['DATA']['0']['username'] ?></span></a></h1>
@@ -53,7 +55,7 @@ if (empty($produto['DATA']['0'])) {
         </div>
 
         <hr class="mt-5 -mb-2 border-[#252525]">
-        <div class="container  mx-auto grid place-content-center place-items-center">
+        <div class="container  mx-auto grid place-content-center place-items-center mb-6">
             <div class="row-auto mt-5 text-start">
                 <span class="text-white text-xl font-medium">Descrição</span>
             </div>
@@ -71,7 +73,10 @@ if (empty($produto['DATA']['0'])) {
 </div>
 
 <style>
-    .icon-star {
+    /* .icon-star {
         filter: brightness(0) saturate(100%) invert(77%) sepia(62%) saturate(961%) hue-rotate(359deg) brightness(99%) contrast(90%);
+    } */
+    .icon-star{
+        filter: brightness(0) saturate(100%) invert(87%) sepia(19%) saturate(11%) hue-rotate(39deg) brightness(94%) contrast(100%);
     }
 </style>

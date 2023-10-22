@@ -28,6 +28,9 @@ switch ($url) {
     case "/anuncio":
         return require("./View/product/view.php");
 
+    case "/purchases":
+        return require("./View/purchases.php");
+
     case "/teste":
         return require("./View/teste.php");
 
@@ -39,6 +42,9 @@ switch ($url) {
 
     case "/profile/edit":
         return require("./View/profile/edit.php");
+
+    case "/tos":
+        return require("./View/tos.html");
 
     default:
         return require("./View/404.php");

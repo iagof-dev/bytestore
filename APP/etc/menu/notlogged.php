@@ -1,4 +1,5 @@
-<div class="menu w-full flex mt-[-5px] bg-[#353535] h-50">
+<header class="pb-16">
+<div class="menu w-full flex mt-[-5px] z-[1000] fixed bg-[#353535] h-50">
     <div class="md:container m-0 mt-1 flex xl:mx-auto rounded-md items-stretch">
         <a title="Página Inicial" href="/"><img src="../Assets/imgs/logo/128.webp" alt="Byte Store" title="ByteStore Logo" class="md:w-16 grid-cols-1" /></a>
         <div class="md:container w-full  flex flex-grow justify-end">
@@ -12,3 +13,4 @@
         </div>
     </div>
 </div>
+</header>
