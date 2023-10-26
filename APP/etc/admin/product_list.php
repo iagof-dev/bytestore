@@ -50,7 +50,7 @@ class ADMIN_PRODUCTS_LIST
                 <div class='grid align-middle place-items-end text-center'>
                     <div class='buttons flex w-14 h-16 mt-[-3rem] mr-5'>
                         <a href='/editar?id=$id&title=$titulo&price=$valor&desc=$desc&img=$img_name'><button><img class='select-none' src='../Assets/imgs/icons/solid/pencil.svg' /></button></a>
-                        <a href='/admin?id=$id&action=delete&confirmed=false'><button><img class='select-none' src='../Assets/imgs/icons/solid/trash.svg' /></button></a>
+                        <a href='/admin?id=$id&action=delete&confirmed=false&img=$img_name'><button><img class='select-none' src='../Assets/imgs/icons/solid/trash.svg' /></button></a>
                     </div>
                 </div>
             </div>

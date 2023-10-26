@@ -15,7 +15,7 @@ if (isset($_GET['id']) && isset($_GET['action']) && isset($_GET['confirmed']) &&
       cancelButtonText: `Cancelar`,
     }).then((result) => {
       if (result.isConfirmed) {
-          window.location.assign("/deletar?id=' . $_GET['id'] . '");
+          window.location.assign("/deletar?id=' . $_GET['id'] . '&img='. $_GET['img'] .'");
       } else if (result.isDismissed) {
         Swal.fire("Cancelado", "Nenhuma ação foi feita.", "error");
         window.location.assign("/admin");

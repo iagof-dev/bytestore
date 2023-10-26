@@ -126,22 +126,27 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 ?>
 
-<div class="container md:mx-auto ">
 
-    <div class="container grid items-center place-items-center mt-5">
+
+<div class="container flex mx-auto h-auto pt-5">
+
+<?php include_once(__DIR__ . "/../../etc/menu/user_menu.php");?>
+
+
+    <div class="container grid items-center place-items-center w-auto ml-32 mt-16">
         <div class="flex">
             <img class="rounded-xl w-92 max-w-[100rem] h-64 border-dotted border-2 border-black mr-16 min-w-80 max-w-64 min-h-16" id="imgpreview" src="<?= $image ?>" alt="Produto Imagem Preview" title="Produto Imagem Preview">
 
             <form action="/editar?id=<?= $id ?>" method="post" enctype="multipart/form-data">
 
                 <label class="font-medium pt-1">Titulo:</label><br>
-                <input type="text" class="w-96 h-8 border-solid border-2 rounded-md border-black focus:border-blue-500" name="UP_TITLE" placeholder="<?= $title ?>"><br>
+                <input type="text" class="w-96 h-8 border-solid border-2 rounded-md border-black focus:border-blue-500" name="UP_TITLE" value="<?= $title ?>"><br>
 
                 <label class="font-medium pt-1">Descrição:</label><br>
-                <textarea placeholder="<?= $desc ?>" class="resize-none border-solid border-2 rounded-md border-black focus:border-blue-500" name="UP_DESC" cols="50" rows="5"></textarea><br>
+                <textarea class="resize-none border-solid border-2 rounded-md border-black focus:border-blue-500" name="UP_DESC" cols="50" rows="5"><?= $desc ?></textarea><br>
 
                 <label class="font-medium pt-1">Valor:</label><br>
-                <input class="w-96" type="text" name="UP_PRICE" id="currency-field" pattern="^\$\d{1,3}(.\d{3})*(\,\d+)?$" data-type="currency" placeholder="R$<?= $value ?>"><br>
+                <input class="w-96" type="text" name="UP_PRICE" id="currency-field" pattern="^\$\d{1,3}(.\d{3})*(\,\d+)?$" data-type="currency" value="R$<?= $value ?>"><br>
 
                 <label class="font-medium pt-1">Imagem:</label><br>
                 <input class="rounded-lg" onchange="PreviewImage(this);" type="file" name="post_image" accept="image/png, image/jpeg, image/webp"><br>

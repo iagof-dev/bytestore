@@ -2,18 +2,23 @@
   require_once(__DIR__ . "/../api/routes.php");
   require_once(__DIR__ . "/../Model/usuario.php");
 
-  $lgUSER = new user();
   $api = new api();
   $getProductInfo = $api->GET_PRODUCT_BY_ID($_GET['id']);
 
-  if($lgUSER->getId() != $getProductInfo['DATA']['0']['owner']){
+  if((new user())->getId() != $getProductInfo['DATA']['0']['owner']){
     //erro
     header("Location: /admin");
     return;
   }
 
-
-  $response = $api->DELETE_PRODUCT($_GET['id']);
+  
+  try{
+    $response = $api->DELETE_PRODUCT($_GET['id']);
+    unlink(__DIR__ . "/../Assets/imgs/products/" . $_GET['img']);
+  }
+  catch(Exception $e){
+    echo('<script>console.log("Erro! '. $e->getMessage() .'");</script>');
+  }
 
   if($response != true){
     header("Location: /admin?status=error");

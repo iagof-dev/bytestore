@@ -18,7 +18,7 @@ if (empty($produto['DATA']['0'])) {
     <div class="mt-3 w-[70rem] max-h-full min-h-[37rem] h-auto rounded-lg bg-gradient-to-r from-[#303030] to-[#404040] md:mx-auto justify-center shadow-xl">
         <div class="mt-10 grid items-center place-items-center">
 
-            <div class="container w-10 -ml-[65rem] -mt-5 mb-5 rounded-full">
+            <div class="container w-10 -ml-[65rem] -mt-5 -mb-3 rounded-full">
                 <a href="javascript:history.go(-1)"><img title="Voltar" src="../Assets/imgs/icons/solid/arrow-left.svg" class="invert h-8"></a>
             </div>
 
@@ -26,7 +26,7 @@ if (empty($produto['DATA']['0'])) {
                 <div class="col-auto mr-44">
                     <img src="../Assets/imgs/products/<?= $produto['DATA']['0']['image']; ?>" class="rounded-md shadow-xl border-black border-2" width="350rem" height="350rem">
                 </div>
-                <div class="col-auto ml-2">
+                <div class="col-auto ml-2 mt-8">
                     <div class="row-auto ">
                         <h1 class="text-gray-100 font-semibold text-md"><?= wordwrap($produto['DATA']['0']['title'], 50, "<br />\n"); ?></h1>
                     </div>
@@ -55,7 +55,7 @@ if (empty($produto['DATA']['0'])) {
         </div>
 
         <hr class="mt-5 -mb-2 border-[#252525]">
-        <div class="container  mx-auto grid place-content-center place-items-center mb-6">
+        <div class="container mx-auto grid place-content-center place-items-center mb-12">
             <div class="row-auto mt-5 text-start">
                 <span class="text-white text-xl font-medium">Descrição</span>
             </div>
