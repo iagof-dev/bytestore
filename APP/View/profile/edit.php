@@ -6,6 +6,11 @@ if (empty($pfp) || !isset($pfp)) {
     $pfp = "../../Assets/imgs/user-ph.webp";
 }
 
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    
+
+}
+
 
 ?>
 <div class="container flex mx-auto h-auto pt-5">
@@ -25,10 +30,12 @@ if (empty($pfp) || !isset($pfp)) {
                     </div>
 
                     <div class="info">
-                        <label>Nome de Exibição:</label>
-                        <input type="text" name="name_store" placeholder="nome da loja"><br>
-                        <label>Descrição da loja:</label>
-                        <textarea type="text" rows="5" maxlength="350" cols="40" name="desc_store"  placeholder="Descrição da Loja" class="resize-none"></textarea>
+                        <label>Nome de Exibição:</label><br>
+                        <input class="rounded w-full" type="text" name="name_store" placeholder="<?= (new user())->getName(); ?>"><br>
+                        <label>Descrição da loja:</label><br>
+                        <textarea class="rounded resize-none" type="text" rows="5" maxlength="350" cols="50" name="desc_store"><?= (new user())->getDesc(); ?></textarea>
+                        <br>
+                        <input class=" w-96 h-8 mt-3 cursor-pointer bg-gradient-to-r from-cyan-500 to-blue-500 transition-colors duration-300 ease-in-out hover:bg-[#a0d4d6] rounded-md text-white font-medium hover:text-black" required type="submit" value="Salvar Alterações">
 
                     </div>
 
