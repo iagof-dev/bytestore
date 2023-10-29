@@ -12,21 +12,3 @@ Remaking it...
 Project started in: 28/02/2023
 
 Project Restarted in: 03/08/2023
-
-# ⚙️ OLD | Requirements
-
-- MySql Server ([Baixar](https://dev.mysql.com/downloads/mysql/))
-
-- Xampp or WampServer
-
-- Composer ([Baixar](https://getcomposer.org/))
-
-- Mercado Pago SDK ([Repositório](https://github.com/mercadopago/sdk-php))
-
-# 📖 OLD | Used Libs
-
-- AOS ([Site](https://michalsnik.github.io/aos/))
-- FontAwesome ([Site](https://fontawesome.com))
-- Bootstrap ([Site](https://getbootstrap.com/))
-- jQuery  ([Site](https://jquery.com))
-- SweetAlert2 ([Site](https://sweetalert2.github.io))
