@@ -7,7 +7,7 @@ $img = "../Assets/imgs/user-ph.webp";
 $verify = $usuario->getPFP();
 
 if (isset($verify) || !empty($verify))
-    $img = "../Assets/imgs/users/" . $usuario->getPFP();
+    $img = "../Assets/imgs/users_pfp/" . $usuario->getPFP();
 
 ?>
 

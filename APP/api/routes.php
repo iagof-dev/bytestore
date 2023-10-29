@@ -251,10 +251,13 @@ class API
 
 
         $array_result = $result["DATA"];
+        if(empty($array_result)){
+            return "<h1 class='text-red-600'>Nenhum produto encontrado</h1>";
+        }
+
         require_once(__DIR__ . "/../etc/cards.php");
         $CARD = new CARD();
         $result_final = "";
-
         foreach ($array_result as $valor) {
             $result_final .= $CARD->CREATE_CARD($valor['id'], $valor['title'], $valor['price'], $valor['discount'], $valor['image'], $valor['owner']);
         }
@@ -296,9 +299,9 @@ class API
             $data["price"] = $value;
         }
 
-        if (isset($img))
+        if (isset($img)){
             $data['image'] = $img;
-
+        }
 
         //echo(var_dump($data));
 
@@ -347,4 +350,46 @@ class API
 
         return true;
     }
+    
+
+    function UPDATE_USER($id,$name = null, $desc = null, $pfp = null)
+    {
+        $url = $this->api_url . "/usuario/modificar/";
+        $data = array(
+            "apiuser" => $this->api_user,
+            "apipass" => $this->api_pass,
+            "id" => $id
+        );
+
+        if(isset($name) && $name != null){
+            $data['username'] = $name;
+            (new user())->setName($name);
+        }
+        if(isset($desc) && $desc != null){
+            $data['description'] = $desc;
+            (new user())->setDesc($desc);
+        }
+        if(isset($pfp) && $pfp != 0 && $pfp != null){
+            $data['pfp'] = $pfp;
+            (new user())->setPFP($pfp);
+        }
+        $ch = curl_init($url);
+
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+        $response = curl_exec($ch);
+        $result = json_decode($response, true);
+
+        curl_close($ch);
+
+        if (!isset($result) || $result['status'] != "success")
+            return $result;
+
+        return true;
+    }
+
+
+
 }

@@ -1,5 +1,5 @@
 // btnEdit.addEventListener('click', function(e) {
-$('form').one('submit', function (e) {
+$("form").one("submit", function (e) {
   e.preventDefault();
 
   Swal.fire({
@@ -7,8 +7,8 @@ $('form').one('submit', function (e) {
     text: "Essa ação é irreversível.",
     icon: "warning",
     showCancelButton: true,
-    confirmButtonColor: "#18A5E0",
-    cancelButtonColor: "#d33",
+    confirmButtonColor: "#d33",
+    cancelButtonColor: "#18A5E0",
     confirmButtonText: "Confirmar",
     cancelButtonText: `Cancelar`,
   }).then((result) => {
@@ -18,7 +18,6 @@ $('form').one('submit', function (e) {
       Swal.fire("Cancelado", "Nenhuma ação foi feita.", "error");
     }
   });
-
 });
 
 //https://stackoverflow.com/questions/14375144/jquery-prevent-default-then-continue-default
