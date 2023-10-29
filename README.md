@@ -1,4 +1,7 @@
-![](https://api.pikwy.com/web/644d1edd1f335e495f54fd95.png)
+
+<div align="center">
+<img src="https://socialify.git.ci/iagof-dev/bytestore/image?description=1&font=Inter&language=1&name=1&pattern=Solid&theme=Auto" alt="bytestore" width="640" height="320" />
+</div>
 
 # 🛒 Byte Store
 PHP & MySql | Projeto de um E-COMMERCE feito em PHP utilizando padrão MVC.
