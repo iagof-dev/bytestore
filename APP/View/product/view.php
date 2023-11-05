@@ -9,6 +9,32 @@ if (empty($produto['DATA']['0'])) {
     return header("Location: /");
 }
 
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+
+    if($user_id == $user->getId()){
+        echo("<script>
+        Swal.fire({
+            title: 'Erro',
+            text: 'Você não pode comprar seu próprio anúncio.',
+            icon: 'error',
+            showCancelButton: false,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ok'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = '/anuncio?id=".$_GET['id']."';
+            }
+          })
+        </script>");
+        return;
+    }
+
+    $link = $api->CREATE_PAYMENT_LINK($_GET['id'], $produto['DATA']['0']['title'], $produto['DATA']['0']['description'], $produto['DATA']['0']['price'], $produto['DATA']['0']['owner'], $user->getId(), $user->getEmail(), $produto['DATA']['0']['id_category'], 1);
+    header("Location: $link");
+
+    //echo("debug: " . var_dump($link));
+}
 
 ?>
 
@@ -48,7 +74,9 @@ if (empty($produto['DATA']['0'])) {
                     </div>
 
                     <div class="row-auto">
-                        <a href="/comprar/x"><button class="text-ml w-32 rounded h-8 mt-1 cursor-pointer bg-gradient-to-r shadow-xl from-cyan-500 to-blue-500 transition-colors duration-300 ease-in-out hover:bg-[#a0d4d6] text-white font-medium hover:text-black">Comprar</button></a>
+                        <form action="" method="post">
+                            <a href="#&buy=1"><input type="submit" class="text-ml w-32 rounded h-8 mt-1 cursor-pointer bg-gradient-to-r shadow-xl from-cyan-500 to-blue-500 transition-colors duration-300 ease-in-out hover:bg-[#a0d4d6] text-white font-medium hover:text-black" value="Comprar" /></a>
+                        </form>
                     </div>
                 </div>
             </div>

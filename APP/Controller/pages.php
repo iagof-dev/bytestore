@@ -5,7 +5,7 @@ $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 switch ($url) {
 
     case "/":
-        return require("./View/home.php");
+        return require(__DIR__ . "/../View/home.php");
 
     case "/login":
         return require("./View/login.php");

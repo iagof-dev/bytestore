@@ -5,11 +5,16 @@ $api = new API();
 $lorem = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Est dicta at repudiandae. Assumenda facilis obcaecati voluptates deleniti inventore, veritatis nobis sed quidem unde, repellat, dolores molestiae animi quibusdam. Ut, laboriosam!";
 $perfil = $api->GET_USER_BY_ID($id);
 
+if(empty($perfil['DATA']['0']['username']) && !isset($perfil['DATA']['0']['username'])){
+    header("Location: /");
+    return;
+}
+
 $verificado = '<span><img src="../Assets/imgs/icons/solid/badge-check.svg" class="w-6 align-middle" style="filter: brightness(0) saturate(100%) invert(73%) sepia(38%) saturate(6551%) hue-rotate(172deg) brightness(100%) contrast(85%);" alt="Verificado"></span>';
 
 $pfp = "../Assets/imgs/user-ph.webp";
 
-if($perfil['DATA']['0']['pfp'] != ' '){
+if($perfil['DATA']['0']['pfp'] != ' ' && $perfil['DATA']['0']['pfp'] != '' && !empty($perfil['DATA']['0']['pfp']) && $perfil['DATA']['0']['pfp'] != null && isset($perfil['DATA']['0']['pfp'])){
     $pfp = "../Assets/imgs/users_pfp/". $perfil['DATA']['0']['pfp'];
 }
 

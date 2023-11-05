@@ -5,10 +5,10 @@ class card
 {
     function CREATE_CARD($id, $title, $price, $discount, $img, $owner)
     {
-        $actual_price = $price - $discount;
+        $actual_price = $price - random_int(0, 20);
         $parcel = $actual_price / 12;
         $discount = 10;
-        $discount_text = $price - random_int(0, 20);
+        $discount_text = $price;
 
         $formatted_number = number_format($actual_price, 2, ',', '.'); 
         $formatted_currency = 'R$ ' . $formatted_number; 

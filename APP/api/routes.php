@@ -28,7 +28,6 @@ class API
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         $output = curl_exec($curl);
         curl_close($curl);
-
         $ip = json_decode($output, true);
         return $ip['origin'];
     }
@@ -361,7 +360,8 @@ class API
             "id" => $id
         );
 
-        if(isset($name) && $name != null){
+
+        if(isset($name) && !empty($name)){
             $data['username'] = $name;
             (new user())->setName($name);
         }
@@ -388,6 +388,37 @@ class API
             return $result;
 
         return true;
+    }
+
+    function CREATE_PAYMENT_LINK($id, $title, $desc, $unit_price, $id_seller, $customer_id, $customer_email, $category,$qnt = 1){
+        $url = $this->api_url . "/pagamentos/criar/";
+        $data = array(
+            "apiuser" => $this->api_user,
+            "apipass" => $this->api_pass,
+            "product_id" => $id,
+            "title" => $title,
+            "description" => $desc,
+            "unit_price" => $unit_price,
+            "quantity" => $qnt,
+            "seller_id" => $id_seller,
+            "customer_id" => $customer_id,
+            "customer_email" => $customer_email,
+            "category_id"=> $category
+        );
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $response = curl_exec($ch);
+        $result = json_decode($response, true);
+        curl_close($ch);
+
+
+        if (!isset($result) || $result['status'] != "success")
+            return $response;
+
+        return $result['data']['url_sandbox'];
+
     }
 
 

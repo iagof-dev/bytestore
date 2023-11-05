@@ -7,61 +7,62 @@ $pfp = "../../Assets/imgs/user-ph.webp";
 $user_pfp = (new user())->getPFP();
 
 if (isset($user_pfp)) {
-    $pfp = "/../../Assets/imgs/users_pfp/". $user->getPfp();
+    $pfp = "/../../Assets/imgs/users_pfp/" . $user->getPfp();
 }
 
-function debug($x){
-    echo('<script>console.log("'. $x. '");</script>');
+function debug($x)
+{
+    echo ('<script>console.log("' . $x . '");</script>');
 }
 
 
-if($_SERVER['REQUEST_METHOD'] == 'POST'){
-    $id = (new user())->getId();
-    $pfp = 0;
-    $name = 0;
-    $desc = 0;
-    if ($_FILES['file_pfp']['error'] != 4 || ($_FILES['file_pfp']['size'] != 0 && $_FILES['file_pfp']['error'] != 0))
-    {
-        $DIRECTORY_IMAGE =  __DIR__ . "/../../Assets/imgs/users_pfp/";
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    try {
 
-        if (!is_dir($DIRECTORY_IMAGE))
-            throw new Exception("Diretorio não existe");
-    
-        if (is_executable($_FILES['file_pfp']['tmp_name']))
-            throw new Exception("Arquivo é executável");
-    
-        $ext_file = pathinfo($_FILES['file_pfp']['name'], PATHINFO_EXTENSION);
-    
-        $unique_name = uniqid("user_") . "." . $ext_file;
-    
-        $NAME_SAVE_FILE = $DIRECTORY_IMAGE . $unique_name;
-    
-        if (move_uploaded_file($_FILES['file_pfp']['tmp_name'], $NAME_SAVE_FILE)) {
-            if($pfp != "../../Assets/imgs/user-ph.webp"){
-                unlink($pfp);
+        $id = (new user())->getId();
+        $pfp = 0;
+        $name = "a";
+        $desc = 0;
+        if ($_FILES['file_pfp']['error'] != 4 || ($_FILES['file_pfp']['size'] != 0 && $_FILES['file_pfp']['error'] != 0)) {
+            $DIRECTORY_IMAGE =  __DIR__ . "/../../Assets/imgs/users_pfp/";
+
+            if (!is_dir($DIRECTORY_IMAGE))
+                throw new Exception("Diretorio não existe");
+
+            if (is_executable($_FILES['file_pfp']['tmp_name']))
+                throw new Exception("Arquivo é executável");
+
+            $ext_file = pathinfo($_FILES['file_pfp']['name'], PATHINFO_EXTENSION);
+
+            $unique_name = uniqid("user_") . "." . $ext_file;
+
+            $NAME_SAVE_FILE = $DIRECTORY_IMAGE . $unique_name;
+
+            if (move_uploaded_file($_FILES['file_pfp']['tmp_name'], $NAME_SAVE_FILE)) {
+                if ($pfp != "../../Assets/imgs/user-ph.webp") {
+                    unlink($pfp);
+                }
+                $pfp = $unique_name;
             }
-            $pfp = $unique_name;
         }
-    }
-    if(!empty($_POST['name_store']) || isset($_POST['name_store'])){
-        $name = $_POST['name_store'];
-    }
-    if (!empty($_POST['desc_store']) || isset($_POST['desc_store'])) {
-        $desc = $_POST['desc_store'];
-    }
-
-    if($name = 0 || empty($name) || !isset($name) && $desc = 0 || empty($desc) || !isset($desc) && $pfp = 0){
-        header("Location: /profile/edit?error=true");
-        return;
-    }
+        if (isset($_POST['name_store'])) {
+            $name = $_POST['name_store'];
+           
+        }
+        if (isset($_POST['desc_store'])) {
+            $desc = $_POST['desc_store'];
+        }
 
 
-    $result = (new API())->UPDATE_USER($id, $name, $desc, $pfp);
+        $result = (new API())->UPDATE_USER($id, $_POST['name_store'], $desc, $pfp);
 
-    if($result == true){
-        header("Location: /profile?id=" . $id);
+        if ($result == true) {
+            header("Location: /profile?id=" . $id);
+        }
+    } 
+    catch(Exception $e){
+        echo($e->getMessage());
     }
-
     //echo('<script>console.log("'. var_dump($result). '");</script>');
 
 
