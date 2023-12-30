@@ -25,6 +25,9 @@ switch ($url) {
     case "/create":
         return require("./View/product/create.php");
 
+    case "/buy":
+        return require("./View/product/buy.php");
+
     case "/anuncio":
         return require("./View/product/view.php");
 

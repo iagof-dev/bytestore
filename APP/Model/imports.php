@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 
 <head>
-    <link rel="shortcut icon" href="../Assets/imgs/logo/128.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../Assets/imgs/logo/128.webp" type="image/x-icon">
     <title>Byte Store | Suprindo seu Universo Digital</title>
     <meta name="description" content="Na ByteStore, mergulhe em um mundo onde a tecnologia e a inovação se encontram para oferecer a você a melhor experiência digital. Somos mais do que uma simples loja de hardware e periféricos - somos o seu destino definitivo para tudo o que você precisa para otimizar e aprimorar seu universo digital.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

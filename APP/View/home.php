@@ -12,6 +12,9 @@ if (!(new user)->isLogged())
   });
   </script>');
 
+
+  
+
 ?>
 
 <div>

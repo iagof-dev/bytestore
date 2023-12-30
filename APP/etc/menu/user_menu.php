@@ -19,6 +19,10 @@ if (isset($verify) || !empty($verify))
 
     <hr class="border-gray-400 m-2 border-1 w-full">
     <div class="w-full hover:bg-gradient-to-r from-cyan-500 to-blue-500 transition-colors duration-300 ease-in-out m-1 font-medium text-white">
+        <a href="/profile/edit"><span>Inicio (WIP)</span></a>
+    </div>
+
+    <div class="w-full hover:bg-gradient-to-r from-cyan-500 to-blue-500 transition-colors duration-300 ease-in-out m-1 font-medium text-white">
         <a href="/profile/edit"><span>Minha Conta</span></a>
     </div>
 
@@ -31,7 +35,7 @@ if (isset($verify) || !empty($verify))
     </div>
 
     <div class="w-full hover:bg-gradient-to-r from-cyan-500 to-blue-500 transition-colors duration-300 ease-in-out  font-medium text-white m-1">
-        <a href="/"><span class="shadow-sm">Configurações</span></a>
+        <a href="/"><span class="shadow-sm">Vendas (WIP)</span></a>
     </div>
 
     <div class="w-full hover:bg-gradient-to-r from-cyan-500 to-blue-500 transition-colors duration-300 ease-in-out  font-medium text-white m-1 mb-3">

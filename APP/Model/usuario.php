@@ -4,7 +4,7 @@ error_reporting(0);
 
 class user
 {
-    public function getId()
+    public function getID()
     {
         return $_SESSION['user_id'];
     }
@@ -65,7 +65,7 @@ class user
 
     public function isLogged()
     {
-        if(isset($_SESSION['user_id']))
+        if(isset($_SESSION['user_id']) || !empty($_SESSION['user_id']) || $_SESSION['user_id'] != null)
             return true;
 
         return false;

@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     $id_created = $api->CREATE_GATEWAY_PAYMENT($_GET['id'], $produto['DATA']['0']['owner'], $userAccessID, $user->getEmail());
     //$link = $api->CREATE_PAYMENT_LINK($_GET['id'], $produto['DATA']['0']['title'], $produto['DATA']['0']['description'], $produto['DATA']['0']['price'], $produto['DATA']['0']['owner'], $user->getId(), $user->getEmail(), $produto['DATA']['0']['id_category'], 1);
-    header("Location: /buy?id=". $id_created);
+    header("Location: /teste?id=". $id_created);
     //echo("<script>console.log('ID: ". $id_created ."');</script>");
 
 }
