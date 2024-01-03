@@ -19,6 +19,47 @@ class API
         $this->api_user = $api_user;
         $this->api_pass = $api_pass;
     }
+
+    public function MAKE_POST_REQUEST($url, $info_data){
+        $url = $this->api_url . $url;
+        $data = array(
+            "apiuser" => $this->api_user,
+            "apipass" => $this->api_pass
+        );
+
+        
+        if(isset($info_data))
+            $data = array_merge($data, $info_data);
+
+
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $response = curl_exec($ch);
+        $result = json_decode($response, true);
+        curl_close($ch);
+
+
+        echo($result['status']);
+
+        if (!isset($result['status']) || $result['status'] !== "success") 
+            return false;
+
+        return $result;
+    }
+
+    public function MAKE_GET_REQUEST($url){
+        $ch = curl_init($this->api_url . $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        $response = curl_exec($ch);
+        curl_close($ch);
+        $result = json_decode($response, true);
+        
+        return $result;
+    }
+    
     
     
     function getPublicIP()
@@ -36,52 +77,30 @@ class API
     function REGISTER_IP($id)
     {
         
-        $url = $this->api_url . "/usuario/modificar";
         $ipv4 = $this->getPublicIP();
         $date = date("Y-m-d H:i:s");
         
         
         $data = array(
-            "apiuser" => $this->api_user,
-            "apipass" => $this->api_pass,
             "id" => $id,
             "access_ip" => $ipv4,
             "last_access" => $date
         );
-        $ch = curl_init($url);
-        curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        $response = curl_exec($ch);
-        $result = json_decode($response, true);
-        curl_close($ch);
-        if (!isset($result) || $result['status'] != "success")
-        return false;
+
+        $this->MAKE_POST_REQUEST("/usuario/modificar", $data);
+
         return true;
     }
     
     
     function MAKE_LOGIN_REQUEST($email, $pass)
     {
-        $pass_md5 = md5($pass);
-        $url = $this->api_url . "/usuario/logar/";
         $data = array(
-            "apiuser" => $this->api_user,
-            "apipass" => $this->api_pass,
             "email" => $email,
-            "pass" => $pass_md5
+            "pass" => md5($pass)
         );
-        $ch = curl_init($url);
-        curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        $response = curl_exec($ch);
-        $result = json_decode($response, true);
-        curl_close($ch);
-        if (!isset($result) || $result['status'] != "success")
-        return false;
         
-        
+        $result = $this->MAKE_POST_REQUEST("/usuario/logar/", $data);
         $this->REGISTER_IP($result['message']['0']['id']);
         require_once(__DIR__ . "/../Model/usuario.php");
         $user = new user();
@@ -92,10 +111,8 @@ class API
         $user->setRole($result['message']['0']['role']);
         $user->setDesc($result['message']['0']['description']);
         $_SESSION['user_id'] = $result['message']['0']['id'];
-        //echo "Response: " . $response;
-        //echo($result['message']['0']['id']);
-        //echo($user->getId());
-        //echo($user->getName());
+
+
         return true;
     }
     
@@ -103,50 +120,22 @@ class API
     
     function MAKE_REGISTER_REQUEST($name, $email, $pass)
     {
-        $pass_md5 = md5($pass);
-        
-        $url = $this->api_url . "/usuario/criar/";
         $ipv4 = $this->getPublicIP();
-        
         $data = array(
-            "apiuser" => $this->api_user,
-            "apipass" => $this->api_pass,
             "username" => $name,
             "email" => $email,
-            "pass" => $pass_md5,
+            "pass" => md5($pass),
             "role" => "user",
             "register_ip" => $ipv4
         );
-        
-        $ch = curl_init($url);
-        
-        curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        
-        $response = curl_exec($ch);
-        $result = json_decode($response, true);
-        
-        curl_close($ch);
-        
-        if (!isset($result) || $result['status'] != "success")
-        return false;
-        
+        $this->MAKE_POST_REQUEST("/usuario/criar/", $data);
         return true;
     }
     
     function GET_LIST_CATEGORY()
     {
-        $ch = curl_init($this->api_url . '/categoria/listar/');
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HEADER, 0);
-        $data = curl_exec($ch);
-        curl_close($ch);
-        $result = json_decode($data, true);
-        
-        if (!isset($result) || $result['status'] != "success")
-        return false;
-        //<option value="1">Placa mãe</option>
+        $result = $this->MAKE_GET_REQUEST('/categoria/listar/'); 
+
         $array_result = $result["DATA"];
         $result_final = "";
         
@@ -158,25 +147,12 @@ class API
     
     function GET_USER_BY_ID($id)
     {
-        $ch = curl_init($this->api_url . '/usuario/id/' . $id);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HEADER, 0);
-        $data = curl_exec($ch);
-        curl_close($ch);
-        $result = json_decode($data, true);
-        
-        if (!isset($result) || $result['status'] != "success")
-        return false;
-        
-        return $result;
+        return $this->MAKE_GET_REQUEST('/usuario/id/' . $id);
     }
     
     function CREATE_PRODUCT($title, $description, $value, $category, $image, $id)
     {
-        $url = $this->api_url . "/produto/criar/";
         $data = array(
-            "apiuser" => $this->api_user,
-            "apipass" => $this->api_pass,
             "title" => $title,
             "description" => $description,
             "price" => $value,
@@ -186,33 +162,14 @@ class API
             "created" => date("Y-m-d H:i:s")
         );
         
-        $ch = curl_init($url);
-        
-        curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        
-        $response = curl_exec($ch);
-        $result = json_decode($response, true);
-        
-        curl_close($ch);
-        
-        if (!isset($result) || $result['status'] != "success")
-        return false;
+        $result = $this->MAKE_POST_REQUEST("/produto/criar/", $data);
         
         return true;
     }
     
     function GET_CARDS()
     {
-        $url = $this->api_url . "/produto/listar";
-        $ch = curl_init($url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HEADER, 0);
-        $data = curl_exec($ch);
-        curl_close($ch);
-        $result = json_decode($data, true);
-        
+        $result = $this->MAKE_GET_REQUEST("/produto/listar");
         $array_result = $result["DATA"];
         require_once(__DIR__ . "/../etc/cards.php");
         $CARD = new CARD();
@@ -221,34 +178,19 @@ class API
         foreach ($array_result as $valor) {
             $result_final .= $CARD->CREATE_CARD($valor['id'], $valor['title'], $valor['price'], $valor['discount'], $valor['image'], $valor['owner']);
         }
-        
-        
+
         return $result_final;
     }
     
     function GET_PRODUCTS_BY_OWNER($id)
     {
-        $url = $this->api_url . "/produto/owner/" . $id;
-        $ch = curl_init($url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HEADER, 0);
-        $data = curl_exec($ch);
-        curl_close($ch);
-        return json_decode($data, true);
+        return $this->MAKE_GET_REQUEST("/produto/owner/" . $id);
     }
     
     
     function CREATE_CARDS_BY_OWNER($id)
     {
-        $url = $this->api_url . "/produto/owner/" . $id;
-        $ch = curl_init($url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HEADER, 0);
-        $data = curl_exec($ch);
-        curl_close($ch);
-        $result = json_decode($data, true);
-        
-        
+        $result = $this->MAKE_GET_REQUEST("/produto/owner/" . $id);
         $array_result = $result["DATA"];
         if(empty($array_result)){
             return "<h1 class='text-red-600'>Nenhum produto encontrado</h1>";
@@ -267,21 +209,12 @@ class API
     
     function GET_PRODUCT_BY_ID($id)
     {
-        $url = $this->api_url . "/produto/id/" . $id;
-        $ch = curl_init($url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HEADER, 0);
-        $data = curl_exec($ch);
-        curl_close($ch);
-        return json_decode($data, true);
+        return $this->MAKE_GET_REQUEST("/produto/id/" . $id);
     }
     
     function MAKE_UPDATE_POST_REQUEST($id, $title = null, $desc = null, $value = 0, $img = null)
     {
-        $url = $this->api_url . "/produto/modificar/";
         $data = array(
-            "apiuser" => $this->api_user,
-            "apipass" => $this->api_pass,
             "id" => $id
         );
         
@@ -301,65 +234,28 @@ class API
         if (isset($img)){
             $data['image'] = $img;
         }
-        
-        //echo(var_dump($data));
-        
-        
-        $ch = curl_init($url);
-        
-        curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        
-        $response = curl_exec($ch);
-        $result = json_decode($response, true);
-        
-        curl_close($ch);
-        
-        
-        if (!isset($result) || $result['status'] != "success")
-        return false;
-        
+
+        $this->MAKE_POST_REQUEST("/produto/modificar/", $data);
+
         return true;
     }
     
     function DELETE_PRODUCT($id)
     {
-        //http://api.iagofragnan.com.br/BTS/produto/deletar
-        $url = $this->api_url . "/produto/deletar/";
         $data = array(
-            "apiuser" => $this->api_user,
-            "apipass" => $this->api_pass,
             "id" => $id
         );
         
-        $ch = curl_init($url);
-        
-        curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        
-        $response = curl_exec($ch);
-        $result = json_decode($response, true);
-        
-        curl_close($ch);
-        
-        if (!isset($result) || $result['status'] != "success")
-        return false;
-        
+        $this->MAKE_POST_REQUEST("/produto/deletar/",$data);
         return true;
     }
     
     
     function UPDATE_USER($id,$name = null, $desc = null, $pfp = null)
     {
-        $url = $this->api_url . "/usuario/modificar/";
         $data = array(
-            "apiuser" => $this->api_user,
-            "apipass" => $this->api_pass,
             "id" => $id
         );
-        
         
         if(isset($name) && !empty($name)){
             $data['username'] = $name;
@@ -373,20 +269,8 @@ class API
             $data['pfp'] = $pfp;
             (new user())->setPFP($pfp);
         }
-        $ch = curl_init($url);
-        
-        curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        
-        $response = curl_exec($ch);
-        $result = json_decode($response, true);
-        
-        curl_close($ch);
-        
-        if (!isset($result) || $result['status'] != "success")
-        return $result;
-        
+
+        $result = $this->MAKE_POST_REQUEST("/usuario/modificar/", $data);
         return true;
     }
     
@@ -400,12 +284,7 @@ class API
     //status
     //date
     function CREATE_GATEWAY_PAYMENT($id_product, $id_seller, $id_customer,$email_customer){
-        
-        
-        $url = $this->api_url . "/pedidos/criar";
         $data = array(
-            "apiuser" => $this->api_user,
-            "apipass" => $this->api_pass,
             "customer_id" => $id_customer,
             "seller_id" => $id_seller,
             "seller_product_id" => $id_product,
@@ -413,44 +292,21 @@ class API
             "status" => "pending",
             "date" => date('Y-m-d H:i:s')
         );
-        
-        $ch = curl_init($url);
-        
-        curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        
-        $response = curl_exec($ch);
-        $result = json_decode($response, true);
-        
-        curl_close($ch);
-        
-        if (!isset($result) || $result['status'] != "success")
-        return false;
+
+        $result = $this->MAKE_POST_REQUEST("/pedidos/criar", $data);
         
         return $result['id'];
     }
 
     function GET_GATEWAY_BY_ID($id){
-        $ch = curl_init($this->api_url . '/pedidos/id/'. $id);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HEADER, 0);
-        $data = curl_exec($ch);
-        curl_close($ch);
-        $result = json_decode($data, true);
-        
-        if (!isset($result) || $result['status'] != "success")
-        return false;
+        $result = $this->MAKE_GET_REQUEST('/pedidos/id/'. $id);
 
         $array_result = $result["DATA"];
         return $array_result;
     }
 
     function CREATE_PIX_PAYMENT($id_gateway, $product_title, $customer_email,  $value){
-        $url = $this->api_url . "/pagamentos/criar";
         $data = array(
-            "apiuser" => $this->api_user,
-            "apipass" => $this->api_pass,
             "id_gateway" => $id_gateway,
             "product_title" => $product_title,
             "seller_product_id" => $id_product,
@@ -458,48 +314,21 @@ class API
             "customer_email" => $customer_email,
             "value" => $value
         );
-        
-        $ch = curl_init($url);
-        
-        curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        
-        $response = curl_exec($ch);
-        $result = json_decode($response, true);
-        
-        curl_close($ch);
-        
-        if (!isset($result) || $result['status'] != "success")
-        return false;
-        
+
+        $result = $this->MAKE_POST_REQUEST("/pagamentos/criar", $data);
         return $result;
     }
     
     function GET_PURCHASES_BY_CUSTOMERID($id)
     {
-        $url = $this->api_url . "/pedidos/listar";
         $data = array(
-            "apiuser" => $this->api_user,
-            "apipass" => $this->api_pass,
-            "cid" => $id,
+            "cid" => $id
         );
-        
-        $ch = curl_init($url);
-        
-        curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        
-        $response = curl_exec($ch);
-        $result = json_decode($response, true);
-        
-        curl_close($ch);
-        
-        if (!isset($result) || $result['status'] != "success")
-        return false;
-        
+
+        $result = $this->MAKE_POST_REQUEST("/pedidos/listar", $data);
         return $result;
     }
+
+        
     
 }
