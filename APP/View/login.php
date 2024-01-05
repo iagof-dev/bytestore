@@ -62,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <div class="w-screen text-center md:container grid items-center place-items-center">
         <div class="bg-[#FFFFFF] shadow-md rounded-xl mt-20 w-[35rem] h-80">
             <form class="mt-14" action="/login" method="post">
-                <h1 class="font-bold text-xl mt-4">Logar-se</h1>
+                <h1 class="font-bold text-lg mt-4 poppins-bold">Entre em sua conta</h1>
                 <?php
                 if (isset($_GET['error'])) echo "<p class='text-red-500'>Seu e-mail e/ou senha estão incorretas, tente novamente</p>";
                 ?>
@@ -70,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <input class="border-solid border-2 rounded-md border-black focus:border-blue-500" type="email" required class="rounded" placeholder="Digite o e-mail" name="user_email"><br>
                 <label class="font-medium text-start">Senha:</label><br>
                 <input type="password" required class="border-solid border-2 rounded-md border-black focus:border-blue-500" name="user_pass" placeholder="*********" id=""><br>
-                <h5>Não possui cadastro? <a href="/register" class="underline text-blue-500">Registre-se</a></h5>
+                <h5 class="poppins-light">Não possui cadastro? <a href="/register" class="underline text-blue-500">Registre-se</a></h5>
                 <input type="submit" class="w-28 rounded h-10 m-1 ml-3 mt-1 cursor-pointer bg-gradient-to-r from-cyan-500 to-blue-500 transition-colors duration-300 ease-in-out hover:bg-[#a0d4d6] text-white font-medium hover:text-black" value="Entrar">
             </form>
         </div>

@@ -1,3 +1,8 @@
+<div>
+    <div class="md:container mx-auto w-[50%]">
+        <div class="w-full h-5 mx-auto">
+            <div class="md:container w-full flex flex-grow justify-center">
+                <div class="grid grid-rows-1 auto-rows-max z-0 grid-cols-5 gap-5 items-center justify-center ">
 <?php
 
 
@@ -13,16 +18,26 @@ if (!(new user)->isLogged())
   </script>');
 
 
+
+  if(isset($_GET["search"])){
+    $search_value = $_GET['search'];
+    echo('<script>console.log("Pesquisa: '. $search_value .'");</script>');
+    echo((new API())->CREATE_CARDS_BY_SEARCH($search_value));
+    return;
+}
+
+echo((new API())->GET_CARDS());
+
+
+
+
+
+
   
 
 ?>
 
-<div>
-    <div class="md:container mx-auto w-[50%]">
-        <div class="w-full h-5 mx-auto">
-            <div class="md:container w-full flex flex-grow justify-center">
-                <div class="grid grid-rows-1 auto-rows-max z-0 grid-cols-5 gap-5 items-center justify-center ">
-                    <?= (new API())->GET_CARDS(); ?>
+
                 </div>
             </div>
         </div>

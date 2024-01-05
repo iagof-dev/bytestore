@@ -28,6 +28,7 @@
 require_once(__DIR__ . "/../api/routes.php");
 require_once(__DIR__ . "/../Model/usuario.php");
 require_once(__DIR__ . "/../etc/menu.php"); 
+require_once(__DIR__ . "/../etc/cards.php");
 require_once(__DIR__ . "/../etc/footer.php");
 
 ?>

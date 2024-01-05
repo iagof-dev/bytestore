@@ -1,7 +1,5 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+
 
 
 class ADMIN_PRODUCTS_LIST
@@ -17,7 +15,9 @@ class ADMIN_PRODUCTS_LIST
         $user = new user();
         $result = $api->GET_PURCHASES_BY_CUSTOMERID($user->getID());
 
+
         $RETURN_STRING = '';
+
 
         foreach ($result['message'] as $code) {
 
@@ -38,6 +38,9 @@ class ADMIN_PRODUCTS_LIST
             $data = date("d/m/Y", strtotime($code['date']));
             $hora = substr(date("H:i:s", strtotime($code['date'])), 0, -3);
 
+            
+            $url_link = "#";
+
             $status = $code['pag_status'];
             $p_status = "";
             if($status == 'approved')
@@ -47,7 +50,10 @@ class ADMIN_PRODUCTS_LIST
             if($status == 'denied')
                 $p_status = '<span class="text-red-600">Negado</span>';
             if($status == 'pending')
+            {
                 $p_status = '<span class="text-orange-400">Pendente</span>';
+                $url_link = "/buy?id=" . $code['pag_id'];
+            }
    
 
             $RETURN_STRING .= ("<div class='grid items-center place-items-center mt-5'>
@@ -61,7 +67,7 @@ class ADMIN_PRODUCTS_LIST
                 <div class='grid align-middle place-items-end text-center'>
                     <div class='buttons flex w-14 h-16 mt-[-3rem] mr-5'>
                         <a href=''><button><img class='select-none invisible' src='../Assets/imgs/icons/solid/pencil.svg' /></button></a>
-                        <a href='/'><button><img class='select-none' src='../Assets/imgs/icons/solid/information-circle.svg' /></button></a>
+                        <a href='". $url_link ."'><button><img class='select-none' src='../Assets/imgs/icons/solid/information-circle.svg' /></button></a>
                     </div>
                 </div>
             </div>
@@ -70,7 +76,7 @@ class ADMIN_PRODUCTS_LIST
         }
 
         if(empty($RETURN_STRING) || !isset($RETURN_STRING)){
-            $RETURN_STRING = '<h1 class="text-red-600">Nenhum anúncio ativo :(</h1>';
+            $RETURN_STRING = '<h1 class="text-red-600">Nenhuma compra encontrada :(</h1>';
         }
 
         return $RETURN_STRING;
