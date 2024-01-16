@@ -57,7 +57,14 @@ class ADMIN_PRODUCTS_LIST
         }
         
         if(empty($RETURN_STRING) || !isset($RETURN_STRING)){
-            $RETURN_STRING = '<h1 class="text-red-600">Nenhum anúncio ativo :(</h1>';
+            $RETURN_STRING = '<h1 class="text-red-600">Nenhum anúncio ativo :(</h1><br><div class="grid-cols-1">
+            <div class="ml-16">
+            <a title="Criar anúncio" href="/create">
+            <button class="w-16 font-semibold h-8 text-center leading-tight align-middle rounded-full text-white bg-gradient-to-r from-cyan-500 to-blue-500 transition-colors duration-300 ease-in-out hover:bg-[#a0d4d6]">
+            Criar
+            </button></a>
+            </div>
+            </div>';
         }
         
         return $RETURN_STRING;

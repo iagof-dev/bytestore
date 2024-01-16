@@ -8,47 +8,47 @@ switch ($url) {
         return require(__DIR__ . "/../View/home.php");
 
     case "/login":
-        return require("./View/login.php");
+        return require(__DIR__ . "/../View/login.php");
 
-    case "/admin":
-        return require("./View/admin.php");
+    case "/campaigns":
+        return require(__DIR__ . "/../View/panel/campaign.php");
 
     case "/logout":
-        return require("./Controller/logout.php");
+        return require(__DIR__ . "/../Controller/logout.php");
 
     case "/editar":
-        return require("./View/product/edit.php");
+        return require(__DIR__ . "/../View/product/edit.php");
 
     case "/deletar":
-        return require("./Controller/delete.php");
+        return require(__DIR__ . "/../Controller/delete.php");
 
     case "/create":
-        return require("./View/product/create.php");
+        return require(__DIR__ . "/../View/product/create.php");
 
     case "/buy":
-        return require("./View/product/buy.php");
+        return require(__DIR__ . "/../View/product/buy.php");
 
     case "/anuncio":
-        return require("./View/product/view.php");
+        return require(__DIR__ . "/../View/product/view.php");
 
     case "/purchases":
-        return require("./View/purchases.php");
+        return require(__DIR__ . "/../View/panel/purchases.php");
 
     case "/teste":
-        return require("./View/teste.php");
+        return require(__DIR__ . "/../View/teste.php");
 
     case "/register":
-        return require("./View/register.php");
+        return require(__DIR__ . "/../View/register.php");
 
     case "/profile":
-        return require("./View/profile/view.php");
+        return require(__DIR__ . "/../View/profile/view.php");
 
     case "/profile/edit":
-        return require("./View/profile/edit.php");
+        return require(__DIR__ . "/../View/profile/edit.php");
 
     case "/tos":
-        return require("./View/tos.html");
+        return require(__DIR__ . "/../View/tos.html");
 
     default:
-        return require("./View/404.php");
+        return require(__DIR__ . "/../View/404.php");
 }

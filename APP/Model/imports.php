@@ -19,16 +19,14 @@
 <script src="../Assets/js/tailwindv3.3.3.js"></script>
 <script src="../Assets/js/sweetalert2@11.js"></script>
 
-
-
 <!-- Verificação de menu, caso usuário logado menu x, caso não esteja logado menu y -->
 <?php
-
-
 require_once(__DIR__ . "/../api/routes.php");
 require_once(__DIR__ . "/../Model/usuario.php");
 require_once(__DIR__ . "/../etc/menu.php"); 
 require_once(__DIR__ . "/../etc/cards.php");
 require_once(__DIR__ . "/../etc/footer.php");
+
+
 
 ?>

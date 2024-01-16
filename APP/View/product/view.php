@@ -17,29 +17,29 @@ if (empty($produto['DATA']['0'])) {
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
-    if($user_id == $user->getId()){
-        echo("<script>
-        Swal.fire({
-            title: 'Erro',
-            text: 'Você não pode comprar seu próprio anúncio.',
-            icon: 'error',
-            showCancelButton: false,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Ok'
-          }).then((result) => {
-            if (result.isConfirmed) {
-                window.location.href = '/anuncio?id=".$_GET['id']."';
-            }
-          })
-        </script>");
-        return;
-    }
-
-    // if($user->getID() == "" || $user->getID() == " "){
-    //     header("Location: /login");
+    // if($user_id == $user->getId()){
+    //     echo("<script>
+    //     Swal.fire({
+    //         title: 'Erro',
+    //         text: 'Você não pode comprar seu próprio anúncio.',
+    //         icon: 'error',
+    //         showCancelButton: false,
+    //         confirmButtonColor: '#3085d6',
+    //         cancelButtonColor: '#d33',
+    //         confirmButtonText: 'Ok'
+    //       }).then((result) => {
+    //         if (result.isConfirmed) {
+    //             window.location.href = '/anuncio?id=".$_GET['id']."';
+    //         }
+    //       })
+    //     </script>");
     //     return;
     // }
+
+    if(empty($user->getID()) || $user->getID() == "" || $user->getID() == " "){
+        header("Location: /login");
+        return;
+    }
 
 
     $id_created = $api->CREATE_GATEWAY_PAYMENT($_GET['id'], $produto['DATA']['0']['owner'], $userAccessID, $user->getEmail());
@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 <div class="md:container grid place-items-center align-middle items-center mx-auto">
 
-    <div class="mt-3 w-[70rem] max-h-full min-h-[37rem] h-auto rounded-lg bg-gradient-to-r from-[#303030] to-[#404040] md:mx-auto justify-center shadow-xl">
+    <div class="mt-3 w-[70rem] max-h-full min-h-[37rem] h-auto rounded-lg bg-[#404040] md:mx-auto justify-center shadow-xl">
         <div class="mt-10 grid items-center place-items-center">
 
             <div class="container w-10 -ml-[65rem] -mt-5 -mb-3 rounded-full">

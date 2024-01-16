@@ -1,6 +1,6 @@
 <?php
 
-require_once(__DIR__ . "/../etc/admin/product_list.php");
+require_once(__DIR__ . "/../../etc/admin/product_list.php");
 
 
 if (isset($_GET['id']) && isset($_GET['action']) && isset($_GET['confirmed']) && $_GET['action'] == 'delete' && isset($_GET['id'])) {
@@ -44,7 +44,7 @@ if (isset($_GET['status']) && $_GET['status'] == "success") {
 
 <div class="container flex mx-auto h-auto pt-5">
     
-    <?php include_once(__DIR__ . "/../etc/menu/user_menu.php");?>
+    <?php include_once(__DIR__ . "/../../etc/menu/user_menu.php");?>
 
     <div class="ml-16">
         <div class="grid items-center place-items-center w-full">

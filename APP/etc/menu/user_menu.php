@@ -19,26 +19,35 @@ if (isset($verify) || !empty($verify))
 
     <hr class="border-gray-400 m-2 border-1 w-full">
     <div class="w-full hover:bg-gradient-to-r from-cyan-500 to-blue-500 transition-colors duration-300 ease-in-out m-1 font-medium text-white">
-        <a href="/profile/edit"><span>Inicio (WIP)</span></a>
+        <a href="/profile/edit"><span>📊 Inicio (WIP)</span></a>
     </div>
 
     <div class="w-full hover:bg-gradient-to-r from-cyan-500 to-blue-500 transition-colors duration-300 ease-in-out m-1 font-medium text-white">
-        <a href="/profile/edit"><span>Minha Conta</span></a>
+        <a href="/profile/edit"><span>👤 Minha Conta</span></a>
     </div>
 
     <div class="w-full font-medium m-1 hover:bg-gradient-to-r from-cyan-500 to-blue-500 transition-colors duration-300 ease-in-out text-white">
-        <a href="/purchases"><span>Minhas Compras</span></a>
+        <a href="/purchases"><span>🛒 Minhas Compras</span></a>
     </div>
 
     <div class="w-full hover:bg-gradient-to-r from-cyan-500 to-blue-500 transition-colors duration-300 ease-in-out hover:bg-[#a0d4d6] font-medium m-1  text-white">
-        <a href="/admin" class="h-3"><span> Meus Anúncios</span></a>
+        <a href="/campaigns" class="h-3"><span>📢 Meus Anúncios</span></a>
     </div>
 
     <div class="w-full hover:bg-gradient-to-r from-cyan-500 to-blue-500 transition-colors duration-300 ease-in-out  font-medium text-white m-1">
-        <a href="/"><span class="shadow-sm">Vendas (WIP)</span></a>
+        <a href="/"><span class="shadow-sm">💰 Vendas (WIP)</span></a>
     </div>
 
+    <?php
+
+    if((new user())->getRole() != "user"){
+        echo('<div class="w-full hover:bg-gradient-to-r from-cyan-500 to-blue-500 transition-colors duration-300 ease-in-out  font-medium text-white m-1">
+        <a href="/"><span class="shadow-sm">🕵️ Admin Panel</span></a>
+    </div>');
+    }
+
+    ?>
     <div class="w-full hover:bg-gradient-to-r from-cyan-500 to-blue-500 transition-colors duration-300 ease-in-out  font-medium text-white m-1 mb-3">
-        <a href="/logout"><span>Sair</span></a>
+        <a href="/logout"><span>🚪 Sair</span></a>
     </div>
 </div>

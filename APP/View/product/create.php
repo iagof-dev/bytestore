@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             $result = (new API())->CREATE_PRODUCT($title, $description, $converted_price, $category, $unique_name, (new user())->getId());
 
-            if(!$result){
+            if (!$result) {
                 echo ("<script>
                 Swal.fire({
                     title: 'Erro',
@@ -98,19 +98,93 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         echo ($ex->getMessage());
     }
 
-    
-
-
     exit();
 }
-
-
 
 
 ?>
 
 
-<div class="container md:mx-auto">
+
+
+<div class="container grid place-items-center align-middle items-center mx-auto">
+    <div class="bg-white pt-6 pb-12 w-[76rem] max-h-full min-h-[37rem] h-auto rounded shadow-2xl text-gray-900 font-sans">
+        <div class="mx-auto max-w-6xl">
+
+            <div>
+                <a href="javascript:window.history.back();"><img src="../../Assets/imgs/icons/solid/arrow-left.svg" alt="Voltar" title="Voltar"></a>
+            </div>
+
+            <div class="items-center justify-center pb-3 flex">
+                <p class="font-bold text-3xl">Criar anúncio</p>
+            </div>
+            <div class="items-start py-8 flex">
+                <div class="ml-[3rem] h-[20rem] w-[30rem] rounded-t-md pr-3">
+                    <img id="imgpreview" src="../Assets/imgs/placeholder.webp" alt="Produto Imagem Preview" title="Pré Visualização da imagem do produto" class="rounded w-full h-full rounded-t-md shadow-lg" />
+                </div>
+                <form class="w-1/2 pl-3 flex flex-col space-y-5" action="/create" method="post" enctype="multipart/form-data">
+                    <div class="flex flex-col">
+                        <label for="titulo" class="text-sm text-gray-600 mb-1">Titulo</label>
+                        <input type="text" required id="titulo" name="post_title" class="focus:border-indigo-700 focus:outline-none
+            focus:shadow-outline flex-grow transition duration-200 appearance-none p-2 border-2 border-gray-300
+            text-black bg-gray-100 font-normal w-full h-12 text-xs rounded-md shadow-sm" />
+                    </div>
+                    <div class="flex flex-col">
+                        <label for="descricao" class="text-sm text-gray-600 mb-1">Descrição</label>
+                        <textarea id="descricao" name="post_description" required class="text-black bg-gray-100 font-normal w-full h-32 text-xs
+            rounded-md shadow-sm focus:border-indigo-700 focus:outline-none focus:shadow-outline flex-grow transition
+            duration-200 appearance-none p-2 border-2 border-gray-300 resize-none"></textarea>
+                    </div>
+                    <div class="flex flex-col">
+                        <label for="valor" class="text-sm text-gray-600 mb-1">Valor</label>
+                        <input type="text" required name="post_value" id="currency-field" pattern="^\$\d{1,3}(.\d{3})*(\,\d+)?$" data-type="currency" placeholder="R$0,00" class="focus:border-indigo-700 focus:outline-none
+            focus:shadow-outline flex-grow transition duration-200 appearance-none p-2 border-2 border-gray-300
+            text-black bg-gray-100 font-normal w-full h-12 text-xs rounded-md shadow-sm" />
+                    </div>
+                    <div class="flex flex-col">
+                        <label for="categoria" class="text-sm text-gray-600 mb-1">Categoria</label>
+                        <select name="post_category" required fontfamily="Arial" type="select-one" class="focus:border-indigo-700 focus:outline-none
+            focus:shadow-outline flex-grow transition duration-200 appearance-none p-2 border-2 border-gray-300
+            text-black bg-gray-100 font-normal w-full h-12 text-xs rounded-md shadow-sm">
+                            <?= ((new API())->GET_LIST_CATEGORY()); ?>
+                        </select>
+                    </div>
+                    <div class="flex flex-col">
+                        <label for="imagem" class="text-sm text-gray-600 mb-1">Clique aqui para enviar uma imagem.</label>
+                        <label class="items-center justify-between w-full flex space-x-2">
+                            <span class="text-xs text-gray-500">Selecione uma imagem</span>
+                            <input required class="hidden" onchange="PreviewImage(this);" required type="file" name="post_image" accept="image/png, image/gif, image/jpeg, image/webp" />
+                        </label>
+                    </div>
+                    <input fontfamily="Arial" type="submit" class="inline-flex border focus:outline-none cursor-pointer
+            justify-center rounded-md py-2 px-4 bg-gradient-to-r from-cyan-500 to-blue-500 transition-colors duration-300 ease-in-out hover:bg-[#a0d4d6] text-white hover:border-2 hover:border-[#0074FF]
+            text-sm font-medium shadow-sm" value="Criar anúncio"></input>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="container md:mx-auto">
     <div class="container grid items-center place-items-center">
         <div class="flex">
             <img class="rounded-xl w-80 h-64 border-dotted border-2 border-black mr-16 min-w-80 max-w-64 min-h-16" id="imgpreview" src="../Assets/imgs/placeholder.webp" alt="Produto Imagem Preview" title="Produto Imagem Preview">
@@ -129,7 +203,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <label class="font-medium">Categoria:</label><br>
                 <select required class="w-96 rounded-md" name="post_category">
                     <?php
-                    echo ((new API())->GET_LIST_CATEGORY());
+                    //echo ((new API())->GET_LIST_CATEGORY());
 
                     ?>
                 </select><br>
@@ -142,7 +216,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             </form>
         </div>
     </div>
-</div>
+</div> -->
 
 
 <script src="../Assets/js/money-format.js"></script>
