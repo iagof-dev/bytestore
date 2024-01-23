@@ -21,7 +21,8 @@ Project Restarted in: 03/08/2023
 
 
 # Installation
-`
+
+```
 git clone https://github.com/iagof-dev/docker-bt
 sh ./build.sh
 cd App
@@ -29,4 +30,4 @@ git clone https://github.com/iagof-dev/bytestore
 cd ..
 cd Api
 git clone https://github.com/iagof-dev/bytestore-api
-`
+```
