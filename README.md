@@ -29,5 +29,5 @@ cd App
 git clone https://github.com/iagof-dev/bytestore
 cd ..
 cd Api
-git clone https://github.com/iagof-dev/bytestore-api
+git clone https://github.com/iagof-dev/bytestore_api
 ```
