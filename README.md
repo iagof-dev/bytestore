@@ -12,3 +12,21 @@ Remaking it...
 Project started in: 28/02/2023
 
 Project Restarted in: 03/08/2023
+
+# Requirements
+
+- Mercado Pago Token App Access
+
+- Docker
+
+
+# Installation
+`
+git clone https://github.com/iagof-dev/docker-bt
+sh ./build.sh
+cd App
+git clone https://github.com/iagof-dev/bytestore
+cd ..
+cd Api
+git clone https://github.com/iagof-dev/bytestore-api
+`
