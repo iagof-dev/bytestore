@@ -1,13 +1,10 @@
 <?php
-
 require_once(__DIR__ . "/../../etc/admin/purchases_list.php");
-
+include_once(__DIR__ . "/../../etc/menu/user_menu.php");
 
 ?>
-
 <div class="container flex mx-auto h-auto pt-5">
     
-    <?php include_once(__DIR__ . "/../../etc/menu/user_menu.php");?>
 
     <div class="ml-16">
         <div class="grid items-center place-items-center w-full">

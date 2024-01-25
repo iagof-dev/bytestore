@@ -49,7 +49,7 @@
                         <a title="Minhas Compras" href="/purchases"><span class="text-black align-middle hover:text-white"><span class="flex"><img src="../../Assets/imgs/icons/solid/shopping-cart.svg" class="w-5 mr-1"> Minhas Compras</span></span></a>
                     </div>
                     <div class="m-1 hover:bg-[#3b82f6]">
-                        <a title="Perfil" href="/profile?id=<?= (new user())->getId(); ?>"><span class="text-black mx-auto hover:text-white"><span class="flex"><img src="../../Assets/imgs/icons/solid/user.svg" class="w-5 mr-1"> Minha Conta</span></span></a>
+                        <a title="Perfil" href="/profile?id=<?= (new user())->getId(); ?>"><span class="text-black mx-auto hover:text-white"><span class="flex"><img src="../../Assets/imgs/icons/solid/user.svg" class="w-5 mr-1"> Ver Perfil</span></span></a>
                     </div>
                     <div class="m-1 hover:bg-[#3b82f6] w-full">
                         <a title="Sair" href="/logout"><span class="text-black"><span class="flex text-center hover:text-white"><img src="../../Assets/imgs/icons/closed_door.svg" class="w-5 mr-1"> Sair</span></span></a>

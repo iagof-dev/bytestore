@@ -7,9 +7,6 @@ $user = new user();
 
 $userAccessID = $user->getID();
 
-echo("<script>console.debug('ID ACESSADO: ". $userAccessID ."');</script>");
-
-
 if (empty($produto['DATA']['0'])) {
     echo("<script>console.log('deu ruim');</script>");
     return header("Location: /");
@@ -43,70 +40,48 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
     $id_created = $api->CREATE_GATEWAY_PAYMENT($_GET['id'], $produto['DATA']['0']['owner'], $userAccessID, $user->getEmail());
-    //$link = $api->CREATE_PAYMENT_LINK($_GET['id'], $produto['DATA']['0']['title'], $produto['DATA']['0']['description'], $produto['DATA']['0']['price'], $produto['DATA']['0']['owner'], $user->getId(), $user->getEmail(), $produto['DATA']['0']['id_category'], 1);
     header("Location: /buy?id=". $id_created);
-    //echo("<script>console.log('ID: ". $id_created ."');</script>");
 
 }
 
 ?>
 
-
+<div class="justify-center items-center w-full h-full flex">
+  
+<div class="md:flex-row bg-white shadow-lg rounded-lg w-5/6 h-3/4 mx-auto flex flex-col p-5">
+<a href="javascript:history.go(-1)"><img title="Voltar" src="../Assets/imgs/icons/solid/arrow-left.svg" class="h-8"></a>
+    <div class="mx-auto w-1/3 mt-12">
+      <img src="../Assets/imgs/products/<?= $produto['DATA']['0']['image']; ?>" alt="Pré visualização do produto" class="object-cover w-full
+          h-96 rounded-md"/>
+    </div>
+    <div class="w-full md:w-1/2 md:pl-10">
+      <p class="text-3xl text-gray-700 font-bold mb-2"><?= wordwrap($produto['DATA']['0']['title'], 30, "<br />\n"); ?></p>
+      <p class="text-md">Vendido por: <a href="/profile?id=<?= $user_id ?>"><span class="font-bold text-lg underline"><?= $owner['DATA']['0']['username'] ?></span></a>
+      </p>
+      <div class="mt-2">
+        <div class="items-center mb-2 flex">
+          <span class="rounded-full text-sm font-bold text-white mr-2 inline-block">⭐⭐⭐⭐⭐</span>
+          <span class="text-gray-700 text-md">0 avaliações</span>
+        </div>
+        <p class="text-gray-700 text-xl font-bold">R$<?= $produto['DATA']['0']['price'] ?></p>
+      </div>
+      <div class="mt-5">
+      <form action="" method="post">
+        <a href="&buy=1"><button fontfamily="Arial" class="inline-flex border bg-gradient-to-r shadow-xl from-cyan-500 to-blue-500 transition-colors duration-300 ease-in-out hover:bg-[#a0d4d6] text-white font-medium hover:text-black focus:outline-none
+            focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 justify-center rounded-md py-2 px-4 bg-indigo-600
+            text-md w-full">Comprar</button></a>
+            </form>
+      </div>
+      <div class="mt-5">
+        <p class="text-gray-700 text-xl font-bold">Descrição</p>
+        <p class="text-gray-700 mt-2 text-md"><?= wordwrap($produto['DATA']['0']['description'], 500, "<br>"); ?></p>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="md:container grid place-items-center align-middle items-center mx-auto">
 
-    <div class="mt-3 w-[70rem] max-h-full min-h-[37rem] h-auto rounded-lg bg-[#404040] md:mx-auto justify-center shadow-xl">
-        <div class="mt-10 grid items-center place-items-center">
-
-            <div class="container w-10 -ml-[65rem] -mt-5 -mb-3 rounded-full">
-                <a href="javascript:history.go(-1)"><img title="Voltar" src="../Assets/imgs/icons/solid/arrow-left.svg" class="invert h-8"></a>
-            </div>
-
-            <div class="flex">
-                <div class="col-auto mr-44">
-                    <img src="../Assets/imgs/products/<?= $produto['DATA']['0']['image']; ?>" class="rounded-md shadow-xl border-black border-2" width="350rem" height="350rem">
-                </div>
-                <div class="col-auto ml-2 mt-8">
-                    <div class="row-auto ">
-                        <h1 class="text-gray-100 font-semibold text-md"><?= wordwrap($produto['DATA']['0']['title'], 50, "<br />\n"); ?></h1>
-                    </div>
-                    <div class="row-auto flex mt-1">
-                        <div class="stars flex align-middle mt-[0.15rem]">
-                            <img src="../Assets/imgs/icons/solid/star.svg" class="h-5 icon-star">
-                            <img src="../Assets/imgs/icons/solid/star.svg" class="h-5 icon-star">
-                            <img src="../Assets/imgs/icons/solid/star.svg" class="h-5 icon-star">
-                            <img src="../Assets/imgs/icons/solid/star.svg" class="h-5 icon-star">
-                            <img src="../Assets/imgs/icons/solid/star.svg" class="h-5 icon-star">
-                        </div>
-                        <span class="text-gray-50 align-middle ">(0 avaliações)</span>
-                    </div>
-                    <div class="row-auto ">
-                        <h1 class="text-gray-100">Vendido por: <a href="/profile?id=<?= $user_id ?>"><span class="text-blue-400 underline font-medium text-lg"><?= $owner['DATA']['0']['username'] ?></span></a></h1>
-                    </div>
-                    <div class="row-auto">
-                        <span class="font-medium text-green-600 text-xl">R$ <?= $produto['DATA']['0']['price']; ?></span>
-                    </div>
-
-                    <div class="row-auto">
-                        <form action="" method="post">
-                            <a href="&buy=1"><input type="submit" class="text-ml w-32 rounded h-8 mt-1 cursor-pointer bg-gradient-to-r shadow-xl from-cyan-500 to-blue-500 transition-colors duration-300 ease-in-out hover:bg-[#a0d4d6] text-white font-medium hover:text-black" value="Comprar" /></a>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <hr class="mt-5 -mb-2 border-[#252525]">
-        <div class="container mx-auto grid place-content-center place-items-center mb-12">
-            <div class="row-auto mt-5 text-start">
-                <span class="text-white text-xl font-medium">Descrição</span>
-            </div>
-            <div class="row-auto  w-10/12 mt-5 text-start ">
-                <span class="font-normal text-gray-100"><?= wordwrap($produto['DATA']['0']['description'], 500, "<br>"); ?></span>
-            </div>
-        </div>
-    </div>
-
-    <h1 class="font-medium text-lg -mb-1 mt-2">Do Mesmo Vendedor:</h1>
+<h1 class="font-medium text-lg -mb-1 mt-2">Do Mesmo Vendedor:</h1>
     <br>
     <div class="grid grid-rows-1 auto-rows-max grid-cols-5 gap-5 items-center mb-20 justify-center">
         <?= $api->CREATE_CARDS_BY_OWNER($produto['DATA']['0']['owner']);  ?>

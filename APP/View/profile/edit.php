@@ -1,7 +1,4 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 $pfp = "../../Assets/imgs/user-ph.webp";
 
 $user_pfp = (new user())->getPFP();
@@ -10,13 +7,32 @@ if (isset($user_pfp)) {
     $pfp = "/../../Assets/imgs/users_pfp/" . $user->getPfp();
 }
 
-function debug($x)
-{
-    echo ('<script>console.log("' . $x . '");</script>');
-}
-
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+
+    // if($_GET['confirm'] != "true"){
+    //     echo ('<script> Swal.fire({
+    //         title: "Deseja Alterar Informações?",
+    //         text: "Esta ação é irreversível.",
+    //         icon: "warning",
+    //         showCancelButton: true,
+    //         confirmButtonColor: "#d33",
+    //         cancelButtonColor: "#18A5E0",
+    //         confirmButtonText: "Confirmar",
+    //         cancelButtonText: `Cancelar`,
+    //       }).then((result) => {
+    //         if (result.isConfirmed) {
+    //             window.location.assign("");
+    //         } else if (result.isDismissed) {
+    //           Swal.fire("Cancelado", "Nenhuma ação foi feita.", "error");
+    //           window.location.assign("/admin");
+    //         }
+    //       });
+    //       </script>');
+    // }
+
+
     try {
 
         $id = (new user())->getId();
@@ -63,16 +79,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     catch(Exception $e){
         echo($e->getMessage());
     }
-    //echo('<script>console.log("'. var_dump($result). '");</script>');
 
 
 }
 
-
+include_once(__DIR__ . "/../../etc/menu/user_menu.php");
 ?>
 <div class="container flex mx-auto h-auto pt-5">
 
-    <?php include_once(__DIR__ . "/../../etc/menu/user_menu.php"); ?>
 
     <div class="ml-16">
         <div class="grid items-center place-items-center w-full">
@@ -103,4 +117,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
 <script src="../../Assets/js/image-preview.js"></script>
-<script src="../../Assets/js/confirmation.js"></script>

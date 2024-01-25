@@ -1,8 +1,4 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 class API
 {
 
@@ -93,25 +89,34 @@ class API
 
     function MAKE_LOGIN_REQUEST($email, $pass)
     {
-        $data = array("email" => $email, "pass" => md5($pass));
+        try {
 
-        $result = $this->MAKE_POST_REQUEST("/usuario/logar/", $data);
+            $data = array("email" => $email, "pass" => md5($pass));
 
-        if ($result['status'] != 'success')
-            return;
+            $result = $this->MAKE_POST_REQUEST("/usuario/logar/", $data);
 
-        $this->REGISTER_IP($result['message']['0']['id']);
-        $user = new user();
-        $user->setId($result['message']['0']['id']);
-        $user->setName($result['message']['0']['username']);
-        $user->setEmail($result['message']['0']['email']);
-        $user->setPFP($result['message']['0']['pfp']);
-        $user->setRole($result['message']['0']['role']);
-        $user->setDesc($result['message']['0']['description']);
-        $_SESSION['user_id'] = $result['message']['0']['id'];
+            // echo(var_dump($result));
+            // die();
 
+            if ($result['status'] != 'success')
+                return;
 
-        return true;
+            $this->REGISTER_IP($result['message']['0']['id']);
+            $user = new user();
+            $user->setId($result['message']['0']['id']);
+            $user->setName($result['message']['0']['username']);
+            $user->setEmail($result['message']['0']['email']);
+            $user->setPFP($result['message']['0']['pfp']);
+            $user->setRole($result['message']['0']['role']);
+            $user->setDesc($result['message']['0']['description']);
+            $_SESSION['user_id'] = $result['message']['0']['id'];
+            return true;
+        } catch (Exception $e) {
+            http_response_code(404);
+            ob_clean();
+            echo("Erro\n". $e->getMessage());
+            die();
+        }
     }
 
 
@@ -130,7 +135,7 @@ class API
         $array_result = $result["DATA"];
         $result_final = "";
         foreach ($array_result as $valor) {
-            
+
             $result_final .= "<option fontfamily='Aria' value=" . $valor['id'] . ">" . $valor['name'] . "</option>";
         }
         return $result_final;

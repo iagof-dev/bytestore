@@ -4,8 +4,6 @@
             <div class="md:container w-full flex flex-grow justify-center">
                 <div class="grid grid-rows-1 auto-rows-max z-0 grid-cols-5 gap-5 items-center justify-center ">
 <?php
-
-
 if (!(new user)->isLogged())
     echo ('<script> Swal.fire({
     title: "Aviso!",
@@ -29,8 +27,10 @@ if (!(new user)->isLogged())
 echo((new API())->GET_CARDS());
 
 
+require_once(__DIR__ . "/../Model/usuario.php");
+$user = new user();
 
-
+echo('<script>console.log("'. $user->getName() .'");</script>');
 
 
   

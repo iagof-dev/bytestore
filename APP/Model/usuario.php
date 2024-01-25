@@ -1,9 +1,13 @@
 <?php
-ob_start();
-error_reporting(0);
+
 
 class user
 {
+    public function __construct() {
+        // session_start();
+        // ob_start();
+    }
+
     public function getID()
     {
         return $_SESSION['user_id'];

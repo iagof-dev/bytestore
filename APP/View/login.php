@@ -1,10 +1,7 @@
 <?php
-
-//Se usuário tiver logado, redirecionar para a página inicial
 if ((new user())->isLogged())
     header('Location: /');
 
-//Se o método for POST, fazer a requisição de login
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $result = (new API())->MAKE_LOGIN_REQUEST($_POST['user_email'], $_POST['user_pass']);
 
