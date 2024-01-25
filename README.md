@@ -4,7 +4,7 @@
 </div>
 
 # 🛒 Byte Store
-PHP & MySql | Projeto de um E-COMMERCE feito em PHP utilizando padrão MVC.
+PHP, MySql & Docker | Projeto de um E-COMMERCE feito em PHP.
 
 # ⚡ Status
 
