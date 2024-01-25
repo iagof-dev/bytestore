@@ -7,7 +7,6 @@
 PHP & MySql | Projeto de um E-COMMERCE feito em PHP utilizando padrão MVC.
 
 # ⚡ Status
-Remaking it...
 
 Project started in: 28/02/2023
 
