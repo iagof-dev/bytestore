@@ -14,7 +14,7 @@ Project Restarted in: 03/08/2023
 
 # Requirements
 
-- Mercado Pago Integration PKey
+- Mercado Pago Integration Access Token
 
 - Docker
 
