@@ -19,7 +19,7 @@ Project Restarted in: 03/08/2023
 - Docker
 
 
-# Installation
+# 🔧 Installation
 
 ```
 git clone https://github.com/iagof-dev/bytestore
