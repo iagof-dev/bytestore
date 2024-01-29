@@ -12,7 +12,7 @@ Project started in: 28/02/2023
 
 Project Restarted in: 03/08/2023
 
-# Requirements
+# ⚙️ Requirements
 
 - Mercado Pago Integration Access Token
 
