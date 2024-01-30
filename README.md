@@ -23,5 +23,5 @@ Project Restarted in: 03/08/2023
 
 ```
 git clone https://github.com/iagof-dev/bytestore
-sh ./build.sh
+./build.sh
 ```
