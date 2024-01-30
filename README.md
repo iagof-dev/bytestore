@@ -6,12 +6,6 @@
 # 🛒 Byte Store
 PHP, MySql & Docker | Projeto de um E-COMMERCE feito em PHP.
 
-# ⚡ Status
-
-Project started in: 28/02/2023
-
-Project Restarted in: 03/08/2023
-
 # ⚙️ Requirements
 
 - Mercado Pago Integration Access Token
