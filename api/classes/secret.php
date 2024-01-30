@@ -7,7 +7,7 @@ class config{
     "db_port" => "3306",
     "db_user" => "n3rdy",
     "db_pass" => "N3rdygamerbr@123",
-    "Notication_URL" => "DOMINIO/hook/notification.php"
+    "Notication_URL" => "SEU DOMINIO.com/hook/notification.php"
   ];
 
   function get(){
