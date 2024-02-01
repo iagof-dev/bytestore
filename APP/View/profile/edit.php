@@ -11,9 +11,6 @@ if (isset($user_pfp)) {
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
-
-    //TODO: REFAZER SEM ARQUIVO EXTERNO PELO URL
-
     // if($_GET['confirm'] != "true"){
     //     echo ('<script> Swal.fire({
     //         title: "Deseja Alterar Informações?",
@@ -71,7 +68,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (isset($_POST['desc_store'])) {
             $desc = $_POST['desc_store'];
         }
-
 
         $result = (new API())->UPDATE_USER($id, $_POST['name_store'], $desc, $pfp);
 

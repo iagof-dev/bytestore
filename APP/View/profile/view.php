@@ -16,6 +16,7 @@ if ($perfil['DATA']['0']['pfp'] != ' ' && $perfil['DATA']['0']['pfp'] != '' && !
   $pfp = "../Assets/imgs/users_pfp/" . $perfil['DATA']['0']['pfp'];
 }
 
+
 ?>
 
 

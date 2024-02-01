@@ -14,7 +14,6 @@ class API
         $this->api_url = $api_url;
         $this->api_user = $api_user;
         $this->api_pass = $api_pass;
-
         $this->CHECK_CONNECTION();
     }
 
@@ -93,7 +92,6 @@ class API
             $data = array("email" => $email, "pass" => md5($pass));
 
             $result = $this->MAKE_POST_REQUEST("/usuario/logar/", $data);
-
 
             if ($result['status'] != 'success')
                 return;
@@ -204,9 +202,12 @@ class API
             $data['image'] = $img;
         }
 
-        $this->MAKE_POST_REQUEST("/produto/modificar/", $data);
 
-        return true;
+        echo("<script>console.log()</script>");
+        
+        //$this->MAKE_POST_REQUEST("/produto/modificar/", $data);
+
+        //return true;
     }
 
     function DELETE_PRODUCT($id)
@@ -228,10 +229,12 @@ class API
             $data['description'] = $desc;
             (new user())->setDesc($desc);
         }
-        if (isset($pfp) && $pfp != 0 && $pfp != null) {
+        if (isset($pfp) && $pfp != null) {
             $data['pfp'] = $pfp;
             (new user())->setPFP($pfp);
         }
+
+        echo(var_dump($data));
 
         $result = $this->MAKE_POST_REQUEST("/usuario/modificar/", $data);
         return true;
