@@ -1,6 +1,6 @@
-## Request URLS
+# Request URLS
 
-# Categoria
+## Categoria
 
 <details>
 <summary>GET</summary>
@@ -17,7 +17,7 @@ WIP - modificar categoria - /categoria/modificar
 </details>
 
 
-# Pagamentos
+## Pagamentos
 
 <details>
 <summary>POST</summary>
@@ -27,7 +27,7 @@ criar pagamentos - /pagamentos/criar [id_gateway, product_title, customer_email,
 
 
 
-# Pedidos
+## Pedidos
 
 <details>
 <summary>GET</summary>
@@ -43,7 +43,7 @@ listar pedidos - /pedidos/listar [cid, sid]
 </details>
 
 
-# Produtos
+## Produtos
 
 <details>
 <summary>GET</summary>
@@ -60,7 +60,7 @@ deletar produto - /produtos/deletar {title, description, price, image, id_catego
 </details>
 
 
-# Usuarios
+## Usuarios
 
 <details>
 <summary>GET</summary>
