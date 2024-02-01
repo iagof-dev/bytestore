@@ -23,12 +23,10 @@ switch ($action) {
         foreach (array_keys($_POST) as $key) {
             $com .= $key . ",";
         }
-        //$com = substr_replace($com, "", -1);
         $com .= "id) values (";
         foreach (array_values($_POST) as $value) {
             $com .= "'" . $value . "',";
         }
-        //$com = substr_replace($com, "", -1);
         $id = substr(str_shuffle('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'), 0, 6);
         $com .= "'".$id . "');";
          
@@ -51,8 +49,6 @@ switch ($action) {
                 $search_value = $value;
             }
         }
-
-        //$com = "SELECT * FROM bytestore.gateways WHERE ". $search . "=". $search_value;
 
         $com = "SELECT *, gt.status as pag_status, gt.id as pag_id FROM bytestore.gateways as gt
         inner join bytestore.products as pt

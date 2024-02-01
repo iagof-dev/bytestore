@@ -16,21 +16,22 @@ class ADMIN_PRODUCTS_LIST
         $result = $api->GET_PURCHASES_BY_CUSTOMERID($user->getID());
 
 
+        if(!isset($result['message'])){
+            return '<h1 class="text-red-600">Nenhuma compra encontrada :(</h1>';
+        }
+
         $RETURN_STRING = '';
 
+        
 
         foreach ($result['message'] as $code) {
-
+            
             $img_name = $code['image'];
             $img = "/../Assets/imgs/products/" . $img_name;
             $id = $code['id'];
             $titulo = $code['title'];
             $desc = $code['description'];
 
-
-
-            // if (strlen($code['price']) > 5 && strlen($code['price']) < 11)
-            //     $valor = substr_replace($code['price'], '.', -6, 0);
 
             $valor = str_replace('.', ',', $code['price']);
 
@@ -75,9 +76,7 @@ class ADMIN_PRODUCTS_LIST
         </div>");
         }
 
-        if(empty($RETURN_STRING) || !isset($RETURN_STRING)){
-            $RETURN_STRING = '<h1 class="text-red-600">Nenhuma compra encontrada :(</h1>';
-        }
+        
 
         return $RETURN_STRING;
     }

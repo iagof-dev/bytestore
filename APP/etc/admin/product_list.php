@@ -25,11 +25,6 @@ class ADMIN_PRODUCTS_LIST
             $titulo = $code['title'];
             $desc = $code['description'];
             
-            
-            
-            // if (strlen($code['price']) > 5 && strlen($code['price']) < 11)
-            //     $valor = substr_replace($code['price'], '.', -6, 0);
-            
             $valor = str_replace('.', ',', $code['price']);
             
             

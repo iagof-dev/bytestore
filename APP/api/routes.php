@@ -95,8 +95,6 @@ class API
 
             $result = $this->MAKE_POST_REQUEST("/usuario/logar/", $data);
 
-            // echo(var_dump($result));
-            // die();
 
             if ($result['status'] != 'success')
                 return;

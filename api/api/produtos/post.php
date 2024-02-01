@@ -19,7 +19,6 @@ switch ($action) {
         break;
 
     case "modificar":
-        //localhost/BTS-API/produto/modificar/
         $com = "update products set ";
         $id = 0;
         foreach (array_combine(array_keys($_POST), array_values($_POST)) as $key => $value) {
@@ -34,7 +33,6 @@ switch ($action) {
         break;
 
     case "deletar":
-        //localhost/BTS-API/produto/deletar/
         $id = 0;
         foreach (array_combine(array_keys($_POST), array_values($_POST)) as $key => $value) {
             if (strtolower($key) == 'id') {

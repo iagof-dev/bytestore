@@ -6,7 +6,6 @@
   $getProductInfo = $api->GET_PRODUCT_BY_ID($_GET['id']);
 
   if((new user())->getId() != $getProductInfo['DATA']['0']['owner']){
-    //erro
     header("Location: /admin");
     return;
   }

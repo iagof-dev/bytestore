@@ -11,6 +11,9 @@ if (isset($user_pfp)) {
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
+
+    //TODO: REFAZER SEM ARQUIVO EXTERNO PELO URL
+
     // if($_GET['confirm'] != "true"){
     //     echo ('<script> Swal.fire({
     //         title: "Deseja Alterar Informações?",

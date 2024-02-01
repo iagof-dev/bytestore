@@ -36,20 +36,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }, 200);
 
     </script>");
-
-    // Swal.fire({
-    //     title: 'Sucesso!',
-    //     text: 'Autenticado com êxito, redirecionando...',
-    //     icon: 'success',
-    //     showCancelButton: false,
-    //     confirmButtonColor: '#3085d6',
-    //     cancelButtonColor: '#d33',
-    //     confirmButtonText: 'Ok'
-    // }).then((result) => {
-    //     if (result.isConfirmed) {
-    //         window.location.href = '/';
-    //     }
-    // })
 }
 
 

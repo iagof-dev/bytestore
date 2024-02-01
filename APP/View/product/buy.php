@@ -42,8 +42,6 @@ console.log('Created: ". $product_info['DATA']['0']['created']."');
 console.groupEnd();
 </script>");
 
-//echo("<script>console.debug('". $product_info['DATA']['0']['title'] ."');</script>");
-
 $product_img = "/../Assets/imgs/products/" . $product_info['DATA']['0']['image'];
 
 

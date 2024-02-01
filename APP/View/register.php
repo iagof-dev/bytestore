@@ -22,7 +22,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             }
           })
           </script>");
-    //header('Location /register');
     exit(1);
   }
 
