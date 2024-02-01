@@ -11,28 +11,6 @@ if (isset($user_pfp)) {
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
-    // if($_GET['confirm'] != "true"){
-    //     echo ('<script> Swal.fire({
-    //         title: "Deseja Alterar Informações?",
-    //         text: "Esta ação é irreversível.",
-    //         icon: "warning",
-    //         showCancelButton: true,
-    //         confirmButtonColor: "#d33",
-    //         cancelButtonColor: "#18A5E0",
-    //         confirmButtonText: "Confirmar",
-    //         cancelButtonText: `Cancelar`,
-    //       }).then((result) => {
-    //         if (result.isConfirmed) {
-    //             window.location.assign("");
-    //         } else if (result.isDismissed) {
-    //           Swal.fire("Cancelado", "Nenhuma ação foi feita.", "error");
-    //           window.location.assign("/admin");
-    //         }
-    //       });
-    //       </script>');
-    // }
-
-
     try {
 
         $id = (new user())->getId();

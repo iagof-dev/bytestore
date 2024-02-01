@@ -234,8 +234,6 @@ class API
             (new user())->setPFP($pfp);
         }
 
-        echo(var_dump($data));
-
         $result = $this->MAKE_POST_REQUEST("/usuario/modificar/", $data);
         return true;
     }
