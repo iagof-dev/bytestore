@@ -60,12 +60,11 @@ class API
             ob_clean();
             echo ("Falha com a comunicação do servidor.<br>");
             echo ("Pedimos que aguarde e tente novamente mais tarde...");
-
             die();
         }
     }
 
-    function getPublicIP()
+    function GET_PUBLIC_IPV4()
     {
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, "http://httpbin.org/ip");
@@ -79,7 +78,7 @@ class API
 
     function REGISTER_IP($id)
     {
-        $ipv4 = $this->getPublicIP();
+        $ipv4 = $this->GET_PUBLIC_IPV4();
         $date = date("Y-m-d H:i:s");
         $data = array("id" => $id, "access_ip" => $ipv4, "last_access" => $date);
         $this->MAKE_POST_REQUEST("/usuario/modificar", $data);
@@ -121,7 +120,7 @@ class API
 
     function MAKE_REGISTER_REQUEST($name, $email, $pass)
     {
-        $ipv4 = $this->getPublicIP();
+        $ipv4 = $this->GET_PUBLIC_IPV4();
         $data = array("username" => $name, "email" => $email, "pass" => md5($pass), "role" => "user", "register_ip" => $ipv4);
         $this->MAKE_POST_REQUEST("/usuario/criar/", $data);
         return true;

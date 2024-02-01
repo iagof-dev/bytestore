@@ -47,7 +47,7 @@ $database_cl = new DB();
 $db = $database_cl->connect("bytestore");
 
 #API
-include_once("./api/usuarios/usuario.php");
+include_once("./api/usuario/usuario.php");
 include_once("./api/produtos/produto.php");
 include_once("./api/categoria/categoria.php");
 include_once("./api/pagamentos/pagamentos.php");
