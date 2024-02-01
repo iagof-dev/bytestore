@@ -17,5 +17,5 @@ PHP, MySql & Docker | Projeto de um E-COMMERCE feito em PHP.
 
 ```
 git clone https://github.com/iagof-dev/bytestore
-./build.sh
+docker compose up -d
 ```
