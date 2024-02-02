@@ -75,7 +75,7 @@ class API
     }
 
 
-    function REGISTER_IP($id)
+    function REGISTER_IPV4($id)
     {
         $ipv4 = $this->GET_PUBLIC_IPV4();
         $date = date("Y-m-d H:i:s");
@@ -96,7 +96,7 @@ class API
             if ($result['status'] != 'success')
                 return;
 
-            $this->REGISTER_IP($result['message']['0']['id']);
+            $this->REGISTER_IPV4($result['message']['0']['id']);
             $user = new user();
             $user->setId($result['message']['0']['id']);
             $user->setName($result['message']['0']['username']);
@@ -195,19 +195,12 @@ class API
         $data = array("id" => $id);
         if (isset($title) && $title != " " && $title != "") $data["title"] = $title;
         if (isset($desc) && $desc != " " && $desc != "") $data["description"] = $desc;
-        if ($value != 0) {
-            $data["price"] = $value;
-        }
-        if (isset($img)) {
-            $data['image'] = $img;
-        }
-
-
-        echo("<script>console.log()</script>");
+        if ($value != 0) $data["price"] = $value;
+        if (isset($img)) $data['image'] = $img;
         
-        //$this->MAKE_POST_REQUEST("/produto/modificar/", $data);
+        $this->MAKE_POST_REQUEST("/produto/modificar/", $data);
 
-        //return true;
+        return true;
     }
 
     function DELETE_PRODUCT($id)

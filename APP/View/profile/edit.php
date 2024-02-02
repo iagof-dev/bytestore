@@ -1,11 +1,13 @@
 <?php
-$pfp = "../../Assets/imgs/user-ph.webp";
+$pfp = "/../../Assets/imgs/user-ph.webp";
 
 $user_pfp = (new user())->getPFP();
 
 if (isset($user_pfp)) {
     $pfp = "/../../Assets/imgs/users_pfp/" . $user->getPfp();
 }
+
+echo($pfp);
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -14,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     try {
 
         $id = (new user())->getId();
-        $pfp = 0;
+        $pfp_name = 0;
         $name = "a";
         $desc = 0;
         if ($_FILES['file_pfp']['error'] != 4 || ($_FILES['file_pfp']['size'] != 0 && $_FILES['file_pfp']['error'] != 0)) {
@@ -33,10 +35,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $NAME_SAVE_FILE = $DIRECTORY_IMAGE . $unique_name;
 
             if (move_uploaded_file($_FILES['file_pfp']['tmp_name'], $NAME_SAVE_FILE)) {
-                if ($pfp != "../../Assets/imgs/user-ph.webp") {
-                    unlink($pfp);
+                if ($pfp != "/../../Assets/imgs/user-ph.webp") {
+                    unlink(__DIR__ . "/../../Assets/imgs/users_pfp/" . ($user_pfp));
                 }
-                $pfp = $unique_name;
+                $pfp_name = $unique_name;
             }
         }
         if (isset($_POST['name_store'])) {
@@ -47,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $desc = $_POST['desc_store'];
         }
 
-        $result = (new API())->UPDATE_USER($id, $_POST['name_store'], $desc, $pfp);
+        $result = (new API())->UPDATE_USER($id, $_POST['name_store'], $desc, $pfp_name);
 
         if ($result == true) {
             header("Location: /profile?id=" . $id);
