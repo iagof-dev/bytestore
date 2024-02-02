@@ -6,7 +6,7 @@ if (isset($_GET['path'])) {
     $path = explode("/", $_GET['path']);
 } else {
     echo json_encode(["status" => "Sem parâmetros!"]);
-    exit();
+    die();
 }
 if (isset($path[0])) {
     $api = $path[0];
