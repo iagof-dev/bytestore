@@ -39,12 +39,9 @@ include_once("classes/usuario.php");
 ///
 ///     Autenticação
 ///
-if($method != 'GET'){
-    $AccessToken = (new cliente())->login();
-}
+if($method != 'GET') $AccessToken = (new cliente())->login();
 
-$database_cl = new DB();
-$db = $database_cl->connect("bytestore");
+$db = (new DB())->connect("bytestore");
 
 #API
 include_once("./api/usuario/usuario.php");
