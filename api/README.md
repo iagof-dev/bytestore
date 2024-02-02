@@ -88,7 +88,7 @@ deletar produto - /produtos/deletar {title, description, price, image, id_catego
 </details>
 
 
-### Usuarios
+### Usuários
 
 <details>
 <summary>GET</summary>
