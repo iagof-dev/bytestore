@@ -7,8 +7,6 @@ if (isset($user_pfp)) {
     $pfp = "/../../Assets/imgs/users_pfp/" . $user->getPfp();
 }
 
-echo($pfp);
-
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
