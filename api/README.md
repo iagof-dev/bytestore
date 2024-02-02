@@ -18,7 +18,7 @@
 <br>
   
   ```
-criar categoria - /categoria/inserir
+criar categoria - /categoria/inserir [name, icon]
 WIP - remover categoria - /categoria/remover
 WIP - modificar categoria - /categoria/modificar
   ```
