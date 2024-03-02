@@ -55,8 +55,8 @@ class API
         if ($result['status'] == "Sem parâmetros!") {
             return true;
         } else {
-            http_response_code(404);
             ob_clean();
+            http_response_code(404);
             echo ("Falha com a comunicação do servidor.<br>");
             echo ("Pedimos que aguarde e tente novamente mais tarde...");
             die();
