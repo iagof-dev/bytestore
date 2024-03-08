@@ -4,36 +4,20 @@
             <div class="md:container w-full flex flex-grow justify-center">
                 <div class="grid grid-rows-1 auto-rows-max z-0 grid-cols-5 gap-5 items-center justify-center ">
 <?php
-if (!(new user)->isLogged())
-    echo ('<script> Swal.fire({
-    title: "Aviso!",
-    text: "O site que você está acessando é parte de um projeto escolar em desenvolvimento e não oferece produtos para compra ou venda, pois seu propósito é estritamente educacional.",
-    icon: "warning",
-    showCancelButton: false,
-    confirmButtonColor: "#18A5E0",
-    confirmButtonText: "Entendido",
-  });
-  </script>');
+
+
+    //AVISO EXPOTEC
+    if (!(new user)->isLogged()) echo ('<script> Swal.fire({ title: "Aviso!", text: "O site que você está acessando é parte de um projeto escolar em desenvolvimento e não oferece produtos para compra ou venda, pois seu propósito é estritamente educacional.", icon: "warning", showCancelButton: false, confirmButtonColor: "#18A5E0", confirmButtonText: "Entendido", }); </script>');
 
 
 
-  if(isset($_GET["search"])){
-    $search_value = $_GET['search'];
-    echo('<script>console.log("Pesquisa: '. $search_value .'");</script>');
-    echo((new API())->CREATE_CARDS_BY_SEARCH($search_value));
-    return;
-}
+    if (isset($_GET["search"])) {
+        $search_value = $_GET['search'];
+        echo ((new API())->CREATE_CARDS_BY_SEARCH($search_value));
+        return;
+    }
 
 echo((new API())->GET_CARDS());
-
-
-require_once(__DIR__ . "/../Model/usuario.php");
-$user = new user();
-
-echo('<script>console.log("'. $user->getName() .'");</script>');
-
-
-  
 
 ?>
 
