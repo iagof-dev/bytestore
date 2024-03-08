@@ -7,39 +7,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   $result = (new API())->MAKE_REGISTER_REQUEST($_POST['user_name'], $_POST['user_email'], $_POST['user_pass']);
 
   if (!$result) {
-    echo ("<script>
-        Swal.fire({
-            title: 'Erro',
-            text: 'Usuário ou Email já cadastrado!',
-            icon: 'error',
-            showCancelButton: false,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Ok'
-          }).then((result) => {
-            if (result.isConfirmed) {
-              window.location.href = '/register';
-            }
-          })
-          </script>");
+    echo ("<script> Swal.fire({ title: 'Erro', text: 'Usuário ou Email já cadastrado!', icon: 'error', showCancelButton: false, confirmButtonColor: '#3085d6', cancelButtonColor: '#d33', confirmButtonText: 'Ok' }).then((result) => { if (result.isConfirmed) { window.location.href = '/register'; } }) </script>");
     exit(1);
   }
 
-  echo ("<script>
-    Swal.fire({
-        title: 'Sucesso!',
-        text: 'Suas informações foram cadastradas, faça o login para continuar',
-        icon: 'success',
-        showCancelButton: false,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Ok'
-      }).then((result) => {
-        if (result.isConfirmed) {
-            window.location.href = '/login';
-        }
-      })
-      </script>");
+  echo ("<script> Swal.fire({ title: 'Sucesso!', text: 'Suas informações foram cadastradas, faça o login para continuar', icon: 'success', showCancelButton: false, confirmButtonColor: '#3085d6', cancelButtonColor: '#d33', confirmButtonText: 'Ok' }).then((result) => { if (result.isConfirmed) { window.location.href = '/login'; } }) </script>");
 }
 
 ?>

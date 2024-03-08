@@ -9,8 +9,6 @@ if (isset($user_pfp)) {
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-
     try {
 
         $id = (new user())->getId();

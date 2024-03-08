@@ -7,35 +7,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
     if (!$result) {
-        echo ("<script>
-        setTimeout(function() {
-                window.location.href = '/login?error=1';
-            }, 1000);
-        Swal.fire({
-            title: 'Erro',
-            text: 'Credenciais inválidas. Verifique e tente novamente.',
-            icon: 'error',
-            showCancelButton: false,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Ok'
-          }).then((result) => {
-            if (result.isConfirmed) {
-                window.location.href = '/login?error=1';
-            }
-          })
-        
-        </script>");
+        echo ("<script> setTimeout(function() { window.location.href = '/login?error=1'; }, 1000); Swal.fire({ title: 'Erro', text: 'Credenciais inválidas. Verifique e tente novamente.', icon: 'error', showCancelButton: false, confirmButtonColor: '#3085d6', cancelButtonColor: '#d33', confirmButtonText: 'Ok' }).then((result) => { if (result.isConfirmed) { window.location.href = '/login?error=1'; } }) </script>");
         exit();
     }
 
-    echo ("
-    <script>
-        setTimeout(function() {
-            window.location.href = '/';
-        }, 200);
-
-    </script>");
+    echo (" <script> setTimeout(function() { window.location.href = '/'; }, 200); </script>");
 }
 
 

@@ -32,11 +32,6 @@
             </div>
 
             <div class="place-items-end align-middle text-center items-center mt-3.5 shadow-2xl">
-                <!-- AÇÃO -->
-
-
-
-
                 <h1 id="dropdown-menu" class="w-8 font-semibold mr-2 -mt-1.5 h-8 text-center leading-tight align-middle rounded-[100rem] text-white bg-gradient-to-r transition-colors duration-300 ease-in-out hover:bg-[#a0d4d6] cursor-pointer ml-[0.662rem] flex items-center mx-auto">
                     <img src="../../Assets/imgs/icons/line/menu.svg" class="w-5 ml-[0.300rem] h-5 bt-icon align-middle">
                 </h1>

@@ -36,24 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $user_info = new user();
     $og_product = $api->GET_PRODUCT_BY_ID($_GET['id']);
     if($og_product['DATA']['0']['owner'] != $user_info->getId()){
-
-        echo("<script>
-        Swal.fire({
-            title: 'Erro',
-            text: 'Houve um erro interno, tente novamente mais tarde.',
-            icon: 'error',
-            showCancelButton: false,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Ok'
-          }).then((result) => {
-            if (result.isConfirmed) {
-                window.location.href = '/admin';
-            }
-          })
-        
-        </script>");
-
+        echo("<script> Swal.fire({ title: 'Erro', text: 'Houve um erro interno, tente novamente mais tarde.', icon: 'error', showCancelButton: false, confirmButtonColor: '#3085d6', cancelButtonColor: '#d33', confirmButtonText: 'Ok' }).then((result) => { if (result.isConfirmed) { window.location.href = '/admin'; } }) </script>");
         return false;
     }
 
@@ -79,46 +62,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $result = $api->MAKE_UPDATE_POST_REQUEST($id, $title, $desc, $converted_price, $image);
 
     if($result != true){
-        echo("<script>
-        Swal.fire({
-            title: 'Erro',
-            text: 'Houve um erro interno, tente novamente mais tarde.',
-            icon: 'error',
-            showCancelButton: false,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Ok'
-          }).then((result) => {
-            if (result.isConfirmed) {
-                window.location.href = '/admin';
-            }
-          })
-          setTimeout(function() {
-            window.location.href = '/admin';
-        }, 1200);
-        
-        </script>");
+        echo("<script> Swal.fire({ title: 'Erro', text: 'Houve um erro interno, tente novamente mais tarde.', icon: 'error', showCancelButton: false, confirmButtonColor: '#3085d6', cancelButtonColor: '#d33', confirmButtonText: 'Ok' }).then((result) => { if (result.isConfirmed) { window.location.href = '/admin'; } }) setTimeout(function() { window.location.href = '/admin'; }, 1200); </script>");
     }
     else{
-        echo("<script>
-        Swal.fire({
-            title: 'Sucesso!',
-            text: 'Anúncio modificado com sucesso!.',
-            icon: 'success',
-            showCancelButton: false,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Ok'
-          }).then((result) => {
-            if (result.isConfirmed) {
-                window.location.href = '/admin';
-            }})
-            setTimeout(function() {
-                window.location.href = '/admin';
-            }, 2500);
-        </script>");
+        echo("<script> Swal.fire({ title: 'Sucesso!', text: 'Anúncio modificado com sucesso!.', icon: 'success', showCancelButton: false, confirmButtonColor: '#3085d6', cancelButtonColor: '#d33', confirmButtonText: 'Ok' }).then((result) => { if (result.isConfirmed) { window.location.href = '/admin'; }}) setTimeout(function() { window.location.href = '/admin'; }, 2500); </script>");
     }
-
 }
 
 ?>

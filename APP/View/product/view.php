@@ -14,21 +14,7 @@ if (empty($produto['DATA']['0'])) {
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     if($user_id == $user->getId()){
-        echo("<script>
-        Swal.fire({
-            title: 'Erro',
-            text: 'Você não pode comprar seu próprio anúncio.',
-            icon: 'error',
-            showCancelButton: false,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Ok'
-          }).then((result) => {
-            if (result.isConfirmed) {
-                window.location.href = '/anuncio?id=".$_GET['id']."';
-            }
-          })
-        </script>");
+        echo("<script> Swal.fire({ title: 'Erro', text: 'Você não pode comprar seu próprio anúncio.', icon: 'error', showCancelButton: false, confirmButtonColor: '#3085d6', cancelButtonColor: '#d33', confirmButtonText: 'Ok' }).then((result) => { if (result.isConfirmed) { window.location.href = '/anuncio?id=".$_GET['id']."'; } }) </script>");
         return;
     }
 

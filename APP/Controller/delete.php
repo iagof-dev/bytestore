@@ -16,7 +16,7 @@
     unlink(__DIR__ . "/../Assets/imgs/products/" . $_GET['img']);
   }
   catch(Exception $e){
-    echo('<script>console.log("Erro! '. $e->getMessage() .'");</script>');
+    echo('<script>console.warn("Erro! '. $e->getMessage() .'");</script>');
   }
 
   if($response != true){

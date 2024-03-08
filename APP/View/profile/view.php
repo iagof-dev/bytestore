@@ -2,7 +2,6 @@
 
 $id = $_GET['id'];
 $api = new API();
-$lorem = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Est dicta at repudiandae. Assumenda facilis obcaecati voluptates deleniti inventore, veritatis nobis sed quidem unde, repellat, dolores molestiae animi quibusdam. Ut, laboriosam!";
 $perfil = $api->GET_USER_BY_ID($id);
 
 if (empty($perfil['DATA']['0']['username']) && !isset($perfil['DATA']['0']['username'])) {

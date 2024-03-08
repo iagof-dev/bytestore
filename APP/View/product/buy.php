@@ -2,7 +2,7 @@
 
 <?php
 
-$product_img = "https://cdn.discordapp.com/attachments/1103826262906110043/1190386597766647889/Imagem_do_produto_aqui_1.png";
+$product_img = "";
 
 $id_gateway = $_GET['id'];
 $api = new api();
