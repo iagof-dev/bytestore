@@ -1,3 +1,9 @@
+DROP DATABASE IF EXISTS `bytestore`;
+
+create database bytestore;
+
+use bytestore;
+
 DROP TABLE IF EXISTS `carousel`;
 CREATE TABLE `carousel` (
   `id` int NOT NULL AUTO_INCREMENT,
